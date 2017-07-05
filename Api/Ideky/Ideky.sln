@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ideky.Api", "Ideky.Api\Ideky.Api.csproj", "{281E3873-5219-4263-AEAB-B92EF5B19702}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ideky.Tests", "Ideky.Tests\Ideky.Tests.csproj", "{08D7B8F8-5A33-4202-BDF1-8C9AC3B11466}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{281E3873-5219-4263-AEAB-B92EF5B19702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{281E3873-5219-4263-AEAB-B92EF5B19702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{281E3873-5219-4263-AEAB-B92EF5B19702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{281E3873-5219-4263-AEAB-B92EF5B19702}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08D7B8F8-5A33-4202-BDF1-8C9AC3B11466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08D7B8F8-5A33-4202-BDF1-8C9AC3B11466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08D7B8F8-5A33-4202-BDF1-8C9AC3B11466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08D7B8F8-5A33-4202-BDF1-8C9AC3B11466}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
