@@ -4,9 +4,14 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
-  
+
+    <fb:login-button 
+      scope="public_profile,email"
+      onlogin="checkLoginState();">
+    </fb:login-button>
+
+  <script src="config/facebook.js"></script>
   </body>
 </html>
