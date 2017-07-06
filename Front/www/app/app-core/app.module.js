@@ -6,7 +6,6 @@ angular
 angular
     .module('app', [
         'ngRoute',
-        'auth',
         'ui.bootstrap',
         'ngAnimate',
         'toastr',
