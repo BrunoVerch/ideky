@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ideky.Domain.Entity
 {
-    public class User
+    public class User : BasicEntity
     {
         public int FacebookId { get; private set; }
         public long Record { get; private set; }
         public int Lifes { get; private set; }
-        public DateTime LastLogin { get; private set }
+        public DateTime LastLogin { get; private set; }
+
+        public List<string> Messages { get; private set; }
 
         protected User() { }
 
@@ -41,6 +40,15 @@ namespace Ideky.Domain.Entity
         public void AddLifes(int lifes)
         {
             Lifes = Lifes + lifes;
+        }
+
+        public bool Validate()
+        {
+            if(Lifes < 0)
+            {
+                Messages.Add("Invalid number of lifes!");
+            }
+            return Messages.Count == 0;
         }
     }
 }
