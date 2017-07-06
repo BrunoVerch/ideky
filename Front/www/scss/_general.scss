@@ -1,37 +1,36 @@
-// body {
-//     background: $primary-color;
-//     color: lighten($primary-color, 10);
-//     color: darken($primary-color, 10);
-// }
+body {
+    box-sizing: border-box;
+    margin: 0;
+}
 
-// h1 {
-//     margin: $default-margin;
-// }
+%button-design-login {    
+    width: 65%;
+    height: 13%;
+    background-color: $button-color-login;
+}
 
-// %box-shadow {
-//     box-shadow: 0 5px 0 rgba(#000, 0.4);
-// }
+%flexbox-center-vertical {
+    display: flex;
+    justify-content: center;
+}
 
-// p {
-//     @extend %box-shadow;
-// }
+%flexbox-center-horizontal {
+    display: flex;
+    align-items: center;
+}
 
-// .container {
-//     margin: 0;
+%background-image-box {
+    border-radius: 10px;
+    background-image: $background-image-default;   
+    background-size: cover;  
+    background-position: center;
+}
 
-//     .row {
-//         background: blue;
+.fa.fa-facebook-square {
+    color: white;
+    font-size: 40px;
+}
 
-//         .col {
-//             color: red;
-
-//             &:hover {
-//                 background: green;
-//             }
-//         }
-//     }
-// }
-
-// h1 {
-//     color: blue;
-// }
+h1.annie {
+    font-family: 'Annie Use Your Telescope';
+}

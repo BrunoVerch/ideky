@@ -1,0 +1,52 @@
+@font-face {
+  font-family: 'Annie Use Your Telescope';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Annie_Use_Your_Telescope/AnnieUseYourTelescope.ttf"); }
+@font-face {
+  font-family: 'HDV Comic Serif Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/hvd_comic_serif/HVD_Comic_Serif_Pro.otf"); }
+body {
+  box-sizing: border-box;
+  margin: 0; }
+
+.login .button-login {
+  width: 65%;
+  height: 13%;
+  background-color: #264285; }
+
+.login, .login .box-default, .login .button-login {
+  display: flex;
+  justify-content: center; }
+
+.login, .login .box-default, .login .button-login {
+  display: flex;
+  align-items: center; }
+
+.login .box-default {
+  border-radius: 10px;
+  background-image: url("../images/bg.png");
+  background-size: cover;
+  background-position: center; }
+
+.fa.fa-facebook-square {
+  color: white;
+  font-size: 40px; }
+
+h1.annie {
+  font-family: 'Annie Use Your Telescope'; }
+
+.login {
+  background-color: #363D4D;
+  height: 100vh; }
+  .login .box-default {
+    height: 85vh;
+    width: 740px;
+    padding: 20px;
+    flex-direction: column; }
+  .login .logo {
+    width: 33%; }
+
+/*# sourceMappingURL=main.css.map */

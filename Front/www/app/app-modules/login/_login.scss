@@ -1,17 +1,29 @@
 .login {
     background-color: $background-color-default;
+    height: 100vh;
+    @extend %flexbox-center-vertical;
+    @extend %flexbox-center-horizontal;
 
-    //  px X 916px
-    .box-default{
+    //  948px X 916px
+    .box-default{            
+        height: 85vh;
         width: 740px;
-        height: 715px;
-        background-image: $background-image-default;
-        display: inline-block;
-        align-content: center;
-        margin-top: 50px;
+        // min-height: 715px;
+        padding: 20px;     
+        flex-direction: column;
+        @extend %background-image-box;  
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;
     } 
 
-    .button-login {
-
+    .logo {
+        width: 33%;
     }
+
+    .button-login {
+        @extend %button-design-login; 
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;       
+    }
+    
 }
