@@ -48,6 +48,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministrativeUnitTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,6 +56,10 @@
     <ProjectReference Include="..\Ideky.Api\Ideky.Api.csproj">
       <Project>{281E3873-5219-4263-AEAB-B92EF5B19702}</Project>
       <Name>Ideky.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ideky.Domain\Ideky.Domain.csproj">
+      <Project>{3949b8e9-8126-4c64-b979-7a127a74fde6}</Project>
+      <Name>Ideky.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
