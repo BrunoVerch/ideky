@@ -1,17 +1,21 @@
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
-    console.log(response);
+    console.log('status',response);
+    FB.api('/me/invitable_friends', function(response) {
+        console.log(response);
+    });
   });
 }
 
 window.fbAsyncInit = function() {
   FB.init({
-    appId            : '1333084840143885',
+    appId            : '1392336224214575',
     autoLogAppEvents : true,
     xfbml            : true,
     version          : 'v2.9'
   });
   FB.AppEvents.logPageView();
+
 };
 
 (function(d, s, id){
