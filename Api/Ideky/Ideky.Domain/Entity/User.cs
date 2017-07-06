@@ -8,6 +8,6 @@ namespace Ideky.Domain.Entity
 {
     public class User
     {
-        public int Id { get; set; }
+        public int FacebookId { get; set; }
     }
 }

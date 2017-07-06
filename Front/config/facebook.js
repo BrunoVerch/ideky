@@ -1,7 +1,7 @@
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
     console.log('status',response);
-    FB.api('/me/invitable_friends', function(response) {
+    FB.api('/me/invitable_friends?limit=99999', function(response) {
         console.log(response);
     });
   });
