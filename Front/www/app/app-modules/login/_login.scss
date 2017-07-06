@@ -1,5 +1,17 @@
-// .login {
-//     .nomeClasse {
-//         color: blue;
-//     }
-// }
+.login {
+    background-color: $background-color-default;
+
+    //  px X 916px
+    .box-default{
+        width: 740px;
+        height: 715px;
+        background-image: $background-image-default;
+        display: inline-block;
+        align-content: center;
+        margin-top: 50px;
+    } 
+
+    .button-login {
+
+    }
+}
