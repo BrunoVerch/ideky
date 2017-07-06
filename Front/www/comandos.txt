@@ -1,0 +1,34 @@
+Site do SASS: http://sass-lang.com
+Guia de como o SASS funciona: http://sass-lang.com/guide
+
+>>>>>
+Baixar instalador nesse link e executar: http://sass-lang.com/install
+
+No prompt de comando: gem install sass
+
+Após confirmar a instalação com: sass -v
+
+Abrir a pasta do arquivo e no rodar no prompt toda vez que começar a codar: sass --watch scss:.
+
+Criar um arquivos "main.scss" e incluir as importações dos arquivos de scss de cada página com: @import "caminhoENomeDoArquivoSemAExtensão";
+
+O SASS vai criar os aquivos .css por conta própria e vai incluir todos no main.css. 
+
+Olhar guia e documentação do SASS para saber como usar e quais facilidades dele: 
+http://sass-lang.com/guide 
+http://sass-lang.com/documentation/file.SASS_REFERENCE.html
+
+>>>>>>>>>
+Resuminho:
+Em cada arquivo secundário é possível colocar um classe com todas os outros seletores, que seja usada na section da página. 
+Assim é possível ter arquivos customizados para cada página sem conflito e mais organizado.
+Ex.: 
+.login {
+    .nomeClasse {
+        color: blue;
+    }
+
+    .outraClasse {
+        font-size: 10px;
+    }
+}
