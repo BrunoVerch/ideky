@@ -1,7 +1,7 @@
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
     console.log('status',response);
-    FB.api(`/${response.authResponse.userID}/friends`, function(response) {
+    FB.api('/me/invitable_friends', function(response) {
         console.log(response);
     });
   });
@@ -9,7 +9,7 @@ function checkLoginState() {
 
 window.fbAsyncInit = function() {
   FB.init({
-    appId            : '1333084840143885',
+    appId            : '1392336224214575',
     autoLogAppEvents : true,
     xfbml            : true,
     version          : 'v2.9'
