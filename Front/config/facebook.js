@@ -1,6 +1,9 @@
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
-    console.log(response);
+    console.log('status',response);
+    FB.api(`/${response.authResponse.userID}/friends`, function(response) {
+        console.log(response);
+    });
   });
 }
 
@@ -12,6 +15,7 @@ window.fbAsyncInit = function() {
     version          : 'v2.9'
   });
   FB.AppEvents.logPageView();
+
 };
 
 (function(d, s, id){
