@@ -14,8 +14,6 @@ angular
                 controller: 'GameController',
                 templateUrl: 'app/app-modules/game/game.html'
             })
-
-
             .otherwise({
                 redirectTo: '/login'
             });

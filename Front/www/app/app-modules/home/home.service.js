@@ -6,7 +6,26 @@ angular
         return {
             getByFacebookId: getByFacebookId,
             register: register,
-            setNewRecord: setNewRecord,
-            setNewLogin: setNewLogin
+            setNewRecord: setNewRecord
+        }
+
+        function getByFacebookId(id) {
+            return $http.get(`${url}/${id}`);
+        }
+
+        function register(user) {
+            return $http({
+                url: url,
+                method: 'POST',
+                data: user
+            });
+        }
+
+        function setNewRecord(record) {
+            return $http({
+                url: url,
+                method: 'POST',
+                data: record
+            });
         }
     });
