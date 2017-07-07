@@ -12,7 +12,7 @@
         padding: 80px 40px; 
         flex-direction: column;
         justify-content: space-between;
-        @extend %background-image-box;  
+            @extend %background-image-box;  
         @extend %flexbox-center-vertical;
         @extend %flexbox-center-horizontal;
     } 
@@ -24,10 +24,7 @@
     .button-login {
         @extend %button-design-login; 
         @extend %flexbox-center-vertical;
-        @extend %flexbox-center-horizontal;  
-        font-family: 'HDV Comic Serif Pro';
-        font-size: 22px;   
-        text-align: center;          
+        @extend %flexbox-center-horizontal;                
     }
     
 }

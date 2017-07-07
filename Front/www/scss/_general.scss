@@ -7,6 +7,12 @@ body {
     width: 70%;
     height: 16%;
     background-color: $button-color-login;
+    font-family: 'HDV Comic Serif Pro';
+    font-size: 22px;   
+    text-align: center; 
+    border-radius: 10px; 
+    border: none;
+    color: #fff;
 }
 
 %flexbox-center-vertical {
@@ -27,7 +33,7 @@ body {
 }
 
 .fa.fa-facebook-official {
-    color: white;
+    color: #fff;
     font-size: 50px;
     margin: 0 30px 0 0; 
 }
