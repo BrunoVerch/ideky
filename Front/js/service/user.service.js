@@ -1,12 +1,19 @@
-angular.module('app').factory('amigosService', function ($http) {
+angular.module('app').factory('userService', function ($http) {
 
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    console.log('status',response);
-    FB.api('/me/invitable_friends?limit=99999', function(response) {
-        console.log(response);
-    });
-  });
-}
+  const url = 'http://localhost:60550/api/auth'
+
+  return {
+    login: login,
+    getFriends: getFriends
+  }
+
+  function login () {
+    return $http.get(`${url}/ExternalLogin?provider=Facebook`);
+  }
+
+  //invitable_friends
+  function getFriends(type, callback) {
+    return FB.api(`/me/${type}?limit=99999`,  callback);
+  }
 
 });
