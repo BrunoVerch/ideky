@@ -9,5 +9,4 @@ angular
             setNewRecord: setNewRecord,
             setNewLogin: setNewLogin
         }
-
     });
