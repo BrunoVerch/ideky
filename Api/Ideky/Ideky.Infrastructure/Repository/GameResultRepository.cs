@@ -9,6 +9,11 @@ namespace Ideky.Infrastructure.Repository
     {
         private Context context;
 
+        public GameResultRepository()
+        {
+            context = new Context();
+        }
+
         public List<GameResult> GetList()
         {
             return context.GameResults.ToList();
