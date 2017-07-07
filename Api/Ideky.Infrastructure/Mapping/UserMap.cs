@@ -1,6 +1,5 @@
 ﻿using Ideky.Domain.Entity;
 using System.Data.Entity.ModelConfiguration;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ideky.Infrastructure.Mapping
 {
@@ -11,8 +10,6 @@ namespace Ideky.Infrastructure.Mapping
             ToTable("User");
 
             HasKey(x => x.FacebookId);
-            Property(x => x.FacebookId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
-
         }
     }
 }

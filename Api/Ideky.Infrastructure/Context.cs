@@ -1,5 +1,10 @@
 ﻿using Ideky.Domain.Entity;
 using System.Data.Entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Ideky.Infrastructure.Mapping;
 
 namespace Ideky.Infrastructure
@@ -19,7 +24,7 @@ namespace Ideky.Infrastructure
         public DbSet<Administrative> Administratives { get; set; }
         public DbSet<GameResult> GameResults { get; set; }
         public DbSet<Level> Levels { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -31,4 +36,3 @@ namespace Ideky.Infrastructure
 
     }
 }
-

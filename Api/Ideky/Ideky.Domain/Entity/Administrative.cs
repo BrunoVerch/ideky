@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Ideky.Domain.Entity
 {
-    public class Administrative : BasicEntity
+    public class Administrative : IBasicEntity
     {
         public int Id { get; private set; }
         public string Email { get; private set; }
@@ -40,7 +40,7 @@ namespace Ideky.Domain.Entity
         {
             if (string.IsNullOrWhiteSpace(Email))
             {
-                Messages.Add("Invalid email address.");
+                Messages.Add("Endereço de email inválido");
             }
             return Messages.Count == 0;
         }

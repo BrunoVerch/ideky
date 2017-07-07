@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ideky.Tests", "Ideky.Tests\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ideky.Domain", "Ideky.Domain\Ideky.Domain.csproj", "{3949B8E9-8126-4C64-B979-7A127A74FDE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ideky.Infrastructure", "Ideky.Infrastructure\Ideky.Infrastructure.csproj", "{38CC7C2C-EEC7-43BD-BC51-86F02ABD918D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ideky.Infrastructure", "Ideky.Infrastructure\Ideky.Infrastructure.csproj", "{525CE121-80F3-4066-AF47-EBE530B73350}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{3949B8E9-8126-4C64-B979-7A127A74FDE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3949B8E9-8126-4C64-B979-7A127A74FDE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3949B8E9-8126-4C64-B979-7A127A74FDE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38CC7C2C-EEC7-43BD-BC51-86F02ABD918D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38CC7C2C-EEC7-43BD-BC51-86F02ABD918D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38CC7C2C-EEC7-43BD-BC51-86F02ABD918D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38CC7C2C-EEC7-43BD-BC51-86F02ABD918D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{525CE121-80F3-4066-AF47-EBE530B73350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{525CE121-80F3-4066-AF47-EBE530B73350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{525CE121-80F3-4066-AF47-EBE530B73350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{525CE121-80F3-4066-AF47-EBE530B73350}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

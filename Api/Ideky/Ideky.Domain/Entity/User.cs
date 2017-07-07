@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ideky.Domain.Entity
 {
-    public class User : BasicEntity
+    public class User : IBasicEntity
     {
         public int FacebookId { get; private set; }
         public long Record { get; private set; }
@@ -46,7 +46,7 @@ namespace Ideky.Domain.Entity
         {
             if(Lifes < 0)
             {
-                Messages.Add("Invalid number of lifes!");
+                Messages.Add("Número de vidas inválido!");
             }
             return Messages.Count == 0;
         }
