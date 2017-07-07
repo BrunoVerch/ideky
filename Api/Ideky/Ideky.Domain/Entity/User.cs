@@ -5,21 +5,30 @@ namespace Ideky.Domain.Entity
 {
     public class User : IBasicEntity
     {
-        public int FacebookId { get; private set; }
+        public long FacebookId { get; private set; }
         public long Record { get; private set; }
         public int Lifes { get; private set; }
         public DateTime LastLogin { get; private set; }
 
         public List<string> Messages { get; private set; }
 
-        protected User() { }
+        protected User() { Messages = new List<string>();  }
 
-        public User(int facebookId)
+        public User(long facebookId, long record, int lifes, DateTime lastLogin) {
+            FacebookId = facebookId;
+            Record = record;
+            Lifes = lifes;
+            LastLogin = lastLogin;
+            Messages = new List<string>();
+        }
+
+        public User(long facebookId)
         {
             FacebookId = facebookId;
             Record = 0;
-            Lifes = 0;
+            Lifes = 1;
             LastLogin = DateTime.Now;
+            Messages = new List<string>();
         }
 
         public void SetNewLogin()
@@ -27,7 +36,7 @@ namespace Ideky.Domain.Entity
             LastLogin = DateTime.Now;
         }
      
-        public void SetNewRecord(int record)
+        public void SetNewRecord(long record)
         {
             Record = record;
         }
@@ -47,6 +56,10 @@ namespace Ideky.Domain.Entity
             if(Lifes < 0)
             {
                 Messages.Add("Número de vidas inválido!");
+            }
+            if(LastLogin == null)
+            {
+                Messages.Add("Data de último login inválida!");
             }
             return Messages.Count == 0;
         }
