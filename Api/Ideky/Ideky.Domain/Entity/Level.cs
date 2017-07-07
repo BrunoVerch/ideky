@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ideky.Domain.Entity
 {
-    public class Level : BasicEntity
+    public class Level : IBasicEntity
     {
         public int Id { get; private set; }
         public int LevelNumber { get; private set; }
@@ -35,15 +35,15 @@ namespace Ideky.Domain.Entity
         {
             if (LevelNumber < 0)
             {
-                Messages.Add("Invalid level number!");
+                Messages.Add("Nível inválido.");
             }
             if (PictureAmount < 0)
             {
-                Messages.Add("Invalid picture amount!");
+                Messages.Add("Quantidade de imagens inválida.");
             }
             if(Duration < 0)
             {
-                Messages.Add("Invalid duration time!");
+                Messages.Add("Tempo de duração inválido!");
             }
             return Messages.Count == 0;
         }

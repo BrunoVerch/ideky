@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ideky.Domain.Entity
 {
-    public class GameResult : BasicEntity
+    public class GameResult : IBasicEntity
     {
         public int Id { get; private set; }
         public User User { get; private set; }
@@ -24,7 +24,7 @@ namespace Ideky.Domain.Entity
         {
             if(User != null)
             {
-                Messages.Add("Invalid User");
+                Messages.Add("Usuário inválido");
             }
             return Messages.Count == 0;
         }
