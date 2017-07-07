@@ -12,6 +12,8 @@ Abrir a pasta do arquivo e no rodar no prompt toda vez que começar a codar: sas
 
 Criar um arquivos "main.scss" e incluir as importações dos arquivos de scss de cada página com: @import "caminhoENomeDoArquivoSemAExtensão";
 
+Para o SASS fazer a compilação é necessário deixar no prompt rodando: sass --watch .:.
+
 O SASS vai criar os aquivos .css por conta própria e vai incluir todos no main.css. 
 
 Olhar guia e documentação do SASS para saber como usar e quais facilidades dele: 

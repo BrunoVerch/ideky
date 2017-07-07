@@ -4,8 +4,8 @@ body {
 }
 
 %button-design-login {    
-    width: 65%;
-    height: 13%;
+    width: 70%;
+    height: 16%;
     background-color: $button-color-login;
 }
 
@@ -26,11 +26,19 @@ body {
     background-position: center;
 }
 
-.fa.fa-facebook-square {
+.fa.fa-facebook-official {
     color: white;
-    font-size: 40px;
+    font-size: 50px;
+    margin: 0 30px 0 0; 
 }
 
 h1.annie {
     font-family: 'Annie Use Your Telescope';
+    font-size: 46px;
+    text-align: center;
+    color: $text-color-login;
+    &.subtitle {
+        font-size: 33px;
+        color: $text-subtitle-color-login;  
+    }
 }

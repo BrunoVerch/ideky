@@ -1,12 +1,13 @@
 // colors
 $background-color-default: #363D4D;
+$button-color-login: #264285;
+$text-color-login: #28b266;
+$text-subtitle-color-login: #585858;
 
 //Images
 $background-image-default: url('../images/bg.png');
 
-//Buttons
-$button-color-login: #264285;
-
+// Fonts
 @font-face {
   font-family: 'Annie Use Your Telescope';
   font-style: normal;

@@ -13,8 +13,8 @@ body {
   margin: 0; }
 
 .login .button-login {
-  width: 65%;
-  height: 13%;
+  width: 70%;
+  height: 16%;
   background-color: #264285; }
 
 .login, .login .box-default, .login .button-login {
@@ -31,12 +31,19 @@ body {
   background-size: cover;
   background-position: center; }
 
-.fa.fa-facebook-square {
+.fa.fa-facebook-official {
   color: white;
-  font-size: 40px; }
+  font-size: 50px;
+  margin: 0 30px 0 0; }
 
 h1.annie {
-  font-family: 'Annie Use Your Telescope'; }
+  font-family: 'Annie Use Your Telescope';
+  font-size: 46px;
+  text-align: center;
+  color: #28b266; }
+  h1.annie.subtitle {
+    font-size: 33px;
+    color: #585858; }
 
 .login {
   background-color: #363D4D;
@@ -44,9 +51,14 @@ h1.annie {
   .login .box-default {
     height: 85vh;
     width: 740px;
-    padding: 20px;
-    flex-direction: column; }
+    padding: 80px 40px;
+    flex-direction: column;
+    justify-content: space-between; }
   .login .logo {
     width: 33%; }
+  .login .button-login {
+    font-family: 'HDV Comic Serif Pro';
+    font-size: 22px;
+    text-align: center; }
 
 /*# sourceMappingURL=main.css.map */
