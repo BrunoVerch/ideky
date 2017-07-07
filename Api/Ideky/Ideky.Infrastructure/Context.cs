@@ -19,7 +19,7 @@ namespace Ideky.Infrastructure
         public DbSet<Administrative> Administratives { get; set; }
         public DbSet<GameResult> GameResults { get; set; }
         public DbSet<Level> Levels { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
