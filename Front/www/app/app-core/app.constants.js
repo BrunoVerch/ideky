@@ -1,3 +1,3 @@
-angular.module("app")
-		.constant('AppConstants', {
-		});
+// angular.module("app")
+// 		.constant('AppConstants', {
+// 		});

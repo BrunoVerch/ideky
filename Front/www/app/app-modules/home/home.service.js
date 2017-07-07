@@ -1,14 +1,13 @@
 angular
     .module('app.core')
-    .factory('StartService', function($http) {
-
-        var urlNome = 'http://localhost:9090/api/nome';
-
-        function carregarNome() {
-            return $http.post(`$(urlNome)/nome`);
-        };
+    .factory('HomeService', function($http) {
+        const url = 'http://localhost:60550/api/user';
 
         return {
-            carregar: carregarNome
-        };
+            getByFacebookId: getByFacebookId,
+            register: register,
+            setNewRecord: setNewRecord,
+            setNewLogin: setNewLogin
+        }
+
     });

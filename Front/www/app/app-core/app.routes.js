@@ -1,5 +1,5 @@
 angular
-    .module('app.core')
+    .module('app')
     .config(function($routeProvider) {
         $routeProvider
             .when('/login', {
@@ -7,8 +7,12 @@ angular
                 templateUrl: 'app/app-modules/login/login.html'
             })
             .when('/home', {
-                controller: 'SrtartController',
+                controller: 'HomeController',
                 templateUrl: 'app/app-modules/home/home.html'
+            })
+            .when('/game', {
+                controller: 'GameController',
+                templateUrl: 'app/app-modules/game/game.html'
             })
 
 
