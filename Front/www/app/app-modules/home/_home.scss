@@ -1,4 +1,4 @@
-.start {
+.home {
     .box-default{      
         padding: 80px 40px; 
         flex-direction: column;
@@ -11,7 +11,8 @@
         width: 33%;
     }
 
-    .button-login {
+    .button-home {
+        background-color: $button-color-home;
         @extend %button-design-login; 
         @extend %flexbox-center-vertical;
         @extend %flexbox-center-horizontal;                

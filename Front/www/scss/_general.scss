@@ -13,6 +13,29 @@ body {
         @extend %background-image-box; 
 } 
 
+.box-content {
+    background-color: #fff;
+}
+
+.box-content-wrapper {
+    justify-content: collum;
+    flex-direction: column;
+    justify-content: space-between;
+    @extend %flexbox-center-vertical;
+    @extend %flexbox-center-horizontal;
+}
+
+.mask-profile {    
+    border-radius: 50%;
+    border: none;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    height: 90px;
+    width: 90px;
+}
+
 %button-design-login {
     font-family: $font-type-primary;    
     width: 70%;
@@ -63,5 +86,13 @@ h1.font-secundary {
     &.subtitle {
         font-size: 33px;
         color: $text-subtitle-color-login;  
+    }
+}
+
+h1.font-primary {
+    text-align: center;
+    color: $text-color-home;
+    small {
+        color: $text-color-home;
     }
 }
