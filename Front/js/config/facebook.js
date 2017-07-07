@@ -1,18 +1,22 @@
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    console.log(response);
-  });
-}
-
 window.fbAsyncInit = function() {
   FB.init({
-    appId            : '1333084840143885',
+    appId            : '1392336224214575',
     autoLogAppEvents : true,
     xfbml            : true,
     version          : 'v2.9'
   });
   FB.AppEvents.logPageView();
+
 };
+
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    console.log('status',response);
+    FB.api('/me/invitable_friends?limit=99999', function(response) {
+        console.log(response);
+    });
+  });
+}
 
 (function(d, s, id){
   var js, fjs = d.getElementsByTagName(s)[0];
