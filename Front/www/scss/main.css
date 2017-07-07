@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'Annie Use Your Telescope';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Annie_Use_Your_Telescope/AnnieUseYourTelescope.ttf"); }
+@font-face {
+  font-family: 'HDV Comic Serif Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/hvd_comic_serif/HVD_Comic_Serif_Pro.otf"); }
+body {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: #363D4D;
+  height: 100vh; }
+
+.box-default {
+  height: 85vh;
+  width: 740px; }
+
+.box-content {
+  background-color: #fff; }
+
+.box-content-wrapper {
+  justify-content: collum;
+  flex-direction: column;
+  justify-content: space-between; }
+
+.mask-profile {
+  border-radius: 50%;
+  border: none;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  height: 90px;
+  width: 90px; }
+
+.login .button-login, .home .button-home {
+  font-family: "HDV Comic Serif Pro";
+  width: 70%;
+  height: 16%;
+  background-color: #264285;
+  font-size: 22px;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  color: #fff; }
+
+body, .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home {
+  display: flex;
+  justify-content: center; }
+
+body, .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home {
+  display: flex;
+  align-items: center; }
+
+.box-default {
+  border-radius: 10px;
+  background-image: url("../images/bg.png");
+  background-size: cover;
+  background-position: center; }
+
+.fa.fa-facebook-official {
+  color: #fff;
+  font-size: 50px;
+  margin: 0 30px 0 0; }
+
+.font-primary {
+  font-family: "HDV Comic Serif Pro"; }
+
+.font-secundary {
+  font-family: "Annie Use Your Telescope"; }
+
+h1.font-secundary {
+  font-size: 46px;
+  text-align: center;
+  color: #28b266; }
+  h1.font-secundary.subtitle {
+    font-size: 33px;
+    color: #585858; }
+
+h1.font-primary {
+  text-align: center;
+  color: #343434; }
+  h1.font-primary small {
+    color: #343434; }
+
+.login .box-default {
+  padding: 80px 40px;
+  flex-direction: column;
+  justify-content: space-between; }
+.login .logo {
+  width: 33%; }
+
+.home .box-default {
+  padding: 80px 40px;
+  flex-direction: column;
+  justify-content: space-between; }
+.home .logo {
+  width: 33%; }
+.home .button-home {
+  background-color: #e77235; }
+
+/*# sourceMappingURL=main.css.map */
