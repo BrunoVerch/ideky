@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.CSharp.RuntimeBinder;
+using Ideky.Api.Models;
 
 namespace Ideky.Api.Controllers
 {
@@ -20,11 +21,11 @@ namespace Ideky.Api.Controllers
 
         [HttpPost] //BasicAuthorization(Roles = "Gerente")
         [Route("register")]
-        public HttpResponseMessage Post(dynamic obj) //Nome,Senha,Email,Cargo
+        public HttpResponseMessage Post([FromBody]UserModel userModel) //Nome,Senha,Email,Cargo
         {
             try
             {
-                List<string> answer = userRepository.CreateNewUser(obj.FacebookId);
+                List<string> answer = userRepository.CreateNewUser(userModel.FacebookId);
                 if (answer == null)
                     return ResponderOK(null);
                 else
@@ -50,36 +51,22 @@ namespace Ideky.Api.Controllers
 
         [HttpPost]
         [Route("setNewRecord")]
-        public HttpResponseMessage SetNewRecord(dynamic obj)
+        public HttpResponseMessage SetNewRecord([FromBody]UserModel userModel)
         {
-            try
-            {
-                List<string> answer = userRepository.SetNewRecord((long)obj.Record, (long)obj.FacebookId);
-                if (answer == null) return ResponderOK(null);
-                else return ResponderErro(answer);
-            }
-            catch(RuntimeBinderException)
-            {
-                return ResponderErro("Tipos de atributos inválidos");
-            } 
+            List<string> answer = userRepository.SetNewRecord(userModel.Record, userModel.FacebookId);
+            if (answer == null) return ResponderOK(null);
+            else return ResponderErro(answer);          
         }
 
         [HttpPost]
         [Route("setNewLogin")]
-        public HttpResponseMessage SetNewLogin(dynamic obj)
+        public HttpResponseMessage SetNewLogin(UserModel userModel)
         {
-            try
-            {
-                List<string> answer = userRepository.SetNewLogin((long)obj.FacebookId);
-                if (answer == null)
-                    return ResponderOK(null);
-                else
-                    return ResponderErro(answer);
-            }
-            catch (RuntimeBinderException)
-            {
-                return ResponderErro("Tipos de atributos inválidos");
-            }
+            List<string> answer = userRepository.SetNewLogin(userModel.FacebookId);
+            if (answer == null)
+                return ResponderOK(null);
+            else
+                return ResponderErro(answer);
         }
 
     }
