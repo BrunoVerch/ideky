@@ -1,13 +1,19 @@
-// colors
+// Colors
 $background-color-default: #363D4D;
 $button-color-login: #264285;
 $text-color-login: #28b266;
 $text-subtitle-color-login: #585858;
 
-//Images
+// Images
 $background-image-default: url('../images/bg.png');
 
 // Fonts
+$font-type-primary: 'HDV Comic Serif Pro';
+$font-type-secundary: 'Annie Use Your Telescope';
+
+%font-type-secundary {
+  font-family: 'Annie Use Your Telescope';
+}
 @font-face {
   font-family: 'Annie Use Your Telescope';
   font-style: normal;
@@ -26,3 +32,4 @@ $background-image-default: url('../images/bg.png');
 // #28b266
 // #585858
 // #264285
+// #e77235

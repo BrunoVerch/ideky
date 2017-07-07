@@ -1,13 +1,23 @@
 body {
     box-sizing: border-box;
     margin: 0;
+    background-color: $background-color-default;
+    height: 100vh;
+    @extend %flexbox-center-vertical;
+    @extend %flexbox-center-horizontal;
 }
 
-%button-design-login {    
+.box-default{            
+        height: 85vh;
+        width: 740px; 
+        @extend %background-image-box; 
+} 
+
+%button-design-login {
+    font-family: $font-type-primary;    
     width: 70%;
     height: 16%;
     background-color: $button-color-login;
-    font-family: 'HDV Comic Serif Pro';
     font-size: 22px;   
     text-align: center; 
     border-radius: 10px; 
@@ -38,8 +48,15 @@ body {
     margin: 0 30px 0 0; 
 }
 
-h1.annie {
-    font-family: 'Annie Use Your Telescope';
+.font-primary {
+    font-family: $font-type-primary; 
+}
+
+.font-secundary {
+    font-family: $font-type-secundary; 
+}
+
+h1.font-secundary {       
     font-size: 46px;
     text-align: center;
     color: $text-color-login;

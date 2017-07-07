@@ -1,6 +1,6 @@
 angular
     .module('app.core')
-    .factory('LoginService', function($http) {
+    .factory('StartService', function($http) {
 
         var urlNome = 'http://localhost:9090/api/nome';
 
