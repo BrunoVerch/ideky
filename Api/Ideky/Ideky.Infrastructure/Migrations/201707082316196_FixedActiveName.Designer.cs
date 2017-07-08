@@ -7,13 +7,13 @@ namespace Ideky.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AlteracaoChavePrimaria : IMigrationMetadata
+    public sealed partial class FixedActiveName : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AlteracaoChavePrimaria));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FixedActiveName));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707071722274_AlteracaoChavePrimaria"; }
+            get { return "201707082316196_FixedActiveName"; }
         }
         
         string IMigrationMetadata.Source
