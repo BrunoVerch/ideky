@@ -72,7 +72,7 @@ namespace Ideky.Api.Controllers
 
         [HttpPut]
         [Route("lifes")]
-        public HttpResponseMessage AddLifes([FromBody]UserModel userModel)
+        public HttpResponseMessage AddLifes([FromBody]UserLifesModel userModel)
         {
             User user = userRepository.GetByFacebookId(userModel.FacebookId);
 
