@@ -136,11 +136,8 @@
     <Compile Include="Folders\ChallengeResult.cs" />
     <Compile Include="Models\ExternalLoginData.cs" />
     <Compile Include="Models\ExternalLoginViewModel.cs" />
-<<<<<<< HEAD
     <Compile Include="Models\LevelModel.cs" />
-=======
     <Compile Include="Models\GameResultModel.cs" />
->>>>>>> develop
     <Compile Include="Models\ParsedExternalAccessToken.cs" />
     <Compile Include="Models\RegisterExternalBindingModel.cs" />
     <Compile Include="Models\UserLifesModel.cs" />

@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.CSharp.RuntimeBinder;
 using Ideky.Api.Models;
+using Ideky.Domain.Entity;
 
 namespace Ideky.Api.Controllers
 {
