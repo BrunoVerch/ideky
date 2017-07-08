@@ -1,4 +1,5 @@
-﻿using Ideky.Domain.Entity;
+﻿using Ideky.Api.Models;
+using Ideky.Domain.Entity;
 using Ideky.Infrastructure.Repository;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,23 @@ namespace Ideky.Api.Controllers
         public HttpResponseMessage Get()
         {
             return ResponderOK(levelRepository.GetList());
+        }
+
+        [HttpPut, Route("edit")]
+        public HttpResponseMessage Edit([FromBody] LevelModel levelModel)
+        {
+            Level level = levelRepository.GetById(levelModel.Id);
+
+            level.UpdateLevelDifficult(levelModel.PictureAmount, levelModel.Duration, levelModel.Multiplier);
+
+            if(level.Validate())
+            {
+                return ResponderOK(levelRepository.EditLevel(level));
+            }
+            else
+            {
+                return ResponderErro(level.Messages);
+            }
         }
     }
 }
