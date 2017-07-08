@@ -55,25 +55,13 @@
     <Compile Include="Mapping\GameResultMap.cs" />
     <Compile Include="Mapping\LevelMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
-    <Compile Include="Migrations\201707071705086_CriacaoDeTabelasIniciais.cs" />
-    <Compile Include="Migrations\201707071705086_CriacaoDeTabelasIniciais.Designer.cs">
-      <DependentUpon>201707071705086_CriacaoDeTabelasIniciais.cs</DependentUpon>
+    <Compile Include="Migrations\201707082257043_CreateDataBaseWithBasicEntities.cs" />
+    <Compile Include="Migrations\201707082257043_CreateDataBaseWithBasicEntities.Designer.cs">
+      <DependentUpon>201707082257043_CreateDataBaseWithBasicEntities.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707071722274_AlteracaoChavePrimaria.cs" />
-    <Compile Include="Migrations\201707071722274_AlteracaoChavePrimaria.Designer.cs">
-      <DependentUpon>201707071722274_AlteracaoChavePrimaria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707071818231_InsercaoDeScore.cs" />
-    <Compile Include="Migrations\201707071818231_InsercaoDeScore.Designer.cs">
-      <DependentUpon>201707071818231_InsercaoDeScore.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707071902066_CorrectFacebookIdToLong.cs" />
-    <Compile Include="Migrations\201707071902066_CorrectFacebookIdToLong.Designer.cs">
-      <DependentUpon>201707071902066_CorrectFacebookIdToLong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707082042349_AdicaoAtributoAtivoGameResult.cs" />
-    <Compile Include="Migrations\201707082042349_AdicaoAtributoAtivoGameResult.Designer.cs">
-      <DependentUpon>201707082042349_AdicaoAtributoAtivoGameResult.cs</DependentUpon>
+    <Compile Include="Migrations\201707082316196_FixedActiveName.cs" />
+    <Compile Include="Migrations\201707082316196_FixedActiveName.Designer.cs">
+      <DependentUpon>201707082316196_FixedActiveName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,20 +81,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707071705086_CriacaoDeTabelasIniciais.resx">
-      <DependentUpon>201707071705086_CriacaoDeTabelasIniciais.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707082257043_CreateDataBaseWithBasicEntities.resx">
+      <DependentUpon>201707082257043_CreateDataBaseWithBasicEntities.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707071722274_AlteracaoChavePrimaria.resx">
-      <DependentUpon>201707071722274_AlteracaoChavePrimaria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707071818231_InsercaoDeScore.resx">
-      <DependentUpon>201707071818231_InsercaoDeScore.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707071902066_CorrectFacebookIdToLong.resx">
-      <DependentUpon>201707071902066_CorrectFacebookIdToLong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707082042349_AdicaoAtributoAtivoGameResult.resx">
-      <DependentUpon>201707082042349_AdicaoAtributoAtivoGameResult.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707082316196_FixedActiveName.resx">
+      <DependentUpon>201707082316196_FixedActiveName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

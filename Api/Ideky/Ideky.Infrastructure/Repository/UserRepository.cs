@@ -63,7 +63,7 @@ namespace Ideky.Infrastructure.Repository
             {
                 context.Users.Add(user);
                 context.SaveChanges();
-                return null;
+                return null;          
             }
             return user.Messages;
         }
