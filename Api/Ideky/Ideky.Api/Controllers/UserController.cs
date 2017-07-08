@@ -19,9 +19,9 @@ namespace Ideky.Api.Controllers
             userRepository = new UserRepository();
         }
 
-        [HttpPost] //BasicAuthorization(Roles = "Gerente")
+        [HttpPost]
         [Route("register")]
-        public HttpResponseMessage Post([FromBody]UserModel userModel) //Nome,Senha,Email,Cargo
+        public HttpResponseMessage Post([FromBody]UserModel userModel)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace Ideky.Api.Controllers
         {
             List<string> answer = userRepository.SetNewRecord(userModel.Record, userModel.FacebookId);
             if (answer == null) return ResponderOK(null);
-            else return ResponderErro(answer);          
+            else return ResponderErro(answer);
         }
 
         [HttpPost]
@@ -69,5 +69,25 @@ namespace Ideky.Api.Controllers
                 return ResponderErro(answer);
         }
 
+
+        [HttpPut]
+        [Route("lifes")]
+        public HttpResponseMessage AddLifes([FromBody]UserModel userModel)
+        {
+            User user = userRepository.GetByFacebookId(userModel.FacebookId);
+
+            if (user != null)
+            {
+                user.AddLifes(userModel.Lifes);
+                if (user.Validate())
+                    userRepository.AddLifes(user);
+            }
+            else
+            {
+                ResponderErro("Usuário inválido");
+            }
+
+            return ResponderOK(user);
+        }
     }
 }
