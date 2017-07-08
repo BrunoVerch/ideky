@@ -6,20 +6,12 @@ angular
         const urlLevel = 'http://localhost:60550/api/level';
 
         return {
-            giveLifes: giveLifes,
+            addLifes: addLifes,
             resetRanking: resetRanking,
             editLevel: editLevel
         }
 
-        function resetRanking() {
-          return $http({
-            url: urlGame,
-            method: 'PUT',
-            data: userLife
-          });
-        }
-
-        function giveLifes(userLife) { 
+        function addLifes(userLife) { 
           return $http({
             url: `${urlUser}/lifes`,
             method: 'PUT',
@@ -29,9 +21,16 @@ angular
 
         function editLevel(level) {
           return $http({
-            url: urlLevel,
+            url: `${urlLevel}/edit`,
             method: 'PUT',
             data: level
+          });
+        }
+
+        function resetRanking() {
+          return $http({
+            url: `${urlGame}/reset`,
+            method: 'PUT',
           });
         }
     });

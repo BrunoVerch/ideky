@@ -1,6 +1,7 @@
 ﻿using Ideky.Domain.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Ideky.Infrastructure.Repository
@@ -24,6 +25,11 @@ namespace Ideky.Infrastructure.Repository
                     Score = gameResult.Score,
                     GameDate = gameResult.GameDate,
                 }).ToList();
+        }
+
+        public List<GameResult> List()
+        {
+            return context.GameResults.ToList();
         }
 
         public object GetListOrderByScoreGroupedByUser()
@@ -73,7 +79,7 @@ namespace Ideky.Infrastructure.Repository
                 .ToList();
         }
 
-        public object GetById(int id)
+        public object GetResumeById(int id)
         {
             return context.GameResults
                 .Where(gameResult => gameResult.Ativo == true)
@@ -85,6 +91,11 @@ namespace Ideky.Infrastructure.Repository
                     UserId = gameResult.User.FacebookId
                 })
                 .FirstOrDefault(gameResult => gameResult.Id == id);
+        }
+
+        public GameResult GetById(int id)
+        {
+            return context.GameResults.FirstOrDefault(g => g.Id == id);
         }
 
         public object GetByUserId(int userFacebookId)
@@ -112,6 +123,20 @@ namespace Ideky.Infrastructure.Repository
                 return null;
             }
             return gameResult.Messages;
+        }
+
+        public List<GameResult> ResetRanking()
+        {
+            List().ForEach(g =>
+            {
+                var gameResult = GetById(g.Id);
+                gameResult.Ativo = false;
+                context.Entry(gameResult).State = EntityState.Modified;
+            });
+
+            context.SaveChanges();
+
+            return List();
         }
 
         public void Dispose()
