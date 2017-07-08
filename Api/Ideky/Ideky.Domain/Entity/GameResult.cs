@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.Script.Serialization;
 
 namespace Ideky.Domain.Entity
 {
@@ -10,7 +9,7 @@ namespace Ideky.Domain.Entity
         public User User { get; private set; }
         public DateTime GameDate { get; private set; }
         public int Score { get; private set; }
-        public bool Ativo { get; private set; }
+        public bool Active { get; private set; }
 
         public List<string> Messages { get; private set; }
 
@@ -22,7 +21,7 @@ namespace Ideky.Domain.Entity
             User = user;
             GameDate = DateTime.Now;
             Score = score;
-            Ativo = true;
+            Active = true;
             Messages = new List<string>();
         }
 

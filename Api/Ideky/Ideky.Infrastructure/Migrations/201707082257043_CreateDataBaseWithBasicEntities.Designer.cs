@@ -7,13 +7,13 @@ namespace Ideky.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class CriacaoDeTabelasIniciais : IMigrationMetadata
+    public sealed partial class CreateDataBaseWithBasicEntities : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CriacaoDeTabelasIniciais));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateDataBaseWithBasicEntities));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707071705086_CriacaoDeTabelasIniciais"; }
+            get { return "201707082257043_CreateDataBaseWithBasicEntities"; }
         }
         
         string IMigrationMetadata.Source
