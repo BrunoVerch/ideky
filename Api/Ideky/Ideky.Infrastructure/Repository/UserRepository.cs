@@ -27,7 +27,7 @@ namespace Ideky.Infrastructure.Repository
                         .FirstOrDefault(user => user.FacebookId == facebookId);
         }
 
-        private User GetByFacebookId(long facebookId)
+        public User GetByFacebookId(long facebookId)
         {
             return context.Users.FirstOrDefault(user => user.FacebookId == facebookId);
         }
