@@ -130,6 +130,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BasicController.cs" />
+    <Compile Include="Controllers\LevelController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Folders\ChallengeResult.cs" />
     <Compile Include="Models\ExternalLoginData.cs" />
@@ -157,11 +158,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ideky.Domain\Ideky.Domain.csproj">
-      <Project>{3949B8E9-8126-4C64-B979-7A127A74FDE6}</Project>
+      <Project>{3949b8e9-8126-4c64-b979-7a127a74fde6}</Project>
       <Name>Ideky.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ideky.Infrastructure\Ideky.Infrastructure.csproj">
-      <Project>{525CE121-80F3-4066-AF47-EBE530B73350}</Project>
+      <Project>{525ce121-80f3-4066-af47-ebe530b73350}</Project>
       <Name>Ideky.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
