@@ -10,7 +10,7 @@ namespace Ideky.Domain.Entity
         public User User { get; private set; }
         public DateTime GameDate { get; private set; }
         public int Score { get; private set; }
-        public bool Ativo { get; private set; }
+        public bool Ativo { get; set; }
 
         public List<string> Messages { get; private set; }
 
@@ -24,6 +24,13 @@ namespace Ideky.Domain.Entity
             Score = score;
             Ativo = true;
             Messages = new List<string>();
+        }
+
+        public GameResult(int id, bool active)
+        {
+            Id = id;
+            Ativo = active;
+
         }
 
         public bool Validate()

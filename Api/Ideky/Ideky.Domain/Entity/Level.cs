@@ -46,6 +46,10 @@ namespace Ideky.Domain.Entity
             {
                 Messages.Add("Tempo de duração inválido!");
             }
+            if (Multiplier < 0)
+            {
+                Messages.Add("Multiplicador inválido!");
+            }
             return Messages.Count == 0;
         }
     }
