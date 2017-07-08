@@ -39,6 +39,18 @@ namespace Ideky.Infrastructure.Repository
             return context.GameResults.Where(gameResult => gameResult.GameDate == gameDate).ToList();
         }
 
+        public List<string> RegisterNewGame(User user, int score)
+        {
+            GameResult gameResult = new GameResult(user,score);
+            if (gameResult.Validate())
+            {
+                context.GameResults.Add(gameResult);
+                context.SaveChanges();
+                return null;
+            }
+            return gameResult.Messages;
+        }
+
         public void Dispose()
         {
             context.Dispose();
