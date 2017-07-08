@@ -1,5 +1,4 @@
-﻿using Ideky.Domain.Entity;
-using Ideky.Infrastructure.Repository;
+﻿using Ideky.Infrastructure.Repository;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
@@ -19,9 +18,9 @@ namespace Ideky.Api.Controllers
             userRepository = new UserRepository();
         }
 
-        [HttpPost] //BasicAuthorization(Roles = "Gerente")
+        [HttpPost] 
         [Route("register")]
-        public HttpResponseMessage Post([FromBody]UserModel userModel) //Nome,Senha,Email,Cargo
+        public HttpResponseMessage Post([FromBody]UserModel userModel)
         {
             try
             {
