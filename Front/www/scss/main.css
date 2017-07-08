@@ -1,3 +1,6 @@
+.uppercase {
+  text-transform: uppercase; }
+
 @font-face {
   font-family: 'Annie Use Your Telescope';
   font-style: normal;
