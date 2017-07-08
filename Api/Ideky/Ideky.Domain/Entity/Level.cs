@@ -13,7 +13,7 @@ namespace Ideky.Domain.Entity
 
         public List<string> Messages { get; private set; }
 
-        protected Level() { }
+        protected Level() { Messages = new List<string>();  }
 
         public Level(int levelNumber, int pictureAmount, int duration, int multiplier)
         {
@@ -22,6 +22,7 @@ namespace Ideky.Domain.Entity
             PictureAmount = pictureAmount;
             Duration = duration;
             Multiplier = multiplier;
+            Messages = new List<string>();
         }
 
         public void UpdateLevelDifficult(int pictureAmount, int duration, int multiplier)

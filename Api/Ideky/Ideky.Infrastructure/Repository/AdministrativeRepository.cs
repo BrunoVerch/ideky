@@ -9,15 +9,16 @@ namespace Ideky.Infrastructure.Repository
     {
         private Context context;
 
+        public AdministrativeRepository()
+        {
+            context = new Context();
+        }
+
         public List<Administrative> GetList()
         {
             return context.Administratives.ToList();
         }
 
-        public AdministrativeRepository()
-        {
-            context = new Context();
-        }
         public Administrative GetById(int id)
         {
             return context.Administratives.FirstOrDefault(administrative => administrative.Id == id);

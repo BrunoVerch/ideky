@@ -129,6 +129,8 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BasicController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Folders\ChallengeResult.cs" />
     <Compile Include="Models\ExternalLoginData.cs" />
     <Compile Include="Models\ExternalLoginViewModel.cs" />
@@ -152,6 +154,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ideky.Domain\Ideky.Domain.csproj">
+      <Project>{3949B8E9-8126-4C64-B979-7A127A74FDE6}</Project>
+      <Name>Ideky.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ideky.Infrastructure\Ideky.Infrastructure.csproj">
+      <Project>{525CE121-80F3-4066-AF47-EBE530B73350}</Project>
+      <Name>Ideky.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

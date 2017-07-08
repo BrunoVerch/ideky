@@ -11,14 +11,15 @@ namespace Ideky.Domain.Entity
         public int Score { get; private set; }
         public List<string> Messages { get; private set; }
 
-        protected GameResult() { }
+        protected GameResult() { Messages = new List<string>();  }
 
         public GameResult(User user, int score)
         {
             Id = 0;
             User = user;
             GameDate = DateTime.Now;
-            Score = score;   
+            Score = score;
+            Messages = new List<string>();
         }
 
         public bool Validate()

@@ -42,6 +42,10 @@ namespace Ideky.Domain.Entity
             {
                 Messages.Add("Endereço de email inválido");
             }
+            if (string.IsNullOrWhiteSpace(Password))
+            {
+                Messages.Add("Senha inválida");
+            }
             return Messages.Count == 0;
         }
         

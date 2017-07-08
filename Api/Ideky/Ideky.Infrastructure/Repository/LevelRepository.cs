@@ -2,14 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ideky.Infrastructure.Repository
 {
     public class LevelRepository : IDisposable
     {
         private Context context;
+
+        public LevelRepository()
+        {
+            context = new Context();
+        }
 
         public Level GetById(int id)
         {
