@@ -1,5 +1,4 @@
-﻿using Ideky.Domain.Entity;
-using Ideky.Infrastructure.Repository;
+﻿using Ideky.Infrastructure.Repository;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;

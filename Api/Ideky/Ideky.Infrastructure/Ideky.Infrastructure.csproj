@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201707071902066_CorrectFacebookIdToLong.Designer.cs">
       <DependentUpon>201707071902066_CorrectFacebookIdToLong.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707082042349_AdicaoAtributoAtivoGameResult.cs" />
+    <Compile Include="Migrations\201707082042349_AdicaoAtributoAtivoGameResult.Designer.cs">
+      <DependentUpon>201707082042349_AdicaoAtributoAtivoGameResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdministrativeRepository.cs" />
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707071902066_CorrectFacebookIdToLong.resx">
       <DependentUpon>201707071902066_CorrectFacebookIdToLong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707082042349_AdicaoAtributoAtivoGameResult.resx">
+      <DependentUpon>201707082042349_AdicaoAtributoAtivoGameResult.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
