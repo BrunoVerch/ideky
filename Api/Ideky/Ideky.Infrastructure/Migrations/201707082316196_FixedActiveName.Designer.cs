@@ -7,13 +7,13 @@ namespace Ideky.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InsercaoDeScore : IMigrationMetadata
+    public sealed partial class FixedActiveName : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InsercaoDeScore));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FixedActiveName));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707071818231_InsercaoDeScore"; }
+            get { return "201707082316196_FixedActiveName"; }
         }
         
         string IMigrationMetadata.Source

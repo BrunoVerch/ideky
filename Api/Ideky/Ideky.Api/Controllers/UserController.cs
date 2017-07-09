@@ -1,9 +1,10 @@
-﻿using Ideky.Infrastructure.Repository;
+using Ideky.Infrastructure.Repository;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.CSharp.RuntimeBinder;
 using Ideky.Api.Models;
+using System.Data.Entity.Infrastructure;
 using Ideky.Domain.Entity;
 
 namespace Ideky.Api.Controllers
@@ -34,6 +35,10 @@ namespace Ideky.Api.Controllers
             catch (RuntimeBinderException)
             {
                 return ResponderErro("Tipos de atributos inválidos");
+            }
+            catch (DbUpdateException)
+            {
+                return ResponderErro("Facebook já cadastrado");
             }
         }
 

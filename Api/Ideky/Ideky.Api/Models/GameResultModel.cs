@@ -1,8 +1,4 @@
-﻿using Ideky.Domain.Entity;
-using System;
-using System.Collections.Generic;
-
-namespace Ideky.Api.Models
+﻿namespace Ideky.Api.Models
 {
     public class GameResultModel
     {

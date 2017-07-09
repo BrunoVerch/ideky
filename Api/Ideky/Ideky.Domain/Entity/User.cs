@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ideky.Domain.Entity
 {
     public class User : IBasicEntity
     {
+        public long Id { get; private set; }
         public long FacebookId { get; private set; }
         public long Record { get; private set; }
         public int Lifes { get; private set; }
@@ -15,6 +17,7 @@ namespace Ideky.Domain.Entity
         protected User() { Messages = new List<string>();  }
 
         public User(long facebookId, long record, int lifes, DateTime lastLogin) {
+            Id = 0;
             FacebookId = facebookId;
             Record = record;
             Lifes = lifes;
@@ -24,6 +27,7 @@ namespace Ideky.Domain.Entity
 
         public User(long facebookId)
         {
+            Id = 0;
             FacebookId = facebookId;
             Record = 0;
             Lifes = 1;
