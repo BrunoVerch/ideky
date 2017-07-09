@@ -1,13 +1,18 @@
 angular
 	.module('app.core')
-	.controller('GameController', function ($scope, $location, $localStorage, toastr) {
+	.controller('GameController', function ($rootScope, $scope, $window, GameService) {
+		
+		setTimeout(function() {
+			init();
+		}, 5000);
 
-	function init() {
+	function  init() {
 		//Carrega todos os amigos 
-		userService.getFriends('friends', response => {
+		GameService.getFriends('friends', response => {
 			$scope.friends = response.data;
-			userService.getFriends('invitable_friends', 
+			GameService.getFriends('invitable_friends', 
 				res => $scope.friends = $scope.friends.concat(res.data));
+
 		});
   }
 });
