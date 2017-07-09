@@ -65,7 +65,7 @@ body {
   height: 90px;
   width: 90px; }
 
-.login .button-login, .home .button-home, .game .button-home {
+.login .button-login, .home .button-home, .game .button-home, .administrative .button-home {
   font-family: "HDV Comic Serif Pro";
   width: 70%;
   height: 16%;
@@ -76,11 +76,11 @@ body {
   border: none;
   color: #fff; }
 
-body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home {
+body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home, .administrative .button-home {
   display: flex;
   justify-content: center; }
 
-body, .box-default, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home {
+body, .box-default, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home, .administrative .button-home {
   display: flex;
   align-items: center; }
 
@@ -132,6 +132,17 @@ h1.font-primary {
 .game .logo {
   width: 33%; }
 .game .button-home {
+  background-color: #e77235; }
+
+.administrative .logo {
+  width: 33%; }
+.administrative h1 {
+  margin-top: 15px; }
+  .administrative h1.font-primary {
+    text-shadow: 0 5px 1px rgba(0, 0, 0, 0.2); }
+    .administrative h1.font-primary > small {
+      text-shadow: initial; }
+.administrative .button-home {
   background-color: #e77235; }
 
 /*# sourceMappingURL=main.css.map */
