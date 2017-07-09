@@ -131,7 +131,7 @@ namespace Ideky.Infrastructure.Repository
             List().ForEach(g =>
             {
                 var gameResult = GetById(g.Id);
-                gameResult.Ativo = false;
+                gameResult.Disable();
                 context.Entry(gameResult).State = EntityState.Modified;
             });
 

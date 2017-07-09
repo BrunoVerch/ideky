@@ -59,11 +59,15 @@ namespace Ideky.Domain.Entity
         {
             if(Lifes < 0)
             {
-                Messages.Add("Número de vidas inválido!");
+                Messages.Add("Número de vidas inválido.");
             }
             if(LastLogin == null)
             {
-                Messages.Add("Data de último login inválida!");
+                Messages.Add("Data de último login inválida.");
+            }
+            if (Record < 0)
+            {
+                Messages.Add("Record inválido.");
             }
             return Messages.Count == 0;
         }

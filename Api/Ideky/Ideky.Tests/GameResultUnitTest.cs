@@ -35,5 +35,18 @@ namespace Ideky.Tests
             Assert.IsTrue(gameResult.GameDate.Month == DateTime.Now.Month);
             Assert.IsTrue(gameResult.GameDate.Year == DateTime.Now.Year);
         }
+        public void Desable_A_Valid_Active_GameResult_Entity_Should_Change_Active_To_False()
+        {
+            var user = new User(70);
+            var gameResult = new GameResult(user, 100);
+            Assert.IsTrue(gameResult.Validate());
+            Assert.IsTrue(gameResult.Active == false);
+            Assert.IsTrue(gameResult.Messages.Count > 0);
+            Assert.IsTrue(gameResult.Score == 100); 
+            Assert.IsTrue(gameResult.GameDate.Hour == DateTime.Now.Hour);
+            Assert.IsTrue(gameResult.GameDate.Day == DateTime.Now.Day);
+            Assert.IsTrue(gameResult.GameDate.Month == DateTime.Now.Month);
+            Assert.IsTrue(gameResult.GameDate.Year == DateTime.Now.Year);
+        }
     }
 }

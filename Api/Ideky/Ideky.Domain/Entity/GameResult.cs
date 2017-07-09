@@ -28,8 +28,13 @@ namespace Ideky.Domain.Entity
         public GameResult(int id, bool active)
         {
             Id = id;
-            Ativo = active;
+            Active = active;
 
+        }
+
+        public void Disable()
+        {
+            Active = false;
         }
 
         public bool Validate()
