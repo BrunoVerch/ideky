@@ -10,33 +10,62 @@ body {
 .box-default{            
         height: 85vh;
         width: 740px; 
+        padding: 60px 20px; 
+        flex-direction: column;
+        justify-content: space-between;
         @extend %background-image-box; 
+        @extend %flexbox-center-horizontal;
 } 
 
 .box-content {
-    background-color: #fff;
-}
-
-.box-content-wrapper {
-    justify-content: collum;
-    flex-direction: column;
-    justify-content: space-between;
-    @extend %flexbox-center-vertical;
-    @extend %flexbox-center-horizontal;
+    margin: 10px;
+    padding: 20px;
+    position: relative;
+    .box-content-wrapper {
+        z-index: 3;       
+        position: relative; 
+        flex-direction: column;
+        justify-content: space-between;
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;
+    }
+    &:before {
+        content: "";
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 0 8px rgba(#000, 0.2);
+        border-radius: 5px;
+    }
+    &:after {
+        content: "";
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 0 8px rgba(#000, 0.2);
+        transform: rotate(-4deg);
+        border-radius: 5px;
+    }
 }
 
 .mask-profile {    
+    object-fit: cover;
     border-radius: 50%;
     border: none;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
     margin: 0 auto;
     height: 90px;
     width: 90px;
 }
 
-%button-design-login {
+%button-design-primary {
     font-family: $font-type-primary;    
     width: 70%;
     height: 16%;
@@ -90,6 +119,7 @@ h1.font-secundary {
 }
 
 h1.font-primary {
+    
     text-align: center;
     color: $text-color-home;
     small {

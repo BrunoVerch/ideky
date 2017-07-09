@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Ideky.Domain.Entity
@@ -23,6 +23,13 @@ namespace Ideky.Domain.Entity
             Score = score;
             Active = true;
             Messages = new List<string>();
+        }
+
+        public GameResult(int id, bool active)
+        {
+            Id = id;
+            Ativo = active;
+
         }
 
         public bool Validate()

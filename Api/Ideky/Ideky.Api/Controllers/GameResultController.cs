@@ -66,5 +66,11 @@ namespace Ideky.Api.Controllers
             var result = gameResultRepository.GetList();
             return ResponderOK(result);
         }
+
+        [HttpPut, Route("reset")]
+        public HttpResponseMessage ResetRankings()
+        {
+            return ResponderOK(gameResultRepository.ResetRanking());
+        }
     }
 }
