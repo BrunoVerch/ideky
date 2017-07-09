@@ -7,13 +7,13 @@ namespace Ideky.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class mapeamentoDeEntidadesIniciais : IMigrationMetadata
+    public sealed partial class AdicaoAtributoAtivoGameResult : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(mapeamentoDeEntidadesIniciais));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AdicaoAtributoAtivoGameResult));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707062132032_mapeamentoDeEntidadesIniciais"; }
+            get { return "201707082042349_AdicaoAtributoAtivoGameResult"; }
         }
         
         string IMigrationMetadata.Source

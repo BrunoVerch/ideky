@@ -129,11 +129,19 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BasicController.cs" />
+    <Compile Include="Controllers\LevelController.cs" />
+    <Compile Include="Controllers\GameResultController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Folders\ChallengeResult.cs" />
     <Compile Include="Models\ExternalLoginData.cs" />
     <Compile Include="Models\ExternalLoginViewModel.cs" />
+    <Compile Include="Models\LevelModel.cs" />
+    <Compile Include="Models\GameResultModel.cs" />
     <Compile Include="Models\ParsedExternalAccessToken.cs" />
     <Compile Include="Models\RegisterExternalBindingModel.cs" />
+    <Compile Include="Models\UserLifesModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Providers\FacebookAuthProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -152,6 +160,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ideky.Domain\Ideky.Domain.csproj">
+      <Project>{3949b8e9-8126-4c64-b979-7a127a74fde6}</Project>
+      <Name>Ideky.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ideky.Infrastructure\Ideky.Infrastructure.csproj">
+      <Project>{525ce121-80f3-4066-af47-ebe530b73350}</Project>
+      <Name>Ideky.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

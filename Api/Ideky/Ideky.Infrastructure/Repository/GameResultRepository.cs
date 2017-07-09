@@ -1,6 +1,7 @@
 ﻿using Ideky.Domain.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Ideky.Infrastructure.Repository
@@ -9,29 +10,133 @@ namespace Ideky.Infrastructure.Repository
     {
         private Context context;
 
-        public List<GameResult> GetList()
+        public GameResultRepository()
+        {
+            context = new Context();
+        }
+
+        public object GetList()
+        {
+            return context.GameResults
+                .Where(gameResult => gameResult.Ativo == true)
+                .Select(gameResult => new
+                {
+                    UserId = gameResult.User.FacebookId,
+                    Score = gameResult.Score,
+                    GameDate = gameResult.GameDate,
+                }).ToList();
+        }
+
+        public List<GameResult> List()
         {
             return context.GameResults.ToList();
         }
 
-        public List<GameResult> GetListOrderByScore()
+        public object GetListOrderByScoreGroupedByUser()
         {
-            return context.GameResults.OrderBy(gameResult => gameResult.Score).ToList();
+            return context.GameResults
+                .Where(gameResult => gameResult.Ativo == true)
+                .GroupBy(gameResult => gameResult.User)
+                .Select(gameResultGrouped => new
+                {
+                    UserId = gameResultGrouped.Key.FacebookId,
+                    Score = gameResultGrouped.Max(gameResult => gameResult.Score),
+                })
+                .OrderByDescending(gameResult => gameResult.Score)
+                .ToList();
+        }
+
+        public object GetListOrderByScoreGroupedByUserWhereDateIsToday()
+        {
+            return context.GameResults
+                .Where(gameResult => gameResult.GameDate.Day == DateTime.Now.Day
+                    && gameResult.GameDate.Month == DateTime.Now.Month
+                    && gameResult.GameDate.Year == DateTime.Now.Year
+                    && gameResult.Ativo == true)
+                .GroupBy(gameResult => gameResult.User)
+                .Select(gameResultGrouped => new
+                {
+                    UserId = gameResultGrouped.Key.FacebookId,
+                    Score = gameResultGrouped.Max(gameResult => gameResult.Score),
+                })
+                .OrderByDescending(gameResult => gameResult.Score)
+                .ToList();
+        }
+
+        public object GetListOrderByScoreGroupedByUserWhereDateIsInCurrentMonth()
+        {
+            return context.GameResults
+                .Where(gameResult => gameResult.GameDate.Month == DateTime.Now.Month
+                    && gameResult.GameDate.Year == DateTime.Now.Year
+                    && gameResult.Ativo == true)
+                .GroupBy(gameResult => gameResult.User)
+                .Select(gameResultGrouped => new
+                {
+                    UserId = gameResultGrouped.Key.FacebookId,
+                    Score = gameResultGrouped.Max(gameResult => gameResult.Score),
+                })
+                .OrderByDescending(gameResult => gameResult.Score)
+                .ToList();
+        }
+
+        public object GetResumeById(int id)
+        {
+            return context.GameResults
+                .Where(gameResult => gameResult.Ativo == true)
+                .Select(gameResult => new
+                {
+                    Id = gameResult.Id,
+                    GameDate = gameResult.GameDate,
+                    Score = gameResult.Score,
+                    UserId = gameResult.User.FacebookId
+                })
+                .FirstOrDefault(gameResult => gameResult.Id == id);
         }
 
         public GameResult GetById(int id)
         {
-            return context.GameResults.FirstOrDefault(gameResult => gameResult.Id == id);
+            return context.GameResults.FirstOrDefault(g => g.Id == id);
         }
 
-        public List<GameResult> GetByUserId(int userFacebookId)
+        public object GetByUserId(int userFacebookId)
         {
-            return context.GameResults.Where(gameResult => gameResult.User.FacebookId == userFacebookId).ToList();
+            return context.GameResults
+            .Where(gameResult => gameResult.Ativo == true)
+            .Select(gameResult => new
+            {
+                Id = gameResult.Id,
+                GameDate = gameResult.GameDate,
+                Score = gameResult.Score,
+                UserId = gameResult.User.FacebookId
+            })
+            .Where(gameResult => gameResult.UserId == userFacebookId)
+            .GroupBy(gameResult => gameResult.UserId).ToList();
         }
 
-        public List<GameResult> GetByDate(DateTime gameDate)
+        public List<string> RegisterNewGame(User user, int score)
         {
-            return context.GameResults.Where(gameResult => gameResult.GameDate == gameDate).ToList();
+            GameResult gameResult = new GameResult(user, score);
+            if (gameResult.Validate())
+            {
+                context.GameResults.Add(gameResult);
+                context.SaveChanges();
+                return null;
+            }
+            return gameResult.Messages;
+        }
+
+        public List<GameResult> ResetRanking()
+        {
+            List().ForEach(g =>
+            {
+                var gameResult = GetById(g.Id);
+                gameResult.Ativo = false;
+                context.Entry(gameResult).State = EntityState.Modified;
+            });
+
+            context.SaveChanges();
+
+            return List();
         }
 
         public void Dispose()
