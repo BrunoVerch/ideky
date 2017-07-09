@@ -4,7 +4,7 @@ angular
 		
 		$scope.login = () => {
 			LoginService.login()
-				.then(responde => console.log(response))
+				.then(response => console.log(response)) // TODO redirecionar apos login
 				.catch(error => console.log(error));
 		}
 });
