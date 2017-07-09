@@ -34,19 +34,19 @@ namespace Ideky.Domain.Entity
 
         public bool Validate()
         {
-            if (LevelNumber < 0)
+            if (LevelNumber <= 0)
             {
                 Messages.Add("Nível inválido.");
             }
-            if (PictureAmount < 0)
+            if (PictureAmount <= 0)
             {
                 Messages.Add("Quantidade de imagens inválida.");
             }
-            if(Duration < 0)
+            if(Duration <= 0)
             {
                 Messages.Add("Tempo de duração inválido!");
             }
-            if (Multiplier < 0)
+            if (Multiplier <= 0)
             {
                 Messages.Add("Multiplicador inválido!");
             }
