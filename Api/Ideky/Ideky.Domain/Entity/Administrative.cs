@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -12,7 +11,7 @@ namespace Ideky.Domain.Entity
         public string Password { get; private set; }
         public List<string> Messages { get; private set; }
 
-        protected Administrative() { Messages = new List<string>();  }
+        protected Administrative() { Messages = new List<string>(); }
 
         public Administrative(string email, string password)
         {
@@ -24,13 +23,14 @@ namespace Ideky.Domain.Entity
 
         private string EncryptPassword(string password)
         {
-            MD5 md5 = MD5.Create();
-            byte[] inputBytes = Encoding.Default.GetBytes(Email + password);
-            byte[] hash = md5.ComputeHash(inputBytes);
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
-                sb.Append(hash[i].ToString("x2"));
-
+            var hashAlgorithm = SHA512.Create();
+            var encodedValue = Encoding.UTF8.GetBytes(Email + password);
+            var encryptedPassword = hashAlgorithm.ComputeHash(encodedValue);
+            var sb = new StringBuilder();
+            foreach (var caracter in encryptedPassword)
+            {
+                sb.Append(caracter.ToString("X2"));
+            }
             return sb.ToString();
         }
 
@@ -44,13 +44,13 @@ namespace Ideky.Domain.Entity
             {
                 Messages.Add("Senha inválida");
             }
-            if(Email.Length > 100)
+            if (Email.Length > 100)
             {
                 Messages.Add("Endereço de email longo demais");
             }
             return Messages.Count == 0;
         }
-        
+
         public bool ValidatePassword(string password)
         {
             if (string.IsNullOrWhiteSpace(password))
@@ -58,6 +58,11 @@ namespace Ideky.Domain.Entity
                 return false;
             }
             return true;
+        }
+
+        public bool AuthenticatePassword(string password)
+        {
+            return EncryptPassword(password) == Password;
         }
     }
 }
