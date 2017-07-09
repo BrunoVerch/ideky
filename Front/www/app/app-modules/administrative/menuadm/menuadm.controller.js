@@ -6,7 +6,7 @@ angular
 		
 		$scope.resetRanking = () => {
 			AdministrativeService.resetRanking()
-				.then(() => { $scope.replaceConfirm(); })
+				.then(() => $scope.replaceConfirm())
 				.catch(error => console.log(error));
 		}
 	});
