@@ -31,8 +31,6 @@ namespace Ideky.Domain.Entity
             for (int i = 0; i < hash.Length; i++)
                 sb.Append(hash[i].ToString("x2"));
 
-            Messages = new List<string>();
-
             return sb.ToString();
         }
 
@@ -45,6 +43,10 @@ namespace Ideky.Domain.Entity
             if (string.IsNullOrWhiteSpace(Password))
             {
                 Messages.Add("Senha inválida");
+            }
+            if(Email.Length > 100)
+            {
+                Messages.Add("Endereço de email longo demais");
             }
             return Messages.Count == 0;
         }
