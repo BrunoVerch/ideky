@@ -1,9 +1,9 @@
 angular
   .module('app')
-  .run(function($rootScope, $window) {
+  .run(function($rootScope, $window, $q) {
+    const deffered = $q.defer();
     $window.fbAsyncInit = function() {
       // Executed when the SDK is loaded
-
       FB.init({
         appId: '1392336224214575',
         status: true,
@@ -13,6 +13,7 @@ angular
         version          : 'v2.9'
       });
 
+      setTimeout(() => deffered.resolve(FB), 3000);
       //sAuth.watchAuthenticationStatusChange();
     };
     (function(d){
@@ -33,4 +34,6 @@ angular
       ref.parentNode.insertBefore(js, ref);
 
     }(document));
+    
+    $rootScope.sdkLoad = deffered.promise;
   });
