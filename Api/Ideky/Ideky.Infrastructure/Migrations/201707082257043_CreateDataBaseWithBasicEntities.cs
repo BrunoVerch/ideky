@@ -3,7 +3,7 @@ namespace Ideky.Infrastructure.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CriacaoDeTabelasIniciais : DbMigration
+    public partial class CreateDataBaseWithBasicEntities : DbMigration
     {
         public override void Up()
         {
@@ -23,7 +23,9 @@ namespace Ideky.Infrastructure.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         GameDate = c.DateTime(nullable: false),
-                        User_id = c.Int(nullable: false),
+                        Score = c.Int(nullable: false),
+                        Ativo = c.Boolean(nullable: false),
+                        User_id = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.User", t => t.User_id, cascadeDelete: true)
@@ -33,12 +35,14 @@ namespace Ideky.Infrastructure.Migrations
                 "dbo.User",
                 c => new
                     {
-                        FacebookId = c.Int(nullable: false, identity: true),
+                        Id = c.Long(nullable: false, identity: true),
+                        FacebookId = c.Long(nullable: false),
                         Record = c.Long(nullable: false),
                         Lifes = c.Int(nullable: false),
                         LastLogin = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.FacebookId);
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.FacebookId, unique: true);
             
             CreateTable(
                 "dbo.Level",
@@ -57,6 +61,7 @@ namespace Ideky.Infrastructure.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Game_Result", "User_id", "dbo.User");
+            DropIndex("dbo.User", new[] { "FacebookId" });
             DropIndex("dbo.Game_Result", new[] { "User_id" });
             DropTable("dbo.Level");
             DropTable("dbo.User");

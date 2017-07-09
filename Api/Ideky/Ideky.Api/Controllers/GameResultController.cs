@@ -24,16 +24,18 @@ namespace Ideky.Api.Controllers
         [Route("register")]
         public HttpResponseMessage Register([FromBody]GameResultModel gameResultModel)
         {
-            User user = userRepository.GetByFacebookId(gameResultModel.FacebookID);
-            if (user != null)
+            if(gameResultModel == null) { return ResponderErro("Dados inválidos"); }
+            GameResult gameResult = gameResultRepository.RegisterNewGame(gameResultModel.FacebookID, gameResultModel.Score);
+            if (gameResult.Messages.Count == 0)
             {
-                List<string> answer = gameResultRepository.RegisterNewGame(user, gameResultModel.Score);
-                if (answer == null)
-                    return ResponderOK(null);
-                else
-                    return ResponderErro(answer);
+                GameResultModelReturn answerObject;
+                answerObject = new GameResultModelReturn(gameResult.Id, gameResult.User.FacebookId,gameResult.Score, gameResult.GameDate);
+                return ResponderOK(answerObject);
             }
-            return ResponderErro("Usuário inválido.");
+            else
+            {
+                return ResponderErro(gameResult.Messages);
+            }
         }
 
         [HttpGet]
