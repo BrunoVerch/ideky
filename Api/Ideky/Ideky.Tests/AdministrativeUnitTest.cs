@@ -51,16 +51,17 @@ namespace Ideky.Tests
         }
 
         [TestMethod]
-        public void When_Administrative_Is_Created_Invalid_Email_And_Password_Are_Encrypted_In_MD5()
+        public void When_Administrative_Is_Created_Password_Are_Encrypted_In_SHA512()
         {
             Administrative admin = new Administrative("teste@teste.com", "123456");
-            MD5 md5 = MD5.Create();
-            byte[] inputBytes = Encoding.Default.GetBytes("teste@teste.com123456");
-            byte[] hash = md5.ComputeHash(inputBytes);
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
-                sb.Append(hash[i].ToString("x2"));
-
+            var hashAlgorithm = SHA512.Create();
+            var encodedValue = Encoding.UTF8.GetBytes("teste@teste.com123456");
+            var encryptedPassword = hashAlgorithm.ComputeHash(encodedValue);
+            var sb = new StringBuilder();
+            foreach (var caracter in encryptedPassword)
+            {
+                sb.Append(caracter.ToString("X2"));
+            }
             Assert.IsTrue(sb.ToString() == admin.Password);
             Assert.IsFalse(admin.Messages.Count > 0);
         }
