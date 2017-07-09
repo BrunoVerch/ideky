@@ -1,4 +1,5 @@
 ﻿using Ideky.Api.Models;
+using Ideky.Domain.Entity;
 using Ideky.Infrastructure.Repository;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -24,11 +25,17 @@ namespace Ideky.Api.Controllers
         public HttpResponseMessage Register([FromBody]GameResultModel gameResultModel)
         {
             if(gameResultModel == null) { return ResponderErro("Dados inválidos"); }
-            List<string> answer = gameResultRepository.RegisterNewGame(gameResultModel.FacebookID, gameResultModel.Score);
-            if (answer == null)
-                return ResponderOK(null);
+            GameResult gameResult = gameResultRepository.RegisterNewGame(gameResultModel.FacebookID, gameResultModel.Score);
+            if (gameResult.Messages.Count == 0)
+            {
+                GameResultModelReturn answerObject;
+                answerObject = new GameResultModelReturn(gameResult.Id, gameResult.User.FacebookId,gameResult.Score, gameResult.GameDate);
+                return ResponderOK(answerObject);
+            }
             else
-                return ResponderErro(answer);
+            {
+                return ResponderErro(gameResult.Messages);
+            }
         }
 
         [HttpGet]

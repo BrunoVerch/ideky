@@ -58,20 +58,22 @@ namespace Ideky.Api.Controllers
         [Route("setNewRecord")]
         public HttpResponseMessage SetNewRecord([FromBody]UserModel userModel)
         {
-            List<string> answer = userRepository.SetNewRecord(userModel.Record, userModel.FacebookId);
-            if (answer == null) return ResponderOK(null);
-            else return ResponderErro(answer);
+            User user = userRepository.SetNewRecord(userModel.Record, userModel.FacebookId);
+            if (user.Messages.Count == 0) return ResponderOK(user);
+            else return ResponderErro(user.Messages);
         }
 
         [HttpPost]
         [Route("setNewLogin")]
         public HttpResponseMessage SetNewLogin(UserModel userModel)
         {
-            List<string> answer = userRepository.SetNewLogin(userModel.FacebookId);
-            if (answer == null)
-                return ResponderOK(null);
+            User user = userRepository.SetNewLogin(userModel.FacebookId);
+            if (user == null)
+                return ResponderErro("Usuário inexistente.");
+            else if (user.Messages.Count == 0)
+                return ResponderOK(user);
             else
-                return ResponderErro(answer);
+                return ResponderErro(user.Messages);
         }
 
 
@@ -86,10 +88,12 @@ namespace Ideky.Api.Controllers
                 user.AddLifes(userModel.Lifes);
                 if (user.Validate())
                     userRepository.AddLifes(user);
+                else
+                    return ResponderErro(user.Messages);
             }
             else
             {
-                ResponderErro("Usuário inválido");
+                return ResponderErro("Usuário inválido");
             }
 
             return ResponderOK(user);

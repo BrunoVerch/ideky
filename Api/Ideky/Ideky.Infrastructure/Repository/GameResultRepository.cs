@@ -113,7 +113,7 @@ namespace Ideky.Infrastructure.Repository
             .GroupBy(gameResult => gameResult.UserId).ToList();
         }
 
-        public List<string> RegisterNewGame(long facebookId, int score)
+        public GameResult RegisterNewGame(long facebookId, int score)
         {
             User user = context.Users.FirstOrDefault(x => x.FacebookId == facebookId);
             GameResult gameResult = new GameResult(user, score);
@@ -121,12 +121,11 @@ namespace Ideky.Infrastructure.Repository
             {
                 context.GameResults.Add(gameResult);
                 context.SaveChanges();
-                return null;
             }
-            return gameResult.Messages;
+            return gameResult;
         }
 
-        public List<GameResult> ResetRanking()
+        public object ResetRanking()
         {
             List().ForEach(g =>
             {
@@ -137,7 +136,11 @@ namespace Ideky.Infrastructure.Repository
 
             context.SaveChanges();
 
-            return List();
+            return List().Select(gameResult => new
+                            {
+                                Id = gameResult.Id,
+                                Active = gameResult.Active
+                            });
         }
 
         public void Dispose()

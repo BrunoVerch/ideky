@@ -27,6 +27,17 @@ namespace Ideky.Infrastructure.Repository
         {
             return context.Administratives.FirstOrDefault(administrative => administrative.Email == email);
         }
+        public Administrative Register(string email, string password)
+        {
+            if(GetByEmail(email)!= null) { return null; }
+            Administrative adm = new Administrative(email, password);
+            if (adm.Validate())
+            {
+                context.Administratives.Add(adm);
+                context.SaveChanges();
+            }
+            return adm;
+        }
         public void Dispose()
         {
             context.Dispose();

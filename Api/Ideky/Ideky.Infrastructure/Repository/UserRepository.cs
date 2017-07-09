@@ -68,7 +68,7 @@ namespace Ideky.Infrastructure.Repository
             return user.Messages;
         }
 
-        public List<string> SetNewRecord(long record, long facebookId)
+        public User SetNewRecord(long record, long facebookId)
         {
             User user = GetByFacebookId(facebookId);
             user.SetNewRecord(record);
@@ -76,9 +76,8 @@ namespace Ideky.Infrastructure.Repository
             {
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
-                return null;
             }
-            return user.Messages;
+            return user;
         }
 
         public User AddLifes(User user)
@@ -89,7 +88,7 @@ namespace Ideky.Infrastructure.Repository
             return user;
         }
 
-        public List<string> SetNewLogin(long facebookId)
+        public User SetNewLogin(long facebookId)
         {
             User user = GetByFacebookId(facebookId);
             if(user != null)
@@ -99,16 +98,10 @@ namespace Ideky.Infrastructure.Repository
                 {
                     context.Entry(user).State = EntityState.Modified;
                     context.SaveChanges();
-                    return null;
                 }
-                return user.Messages;
+                return user;
             }
-            else
-            {
-                List<string> erro = new List<string>();
-                erro.Add("Usuário inválido");
-                return erro;
-            }           
+            return null;         
         }
 
         public void Dispose()
