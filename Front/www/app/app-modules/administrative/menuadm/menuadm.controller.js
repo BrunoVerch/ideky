@@ -1,24 +1,12 @@
 angular
 	.module('app.core')
 	.controller('MenuadmController', function ($scope, AdministrativeService, toastr) {
+		$scope.confirmar = false;
+		$scope.mostrarConfirmar = () => { $scope.confirmar = !$scope.confirmar;}
 		
-		// FacebookId e número de vidas
-		$scope.addLifes = userLifes => {
-			AdministrativeService.addLifes(userLifes)
-				.then(response)
-				.catch(error => console.log(error))
-		}
-
-		$scope.editLevel = level => {
-			AdministrativeService.editLevel(level)
-				.then(response)
-				.catch(error => console.log(error));
-		}
-
 		$scope.resetRanking = () => {
 			AdministrativeService.resetRanking()
-				.then(response)
+				.then(() => { $scope.mostrarConfirmar(); })
 				.catch(error => console.log(error));
 		}
-
-});
+	});

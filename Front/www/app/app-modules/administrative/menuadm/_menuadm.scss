@@ -26,6 +26,10 @@
         border-radius: 3px;
         @extend %button-design-primary; 
         @extend %flexbox-center-vertical;
-        @extend %flexbox-center-horizontal;        
+        @extend %flexbox-center-horizontal;   
+        &.confirmar {
+            background-color: $button-color-menuadm-confirmar;
+            color: #fff;
+        }      
     }    
 }
