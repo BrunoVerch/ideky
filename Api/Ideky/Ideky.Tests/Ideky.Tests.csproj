@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdministrativeUnitTest.cs" />
+    <Compile Include="GameResultUnitTest.cs" />
+    <Compile Include="LevelUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
