@@ -3,6 +3,7 @@ angular
   .run(function($rootScope, $window) {
     $window.fbAsyncInit = function() {
       // Executed when the SDK is loaded
+
       FB.init({
         appId: '1392336224214575',
         status: true,
