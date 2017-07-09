@@ -27,7 +27,7 @@
         @extend %button-design-primary; 
         @extend %flexbox-center-vertical;
         @extend %flexbox-center-horizontal;   
-        &.confirmar {
+        &.confirm {
             background-color: $button-color-menuadm-confirmar;
             color: #fff;
         }      
