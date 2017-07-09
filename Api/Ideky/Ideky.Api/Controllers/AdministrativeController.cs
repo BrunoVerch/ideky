@@ -1,4 +1,5 @@
-﻿using Ideky.Api.Models;
+﻿using Ideky.Api.App_Start;
+using Ideky.Api.Models;
 using Ideky.Domain.Entity;
 using Ideky.Infrastructure.Repository;
 using System.Net.Http;
@@ -6,7 +7,6 @@ using System.Web.Http;
 
 namespace Ideky.Api.Controllers
 {
-    [AllowAnonymous]
     [RoutePrefix("api/administrative")]
     public class AdministrativeController : BasicController
     {
@@ -17,7 +17,7 @@ namespace Ideky.Api.Controllers
             admRepository = new AdministrativeRepository();
         }
 
-        [HttpPost]
+        [HttpPost, BasicAuthorization]
         [Route("register")]
         public HttpResponseMessage Post([FromBody]AdministrativeModel admModel)
         {

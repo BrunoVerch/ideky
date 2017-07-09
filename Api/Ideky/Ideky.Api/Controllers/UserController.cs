@@ -6,6 +6,7 @@ using Microsoft.CSharp.RuntimeBinder;
 using Ideky.Api.Models;
 using System.Data.Entity.Infrastructure;
 using Ideky.Domain.Entity;
+using Ideky.Api.App_Start;
 
 namespace Ideky.Api.Controllers
 {
@@ -77,7 +78,7 @@ namespace Ideky.Api.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPut, BasicAuthorization]
         [Route("lifes")]
         public HttpResponseMessage AddLifes([FromBody]UserLifesModel userModel)
         {
@@ -85,11 +86,19 @@ namespace Ideky.Api.Controllers
 
             if (user != null)
             {
-                user.AddLifes(userModel.Lifes);
-                if (user.Validate())
+                if (userModel.Lifes <= 0)
+                {
+                    return ResponderErro("Quantidade de vida inválida");
+                }
+                else if (user.Validate())
+                {
+                    user.AddLifes(userModel.Lifes);
                     userRepository.AddLifes(user);
+                }
                 else
+                {
                     return ResponderErro(user.Messages);
+                }
             }
             else
             {

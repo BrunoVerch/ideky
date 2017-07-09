@@ -1,4 +1,5 @@
-﻿using Ideky.Api.Models;
+﻿using Ideky.Api.App_Start;
+using Ideky.Api.Models;
 using Ideky.Domain.Entity;
 using Ideky.Infrastructure.Repository;
 using System;
@@ -21,13 +22,13 @@ namespace Ideky.Api.Controllers
             levelRepository = new LevelRepository();
         }
 
-        [HttpGet, Route("config")]
+        [HttpGet, BasicAuthorization, Route("config")]
         public HttpResponseMessage Get()
         {
             return ResponderOK(levelRepository.GetList());
         }
 
-        [HttpPut, Route("edit")]
+        [HttpPut, BasicAuthorization, Route("edit")]
         public HttpResponseMessage Edit([FromBody] LevelModel levelModel)
         {
             Level level = levelRepository.GetById(levelModel.Id);

@@ -1,4 +1,5 @@
-﻿using Ideky.Api.Models;
+﻿using Ideky.Api.App_Start;
+using Ideky.Api.Models;
 using Ideky.Domain.Entity;
 using Ideky.Infrastructure.Repository;
 using System.Collections.Generic;
@@ -74,7 +75,7 @@ namespace Ideky.Api.Controllers
             return ResponderOK(result);
         }
 
-        [HttpPut, Route("reset")]
+        [HttpPut, BasicAuthorization, Route("reset")]
         public HttpResponseMessage ResetRankings()
         {
             return ResponderOK(gameResultRepository.ResetRanking());
