@@ -4,17 +4,16 @@ angular
 	  init();
 
 		function init() {
-			console.log('teste')
 			RankingService.getDailyRank()
-				.then(response => $scope.daily = respose.data.data)
+				.then(response => $scope.daily = response.data.data)
 				.catch(error => console.log(error));
 
 			RankingService.getMothlyRank()
-				.then(response => $scope.month = respose.data.data)
+				.then(response => $scope.month = response.data.data)
 				.catch(error => console.log(error));
 
 			RankingService.getOverallRank()
-				.then(response => $scope.total = respose.data.data)
+				.then(response => { $scope.total = response.data.data; console.log(response.data.data); })
 				.catch(error => console.log(error));
 		}
 	});
