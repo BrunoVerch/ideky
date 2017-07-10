@@ -1,43 +1,30 @@
 angular
 	.module('app.core')
-	.controller('GameController', function ($rootScope, $scope, $window, $q, GameService, toastr) {
+	.controller('GameController', function ($rootScope, $scope, $window, $location, $q, GameService, toastr) {
 			
 		init();
 
-		$scope.start = () => {
+		function init() {
 			loadFriends()
 				.then(response => {
 					if(response.data.length < 150) {
 						toastr.error('Você precisa de pelo menos 150 amigos para jogar.');
+						$location.path('/home');
 						return;
 					}
 
 					$scope.friends = shuffle(response.data);
-				});
-		}
-
-		function init() {
-			loadUser();
-		}
-
-		function loadUser() {
-			$rootScope.sdkLoad
-				.then(() => {
-					GameService.getUser()
-						.then(response => $scope.user = response.data);
+					console.log($scope.friends);
 				});
 		}
 
 		function loadFriends() {
 			const deffered = $q.defer();
 			let friends;
-
-			$rootScope.sdkLoad
-				.then(response => {
-					GameService.getFriends()
-						.then(response => deffered.resolve(response));
-				});
-
+			
+			GameService.getFriends()
+				.then(response => deffered.resolve(response));
+				
 				return deffered.promise;
 		}
 
