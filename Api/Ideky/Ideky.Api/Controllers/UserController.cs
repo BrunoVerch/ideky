@@ -27,7 +27,7 @@ namespace Ideky.Api.Controllers
         {
             try
             {
-                List<string> answer = userRepository.CreateNewUser(userModel.FacebookId);
+                List<string> answer = userRepository.CreateNewUser(userModel.FacebookId, userModel.Name, userModel.Picture);
                 if (answer == null)
                     return ResponderOK(null);
                 else
