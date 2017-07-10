@@ -1,8 +1,7 @@
 body {
     box-sizing: border-box;
     margin: 0;
-    //background-color: $background-color-default;
-    background-color: #CCCCCC;
+    background-color: $background-color-default;
     height: 100vh;
     @extend %flexbox-center-vertical;
     @extend %flexbox-center-horizontal;
