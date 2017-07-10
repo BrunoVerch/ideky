@@ -3,7 +3,7 @@
       <img class="logo" src="../images/logo.png" alt="">    
       <div class="box-content">
         <div class="box-content-wrapper">          
-          <img class="mask-profile" alt="Picture of {{user.name}}" ng-src="{{user.picture}}">
+          <img class="mask-profile" alt="Picture of {{user.name}}" ng-src="{{user.picture.data.url}}">
           <h1 class="font-primary uppercase">welcome<br><small>{{user.name}}</small></h1>
           <h1 class="font-secundary subtitle">Maior Pontuação: {{user.record}}</h1>  
         </div>    

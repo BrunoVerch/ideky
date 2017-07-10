@@ -10,15 +10,11 @@ angular
         function getFriends() {
             const deffered = $q.defer();
             let friends;
-
+            
             $rootScope.sdkLoad
 				.then(response => {
-                FB.api(`/me/friends?limit=99999`, response => {
-                    friends = response.data;
-
-                    FB.api(`/me/invitable_friends?limit=99999`, resp => 
-                        deffered.resolve({ data: friends.concat(resp.data) })
-                    );
+                FB.api(`/me/invitable_friends?limit=99999,friends?limit=99999`, response => {
+                    deffered.resolve({ data: response.data })
                 });
             });
 

@@ -13,20 +13,15 @@ angular
 
             $rootScope.sdkLoad
 				.then(() => {
-                FB.api('/me/', response => {
+                FB.api('/me?fields=id,name,picture', response => {
                     user = response;
-                    
                     $http.get(`${url}/getByFacebookId/${user.id}`)
                         .then(resp => {
                             user.record = resp.data.data.Record;
                             user.lifes = resp.data.data.Lifes;
+                            deffered.resolve({ data: user });
                         });
                 });
-
-                FB.api('/me/picture', resp => {
-                    user.picture = resp.data.url;
-                    deffered.resolve({ data: user });
-                }); 
             });
 
 
