@@ -9,7 +9,7 @@ using System.Web.Http;
 namespace Ideky.Api.Controllers
 {
     [AllowAnonymous]
-    [RoutePrefix("api/game")]
+    [RoutePrefix("game")]
     public class GameResultController : BasicController
     {
         readonly GameResultRepository gameResultRepository;

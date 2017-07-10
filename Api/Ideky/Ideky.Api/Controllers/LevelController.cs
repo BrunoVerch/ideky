@@ -12,7 +12,7 @@ using System.Web.Http;
 namespace Ideky.Api.Controllers
 {
     [AllowAnonymous]
-    [RoutePrefix("api/level")]
+    [RoutePrefix("level")]
     public class LevelController : BasicController
     {
         readonly LevelRepository levelRepository;

@@ -11,7 +11,7 @@ using Ideky.Api.App_Start;
 namespace Ideky.Api.Controllers
 {
     [AllowAnonymous]
-    [RoutePrefix("api/user")]
+    [RoutePrefix("user")]
     public class UserController : BasicController
     {
         readonly UserRepository userRepository;

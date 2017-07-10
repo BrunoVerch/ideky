@@ -9,7 +9,7 @@ using System.Web.Http;
 namespace Ideky.Api.Controllers
 {
     [BasicAuthorization]
-    [RoutePrefix("api/administrative")]
+    [RoutePrefix("administrative")]
     public class AdministrativeController : BasicController
     {
         readonly AdministrativeRepository admRepository;

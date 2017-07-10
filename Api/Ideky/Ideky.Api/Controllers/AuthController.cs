@@ -15,7 +15,7 @@ using System.Web.Http;
 
 namespace Ideky.Api.Controllers
 {
-    [RoutePrefix("api/auth")]
+    [RoutePrefix("auth")]
     public class AuthController : ApiController
     {
 
