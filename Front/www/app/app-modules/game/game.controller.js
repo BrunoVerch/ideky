@@ -2,6 +2,8 @@ angular
 	.module('app.core')
 	.controller('GameController', function ($rootScope, $scope, $window, $q, GameService, toastr) {
 			
+		init();
+
 		$scope.start = () => {
 			loadFriends()
 				.then(response => {
@@ -11,8 +13,18 @@ angular
 					}
 
 					$scope.friends = shuffle(response.data);
-					console.log($scope.friends);
+				});
+		}
 
+		function init() {
+			loadUser();
+		}
+
+		function loadUser() {
+			$rootScope.sdkLoad
+				.then(() => {
+					GameService.getUser()
+						.then(response => $scope.user = response.data);
 				});
 		}
 
@@ -22,15 +34,8 @@ angular
 
 			$rootScope.sdkLoad
 				.then(response => {
-					GameService.getFriends('friends', response => {
-						friends = response.data;
-
-						GameService.getFriends('invitable_friends', 
-							res => { 
-								friends = friends.concat(res.data);
-								deffered.resolve({ data: friends });
-							});
-					});
+					GameService.getFriends()
+						.then(response => deffered.resolve(response));
 				});
 
 				return deffered.promise;
