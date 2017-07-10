@@ -14,6 +14,10 @@ angular
                 controller: 'GameController',
                 templateUrl: 'app/app-modules/game/game.html'
             })
+            .when('/ranking', {
+                controller: 'RankingController',
+                templateUrl: 'app/app-modules/ranking/ranking.html'
+            })
             .when('/loginadm', {
                 controller: 'LoginadmController',
                 templateUrl: 'app/app-modules/administrative/loginadm/loginadm.html'
