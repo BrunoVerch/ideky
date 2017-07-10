@@ -1,0 +1,96 @@
+.ranking {
+    .logo {
+        width: 33%;
+    }
+
+    .box-default{ 
+        flex-direction: column;
+        @extend %flexbox-center-horizontal;
+    }  
+
+    .button-home {
+        width: 388px;
+        height: 74px;
+        background-color: $button-color-home;
+        @extend %button-design-primary; 
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;                
+    }  
+
+    .box-wrapper {
+        margin-top: 100px;
+        margin-bottom: 50px;
+        @extend %flexbox-center-horizontal;
+    }
+
+    .box-content {        
+        height: 530px;
+        margin: 20px;
+        &::before {
+            background: #f7f7f7; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.4)); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.4)); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.4)); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.4)); /* Standard syntax */            
+        }
+        &:after {
+            transform: rotate(-2deg);
+        }
+    }
+
+    .box-ranking {
+        @extend %flexbox-center-horizontal;
+        margin: 10px;
+    }
+
+    .mask-profile {    
+        object-fit: cover;
+        border-radius: 50%;
+        border: none;
+        margin: 0 5px;
+        height: 45px;
+        width: 45px;
+    }  
+
+    h1 {
+        color: $text-color-loginadm;
+    }
+
+    h2 {
+        font-size: 10px;
+    }
+
+    h3 {
+        font-size: 15px;  
+    }
+
+    h1, h2, h3 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    span {
+        font-size: 25px;
+    }
+
+    .inline-block {
+        display: inline-block;
+    }    
+
+    .box-scroll {
+        margin-top: 20px;
+        overflow: auto;	
+	    max-height: 415px;
+    }
+
+    ::-webkit-scrollbar-track {
+    background-color: #F4F4F4;
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+        background: #F4F4F4;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #dad7d7;
+    }
+}
