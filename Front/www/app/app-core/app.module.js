@@ -6,6 +6,7 @@ angular
         'toastr',
         'ngStorage',
         'luegg.directives',
+        'auth',
     ]);
 
 angular
