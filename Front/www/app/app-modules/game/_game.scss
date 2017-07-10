@@ -1,0 +1,12 @@
+.game {
+    .logo {
+        width: 33%;
+    }
+
+    .button-home {
+        background-color: $button-color-home;
+        @extend %button-design-primary; 
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;                
+    }    
+}

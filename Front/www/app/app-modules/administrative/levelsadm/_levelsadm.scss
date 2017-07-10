@@ -1,0 +1,54 @@
+// .levelsadm {
+//     .logo {
+//         width: 33%;
+//     }
+
+//     .box-default{ 
+//         @extend %flexbox-center-horizontal;
+//         flex-direction: column;
+//         position: relative;
+//     }
+
+//     .box-content {
+//         padding-top: 30px;
+//         padding-bottom: 30px;
+//         position: absolute;
+//         top: 50%;
+//         transform: translateY(-50%);
+//     }
+
+//     .button-levelsadm-confirmar {
+//         font-size: 18px;
+//         width: 100%;
+//         background-color: $button-color-menuadm-confirmar;
+//         @extend %button-design-primary; 
+//         @extend %flexbox-center-vertical;
+//         @extend %flexbox-center-horizontal;                
+//         border-radius: 3px;
+//         padding: 15px;
+//         margin-top: 15px;
+//     }  
+
+//     .levelsadm-input {
+//         background-color: #f0f0f0;
+//         border: 1px solid $border-color-input-loginadm;
+//         border-radius: 3px;
+//         padding:  15px;
+//         width: 100%;
+//         margin-top: 10px;
+//         margin-bottom: 10px;
+//     }
+
+//     .levelsadm-input::placeholder {
+//         color: #c6c6c6;
+//         font-size: 22px;
+//     }
+
+//     .levelsadm-titulo {
+//         font-size: 36px;
+//         color: $text-color-loginadm;
+//         text-align: center;
+//         margin-bottom: 38px;
+//         line-height: 36px;
+//     }
+// }

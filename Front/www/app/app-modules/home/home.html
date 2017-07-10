@@ -1,0 +1,15 @@
+ <section class="home">
+  <div class="box-default">
+      <img class="logo" src="../images/logo.png" alt="">    
+      <div class="box-content">
+        <div class="box-content-wrapper">          
+          <img class="mask-profile" alt="Picture of {{user.name}}" ng-src="{{user.picture}}">
+          <h1 class="font-primary uppercase">welcome<br><small>{{user.name}}</small></h1>
+          <h1 class="font-secundary subtitle">Maior Pontuação: {{user.record}}</h1>  
+        </div>    
+      </div>     
+      <button type="button" class="button-home" ng-click="start()">        
+        <span class="text uppercase">começar</span>          
+      </button> 
+  </div>
+</section>
