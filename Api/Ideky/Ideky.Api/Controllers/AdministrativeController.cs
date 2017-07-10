@@ -1,12 +1,14 @@
-﻿using Ideky.Api.Models;
+﻿using Ideky.Api.App_Start;
+using Ideky.Api.Models;
 using Ideky.Domain.Entity;
 using Ideky.Infrastructure.Repository;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 
 namespace Ideky.Api.Controllers
 {
-    [AllowAnonymous]
+    [BasicAuthorization]
     [RoutePrefix("api/administrative")]
     public class AdministrativeController : BasicController
     {
@@ -28,6 +30,19 @@ namespace Ideky.Api.Controllers
                 return ResponderOK(admin.Email);
             else
                 return ResponderErro(admin.Messages);
+        }
+
+        [HttpGet]
+        [Route("get")]
+        public HttpResponseMessage getAdm()
+        {
+            Administrative admin = admRepository.GetByEmail(Thread.CurrentPrincipal.Identity.Name);
+
+            if (admin == null)
+            {
+                return ResponderErro("Administrador inválido.");
+            }
+            return ResponderOK(new { admin.Id, admin.Email });
         }
     }
 }

@@ -18,11 +18,9 @@ body {
   height: 100vh; }
 
 .box-default {
-  height: 85vh;
-  width: 740px;
-  padding: 60px 20px;
-  flex-direction: column;
-  justify-content: space-between; }
+  height: 912px;
+  width: 945px;
+  padding: 60px 20px; }
 
 .box-content {
   margin: 10px;
@@ -41,7 +39,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #fff;
+    background-color: #f7f7f7;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     border-radius: 5px; }
   .box-content:after {
@@ -52,7 +50,7 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #fff;
+    background-color: #f7f7f7;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     transform: rotate(-4deg);
     border-radius: 5px; }
@@ -65,7 +63,7 @@ body {
   height: 90px;
   width: 90px; }
 
-.login .button-login, .home .button-home, .game .button-home {
+.login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home {
   font-family: "HDV Comic Serif Pro";
   width: 70%;
   height: 16%;
@@ -76,11 +74,11 @@ body {
   border: none;
   color: #fff; }
 
-body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home {
+body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home {
   display: flex;
   justify-content: center; }
 
-body, .box-default, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home {
+body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .button-home, .lifesadm .box-default, .lifesadm .button-lifesadm-confirmar, .loginadm .box-default, .loginadm .button-home, .menuadm .box-default, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking {
   display: flex;
   align-items: center; }
 
@@ -117,9 +115,15 @@ h1.font-primary {
 
 .login .logo {
   width: 33%; }
+.login .box-default {
+  flex-direction: column;
+  justify-content: space-between; }
 
 .home .logo {
   width: 33%; }
+.home .box-default {
+  flex-direction: column;
+  justify-content: space-between; }
 .home h1 {
   margin-top: 15px; }
   .home h1.font-primary {
@@ -133,5 +137,160 @@ h1.font-primary {
   width: 33%; }
 .game .button-home {
   background-color: #e77235; }
+
+.lifesadm .logo {
+  width: 33%; }
+.lifesadm .box-default {
+  flex-direction: column;
+  position: relative; }
+.lifesadm .box-content {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
+.lifesadm .button-lifesadm-confirmar {
+  font-size: 18px;
+  width: 100%;
+  background-color: #bbd568;
+  border-radius: 3px;
+  padding: 15px;
+  margin-top: 15px; }
+.lifesadm .lifesadm-input {
+  background-color: #f0f0f0;
+  border: 1px solid #c6c6c6;
+  border-radius: 3px;
+  padding: 15px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+.lifesadm .lifesadm-input::placeholder {
+  color: #c6c6c6;
+  font-size: 22px; }
+.lifesadm .lifesadm-titulo {
+  font-size: 36px;
+  color: #4584c1;
+  text-align: center;
+  margin-bottom: 38px;
+  line-height: 36px; }
+
+.loginadm .logo {
+  width: 33%; }
+.loginadm .box-default {
+  flex-direction: column;
+  position: relative; }
+.loginadm .box-content {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
+.loginadm .button-home {
+  font-size: 18px;
+  width: 100%;
+  background-color: #e77235;
+  border-radius: 3px;
+  padding: 15px;
+  margin-top: 15px; }
+.loginadm .loginadm-input {
+  background-color: #f0f0f0;
+  border: 1px solid #c6c6c6;
+  border-radius: 3px;
+  padding: 15px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+.loginadm .loginadm-input::placeholder {
+  color: #c6c6c6;
+  font-size: 22px; }
+.loginadm .loginadm-title {
+  font-size: 36px;
+  color: #4584c1;
+  text-align: center;
+  margin-bottom: 38px;
+  line-height: 36px; }
+
+.menuadm .logo {
+  width: 33%; }
+.menuadm .box-default {
+  flex-direction: column;
+  position: relative; }
+.menuadm .box-content {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
+.menuadm .button-menuadm {
+  background-color: #D5D5D5;
+  color: #767676;
+  margin: 6px;
+  width: 360px;
+  height: 58px;
+  border-radius: 3px; }
+  .menuadm .button-menuadm.confirm {
+    background-color: #bbd568;
+    color: #fff; }
+
+.ranking .logo {
+  width: 33%; }
+.ranking .box-default {
+  flex-direction: column; }
+.ranking .button-home {
+  width: 388px;
+  height: 74px;
+  background-color: #e77235; }
+.ranking .box-wrapper {
+  margin-top: 100px;
+  margin-bottom: 50px; }
+.ranking .box-content {
+  height: 530px;
+  margin: 20px; }
+  .ranking .box-content::before {
+    background: #f7f7f7;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.4));
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.4));
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.4));
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.4));
+    /* Standard syntax */ }
+  .ranking .box-content:after {
+    transform: rotate(-2deg); }
+.ranking .box-ranking {
+  margin: 10px; }
+.ranking .mask-profile {
+  object-fit: cover;
+  border-radius: 50%;
+  border: none;
+  margin: 0 5px;
+  height: 45px;
+  width: 45px; }
+.ranking h1 {
+  color: #4584c1; }
+.ranking h2 {
+  font-size: 10px; }
+.ranking h3 {
+  font-size: 15px; }
+.ranking h1, .ranking h2, .ranking h3 {
+  margin-top: 5px;
+  margin-bottom: 5px; }
+.ranking span {
+  font-size: 25px; }
+.ranking .inline-block {
+  display: inline-block; }
+.ranking .box-scroll {
+  margin-top: 20px;
+  overflow: auto;
+  max-height: 415px; }
+.ranking ::-webkit-scrollbar-track {
+  background-color: #F4F4F4; }
+.ranking ::-webkit-scrollbar {
+  width: 6px;
+  background: #F4F4F4; }
+.ranking ::-webkit-scrollbar-thumb {
+  background: #dad7d7; }
 
 /*# sourceMappingURL=main.css.map */

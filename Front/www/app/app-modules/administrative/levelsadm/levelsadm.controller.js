@@ -1,6 +1,6 @@
 angular
 	.module('app.core')
-	.controller('AdministrativeController', function ($scope, AdministrativeService, toastr) {
+	.controller('LevelsadmController', function ($scope, AdministrativeService, toastr) {
 		
 		// FacebookId e número de vidas
 		$scope.addLifes = userLifes => {

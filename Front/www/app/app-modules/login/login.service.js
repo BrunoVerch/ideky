@@ -1,7 +1,7 @@
 angular
     .module('app.core')
-    .factory('LoginService', function($http) {
-        const url = 'http://localhost:60550/api/auth';
+    .factory('LoginService', function($http, AppConstants) {
+        const url = `${AppConstants.url}/api/auth`;
 
         return {
             login: login

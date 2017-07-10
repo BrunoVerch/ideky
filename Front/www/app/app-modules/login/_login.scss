@@ -3,6 +3,12 @@
         width: 33%;
     }
 
+    .box-default{ 
+        flex-direction: column;
+        justify-content: space-between;        
+        @extend %flexbox-center-horizontal;
+    }        
+
     .button-login {
         @extend %button-design-primary;
         @extend %flexbox-center-vertical;

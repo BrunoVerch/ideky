@@ -1,31 +1,30 @@
 angular
     .module('app.core')
-    .factory('HomeService', function($http) {
-        const url = 'http://localhost:60550/api/user';
+    .factory('HomeService', function($rootScope,$http, $q, AppConstants) {
+        const url = `${AppConstants.url}/api/user`;
 
         return {
-            getByFacebookId: getByFacebookId,
-            register: register,
-            setNewRecord: setNewRecord
+            getUser: getUser,
         }
 
-        function getByFacebookId(id) {
-            return $http.get(`${url}/${id}`);
-        }
+        function getUser() {
+            const deffered = $q.defer();
+            let user;
 
-        function register(user) {
-            return $http({
-                url: url,
-                method: 'POST',
-                data: user
+            $rootScope.sdkLoad
+				.then(() => {
+                FB.api('/me?fields=id,name,picture', response => {
+                    user = response;
+                    $http.get(`${url}/getByFacebookId/${user.id}`)
+                        .then(resp => {
+                            user.record = resp.data.data.Record;
+                            user.lifes = resp.data.data.Lifes;
+                            deffered.resolve({ data: user });
+                        });
+                });
             });
-        }
 
-        function setNewRecord(record) {
-            return $http({
-                url: url,
-                method: 'POST',
-                data: record
-            });
+
+            return deffered.promise;
         }
     });
