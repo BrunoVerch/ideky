@@ -1,0 +1,11 @@
+.login {
+    .logo {
+        width: 33%;
+    }
+
+    .button-login {
+        @extend %button-design-primary;
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;                
+    }    
+}

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Ideky.Domain.Entity
@@ -9,6 +9,8 @@ namespace Ideky.Domain.Entity
         public User User { get; private set; }
         public DateTime GameDate { get; private set; }
         public int Score { get; private set; }
+        public bool Active { get; private set; }
+
         public List<string> Messages { get; private set; }
 
         protected GameResult() { Messages = new List<string>();  }
@@ -19,12 +21,25 @@ namespace Ideky.Domain.Entity
             User = user;
             GameDate = DateTime.Now;
             Score = score;
+            Active = true;
             Messages = new List<string>();
+        }
+
+        public GameResult(int id, bool active)
+        {
+            Id = id;
+            Active = active;
+
+        }
+
+        public void Disable()
+        {
+            Active = false;
         }
 
         public bool Validate()
         {
-            if(User != null)
+            if(User == null)
             {
                 Messages.Add("Usuário inválido");
             }
