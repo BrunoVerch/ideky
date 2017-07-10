@@ -78,7 +78,7 @@ body, .box-content .box-content-wrapper, .login .button-login, .home .button-hom
   display: flex;
   justify-content: center; }
 
-body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .button-home, .administrative .button-home, .loginadm .button-home, .menuadm .box-default, .menuadm .button-menuadm {
+body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .button-home, .administrative .button-home, .loginadm .box-default, .loginadm .button-home, .menuadm .box-default, .menuadm .button-menuadm {
   display: flex;
   align-items: center; }
 
@@ -161,40 +161,39 @@ h1.font-primary {
   background-color: #e77235; }
 
 .loginadm .logo {
-  width: 33%;
-  margin-left: 50%;
-  transform: translateX(-50%); }
-.loginadm h1 {
-  margin-top: 15px; }
-  .loginadm h1.font-primary {
-    text-shadow: 0 5px 1px rgba(0, 0, 0, 0.2); }
-    .loginadm h1.font-primary > small {
-      text-shadow: initial; }
+  width: 33%; }
+.loginadm .box-default {
+  flex-direction: column;
+  position: relative; }
+.loginadm .box-content {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); }
 .loginadm .button-home {
   font-size: 18px;
   width: 100%;
   background-color: #e77235;
   border-radius: 3px;
-  padding: 10px; }
+  padding: 15px;
+  margin-top: 15px; }
 .loginadm .loginadm-input {
   background-color: #f0f0f0;
   border: 1px solid #c6c6c6;
   border-radius: 3px;
-  padding: 10px;
+  padding: 15px;
   width: 100%;
+  margin-top: 10px;
   margin-bottom: 10px; }
 .loginadm .loginadm-input::placeholder {
-  font-family: 'HDV Comic Serif Pro';
   color: #c6c6c6; }
 .loginadm .loginadm-titulo {
-  font-family: 'HDV Comic Serif Pro';
   font-size: 36px;
   color: #4584c1;
   text-align: center;
-  margin-bottom: 2px; }
-.loginadm .box-content {
-  max-width: 50%;
-  margin: 40px auto; }
+  margin-bottom: 38px;
+  line-height: 36px; }
 
 .menuadm .logo {
   width: 33%; }
