@@ -63,7 +63,7 @@ body {
   height: 90px;
   width: 90px; }
 
-.login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm {
+.login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home {
   font-family: "HDV Comic Serif Pro";
   width: 70%;
   height: 16%;
@@ -74,11 +74,11 @@ body {
   border: none;
   color: #fff; }
 
-body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm {
+body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home {
   display: flex;
   justify-content: center; }
 
-body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .button-home, .lifesadm .box-default, .lifesadm .button-lifesadm-confirmar, .loginadm .box-default, .loginadm .button-home, .menuadm .box-default, .menuadm .button-menuadm {
+body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .button-home, .lifesadm .box-default, .lifesadm .button-lifesadm-confirmar, .loginadm .box-default, .loginadm .button-home, .menuadm .box-default, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-ranking, .ranking .box-wrapper {
   display: flex;
   align-items: center; }
 
@@ -231,5 +231,35 @@ h1.font-primary {
   .menuadm .button-menuadm.confirm {
     background-color: #bbd568;
     color: #fff; }
+
+.ranking .logo {
+  width: 33%; }
+.ranking .box-default {
+  flex-direction: column;
+  justify-content: space-between; }
+.ranking .button-home {
+  background-color: #e77235; }
+.ranking .mask-profile {
+  object-fit: cover;
+  border-radius: 50%;
+  border: none;
+  margin: 0 5px;
+  height: 45px;
+  width: 45px; }
+.ranking h1 {
+  color: #4584c1; }
+.ranking h2 {
+  font-size: 10px; }
+.ranking h3 {
+  font-size: 15px; }
+.ranking h1, .ranking h2, .ranking h3 {
+  margin-top: 5px;
+  margin-bottom: 5px; }
+.ranking span {
+  font-size: 25px; }
+.ranking .inline-block {
+  display: inline-block; }
+.ranking .box-ranking {
+  margin: 10px; }
 
 /*# sourceMappingURL=main.css.map */
