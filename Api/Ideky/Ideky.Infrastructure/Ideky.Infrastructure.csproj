@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201707082316196_FixedActiveName.Designer.cs">
       <DependentUpon>201707082316196_FixedActiveName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707102059489_Create-name-and-picture-in-user-entity-and-update-others-methods.cs" />
+    <Compile Include="Migrations\201707102059489_Create-name-and-picture-in-user-entity-and-update-others-methods.Designer.cs">
+      <DependentUpon>201707102059489_Create-name-and-picture-in-user-entity-and-update-others-methods.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdministrativeRepository.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707082316196_FixedActiveName.resx">
       <DependentUpon>201707082316196_FixedActiveName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707102059489_Create-name-and-picture-in-user-entity-and-update-others-methods.resx">
+      <DependentUpon>201707102059489_Create-name-and-picture-in-user-entity-and-update-others-methods.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
