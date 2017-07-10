@@ -13,7 +13,7 @@ angular
                 url: `${url}/ExternalLogin?provider=Facebook`,
                 headers: {
                     'Access-Control-Allow-Origin': true,
-                    'Content-Type': 'application/json'
+                    'X-Requested-With': 'XMLHttpRequest'
                 }        
             });
         }
