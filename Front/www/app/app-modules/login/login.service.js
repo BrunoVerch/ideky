@@ -8,6 +8,6 @@ angular
         }
 
         function login() {
-            $http.get(`${url}/ExternalLogin?provider=Facebook`);
+            return $http.get(`${url}/ExternalLogin?provider=Facebook`);
         }
     });
