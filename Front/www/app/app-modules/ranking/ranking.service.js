@@ -1,13 +1,23 @@
 angular
     .module('app.core')
-    .factory('RankingService', function($http) {
-        const url = 'http://localhost:60550/api/user';
+    .factory('RankingService', function($http, AppConstants) {
+        const url = `${AppConstants.url}/api/game`;
 
         return {
-            getByFacebookId: getByFacebookId,
-            register: register,
-            setNewRecord: setNewRecord,
-            setNewLogin: setNewLogin
+            getDailyRank: getDailyRank,
+            getMothlyRank: getMothlyRank,
+            getOverallRank: getOverallRank
         }
 
+        function getDailyRank() {
+            return $http.get(`${url}/dailyRanking`);
+        }
+
+        function getMothlyRank() {
+            return $http.get(`${url}/monthlyRanking`);
+        }
+
+        function getOverallRank() {
+            return $http.get(`${url}/overallranking`);
+        }
     });
