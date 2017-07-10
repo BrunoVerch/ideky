@@ -8,17 +8,4 @@ angular
 				.then(response)
 				.catch(error => console.log(error))
 		}
-
-		$scope.editLevel = level => {
-			AdministrativeService.editLevel(level)
-				.then(response)
-				.catch(error => console.log(error));
-		}
-
-		$scope.resetRanking = () => {
-			AdministrativeService.resetRanking()
-				.then(response)
-				.catch(error => console.log(error));
-		}
-
 });
