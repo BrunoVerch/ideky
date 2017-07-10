@@ -8,6 +8,13 @@ angular
         }
 
         function login() {
-            return $http.get(`${url}/ExternalLogin?provider=Facebook`);
+            return $http({
+                method: 'GET',
+                url: `${url}/ExternalLogin?provider=Facebook`,
+                headers: {
+                    'Access-Control-Allow-Origin': true,
+                    'Content-Type': 'application/json'
+                }        
+            });
         }
     });
