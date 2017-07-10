@@ -1,8 +1,7 @@
 angular
     .module('app.core')
-    .factory('GameService', function ($http, $q) {
-
-        const url = 'http://localhost:60550/api/user/'
+    .factory('GameService', function ($http, $q, AppConstants) {
+        const url = `${AppConstants.url}/api/user/`;
 
         return {
             getFriends: getFriends,
@@ -30,7 +29,7 @@ angular
 
             FB.api('/me/', response => {
                 user = response;
-
+                
                 $http.get(`${url}/getByFacebookId/${user.id}`)
                     .then(r => {
                         user.record = r.data.data.Record;

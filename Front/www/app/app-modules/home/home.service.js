@@ -1,7 +1,7 @@
 angular
     .module('app.core')
-    .factory('HomeService', function($http) {
-        const url = 'http://localhost:60550/api/user';
+    .factory('HomeService', function($http, AppConstants) {
+        const url = `${AppConstants.url}/api/user`;
 
         return {
             getByFacebookId: getByFacebookId,
