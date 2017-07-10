@@ -3,6 +3,12 @@
         width: 33%;
     }
 
+    .box-default{ 
+        flex-direction: column;
+        justify-content: space-between;        
+        @extend %flexbox-center-horizontal;
+    }  
+
     h1 {
         margin-top: 15px;
         &.font-primary {
