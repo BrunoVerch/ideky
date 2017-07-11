@@ -7,13 +7,13 @@ namespace Ideky.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Createnameandpictureinuserentityandupdateothersmethods : IMigrationMetadata
+    public sealed partial class updatemappinguserpicturelength1024 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Createnameandpictureinuserentityandupdateothersmethods));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updatemappinguserpicturelength1024));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707102059489_Create-name-and-picture-in-user-entity-and-update-others-methods"; }
+            get { return "201707111935003_update-mapping-user-picture-length-1024"; }
         }
         
         string IMigrationMetadata.Source
