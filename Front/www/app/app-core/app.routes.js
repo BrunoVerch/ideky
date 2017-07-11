@@ -34,6 +34,9 @@ angular
                 controller: 'LevelsadmController',
                 templateUrl: 'app/app-modules/administrative/levelsadm/levelsadm.html'
             })
+            // .when('/authComplete', {
+            //     templateUrl: 'authComplete.html'
+            // })
             .otherwise({
                 redirectTo: '/login'
             });

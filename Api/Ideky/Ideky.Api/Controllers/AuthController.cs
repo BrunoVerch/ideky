@@ -1,5 +1,7 @@
 ﻿using Ideky.Api.Folders;
 using Ideky.Api.Models;
+using Ideky.Domain.Entity;
+using Ideky.Infrastructure.Repository;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
@@ -41,15 +43,16 @@ namespace Ideky.Api.Controllers
                 return BadRequest("Invalid Provider or External Access Token");
             }
 
-            //IdentityUser user = await _repo.FindAsync(new UserLoginInfo(provider, verifiedAccessToken.user_id));
-            var user = "ds";
+            //var _repo = new UserRepository();
 
-            bool hasRegistered = user != null;
+            //User user = _repo.GetByFacebookId((long) Convert.ToDouble(verifiedAccessToken.user_id));
 
-            if (!hasRegistered)
-            {
-                return BadRequest("External user is not registered");
-            }
+            //bool hasRegistered = user != null;
+
+            //if (!hasRegistered)
+            //{
+            //    return BadRequest("External user is not registered");
+            //}
 
             //generate access token response
             //var accessTokenResponse = GenerateLocalAccessTokenResponse(user.UserName);
@@ -173,7 +176,7 @@ namespace Ideky.Api.Controllers
                 //You can get it from here: https://developers.facebook.com/tools/accesstoken/
                 //More about debug_tokn here: http://stackoverflow.com/questions/16641083/how-does-one-get-the-app-access-token-for-debug-token-inspection-on-facebook
 
-                var appToken = "xxxxx";
+                var appToken = "1392336224214575|o6MYLk-VsuV5PnIf3GOZiPj_Q1E";
                 verifyTokenEndPoint = string.Format("https://graph.facebook.com/debug_token?input_token={0}&access_token={1}", accessToken, appToken);
             }
 

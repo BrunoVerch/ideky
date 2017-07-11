@@ -1,27 +1,15 @@
 angular
     .module('app.core')
-    .factory('LoginService', function($http, AppConstants) {
+    .factory('LoginService', function ($http, $q, AppConstants, $localStorage) {
         const url = `${AppConstants.url}/auth`;
 
         return {
-            login: login
+            obtainAccessToken: _obtainAccessToken
         }
 
-        function login() {
-            // return $http({
-            //     method: 'GET',
-            //     url: `${url}/ExternalLogin?provider=Facebook&response_type=token&client_id=1392336224214575&redirect_uri=http://localhost:60550/`,
-            //     headers: {
-            //         'Access-Control-Allow-Origin': true,
-            //         'X-Requested-With': 'XMLHttpRequest'
-            //     }        
-            // });
-
-            var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';
-
-            var externalProviderUrl = url + "/ExternalLogin?provider=Facebook&response_type=token&client_id=1392336224214575&redirect_uri=http://localhost:4445/authComplete.html";
-            //window.$windowScope = $scope;
-
-            var oauthWindow = window.open(externalProviderUrl, "Authenticate Account", "location=0,status=0,width=600,height=750");
+        function _obtainAccessToken(externalData) {
+            const { externalAccessToken, provider } = externalData
+            const path = `${url}/ObtainLocalAccessToken?externalAccessToken=${externalAccessToken}&provider=${provider}`;
+            return $http.get(path, { async: false })
         }
     });

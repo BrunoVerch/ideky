@@ -6,6 +6,8 @@ namespace Ideky.Domain.Entity
 {
     public class User : IBasicEntity
     {
+        private string user_id;
+
         public long Id { get; private set; }
         public long FacebookId { get; private set; }
         public long Record { get; private set; }
@@ -33,6 +35,11 @@ namespace Ideky.Domain.Entity
             Lifes = 1;
             LastLogin = DateTime.Now;
             Messages = new List<string>();
+        }
+
+        public User(string user_id)
+        {
+            this.user_id = user_id;
         }
 
         public void SetNewLogin()
