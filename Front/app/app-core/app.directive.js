@@ -13,7 +13,7 @@ angular
         return function(scope,element){
             element.css({
                 'text-decoration': 'line-through',
-                'font-size': '115%',
+                'font-size': '50px',
                 'color':'#FFFFFF',
             });
         }
@@ -22,6 +22,6 @@ angular
     .module('app')
         .directive("logo", function() {
             return {
-                template: `<h1 class="font-game-title font-primary"><line>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</line>IDEKY&nbsp<line>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</line></h1>`
+                template: `<h1 class="font-game-logo font-primary"><line>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</line>IDEKY&nbsp<line>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</line></h1>`
             };
         }); 
