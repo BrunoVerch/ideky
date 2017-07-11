@@ -1,12 +1,56 @@
-.game {
-    .logo {
-        width: 33%;
+.game {   
+    .center-box{
+    @extend %flexbox-center-vertical;
+    @extend %flexbox-center-horizontal;
     }
+    .box-game{    
+        height: 91vh;
+        width: 692px;
+        padding: 28px 20px;      
+        border-radius: 4px;
+        background-image: $background-image-default;   
+        background-size: 100% 100%;  
+        background-position: center;
+    } 
 
-    .button-home {
-        background-color: $button-color-home;
-        @extend %button-design-primary; 
+    .box-game-info{
+        margin-left: 1%;
+        background-color: $background-color-game-info;
+        height: 13vh;
+        width: 98%;
+        border-radius: 8px;
+    }
+    .box-question-title{
+        h1{
+            text-align: center;
+            font-size: 40px;
+            letter-spacing: -2px;
+        }
+    }
+    h1.font-game-logo{
+        left: 170px;
+        font-size:45px;
+        text-shadow: 0px 7px #242C35;
+        letter-spacing: -2px;
+        color: $text-color-game-title;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .box-img-game{
+        height: 59vh;
+        max-width: 100%;
         @extend %flexbox-center-vertical;
-        @extend %flexbox-center-horizontal;                
-    }    
+        @extend %flexbox-center-horizontal;
+        flex-wrap: wrap;
+        flex-direction: row; //column
+        padding: 2vh;
+        overflow-y: hidden;
+    }
+    .box-img-game .img-game{
+        width: 100px;
+        height: 100px;
+        box-shadow: 0px 6px 0px #BEBEBE;  
+        border-radius: 5px;  
+        margin: 5px;
+    }
 }
