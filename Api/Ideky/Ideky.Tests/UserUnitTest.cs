@@ -24,6 +24,40 @@ namespace Ideky.Tests
             Assert.IsTrue(user.LastLogin.Year == DateTime.Now.Year);
         }
         [TestMethod]
+        public void Create_A_Valid_New_User_Entity_Setting_Only_Name()
+        {
+            var user = new User(70, "João", "picture");
+            user.SetNewName("Pedro");
+            Assert.IsTrue(user.Validate());
+            Assert.IsFalse(user.Messages.Count > 0);
+            Assert.IsTrue(user.FacebookId == 70);
+            Assert.IsTrue(user.Name == "Pedro");
+            Assert.IsTrue(user.Picture == "picture");
+            Assert.IsTrue(user.Record == 0);
+            Assert.IsTrue(user.Lifes == 1);
+            Assert.IsTrue(user.LastLogin.Hour == DateTime.Now.Hour);
+            Assert.IsTrue(user.LastLogin.Day == DateTime.Now.Day);
+            Assert.IsTrue(user.LastLogin.Month == DateTime.Now.Month);
+            Assert.IsTrue(user.LastLogin.Year == DateTime.Now.Year);
+        }
+        [TestMethod]
+        public void Create_A_Valid_New_User_Entity_Setting_Only_Picture()
+        {
+            var user = new User(70, "João", "picture");
+            user.SetNewPicture("newPicture");
+            Assert.IsTrue(user.Validate());
+            Assert.IsFalse(user.Messages.Count > 0);
+            Assert.IsTrue(user.FacebookId == 70);
+            Assert.IsTrue(user.Name == "João");
+            Assert.IsTrue(user.Picture == "newPicture");
+            Assert.IsTrue(user.Record == 0);
+            Assert.IsTrue(user.Lifes == 1);
+            Assert.IsTrue(user.LastLogin.Hour == DateTime.Now.Hour);
+            Assert.IsTrue(user.LastLogin.Day == DateTime.Now.Day);
+            Assert.IsTrue(user.LastLogin.Month == DateTime.Now.Month);
+            Assert.IsTrue(user.LastLogin.Year == DateTime.Now.Year);
+        }
+        [TestMethod]
         public void Create_A_Valid_New_User_Entity_Setting_Only_FacebookId_And_Having_Id_Zero_Record_Zero_Lifes_One_And_Last_Login_Now()
         {
             var user = new User(70, "João", "picture");

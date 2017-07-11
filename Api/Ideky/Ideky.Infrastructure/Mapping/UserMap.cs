@@ -12,7 +12,14 @@ namespace Ideky.Infrastructure.Mapping
             ToTable("User");
 
             HasKey(x => x.Id);
-            //Property(x => x.FacebookId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+
+            Property(x => x.Name)
+                .HasColumnType("varchar")
+                .HasMaxLength(256);
+
+            Property(x => x.Picture)
+                .HasColumnType("varchar")
+                .HasMaxLength(1024);
 
             Property(x => x.FacebookId)
                 .HasColumnAnnotation(
