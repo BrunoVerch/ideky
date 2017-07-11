@@ -5,24 +5,10 @@
         <div class="box-game-info">
         </div>  
         <div class="box-question-title">
-            <h1 class="font-primary uppercase"><smaller>Quem é</smaller> Luis Miguel Pires?</h1>
+            <h1 class="font-primary uppercase"><smaller>Quem é</smaller> {{rigthName}}?</h1>
         </div>     
         <div class="box-img-game">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
-            <img class="img-game" src="../images/pedro.jpg">
+            <button ng-repeat="user in selectedUsers" ng-click="answer(user.nome)" class="game-button font-primary" ng-class="changeClass('{{user.nome}}')" style="background-image: url({{user.img}});"></button>
         </div>    
     </div>
   </div>
