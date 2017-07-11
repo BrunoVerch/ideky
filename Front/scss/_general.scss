@@ -9,7 +9,7 @@ body {
 
 .box-default{            
         height: 912px;
-        width: 945px; 
+        width: 945px;
         padding: 60px 20px; 
         @extend %background-image-box; 
 } 
@@ -122,4 +122,44 @@ h1.font-primary {
     small {
         color: $text-color-home;
     }
+}
+.box-game{    
+    position: absolute;
+    top: 7%;
+    left: 350px;
+    height: 90%;//;
+    width: 692px;
+    padding: 28px 20px;      
+    border-radius: 4px;
+    background-image: $background-image-default;   
+    background-size: 100% 100%;  
+    background-position: center;
+} 
+
+.box-game-info{
+    position: relative;
+    background-color: $background-color-game-info;
+    height: 14%;
+    width: 98%;
+    right: 1%;
+    left: 1%;
+    top: 0;
+    border-radius: 8px;
+}
+.box-question-title{
+    margin-top:6%;
+    h1{
+        text-align: center;
+        font-size: 290%;
+        letter-spacing: -2px;
+        text-shadow: 0px 0px 0px;
+    }
+}
+h1.font-game-title{
+    position: absolute;
+    top:-2%;
+    left: 505px;
+    font-size: 280%;
+    letter-spacing: -2px;
+    color: $text-color-game-title;
 }

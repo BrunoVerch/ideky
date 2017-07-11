@@ -113,43 +113,9 @@ h1.font-primary {
   h1.font-primary small {
     color: #343434; }
 
-.box-game {
+.issueTitle {
   position: absolute;
-  top: 7%;
-  left: 350px;
-  height: 90%;
-  width: 692px;
-  padding: 28px 20px;
-  border-radius: 4px;
-  background-image: url("../images/bg.png");
-  background-size: 100% 100%;
-  background-position: center; }
-
-.box-game-info {
-  position: relative;
-  background-color: #E9E9E9;
-  height: 14%;
-  width: 98%;
-  right: 1%;
-  left: 1%;
-  top: 0;
-  border-radius: 8px; }
-
-.box-question-title {
-  margin-top: 6%; }
-  .box-question-title h1 {
-    text-align: center;
-    font-size: 290%;
-    letter-spacing: -2px;
-    text-shadow: 0px 0px 0px; }
-
-h1.font-game-title {
-  position: absolute;
-  top: -2%;
-  left: 505px;
-  font-size: 280%;
-  letter-spacing: -2px;
-  color: #EAEAEA; }
+  top: 0; }
 
 .login .logo {
   width: 33%; }
