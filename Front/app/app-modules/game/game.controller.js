@@ -2,7 +2,7 @@ angular
 	.module('app.core')
 	.controller('GameController', function ($rootScope, $scope, $window, $location, $q, GameService, toastr) {
 			
-		init();
+		//init();
 
 		function init() {
 			loadFriends()
