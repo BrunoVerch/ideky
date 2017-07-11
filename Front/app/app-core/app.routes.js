@@ -34,8 +34,6 @@ angular
                 controller: 'LevelsadmController',
                 templateUrl: 'app/app-modules/administrative/levelsadm/levelsadm.html'
             })
-
-
             .otherwise({
                 redirectTo: '/login'
             });

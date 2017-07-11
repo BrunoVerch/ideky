@@ -10,7 +10,7 @@ namespace Ideky.Tests
         [TestMethod]
         public void Create_Valid_Active_GameResult_Entity()
         {
-            var user = new User(70);
+            var user = new User(70, "João", "picture");
             var gameResult = new GameResult(user,100);
             Assert.IsTrue(gameResult.Validate());
             Assert.IsTrue(gameResult.User.FacebookId == user.FacebookId);
@@ -37,7 +37,7 @@ namespace Ideky.Tests
         }
         public void Desable_A_Valid_Active_GameResult_Entity_Should_Change_Active_To_False()
         {
-            var user = new User(70);
+            var user = new User(70, "João", "picture");
             var gameResult = new GameResult(user, 100);
             Assert.IsTrue(gameResult.Validate());
             Assert.IsTrue(gameResult.Active == false);

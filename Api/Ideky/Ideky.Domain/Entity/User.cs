@@ -8,6 +8,8 @@ namespace Ideky.Domain.Entity
     {
         public long Id { get; private set; }
         public long FacebookId { get; private set; }
+        public string Name { get; private set; }
+        public string Picture { get; private set; }
         public long Record { get; private set; }
         public int Lifes { get; private set; }
         public DateTime LastLogin { get; private set; }
@@ -16,23 +18,37 @@ namespace Ideky.Domain.Entity
 
         protected User() { Messages = new List<string>();  }
 
-        public User(long facebookId, long record, int lifes, DateTime lastLogin) {
+        public User(long facebookId, string name, string picture, long record, int lifes, DateTime lastLogin) {
             Id = 0;
             FacebookId = facebookId;
+            Name = name;
+            Picture = picture;
             Record = record;
             Lifes = lifes;
             LastLogin = lastLogin;
             Messages = new List<string>();
         }
 
-        public User(long facebookId)
+        public User(long facebookId, string name, string picture)
         {
             Id = 0;
             FacebookId = facebookId;
+            Name = name;
+            Picture = picture;
             Record = 0;
             Lifes = 1;
             LastLogin = DateTime.Now;
             Messages = new List<string>();
+        }
+
+        public void SetNewName(string name)
+        {
+            Name = name;
+        }
+
+        public void SetNewPicture(string picture)
+        {
+            Picture = picture;
         }
 
         public void SetNewLogin()
@@ -56,8 +72,16 @@ namespace Ideky.Domain.Entity
         }
 
         public bool Validate()
-        {
-            if(Lifes < 0)
+        {   
+            if(Name.Length == 0)
+            {
+                Messages.Add("Nome inválido.");
+            }
+            if(Picture.Length == 0)
+            {
+                Messages.Add("Imagem inválida.");
+            }
+            if (Lifes < 0)
             {
                 Messages.Add("Número de vidas inválido.");
             }
