@@ -8,7 +8,7 @@ No prompt de comando: gem install sass
 
 Após confirmar a instalação com: sass -v
 
-Abrir a pasta do arquivo e no rodar no prompt toda vez que começar a codar: sass --watch scss:.
+Abrir a pasta do arquivo e no rodar no prompt toda vez que começar a codar: sass --watch .:.
 
 Criar um arquivos "main.scss" e incluir as importações dos arquivos de scss de cada página com: @import "caminhoENomeDoArquivoSemAExtensão";
 

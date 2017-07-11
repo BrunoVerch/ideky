@@ -91,17 +91,17 @@ namespace Ideky.Infrastructure.Repository
         public User SetNewLogin(long facebookId)
         {
             User user = GetByFacebookId(facebookId);
-            if(user != null)
+            if(user == null)
             {
-                user.SetNewLogin();
-                if (user.Validate())
-                {
-                    context.Entry(user).State = EntityState.Modified;
-                    context.SaveChanges();
-                }
-                return user;
+                return null;
             }
-            return null;         
+            user.SetNewLogin();
+            if (user.Validate())
+            {
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+            return user;
         }
 
         public void Dispose()
