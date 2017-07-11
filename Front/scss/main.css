@@ -14,8 +14,7 @@
 body {
   box-sizing: border-box;
   margin: 0;
-  background-color: #363D4D;
-  height: 100vh; }
+  background-color: #363D4D; }
 
 .box-default {
   height: 912px;
@@ -63,7 +62,7 @@ body {
   height: 90px;
   width: 90px; }
 
-.login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home {
+.login .button-login, .home .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home {
   font-family: "HDV Comic Serif Pro";
   width: 70%;
   height: 16%;
@@ -74,11 +73,11 @@ body {
   border: none;
   color: #fff; }
 
-body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home {
+body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .center-box, .game .box-img-game, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home {
   display: flex;
   justify-content: center; }
 
-body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .button-home, .lifesadm .box-default, .lifesadm .button-lifesadm-confirmar, .loginadm .box-default, .loginadm .button-home, .menuadm .box-default, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking {
+body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .center-box, .game .box-img-game, .lifesadm .box-default, .lifesadm .button-lifesadm-confirmar, .loginadm .box-default, .loginadm .button-home, .menuadm .box-default, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking {
   display: flex;
   align-items: center; }
 
@@ -113,44 +112,6 @@ h1.font-primary {
   h1.font-primary small {
     color: #343434; }
 
-.box-game {
-  position: absolute;
-  top: 7%;
-  left: 350px;
-  height: 90%;
-  width: 692px;
-  padding: 28px 20px;
-  border-radius: 4px;
-  background-image: url("../images/bg.png");
-  background-size: 100% 100%;
-  background-position: center; }
-
-.box-game-info {
-  position: relative;
-  background-color: #E9E9E9;
-  height: 14%;
-  width: 98%;
-  right: 1%;
-  left: 1%;
-  top: 0;
-  border-radius: 8px; }
-
-.box-question-title {
-  margin-top: 6%; }
-  .box-question-title h1 {
-    text-align: center;
-    font-size: 290%;
-    letter-spacing: -2px;
-    text-shadow: 0px 0px 0px; }
-
-h1.font-game-title {
-  position: absolute;
-  top: -2%;
-  left: 505px;
-  font-size: 280%;
-  letter-spacing: -2px;
-  color: #EAEAEA; }
-
 .login .logo {
   width: 33%; }
 .login .box-default {
@@ -171,10 +132,45 @@ h1.font-game-title {
 .home .button-home {
   background-color: #e77235; }
 
-.game .logo {
-  width: 33%; }
-.game .button-home {
-  background-color: #e77235; }
+.game .box-game {
+  height: 91vh;
+  width: 692px;
+  padding: 28px 20px;
+  border-radius: 4px;
+  background-image: url("../images/bg.png");
+  background-size: 100% 100%;
+  background-position: center; }
+.game .box-game-info {
+  margin-left: 1%;
+  background-color: #E9E9E9;
+  height: 13vh;
+  width: 98%;
+  border-radius: 8px; }
+.game .box-question-title h1 {
+  text-align: center;
+  font-size: 40px;
+  letter-spacing: -2px; }
+.game h1.font-game-logo {
+  left: 170px;
+  font-size: 45px;
+  text-shadow: 0px 7px #242C35;
+  letter-spacing: -2px;
+  color: #EAEAEA;
+  margin-bottom: 0;
+  margin-top: 0; }
+.game .box-img-game {
+  height: 59vh;
+  max-width: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 2vh;
+  overflow-y: hidden; }
+.game .box-img-game .img-game {
+  width: 100px;
+  height: 100px;
+  box-shadow: 0px 6px 0px #BEBEBE;
+  border-radius: 5px;
+  margin: 5px; }
 
 .lifesadm .logo {
   width: 33%; }
