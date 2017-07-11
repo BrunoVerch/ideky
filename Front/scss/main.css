@@ -18,10 +18,14 @@ body {
   height: 100vh; }
 
 .box-default {
-  height: 912px;
-  width: 945px;
+  height: 91vh;
+  width: 692px;
   padding: 60px 20px; }
 
+@media screen and (min-width: 920px) {
+  .box-default {
+    height: 91vh;
+    width: 915px; } }
 .box-content {
   margin: 10px;
   padding: 20px;
@@ -74,7 +78,7 @@ body {
   border: none;
   color: #fff; }
 
-body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home {
+body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home {
   display: flex;
   justify-content: center; }
 
@@ -235,44 +239,34 @@ h1.font-primary {
 .ranking .logo {
   width: 33%; }
 .ranking .box-default {
-  flex-direction: column; }
+  flex-direction: column;
+  justify-content: space-between; }
 .ranking .button-home {
   width: 388px;
   height: 74px;
+  bottom: 0;
   background-color: #e77235; }
-.ranking .box-wrapper {
-  margin-top: 100px;
-  margin-bottom: 50px; }
 .ranking .box-content {
   height: 530px;
-  margin: 20px 20px 0 20px; }
+  margin: 20px 20px 0 20px;
+  padding-bottom: 0; }
   .ranking .box-content:before {
     padding-bottom: 0; }
   .ranking .box-content:after {
     transform: rotate(-2deg);
     padding-bottom: 0; }
+.ranking .box-wrapper {
+  margin: 20x; }
 .ranking .box-ranking {
   margin: 10px; }
 .ranking .box-gradiente {
-  content: "";
   z-index: 4;
+  height: 40px;
   position: absolute;
-  top: 90%;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #f7f7f7;
-  border-radius: 5px;
-  background: #f7f7f7;
-  /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.9));
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.9));
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.9));
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(rgba(247, 247, 247, 0.3), rgba(247, 247, 247, 0.9));
-  /* Standard syntax */ }
+  background: linear-gradient(transparent 20%, #f7f7f7 80%); }
 .ranking .mask-profile {
   object-fit: cover;
   border-radius: 50%;
@@ -296,7 +290,7 @@ h1.font-primary {
 .ranking .box-scroll {
   margin-top: 20px;
   overflow: auto;
-  max-height: 415px; }
+  max-height: 441px; }
 .ranking ::-webkit-scrollbar-track {
   background-color: #F4F4F4; }
 .ranking ::-webkit-scrollbar {
