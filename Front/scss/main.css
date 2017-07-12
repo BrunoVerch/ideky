@@ -78,12 +78,11 @@ body {
   border: none;
   color: #fff; }
 
-
-body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home {
+body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .center-box, .game .box-img-game, .game .loadingScreenOn, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home {
   display: flex;
   justify-content: center; }
 
-body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .button-home, .admin-page .box-default, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking {
+body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .center-box, .game .box-img-game, .game .loadingScreenOn, .admin-page .box-default, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking {
   display: flex;
   align-items: center; }
 
@@ -139,7 +138,7 @@ h1.font-primary {
   background-color: #e77235; }
 
 .game .box-game {
-  height: 91vh;
+  height: 90vh;
   padding: 28px 20px;
   border-radius: 4px;
   background-image: url("../images/bg.png");
@@ -230,7 +229,7 @@ h1.font-primary {
   .game .stage h1 {
     margin-top: 0px;
     text-align: center;
-    font-size: 40px; }
+    font-size: 32px; }
 .game .points {
   margin-bottom: 50px;
   width: 300px; }
@@ -244,7 +243,8 @@ h1.font-primary {
   .game .timer h1 {
     margin-top: 0px;
     text-align: center;
-    font-size: 40px; }
+    font-size: 32px;
+    font-weight: 700; }
 .game .progress-bar {
   width: 100%;
   height: 4px;
@@ -254,6 +254,15 @@ h1.font-primary {
   height: 100%;
   background-color: #41B86D;
   box-shadow: 0px 0px 15px 1px #41B86D; }
+.game .loadingScreenOn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9); }
+.game .lodingScreenOff {
+  display: none; }
 @media screen and (orientation: Portrait) {
   .game .box-game {
     width: 100vw; }

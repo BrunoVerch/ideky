@@ -1,8 +1,8 @@
 angular
     .module('app.core')
-    .factory('GameService', function ($rootScope, $http, $q, AppConstants) {
-        const urlGame = `${AppConstants.url}/api/game`;
-        const urlLevel = `${AppConstants.url}/api/level`;
+    .factory('GameService', function ($rootScope, $http, $q, AppConstants,$localStorage) {
+        const urlGame = `${AppConstants.url}/game`;
+        const urlLevel = `${AppConstants.url}/level`;
 
         return {
             getFriends: getFriends,
@@ -26,6 +26,7 @@ angular
             return $http({
             url: `${urlLevel}/get`,
             method: 'GET',
+            authorization: `Bearer ${$localStorage.authorizationData.token}`
           });
         }
     });
