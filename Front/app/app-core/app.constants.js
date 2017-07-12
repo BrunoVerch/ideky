@@ -1,6 +1,6 @@
 angular.module('app')
 		.constant('AppConstants', {
-            //url: 'http://ideky.azurewebsites.net'
+            //url: 'http://ideky.azurewebsites.net/api'
             url: 'http://localhost:60550'
 		});
 
