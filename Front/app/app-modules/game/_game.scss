@@ -21,8 +21,9 @@
     }
     .box-question-title{
         h1{
+            margin-left: 5%;
             text-align: center;
-            font-size: 40px;
+            font-size: 35px;
             letter-spacing: -2px;
         }
     }
@@ -41,7 +42,7 @@
         @extend %flexbox-center-vertical;
         @extend %flexbox-center-horizontal;
         flex-wrap: wrap;
-        flex-direction: row; //column
+        flex-direction: row;
         padding: 2vh;
         overflow-y: hidden;
     }
@@ -73,7 +74,7 @@
     }
     .game-button-right-answer:after {
         content: "Acertou  :)";
-        font-size: 25px;
+        font-size: 20px;
         position: absolute;
         top: 0;
         left: 0;
@@ -110,28 +111,28 @@
     .stage{
         width: 150px;
         display: inline-block;
-        border: 2px solid black;
         h1{
             margin-top: 0px;
             text-align: center;
+            font-size: 40px;
         }
     }
     .points{
         margin-bottom: 50px;
         width: 300px;
-        border: 2px solid black;
         h3{
             text-align: center;
             margin-top: 0px;
+            font-size: 25px;
         }
     }
     .timer{
         width: 150px;
         display: inline-block;
-        border: 2px solid black;
         h1{
             margin-top: 0px;
             text-align: center;
+            font-size: 40px;
         }
     }
     .progress-bar{
@@ -184,6 +185,22 @@
         }
     }
     @media screen and (min-height:1000px) and (orientation:landscape){
+        h1.font-game-logo{
+            font-size: 60px;
+            letter-spacing: 0px;
+        }
+        .box-question-title{
+            h1{
+                font-size: 55px;
+                letter-spacing: 0px;
+            }
+        }
+        .game-button-right-answer:after {
+            font-size: 36px;
+        }
+        .game-button-wrong-answer:after {
+            font-size: 45px;
+        }
         .box-game{
             width: 1000px;
         }
@@ -202,6 +219,24 @@
             &:active{
                 width: 155px;
                 height: 150px;
+            }
+        }
+        .stage{
+            width: 270px;
+            h1{
+                font-size: 60px;
+            }
+        }
+        .points{
+            width: 370px;
+            h3{
+                font-size: 45px;
+            }
+        }
+        .timer{
+            width: 270px;
+            h1{
+                font-size: 60px;
             }
         }
     }

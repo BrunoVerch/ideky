@@ -1,7 +1,7 @@
 angular
 	.module('app.core')
 	.controller('GameController', function ($rootScope, $scope, $window, $location, $q, GameService, toastr, $interval,$timeout) {
-		let users = [{id:1, nome:'Fulano Pereira', img:'http://www.jarisk.com/img/tux.png'},{id:2, nome:'Pedro',img:'http://www.jarisk.com/img/tux.png'},{id:3, nome:'Joaquim',img:'http://www.jarisk.com/img/tux.png'},{id:4, nome:'Julia',img:'http://www.jarisk.com/img/tux.png'},{id:5, nome:'Juliana',img:'http://www.jarisk.com/img/tux.png'},{id:6, nome:'Alexandra',img:'http://www.jarisk.com/img/tux.png'},{id:7, nome:'Mariana',img:'http://www.jarisk.com/img/tux.png'},{id:8, nome:'Pietra',img:'http://www.jarisk.com/img/tux.png'},{id:9, nome:'Arthur',img:'http://www.jarisk.com/img/tux.png'},{id:10, nome:'Felipe',img:'http://www.jarisk.com/img/tux.png'},{id:11, nome:'Gabriella',img:'http://www.jarisk.com/img/tux.png'},{id:12, nome:'Nathy',img:'http://www.jarisk.com/img/tux.png'},{id:13, nome:'Fernanda',img:'http://www.jarisk.com/img/tux.png'},{id:14, nome:'Poster',img:'http://www.jarisk.com/img/tux.png'},{id:15, nome:'Uma pessoa muito humana',img:'http://www.jarisk.com/img/tux.png'}];
+		let users = [{id:1, nome:'Fulano Pereira Pereira Pereira Pereira', img:'http://www.jarisk.com/img/tux.png'},{id:2, nome:'Pedro',img:'http://www.jarisk.com/img/tux.png'},{id:3, nome:'Joaquim',img:'http://www.jarisk.com/img/tux.png'},{id:4, nome:'Julia',img:'http://www.jarisk.com/img/tux.png'},{id:5, nome:'Juliana',img:'http://www.jarisk.com/img/tux.png'},{id:6, nome:'Alexandra',img:'http://www.jarisk.com/img/tux.png'},{id:7, nome:'Mariana',img:'http://www.jarisk.com/img/tux.png'},{id:8, nome:'Pietra',img:'http://www.jarisk.com/img/tux.png'},{id:9, nome:'Arthur',img:'http://www.jarisk.com/img/tux.png'},{id:10, nome:'Felipe',img:'http://www.jarisk.com/img/tux.png'},{id:11, nome:'Gabriella',img:'http://www.jarisk.com/img/tux.png'},{id:12, nome:'Nathy',img:'http://www.jarisk.com/img/tux.png'},{id:13, nome:'Fernanda',img:'http://www.jarisk.com/img/tux.png'},{id:14, nome:'Poster',img:'http://www.jarisk.com/img/tux.png'},{id:15, nome:'Uma pessoa muito humana',img:'http://www.jarisk.com/img/tux.png'}];
 		//init();
 		let levels = [{LevelNumber: 1, PictureAmount: 2, Duration: 10, Multiplier: 1},{LevelNumber: 2, PictureAmount: 4, Duration: 8, Multiplier: 2},{LevelNumber: 3, PictureAmount: 5, Duration: 6, Multiplier: 3},{LevelNumber: 4, PictureAmount: 6, Duration: 6, Multiplier: 4},{LevelNumber: 5, PictureAmount: 8, Duration: 6, Multiplier: 5},{LevelNumber: 6, PictureAmount: 10, Duration: 5, Multiplier: 6},{LevelNumber: 7, PictureAmount: 12, Duration: 5, Multiplier: 7},{LevelNumber: 8, PictureAmount: 12, Duration: 4, Multiplier: 8},{LevelNumber: 9, PictureAmount: 13, Duration: 4, Multiplier: 9},{LevelNumber: 10, PictureAmount: 15, Duration: 3, Multiplier: 10}];
 		let currentLevel = 0;
@@ -14,7 +14,7 @@ angular
 		let progressBarTimeOut;
 		updateProgressBarStages();
 		$scope.selectedUsers = [];
-		$scope.rightName = "Fulano Pereira";
+		$scope.rightName = "Fulano Pereira Pereira Pereira Pereira";
 		let wrongName = null;
 		let result = 'pendent';
 		let waitTime = 500;
