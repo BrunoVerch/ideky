@@ -16,6 +16,7 @@ namespace Ideky.Domain.Entity
         public string Picture { get; private set; }
         public long Record { get; private set; }
         public int Lifes { get; private set; }
+        public string LocalToken { get; private set; }
         public DateTime LastLogin { get; private set; }
 
         public List<string> Messages { get; private set; }
@@ -87,6 +88,11 @@ namespace Ideky.Domain.Entity
             Lifes = Lifes + lifes;
         }
 
+        public void UpdateToken(string token)
+        {
+            LocalToken = token;
+        }
+
         public bool Validate()
         {   
             if(Name.Length == 0)
@@ -104,6 +110,10 @@ namespace Ideky.Domain.Entity
             if (Record < 0)
             {
                 Messages.Add("Record inválido.");
+            }
+            if(LocalToken == null)
+            {
+                Messages.Add("Token nulo.");
             }
             return Messages.Count == 0;
         }
