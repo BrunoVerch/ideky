@@ -111,10 +111,6 @@ namespace Ideky.Domain.Entity
             {
                 Messages.Add("Record inválido.");
             }
-            if(LocalToken == null)
-            {
-                Messages.Add("Token nulo.");
-            }
             return Messages.Count == 0;
         }
     }

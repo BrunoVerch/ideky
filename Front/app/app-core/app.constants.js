@@ -7,7 +7,7 @@ angular.module('app')
 angular.module("app")
 		.constant('authConfig', {
 
-        userUrl: 'http://localhost:60550/api/administrative/get',
+        userUrl: 'http://localhost:60550/administrative/get',
 
         loginUrl: '/loginadm',
 
