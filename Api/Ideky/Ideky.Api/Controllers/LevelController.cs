@@ -2,10 +2,6 @@
 using Ideky.Api.Models;
 using Ideky.Domain.Entity;
 using Ideky.Infrastructure.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -22,7 +18,7 @@ namespace Ideky.Api.Controllers
             levelRepository = new LevelRepository();
         }
 
-        [HttpGet, BasicAuthorization, Route("config")]
+        [HttpGet, Route("get")]
         public HttpResponseMessage Get()
         {
             return ResponderOK(levelRepository.GetList());
@@ -39,10 +35,7 @@ namespace Ideky.Api.Controllers
             {
                 return ResponderOK(levelRepository.EditLevel(level));
             }
-            else
-            {
-                return ResponderErro(level.Messages);
-            }
+            return ResponderErro(level.Messages);
         }
     }
 }

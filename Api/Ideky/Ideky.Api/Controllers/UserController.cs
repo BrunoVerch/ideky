@@ -61,8 +61,10 @@ namespace Ideky.Api.Controllers
         public HttpResponseMessage SetNewRecord([FromBody]UserModel userModel)
         {
             User user = userRepository.SetNewRecord(userModel.Record, userModel.FacebookId);
-            if (user.Messages.Count == 0) return ResponderOK(user);
-            else return ResponderErro(user.Messages);
+            if (user.Messages.Count > 0) {
+                return ResponderErro(user.Messages);
+            }
+            return ResponderOK(user);
         }
 
         [HttpPost]
@@ -70,12 +72,11 @@ namespace Ideky.Api.Controllers
         public HttpResponseMessage SetNewLogin(UserModel userModel)
         {
             User user = userRepository.SetNewLogin(userModel.FacebookId);
-            if (user == null)
-                return ResponderErro("Usuário inexistente.");
-            else if (user.Messages.Count == 0)
-                return ResponderOK(user);
-            else
+            if (user.Messages.Count > 0)
+            {
                 return ResponderErro(user.Messages);
+            }
+            return ResponderOK(user);       
         }
 
 
