@@ -11,7 +11,7 @@ using Ideky.Api.App_Start;
 namespace Ideky.Api.Controllers
 {
     [AllowAnonymous]
-    [RoutePrefix("api/user")]
+    [RoutePrefix("user")]
     public class UserController : BasicController
     {
         readonly UserRepository userRepository;
@@ -27,11 +27,12 @@ namespace Ideky.Api.Controllers
         {
             try
             {
-                List<string> answer = userRepository.CreateNewUser(userModel.FacebookId, userModel.Name, userModel.Picture);
-                if (answer == null)
-                    return ResponderOK(null);
-                else
-                    return ResponderErro(answer);
+                var user = userRepository.Save(new User(userModel.FacebookId, userModel.Name, userModel.Picture));
+                //if (answer == null)
+                //    return ResponderOK(null);
+                //else
+                //    return ResponderErro(answer);
+                return ResponderOK(user);
             }
             catch (RuntimeBinderException)
             {

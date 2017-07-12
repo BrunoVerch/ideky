@@ -9,7 +9,7 @@ using System.Web.Http;
 namespace Ideky.Api.Controllers
 {
     [BasicAuthorization]
-    [RoutePrefix("api/administrative")]
+    [RoutePrefix("administrative")]
     public class AdministrativeController : BasicController
     {
         readonly AdministrativeRepository admRepository;
@@ -23,7 +23,7 @@ namespace Ideky.Api.Controllers
         [Route("register")]
         public HttpResponseMessage Post([FromBody]AdministrativeModel admModel)
         {
-            Administrative admin = admRepository.Register(admModel.Email, admModel.Password);
+            Administrative admin = admRepository.Register(new Administrative(admModel.Email, admModel.Password));
             if(admin == null)
                 return ResponderErro("Email já cadastrado");
             else if (admin.Messages.Count == 0)

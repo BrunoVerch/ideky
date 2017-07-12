@@ -1,13 +1,15 @@
 angular
     .module('app.core')
-    .factory('LoginService', function($http, AppConstants) {
-        const url = `${AppConstants.url}/api/auth`;
+    .factory('LoginService', function ($http, $q, AppConstants, $localStorage) {
+        const url = `${AppConstants.url}/auth`;
 
         return {
-            login: login
+            obtainAccessToken: _obtainAccessToken
         }
 
-        function login() {
-            return $http.get(`${url}/ExternalLogin?provider=Facebook`);
+        function _obtainAccessToken(externalData) {
+            const { externalAccessToken, provider } = externalData
+            const path = `${url}/ObtainLocalAccessToken?externalAccessToken=${externalAccessToken}&provider=${provider}`;
+            return $http.get(path, { async: false })
         }
     });

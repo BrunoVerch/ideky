@@ -12,5 +12,5 @@ angular.module('app')
 		'$logProvider',
 		function($logProvider) {
 			$logProvider.debugEnabled(true);
-		}		
+		}		 
 	])	

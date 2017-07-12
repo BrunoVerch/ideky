@@ -56,21 +56,6 @@ namespace Ideky.Api.App_Start
 
                         return;
                     }
-                    else
-                    {
-                        var currentRoles = Roles.Split(',');
-                        foreach (var currentRole in currentRoles)
-                        {
-                            if (genericUser.IsInRole(currentRole))
-                            {
-                                Thread.CurrentPrincipal = genericUser;
-                                if (HttpContext.Current != null)
-                                    HttpContext.Current.User = genericUser;
-
-                                return;
-                            }
-                        }
-                    }
                 }
             }
 

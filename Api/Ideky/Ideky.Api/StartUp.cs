@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 [assembly: OwinStartup(typeof(Ideky.Api.Startup))]
 namespace Ideky.Api
@@ -19,6 +20,13 @@ namespace Ideky.Api
 
         public void Configuration(IAppBuilder app)
         {
+            //use a cookie to temporarily store information about a user logging in with a third party login provider
+
+            app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
+
+            OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
+            app.UseOAuthBearerAuthentication(OAuthBearerOptions);
+
             //Configure Facebook External Login
             facebookAuthOptions = new FacebookAuthenticationOptions()
             {
@@ -27,10 +35,6 @@ namespace Ideky.Api
                 Provider = new FacebookAuthProvider()
             };
             app.UseFacebookAuthentication(facebookAuthOptions);
-
-            //use a cookie to temporarily store information about a user logging in with a third party login provider
-            app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
-            var OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
         }
     
     }

@@ -1,22 +1,4 @@
 .loginadm {
-    .logo {
-        width: 33%;
-    }
-
-    .box-default{ 
-        @extend %flexbox-center-horizontal;
-        flex-direction: column;
-        position: relative;
-    }
-
-    .box-content {
-        padding-top: 30px;
-        padding-bottom: 30px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
     .button-home {
         font-size: 18px;
         width: 100%;

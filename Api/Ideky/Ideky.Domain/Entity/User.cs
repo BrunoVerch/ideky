@@ -6,12 +6,17 @@ namespace Ideky.Domain.Entity
 {
     public class User : IBasicEntity
     {
+        private string user_id;
+        private string providerKey;
+        private string userName;
+
         public long Id { get; private set; }
         public long FacebookId { get; private set; }
         public string Name { get; private set; }
         public string Picture { get; private set; }
         public long Record { get; private set; }
         public int Lifes { get; private set; }
+        public string LocalToken { get; private set; }
         public DateTime LastLogin { get; private set; }
 
         public List<string> Messages { get; private set; }
@@ -39,6 +44,18 @@ namespace Ideky.Domain.Entity
             Lifes = 1;
             LastLogin = DateTime.Now;
             Messages = new List<string>();
+        }
+
+        public User(string user_id)
+        {
+            this.user_id = user_id;
+
+        }
+
+        public User(string providerKey, string userName)
+        {
+            this.providerKey = providerKey;
+            this.userName = userName;
         }
 
         public void SetNewName(string name)
@@ -71,15 +88,16 @@ namespace Ideky.Domain.Entity
             Lifes = Lifes + lifes;
         }
 
+        public void UpdateToken(string token)
+        {
+            LocalToken = token;
+        }
+
         public bool Validate()
         {   
             if(Name.Length == 0)
             {
                 Messages.Add("Nome inválido.");
-            }
-            if(Picture.Length == 0)
-            {
-                Messages.Add("Imagem inválida.");
             }
             if (Lifes < 0)
             {
@@ -92,6 +110,10 @@ namespace Ideky.Domain.Entity
             if (Record < 0)
             {
                 Messages.Add("Record inválido.");
+            }
+            if(LocalToken == null)
+            {
+                Messages.Add("Token nulo.");
             }
             return Messages.Count == 0;
         }

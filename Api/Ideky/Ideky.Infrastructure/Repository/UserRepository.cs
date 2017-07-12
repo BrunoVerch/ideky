@@ -56,16 +56,15 @@ namespace Ideky.Infrastructure.Repository
                                  .OrderBy(users => users.Record).ToList();
         }
 
-        public List<string> CreateNewUser(long facebookId, string name, string picture)
+        public User Save(User user)
         {
-            User user = new User(facebookId, name, picture);
             if (user.Validate())
             {
-                context.Users.Add(user);
+                user = context.Users.Add(user);
                 context.SaveChanges();
-                return null;          
             }
-            return user.Messages;
+
+            return user;
         }
 
         public User SetNewRecord(long record, long facebookId)
@@ -91,17 +90,17 @@ namespace Ideky.Infrastructure.Repository
         public User SetNewLogin(long facebookId)
         {
             User user = GetByFacebookId(facebookId);
-            if(user != null)
+            if(user == null)
             {
-                user.SetNewLogin();
-                if (user.Validate())
-                {
-                    context.Entry(user).State = EntityState.Modified;
-                    context.SaveChanges();
-                }
-                return user;
+                return null;
             }
-            return null;         
+            user.SetNewLogin();
+            if (user.Validate())
+            {
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+            return user;
         }
 
         public void Dispose()

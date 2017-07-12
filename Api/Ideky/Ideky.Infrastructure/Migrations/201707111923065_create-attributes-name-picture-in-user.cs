@@ -3,7 +3,7 @@ namespace Ideky.Infrastructure.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Createnameandpictureinuserentityandupdateothersmethods : DbMigration
+    public partial class createattributesnamepictureinuser : DbMigration
     {
         public override void Up()
         {

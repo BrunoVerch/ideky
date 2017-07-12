@@ -1,5 +1,7 @@
 ﻿using Ideky.Api.Folders;
 using Ideky.Api.Models;
+using Ideky.Domain.Entity;
+using Ideky.Infrastructure.Repository;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
@@ -15,13 +17,48 @@ using System.Web.Http;
 
 namespace Ideky.Api.Controllers
 {
-    [RoutePrefix("api/auth")]
+    [RoutePrefix("auth")]
     public class AuthController : ApiController
     {
 
         private IAuthenticationManager Authentication
         {
             get { return Request.GetOwinContext().Authentication; }
+        }
+
+        private UserRepository _repo = new UserRepository();
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ObtainLocalAccessToken")]
+        public async Task<IHttpActionResult> ObtainLocalAccessToken(string provider, string externalAccessToken)
+        {
+
+            if (string.IsNullOrWhiteSpace(provider) || string.IsNullOrWhiteSpace(externalAccessToken))
+            {
+                return BadRequest("Provider or external access token is not sent");
+            }
+
+            var verifiedAccessToken = await VerifyExternalAccessToken(provider, externalAccessToken);
+            if (verifiedAccessToken == null)
+            {
+                return BadRequest("Invalid Provider or External Access Token");
+            }
+
+            User user = _repo.GetByFacebookId((long)Convert.ToDouble(verifiedAccessToken.user_id));
+
+            bool hasRegistered = user != null;
+
+            if (!hasRegistered)
+            {
+                return BadRequest("External user is not registered");
+            }
+            
+            var accessTokenResponse = GenerateLocalAccessTokenResponse(user.Name);
+
+
+            return Ok(accessTokenResponse);
+
         }
 
         // GET api/Account/ExternalLogin
@@ -43,12 +80,12 @@ namespace Ideky.Api.Controllers
                 return new ChallengeResult(provider, this);
             }
 
-            //var redirectUriValidationResult = ValidateClientAndRedirectUri(this.Request, ref redirectUri);
+            var redirectUriValidationResult = ValidateClientAndRedirectUri(this.Request, ref redirectUri);
 
-            //if (!string.IsNullOrWhiteSpace(redirectUriValidationResult))
-            //{
-            //    return BadRequest(redirectUriValidationResult);
-            //}
+            if (!string.IsNullOrWhiteSpace(redirectUriValidationResult))
+            {
+                return BadRequest(redirectUriValidationResult);
+            }
 
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
 
@@ -65,11 +102,14 @@ namespace Ideky.Api.Controllers
 
             // TODO buscar se usuario existe no banco
 
-            //IdentityUser user = await _repo.FindAsync(new UserLoginInfo(externalLogin.LoginProvider, externalLogin.ProviderKey));
+            User user = _repo.GetByFacebookId((long)Convert.ToDouble(externalLogin.ProviderKey));
 
-            //bool hasRegistered = user != null;
+            if (user == null)
+            {
+                user = _repo.Save(new User((long)Convert.ToDouble(externalLogin.ProviderKey), externalLogin.UserName, null)); 
+            }
 
-            bool hasRegistered = false;
+            bool hasRegistered = user != null;
 
             redirectUri = string.Format("{0}#external_access_token={1}&provider={2}&haslocalaccount={3}&external_user_name={4}",
                                             redirectUri,
@@ -80,6 +120,51 @@ namespace Ideky.Api.Controllers
 
             return Redirect(redirectUri);
 
+        }
+
+        private string ValidateClientAndRedirectUri(HttpRequestMessage request, ref string redirectUriOutput)
+        {
+
+            Uri redirectUri;
+
+            var redirectUriString = GetQueryString(Request, "redirect_uri");
+
+            if (string.IsNullOrWhiteSpace(redirectUriString))
+            {
+                return "redirect_uri is required";
+            }
+
+            bool validUri = Uri.TryCreate(redirectUriString, UriKind.Absolute, out redirectUri);
+
+            if (!validUri)
+            {
+                return "redirect_uri is invalid";
+            }
+
+            var clientId = GetQueryString(Request, "client_id");
+
+            if (string.IsNullOrWhiteSpace(clientId))
+            {
+                return "client_Id is required";
+            }
+
+            redirectUriOutput = redirectUri.AbsoluteUri;
+
+            return string.Empty;
+
+        }
+
+        private string GetQueryString(HttpRequestMessage request, string key)
+        {
+            var queryStrings = request.GetQueryNameValuePairs();
+
+            if (queryStrings == null) return null;
+
+            var match = queryStrings.FirstOrDefault(keyValue => string.Compare(keyValue.Key, key, true) == 0);
+
+            if (string.IsNullOrEmpty(match.Value)) return null;
+
+            return match.Value;
         }
 
         private async Task<ParsedExternalAccessToken> VerifyExternalAccessToken(string provider, string accessToken)
@@ -93,7 +178,7 @@ namespace Ideky.Api.Controllers
                 //You can get it from here: https://developers.facebook.com/tools/accesstoken/
                 //More about debug_tokn here: http://stackoverflow.com/questions/16641083/how-does-one-get-the-app-access-token-for-debug-token-inspection-on-facebook
 
-                var appToken = "xxxxx";
+                var appToken = "1392336224214575|o6MYLk-VsuV5PnIf3GOZiPj_Q1E";
                 verifyTokenEndPoint = string.Format("https://graph.facebook.com/debug_token?input_token={0}&access_token={1}", accessToken, appToken);
             }
 
@@ -151,7 +236,7 @@ namespace Ideky.Api.Controllers
                                         new JProperty("expires_in", tokenExpiration.TotalSeconds.ToString()),
                                         new JProperty(".issued", ticket.Properties.IssuedUtc.ToString()),
                                         new JProperty(".expires", ticket.Properties.ExpiresUtc.ToString())
-        );
+            );
  
             return tokenResponse;
         }

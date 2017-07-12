@@ -126,8 +126,15 @@ angular
 						$location.path('/home');
 						return;
 					}
-
 					$scope.friends = shuffle(response.data);
+        
+					GameService.getLevels()
+					 	.then(levelResponse =>{
+					 		$scope.levels = levelResponse.data.data;							
+					 		$scope.friends = shuffle(response.data);
+					 		$scope.level = $scope.levels[levelNumber];
+							setDrawsFriends($scope.level.PictureAmount);
+					 	})
 				});
 		}
 
@@ -137,23 +144,40 @@ angular
 			
 			GameService.getFriends()
 				.then(response => deffered.resolve(response));
-				
+
 				return deffered.promise;
+		}
+
+		function nextLevel(){
+			$scope.friends = shuffle($scope.friends);
+			if(levelNumber<10){
+				levelNumber++;
+				$scope.level = $scope.levels[levelNumber];
+				getDrawsFriends($scope.level.PictureAmount);
+			}
+		}
+
+		function setDrawsFriends(pictureAmount){
+			for(let i=0; i<pictureAmount;i++){
+				let drawNumber = Math.floor(Math.random() * pictureAmount); 
+				$scope.drawFriends.push($scope.friends[i]);
+				console.log($scope.friends[i]);
+			}
+			let drawNumber = Math.floor(Math.random() * pictureAmount); 
+			$scope.rightFriend = $scope.drawFriends[drawNumber];
 		}
 
 		function shuffle(array) {
 			var currentIndex = array.length, temporaryValue, randomIndex;
-
 			while (0 !== currentIndex) {
-
 				randomIndex = Math.floor(Math.random() * currentIndex);
 				currentIndex -= 1;
-
-				temporaryValue = array[currentIndex];
-				array[currentIndex] = array[randomIndex];
-				array[randomIndex] = temporaryValue;
+				if(array[currentIndex].picture.data.is_silhouette === false){
+					temporaryValue = array[currentIndex];
+					array[currentIndex] = array[randomIndex];
+					array[randomIndex] = temporaryValue;
+				}		
 			}
-
 			return array;
 		}
 		function updateProgressBarStages(){
@@ -169,6 +193,9 @@ angular
 			if(countTime>0){
 				countTime = countTime - percentageTime;
 				progressBarTimeOut = $timeout(updateProgressBarTimer,100);
-			}
+		  }
+    }
+		function getLevels(){
+			
 		}
 	});
