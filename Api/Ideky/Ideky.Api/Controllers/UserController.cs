@@ -10,7 +10,6 @@ using Ideky.Api.App_Start;
 
 namespace Ideky.Api.Controllers
 {
-    [AllowAnonymous]
     [RoutePrefix("user")]
     public class UserController : BasicController
     {
@@ -21,18 +20,23 @@ namespace Ideky.Api.Controllers
             userRepository = new UserRepository();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         [Route("register")]
         public HttpResponseMessage Post([FromBody]UserModel userModel)
         {
             try
             {
-                var user = userRepository.Save(new User(userModel.FacebookId, userModel.Name, userModel.Picture));
-                //if (answer == null)
-                //    return ResponderOK(null);
-                //else
-                //    return ResponderErro(answer);
-                return ResponderOK(user);
+                var user = new User(userModel.FacebookId, userModel.Name, userModel.Picture);
+
+                if(user.Validate())
+                {
+                    user = userRepository.Save(user);
+                    return ResponderOK(user);
+                }
+                else
+                {
+                    return ResponderErro(user.Messages);
+                }
             }
             catch (RuntimeBinderException)
             {
@@ -44,7 +48,7 @@ namespace Ideky.Api.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         [Route("getByFacebookId/{facebookId:long}")]
         public HttpResponseMessage GetByFacebookId(long facebookId)
         {
@@ -56,7 +60,7 @@ namespace Ideky.Api.Controllers
             return ResponderOK(user);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         [Route("setNewRecord")]
         public HttpResponseMessage SetNewRecord([FromBody]UserModel userModel)
         {
@@ -65,7 +69,7 @@ namespace Ideky.Api.Controllers
             else return ResponderErro(user.Messages);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         [Route("setNewLogin")]
         public HttpResponseMessage SetNewLogin(UserModel userModel)
         {
@@ -78,6 +82,17 @@ namespace Ideky.Api.Controllers
                 return ResponderErro(user.Messages);
         }
 
+        [HttpPut, Authorize]
+        [Route("updatePicture")]
+        public HttpResponseMessage UpdatePicture(UserModel userModel)
+        {
+            User user = new User(userModel.FacebookId, userModel.Name, userModel.Picture);
+
+            if (user.Validate())
+                return ResponderOK(userRepository.Update(user));
+            else
+                return ResponderErro(user.Messages);
+        }
 
         [HttpPut, BasicAuthorization]
         [Route("lifes")]

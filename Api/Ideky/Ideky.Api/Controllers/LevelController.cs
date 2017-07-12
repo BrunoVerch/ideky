@@ -7,7 +7,6 @@ using System.Web.Http;
 
 namespace Ideky.Api.Controllers
 {
-    [AllowAnonymous]
     [RoutePrefix("level")]
     public class LevelController : BasicController
     {
