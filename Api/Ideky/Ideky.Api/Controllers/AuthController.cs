@@ -54,8 +54,8 @@ namespace Ideky.Api.Controllers
                 return BadRequest("External user is not registered");
             }
             
-           // generate access token response
             var accessTokenResponse = GenerateLocalAccessTokenResponse(user.Name);
+
 
             return Ok(accessTokenResponse);
 
@@ -106,11 +106,10 @@ namespace Ideky.Api.Controllers
 
             if (user == null)
             {
-             user = _repo.CreateNewUser((long)Convert.ToDouble(externalLogin.ProviderKey), externalLogin.UserName, "Trocar"); 
+                user = _repo.Save(new User((long)Convert.ToDouble(externalLogin.ProviderKey), externalLogin.UserName, null)); 
             }
 
             bool hasRegistered = user != null;
-            //bool hasRegistered =false;
 
             redirectUri = string.Format("{0}#external_access_token={1}&provider={2}&haslocalaccount={3}&external_user_name={4}",
                                             redirectUri,
