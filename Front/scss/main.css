@@ -67,7 +67,7 @@ body {
   height: 90px;
   width: 90px; }
 
-.login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home {
+.login .button-login, .home .button-home, .game .button-home, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home {
   font-family: "HDV Comic Serif Pro";
   width: 70%;
   height: 16%;
@@ -78,11 +78,11 @@ body {
   border: none;
   color: #fff; }
 
-body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home {
+body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .button-home, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home {
   display: flex;
   justify-content: center; }
 
-body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .button-home, .admin-page .box-default, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking {
+body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .button-home, .admin-page .box-default, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking {
   display: flex;
   align-items: center; }
 
@@ -148,9 +148,44 @@ h1.font-primary {
   flex-direction: column;
   position: relative; }
 .admin-page .box-content {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 40px;
   margin: 30px 10px 10px; }
+
+.levelsadm .button-levelsadm-confirmar {
+  font-size: 18px;
+  width: 100%;
+  background-color: #bbd568;
+  border-radius: 3px;
+  padding: 15px;
+  margin-top: 15px; }
+.levelsadm .box-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%; }
+  .levelsadm .box-inputs .inputs {
+    width: 47%; }
+.levelsadm .levelsadm-input {
+  background-color: #f0f0f0;
+  border: 1px solid #c6c6c6;
+  border-radius: 3px;
+  padding: 15px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+.levelsadm .levelsadm-input::placeholder {
+  color: #c6c6c6;
+  font-size: 22px; }
+.levelsadm .levelsadm-titulo {
+  font-size: 36px;
+  color: #4584c1;
+  text-align: center;
+  margin-bottom: 38px;
+  line-height: 36px; }
+.levelsadm select.levelsadm-input.font-secundary.uppercase {
+  color: #c6c6c6;
+  font-size: 22px;
+  padding: 8px; }
 
 .lifesadm .button-lifesadm-confirmar {
   font-size: 18px;

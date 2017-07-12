@@ -7,32 +7,35 @@
           <div class="levelsadm-titulo font-primary uppercase">
               Editar níveis
           </div>  
-          <div>  
-            <label for="LevelNumber" hidden>
-              Níveis
-            </label>
-            <select class="levelsadm-input font-secundary uppercase" type="text" name="LevelNumber" ng-model="level.LevelNumber" placeholder="Nível">
-              <option value=""></option>
-              (option[value="$"]{xx$})*10
-            </select>
+          <div class="box-inputs">
+            <div class="inputs">  
+              <label for="LevelNumber" hidden>
+                Níveis
+              </label>
+              <select class="levelsadm-input font-secundary uppercase" type="text" name="LevelNumber" ng-options="level.Id as level.LevelNumber for level in levels" ng-model="level.LevelNumber">
+                <option value="" disabled selected>Nível</option>
+              </select>
+            </div>
+            <div class="inputs">
+              <label for="PictureAmount" hidden>
+                Fotos 
+              </label>
+              <input class="font-secundary levelsadm-input uppercase" type="number" name="PictureAmount" ng-model="level.PictureAmount" placeholder="Fotos">
+            </div>  
           </div>
-          <div>
-            <label for="PictureAmount" hidden>
-              Fotos 
-            </label>
-            <input class="font-secundary levelsadm-input uppercase" type="number" name="PictureAmount" ng-model="level.PictureAmount" placeholder="Fotos">
-          </div>  
-          <div>
-            <label for="Duration" hidden>
-              Tempo 
-            </label>
-            <input class="font-secundary levelsadm-input uppercase" type="number" name="Duration" ng-model="level.Duration" placeholder="Tempo">
-          </div>  
-          <div>
-            <label for="Multiplier" hidden>
-              Multiplicador 
-            </label>
-            <input class="font-secundary levelsadm-input uppercase" type="number" name="Duration" ng-model="level.Multiplier" placeholder="Multiplicador">
+          <div class="box-inputs">
+            <div class="inputs">
+              <label for="Duration" hidden>
+                Tempo 
+              </label>
+              <input class="font-secundary levelsadm-input uppercase" type="number" name="Duration" ng-model="level.Duration" placeholder="Tempo">
+            </div>  
+            <div class="inputs">
+              <label for="Multiplier" hidden>
+                Multiplicador 
+              </label>
+              <input class="font-secundary levelsadm-input uppercase" type="number" name="Multiplier" ng-model="level.Multiplier" placeholder="Multiplicador">
+            </div>  
           </div>  
           <button type="button" class="button-levelsadm-confirmar font-primary">        
             <span class="text uppercase" ng-click="editLevel(level)">confirmar</span>          

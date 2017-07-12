@@ -1,36 +1,53 @@
-// .levelsadm {
-//     .button-levelsadm-confirmar {
-//         font-size: 18px;
-//         width: 100%;
-//         background-color: $button-color-menuadm-confirmar;
-//         @extend %button-design-primary; 
-//         @extend %flexbox-center-vertical;
-//         @extend %flexbox-center-horizontal;                
-//         border-radius: 3px;
-//         padding: 15px;
-//         margin-top: 15px;
-//     }  
+.levelsadm {
+    .button-levelsadm-confirmar {
+        font-size: 18px;
+        width: 100%;
+        background-color: $button-color-menuadm-confirmar;
+        @extend %button-design-primary; 
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;                
+        border-radius: 3px;
+        padding: 15px;
+        margin-top: 15px;
+    }  
+    
+    .box-inputs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        .inputs {
+            width: 47%;          
+        }
+    }
 
-//     .levelsadm-input {
-//         background-color: #f0f0f0;
-//         border: 1px solid $border-color-input-loginadm;
-//         border-radius: 3px;
-//         padding:  15px;
-//         width: 100%;
-//         margin-top: 10px;
-//         margin-bottom: 10px;
-//     }
 
-//     .levelsadm-input::placeholder {
-//         color: #c6c6c6;
-//         font-size: 22px;
-//     }
+    .levelsadm-input {
+        background-color: #f0f0f0;
+        border: 1px solid $border-color-input-loginadm;
+        border-radius: 3px;
+        padding:  15px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 
-//     .levelsadm-titulo {
-//         font-size: 36px;
-//         color: $text-color-loginadm;
-//         text-align: center;
-//         margin-bottom: 38px;
-//         line-height: 36px;
-//     }
-// }
+    .levelsadm-input::placeholder {
+        color: #c6c6c6;
+        font-size: 22px;
+    }
+
+    .levelsadm-titulo {
+        font-size: 36px;
+        color: $text-color-loginadm;
+        text-align: center;
+        margin-bottom: 38px;
+        line-height: 36px;
+    }
+    
+    select.levelsadm-input.font-secundary.uppercase{
+        color: #c6c6c6;
+        font-size: 22px; 
+        padding: 8px;
+    }
+}
