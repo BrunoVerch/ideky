@@ -56,15 +56,14 @@ namespace Ideky.Infrastructure.Repository
                                  .OrderBy(users => users.Record).ToList();
         }
 
-        public User CreateNewUser(long facebookId, string name, string picture)
+        public User Save(User user)
         {
-            User user = new User(facebookId, name, picture);
             if (user.Validate())
             {
-                context.Users.Add(user);
+                user = context.Users.Add(user);
                 context.SaveChanges();
-                return null;          
             }
+
             return user;
         }
 
