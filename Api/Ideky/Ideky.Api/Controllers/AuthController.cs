@@ -109,7 +109,7 @@ namespace Ideky.Api.Controllers
 
             if (user == null)
             {
-                user = _repo.Save(new User((long)Convert.ToDouble(externalLogin.ProviderKey), externalLogin.UserName, null)); 
+                user = _repo.Save(new User((long)Convert.ToDouble(externalLogin.ProviderKey), externalLogin.UserName, "Trocar")); 
             }
 
             bool hasRegistered = user != null;

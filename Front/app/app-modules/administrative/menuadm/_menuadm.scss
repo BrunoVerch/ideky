@@ -1,22 +1,4 @@
 .menuadm {
-    .logo {
-        width: 33%;
-    }
-
-    .box-default{ 
-        @extend %flexbox-center-horizontal;
-        flex-direction: column;
-        position: relative;
-    }
-
-    .box-content {
-        padding-top: 90px;
-        padding-bottom: 90px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
     .button-menuadm {
         background-color: $button-color-menuadm;
         color: $text-color-menuadm;
