@@ -2,7 +2,7 @@ angular
 	.module('app.core')
 	.controller('LoginController', function ($scope, $localStorage, $location, LoginService, AppConstants) {
 		
-		let oauthWindow
+		let oauthWindow;
 
 		$scope.login = () => {
 			var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';
