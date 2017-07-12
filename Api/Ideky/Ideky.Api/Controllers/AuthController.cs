@@ -26,6 +26,8 @@ namespace Ideky.Api.Controllers
             get { return Request.GetOwinContext().Authentication; }
         }
 
+        private UserRepository _repo = new UserRepository();
+
         [AllowAnonymous]
         [HttpGet]
         [Route("ObtainLocalAccessToken")]
@@ -43,20 +45,17 @@ namespace Ideky.Api.Controllers
                 return BadRequest("Invalid Provider or External Access Token");
             }
 
-            //var _repo = new UserRepository();
+            User user = _repo.GetByFacebookId((long)Convert.ToDouble(verifiedAccessToken.user_id));
 
-            //User user = _repo.GetByFacebookId((long) Convert.ToDouble(verifiedAccessToken.user_id));
+            bool hasRegistered = user != null;
 
-            //bool hasRegistered = user != null;
-
-            //if (!hasRegistered)
-            //{
-            //    return BadRequest("External user is not registered");
-            //}
-
-            //generate access token response
-            //var accessTokenResponse = GenerateLocalAccessTokenResponse(user.UserName);
-            var accessTokenResponse = GenerateLocalAccessTokenResponse("Bruno Verch");
+            if (!hasRegistered)
+            {
+                return BadRequest("External user is not registered");
+            }
+            
+           // generate access token response
+            var accessTokenResponse = GenerateLocalAccessTokenResponse(user.Name);
 
             return Ok(accessTokenResponse);
 
@@ -103,11 +102,15 @@ namespace Ideky.Api.Controllers
 
             // TODO buscar se usuario existe no banco
 
-            //IdentityUser user = await _repo.FindAsync(new UserLoginInfo(externalLogin.LoginProvider, externalLogin.ProviderKey));
+            User user = _repo.GetByFacebookId((long)Convert.ToDouble(externalLogin.ProviderKey));
 
-            //bool hasRegistered = user != null;
+            if (user == null)
+            {
+             user = _repo.CreateNewUser((long)Convert.ToDouble(externalLogin.ProviderKey), externalLogin.UserName, "Trocar"); 
+            }
 
-            bool hasRegistered = false;
+            bool hasRegistered = user != null;
+            //bool hasRegistered =false;
 
             redirectUri = string.Format("{0}#external_access_token={1}&provider={2}&haslocalaccount={3}&external_user_name={4}",
                                             redirectUri,

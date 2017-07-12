@@ -27,11 +27,12 @@ namespace Ideky.Api.Controllers
         {
             try
             {
-                List<string> answer = userRepository.CreateNewUser(userModel.FacebookId);
-                if (answer == null)
-                    return ResponderOK(null);
-                else
-                    return ResponderErro(answer);
+                var user = userRepository.CreateNewUser(userModel.FacebookId, userModel.Name, userModel.Picture);
+                //if (answer == null)
+                //    return ResponderOK(null);
+                //else
+                //    return ResponderErro(answer);
+                return ResponderOK(user);
             }
             catch (RuntimeBinderException)
             {
