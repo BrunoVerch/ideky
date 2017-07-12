@@ -3,13 +3,26 @@
   <div class="center-box">
     <div class="box-game">
         <div class="box-game-info">
+            <div class="level-info">
+                <div class="stage">
+                    <h1>{{currentStage}}/5</h1>    
+                    <div class="progress-bar"><div class="progress" ng-style="stagePercentage"></div></div>    
+                </div>
+                <div class="points">
+                    <h3 class="uppercase">Nível {{level.LevelNumber}}<br/>Pontos: {{score}}<h3>    
+                </div>
+                <div class="timer">
+                    <h1>{{timer}}</h1>    
+                    <div class="progress-bar"><div class="progress" ng-style="timerPercentage"></div></div>    
+                </div>
+            </div> 
         </div>  
         <div class="box-question-title">
-            <h1 class="font-primary uppercase"><smaller>Quem é</smaller> {{rigthName}}?</h1>
+            <h1 class="font-primary uppercase"><smaller>Quem é</smaller> {{rightName}}?</h1>
         </div>     
         <div class="box-img-game">
             <button ng-repeat="user in selectedUsers" ng-click="answer(user.nome)" class="game-button font-primary" ng-class="changeClass('{{user.nome}}')" style="background-image: url({{user.img}});"></button>
-        </div>    
+        </div>       
     </div>
   </div>
 </section>
