@@ -21,7 +21,7 @@ namespace Ideky.Infrastructure.Repository
                 .Where(gameResult => gameResult.Active == true)
                 .Select(gameResult => new
                 {
-                    UserId = gameResult.User.FacebookId,
+                    FacebookId = gameResult.User.FacebookId,
                     Score = gameResult.Score,
                     GameDate = gameResult.GameDate,
                 }).ToList();
@@ -39,10 +39,13 @@ namespace Ideky.Infrastructure.Repository
                 .GroupBy(gameResult => gameResult.User)
                 .Select(gameResultGrouped => new
                 {
-                    UserId = gameResultGrouped.Key.FacebookId,
+                    FacebookId = gameResultGrouped.Key.FacebookId,
                     Score = gameResultGrouped.Max(gameResult => gameResult.Score),
+                    Name = gameResultGrouped.Key.Name,
+                    Picture = gameResultGrouped.Key.Picture
                 })
                 .OrderByDescending(gameResult => gameResult.Score)
+                .Take(20)
                 .ToList();
         }
 
@@ -56,10 +59,13 @@ namespace Ideky.Infrastructure.Repository
                 .GroupBy(gameResult => gameResult.User)
                 .Select(gameResultGrouped => new
                 {
-                    UserId = gameResultGrouped.Key.FacebookId,
+                    FacebookId = gameResultGrouped.Key.FacebookId,
                     Score = gameResultGrouped.Max(gameResult => gameResult.Score),
+                    Name = gameResultGrouped.Key.Name,
+                    Picture = gameResultGrouped.Key.Picture
                 })
                 .OrderByDescending(gameResult => gameResult.Score)
+                .Take(20)
                 .ToList();
         }
 
@@ -72,10 +78,13 @@ namespace Ideky.Infrastructure.Repository
                 .GroupBy(gameResult => gameResult.User)
                 .Select(gameResultGrouped => new
                 {
-                    UserId = gameResultGrouped.Key.FacebookId,
+                    FacebookId = gameResultGrouped.Key.FacebookId,
                     Score = gameResultGrouped.Max(gameResult => gameResult.Score),
+                    Name = gameResultGrouped.Key.Name,
+                    Picture = gameResultGrouped.Key.Picture
                 })
                 .OrderByDescending(gameResult => gameResult.Score)
+                .Take(20)
                 .ToList();
         }
 
@@ -88,7 +97,7 @@ namespace Ideky.Infrastructure.Repository
                     Id = gameResult.Id,
                     GameDate = gameResult.GameDate,
                     Score = gameResult.Score,
-                    UserId = gameResult.User.FacebookId
+                    FacebookId = gameResult.User.FacebookId
                 })
                 .FirstOrDefault(gameResult => gameResult.Id == id);
         }
@@ -107,7 +116,7 @@ namespace Ideky.Infrastructure.Repository
                 Id = gameResult.Id,
                 GameDate = gameResult.GameDate,
                 Score = gameResult.Score,
-                UserId = gameResult.User.FacebookId
+                FacebookId = gameResult.User.FacebookId
             })
             .Where(gameResult => gameResult.UserId == userFacebookId)
             .GroupBy(gameResult => gameResult.UserId).ToList();

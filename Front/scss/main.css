@@ -20,7 +20,7 @@ body {
 .box-default {
   height: 91vh;
   width: 692px;
-  padding: 60px 20px; }
+  padding: 3% 20px; }
 
 @media screen and (min-width: 920px) {
   .box-default {
@@ -82,7 +82,7 @@ body, .box-content .box-content-wrapper, .login .button-login, .home .button-hom
   display: flex;
   justify-content: center; }
 
-body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .button-home, .lifesadm .box-default, .lifesadm .button-lifesadm-confirmar, .loginadm .box-default, .loginadm .button-home, .menuadm .box-default, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking {
+body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .button-home, .admin-page .box-default, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking {
   display: flex;
   align-items: center; }
 
@@ -142,17 +142,16 @@ h1.font-primary {
 .game .button-home {
   background-color: #e77235; }
 
-.lifesadm .logo {
+.admin-page .logo {
   width: 33%; }
-.lifesadm .box-default {
+.admin-page .box-default {
   flex-direction: column;
   position: relative; }
-.lifesadm .box-content {
+.admin-page .box-content {
   padding-top: 30px;
   padding-bottom: 30px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%); }
+  margin: 30px 10px 10px; }
+
 .lifesadm .button-lifesadm-confirmar {
   font-size: 18px;
   width: 100%;
@@ -178,17 +177,6 @@ h1.font-primary {
   margin-bottom: 38px;
   line-height: 36px; }
 
-.loginadm .logo {
-  width: 33%; }
-.loginadm .box-default {
-  flex-direction: column;
-  position: relative; }
-.loginadm .box-content {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%); }
 .loginadm .button-home {
   font-size: 18px;
   width: 100%;
@@ -214,17 +202,6 @@ h1.font-primary {
   margin-bottom: 38px;
   line-height: 36px; }
 
-.menuadm .logo {
-  width: 33%; }
-.menuadm .box-default {
-  flex-direction: column;
-  position: relative; }
-.menuadm .box-content {
-  padding-top: 90px;
-  padding-bottom: 90px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%); }
 .menuadm .button-menuadm {
   background-color: #D5D5D5;
   color: #767676;
@@ -247,7 +224,7 @@ h1.font-primary {
   bottom: 0;
   background-color: #e77235; }
 .ranking .box-content {
-  height: 530px;
+  height: 40vh;
   margin: 20px 20px 0 20px;
   padding-bottom: 0; }
   .ranking .box-content:before {
@@ -255,10 +232,27 @@ h1.font-primary {
   .ranking .box-content:after {
     transform: rotate(-2deg);
     padding-bottom: 0; }
+.ranking span {
+  font-size: 25px; }
 .ranking .box-wrapper {
   margin: 20x; }
 .ranking .box-ranking {
   margin: 10px; }
+  .ranking .box-ranking:nth-of-type(1) span {
+    color: gold; }
+  .ranking .box-ranking:nth-of-type(2) span {
+    color: silver; }
+  .ranking .box-ranking:nth-of-type(3) span {
+    color: brown; }
+  .ranking .box-ranking h2.font-primary.uppercase {
+    max-width: 85px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+.ranking .box-scroll {
+  margin-top: 20px;
+  overflow: auto;
+  height: calc(40vh - 90px); }
 .ranking .box-gradiente {
   z-index: 4;
   height: 40px;
@@ -283,14 +277,8 @@ h1.font-primary {
 .ranking h1, .ranking h2, .ranking h3 {
   margin-top: 5px;
   margin-bottom: 5px; }
-.ranking span {
-  font-size: 25px; }
 .ranking .inline-block {
   display: inline-block; }
-.ranking .box-scroll {
-  margin-top: 20px;
-  overflow: auto;
-  max-height: 441px; }
 .ranking ::-webkit-scrollbar-track {
   background-color: #F4F4F4; }
 .ranking ::-webkit-scrollbar {
