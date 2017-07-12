@@ -5,21 +5,21 @@
       <div class="box-content-wrapper">
         <form>
           <div class="lifesadm-titulo font-primary uppercase">
-              Dar vidas para <br> um jogador
+              <h1>Dar vidas para <br> um jogador</h1>
           </div>  
           <div>  
-            <label for="idUser" hidden>
+            <label for="FacebookId" hidden>
               Usuário
             </label>
-            <input class="lifesadm-input font-secundary uppercase" type="text" name="idUser" placeholder="ID Facebook">
+            <input class="lifesadm-input font-secundary uppercase" type="text" name="FacebookId"  ng-model="user.FacebookId" placeholder="ID Facebook">
           </div>
           <div>
             <label for="numberOfLifes" hidden>
               Senha 
             </label>
-            <input class="font-secundary lifesadm-input uppercase" type="number" name="numberOfLifes" placeholder="Número de vidas">
+            <input class="font-secundary lifesadm-input uppercase" type="number" name="numberOfLifes" ng-model="user.Lifes" placeholder="Número de vidas">
           </div>  
-          <button type="button" class="button-lifesadm-confirmar font-primary">        
+          <button type="button" class="button-lifesadm-confirmar font-primary" ng-click="addLifes(user)">        
             <span class="text uppercase">confirmar</span>          
           </button> 
         </form>

@@ -10,17 +10,16 @@
         padding: 15px;
         margin-top: 15px;
     }  
-    
+
     .box-inputs {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        width: 100%;
+        width: 300px;
         .inputs {
             width: 47%;          
         }
     }
-
 
     .levelsadm-input {
         background-color: #f0f0f0;
@@ -28,24 +27,22 @@
         border-radius: 3px;
         padding:  15px;
         width: 100%;
-        margin-top: 10px;
+        margin-top: 0;
         margin-bottom: 10px;
     }
 
-    .levelsadm-input::placeholder {
+    .levelsadm-label {
         color: #c6c6c6;
-        font-size: 22px;
+        font-size: 18px;
     }
 
     .levelsadm-titulo {
         font-size: 36px;
         color: $text-color-loginadm;
         text-align: center;
-        margin-bottom: 38px;
-        line-height: 36px;
     }
     
-    select.levelsadm-input.font-secundary.uppercase{
+    select.font-secundary.levelsadm-input.uppercase{
         color: #c6c6c6;
         font-size: 22px; 
         padding: 8px;

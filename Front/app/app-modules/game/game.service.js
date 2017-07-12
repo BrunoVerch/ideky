@@ -1,8 +1,8 @@
 angular
     .module('app.core')
     .factory('GameService', function ($rootScope, $http, $q, AppConstants) {
-        const urlGame = `${AppConstants.url}/api/game`;
-        const urlLevel = `${AppConstants.url}/api/level`;
+        const urlGame = `${AppConstants.url}/game`;
+        const urlLevel = `${AppConstants.url}/level`;
 
         return {
             getFriends: getFriends,

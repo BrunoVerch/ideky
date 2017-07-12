@@ -5,7 +5,13 @@ angular
 		// FacebookId e número de vidas
 		$scope.addLifes = userLifes => {
 			AdministrativeService.addLifes(userLifes)
-				.then(response)
-				.catch(error => console.log(error))
+				.then(response => {
+					$scope.user = {};
+					toastr.success(`Você acabou de doar ${userLifes} vidas!`);
+				})
+				.catch(error => {
+					toastr.error('Houve um problema ao dar vidas para esse usuário, tente mais tarde!');
+					console.log(error);
+				})
 		}
 });
