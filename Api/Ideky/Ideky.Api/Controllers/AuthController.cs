@@ -56,6 +56,9 @@ namespace Ideky.Api.Controllers
             
             var accessTokenResponse = GenerateLocalAccessTokenResponse(user.Name);
 
+            user.UpdateToken(accessTokenResponse.First.Next.First.ToString());
+
+            _repo.Update(user);
 
             return Ok(accessTokenResponse);
 
