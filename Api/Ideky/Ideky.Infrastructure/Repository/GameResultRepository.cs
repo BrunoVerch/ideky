@@ -118,8 +118,8 @@ namespace Ideky.Infrastructure.Repository
                 Score = gameResult.Score,
                 FacebookId = gameResult.User.FacebookId
             })
-            .Where(gameResult => gameResult.UserId == userFacebookId)
-            .GroupBy(gameResult => gameResult.UserId).ToList();
+            .Where(gameResult => gameResult.FacebookId == userFacebookId)
+            .GroupBy(gameResult => gameResult.FacebookId).ToList();
         }
 
         public GameResult RegisterNewGame(long facebookId, int score)
