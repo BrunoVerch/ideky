@@ -8,19 +8,34 @@
               Editar níveis
           </div>  
           <div>  
-            <label for="Level" hidden>
-              Usuário
+            <label for="LevelNumber" hidden>
+              Níveis
             </label>
-            <input class="levelsadm-input font-secundary uppercase" type="text" name="Level" placeholder="ID Facebook">
+            <select class="levelsadm-input font-secundary uppercase" type="text" name="LevelNumber" ng-model="level.LevelNumber" placeholder="Nível">
+              <option value=""></option>
+              (option[value="$"]{xx$})*10
+            </select>
           </div>
           <div>
-            <label for="numberOfLifes" hidden>
-              Senha 
+            <label for="PictureAmount" hidden>
+              Fotos 
             </label>
-            <input class="font-secundary levelsadm-input uppercase" type="number" name="numberOfLifes" placeholder="Número de vidas">
+            <input class="font-secundary levelsadm-input uppercase" type="number" name="PictureAmount" ng-model="level.PictureAmount" placeholder="Fotos">
+          </div>  
+          <div>
+            <label for="Duration" hidden>
+              Tempo 
+            </label>
+            <input class="font-secundary levelsadm-input uppercase" type="number" name="Duration" ng-model="level.Duration" placeholder="Tempo">
+          </div>  
+          <div>
+            <label for="Multiplier" hidden>
+              Multiplicador 
+            </label>
+            <input class="font-secundary levelsadm-input uppercase" type="number" name="Duration" ng-model="level.Multiplier" placeholder="Multiplicador">
           </div>  
           <button type="button" class="button-levelsadm-confirmar font-primary">        
-            <span class="text uppercase">confirmar</span>          
+            <span class="text uppercase" ng-click="editLevel(level)">confirmar</span>          
           </button> 
         </form>
       </div>  

@@ -1,6 +1,12 @@
 angular
 	.module('app.core')
-	.controller('LevelsadmController', function ($scope, AdministrativeService, toastr) {
+	.controller('LevelsadmController', function ($scope, AdministrativeService, GameService, toastr) {
+		
+		$scope.getLevels = () => {
+			GameService.getLevels()
+				.then(response => console.log(response.data))
+				.catch(error => console.log(error))
+		}
 		
 		// FacebookId e número de vidas
 		$scope.addLifes = userLifes => {
