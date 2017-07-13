@@ -3,10 +3,12 @@ angular
     .factory('GameService', function ($rootScope, $http, $q, $localStorage, AppConstants) {
         const urlGame = `${AppConstants.url}/game`;
         const urlLevel = `${AppConstants.url}/level`;
+        const urlPlayer = `${AppConstants.url}/user`;
 
         return {
             getFriends: getFriends,
             getLevels: getLevels,
+            saveGameResult: saveGameResult,
         }
 
         function getFriends() {
@@ -24,8 +26,23 @@ angular
 
         function getLevels(){
             return $http({
-            url: `${urlLevel}/get`,
-            method: 'GET'
+                url: `${urlLevel}/get`,
+                method: 'GET'
+            });
+        }
+
+        function getLifes(){
+
+        }
+
+        function saveGameResult(gameResult){
+             return $http({
+                url: `${urlGame}/register`,
+                method: 'POST',
+                data: gameResult,  
+                headers:{ 
+                    authorization: `Bearer ${$localStorage.authorizationData.token}`
+                }
             });
         }
     });

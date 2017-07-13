@@ -24,15 +24,15 @@ angular
             })
             .when('/menuadm', {
                 controller: 'MenuadmController',
-                templateUrl: 'app/app-modules/administrative/menuadm/menuadm.html'
+                templateUrl: 'app/app-modules/administrative/menuadm/menuadm.html',
             })
             .when('/lifesadm', {
                 controller: 'LifesadmController',
-                templateUrl: 'app/app-modules/administrative/lifesadm/lifesadm.html'
+                templateUrl: 'app/app-modules/administrative/lifesadm/lifesadm.html',
             })
             .when('/levelsadm', {
                 controller: 'LevelsadmController',
-                templateUrl: 'app/app-modules/administrative/levelsadm/levelsadm.html'
+                templateUrl: 'app/app-modules/administrative/levelsadm/levelsadm.html',
             })
             // .when('/authComplete', {
             //     templateUrl: 'authComplete.html'

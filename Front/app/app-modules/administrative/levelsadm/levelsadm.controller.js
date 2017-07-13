@@ -1,6 +1,9 @@
 angular
 	.module('app.core')
-	.controller('LevelsadmController', function ($scope, AdministrativeService, GameService, toastr) {
+	.controller('LevelsadmController', function ($scope, AdministrativeService, GameService, toastr, authService,$location) {
+		if(!authService.isAuthenticated()){
+			$location.path('/loginadm');
+		}
 
 		$scope.loadLevel = level => $scope.level = $scope.levels[level-1];
 
@@ -14,10 +17,9 @@ angular
 		})()		
 		
 		$scope.editLevel = level => {
-			console.log("entrei")
 			AdministrativeService.editLevel(level)
 				.then(response => {
-					$scope.level = {};
+					$scope.level = null;
 					$scope.levelSelect = null;
 					toastr.success('Nível alterado com sucesso!');
 					console.log(response);

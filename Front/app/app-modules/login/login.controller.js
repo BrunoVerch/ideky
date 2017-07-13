@@ -1,6 +1,6 @@
 angular
 	.module('app.core')
-	.controller('LoginController', function ($scope, $localStorage, $location, LoginService, AppConstants) {
+	.controller('LoginController', function ($scope, $localStorage, $location, LoginService, AppConstants, $rootScope) {
 		
 		let oauthWindow;
 
@@ -23,6 +23,7 @@ angular
                     };
 								
 								oauthWindow.close();
+		
 								$location.path('/home');
             }).error(error => console.log(error));
 		}

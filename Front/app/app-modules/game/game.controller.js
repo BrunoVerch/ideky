@@ -1,14 +1,7 @@
 angular
 	.module('app.core')
-	.controller('GameController', function ($rootScope, $scope, $window, $location, $q, GameService, toastr, $interval,$timeout) {
+	.controller('GameController', function ($scope, $window, $location, $q, GameService, toastr, $interval,$timeout,$localStorage,HomeService ) {
 		
-		$scope.level;
-		$scope.fase;
-		$scope.score;
-		$scope.drawFriends;
-		$scope.currentStage;
-		$scope.loadingClass;
-
 		let currentLevel;
 		let countStage;
 		let countTime;
@@ -18,43 +11,52 @@ angular
 		let waitTimeBetweenStages;
 	    let percentageTime;
 		let interval;
+		let textAnimationClasses;
+		let textAnimationInterval;
+		let textAnimationCounter;
+		let startCountClasses;
+		let startCounter;
+		let user;
 		
 		init();
 
-		function init() {
-			$scope.loadingClass = 'loadingScreenOn';
-		 	loadFriends()
-		 		.then(response => {
-					$scope.loadingClass = 'loadingScreenOff';
-		 			if(response.data.length < 150) {
-		 				toastr.error('Você precisa de pelo menos 150 amigos para jogar.');
-		 				$location.path('/home');
-		 				return;
-		 			}
-		 			$scope.friends = shuffle(response.data);
-					GameService.getLevels()
-						.then(responseLevels => {
-							levels = responseLevels.data.data;
-							currentLevel = 0;
-							$scope.currentStage = 1;
-							countStage = 0;
-							$scope.level = levels[currentLevel];
-							$scope.fase = 0;
-							$scope.score = 0;
-							countTime = 100;
-							progressBarTimeOut;
-							updateProgressBarStages();
-							setDrawsFriends();
-							result = 'pendent';
-							waitTimeBetweenStages = 500;
-							$scope.timer = $scope.level.Duration;
-							percentageTime = (0.1*100)/$scope.level.Duration;
-							updateProgressBarTimer();
-							interval = $interval(timer,1000);
-						})
-						.catch(error => console.log(error))
+		function init() {	
+			startScopeElements();
+			$scope.friends = shuffle($localStorage.FriendsData);
+			user = $localStorage.User;
+			if(typeof $scope.friends === 'undefined' || $scope.friends === null || typeof user === 'undefined'|| user === null){
+				toastr.error("Ocorreu um erro ao carregar seu perfil. Redirecionando...");
+				$location.path('/login');	
+			}
+			GameService.getLevels()
+				.then(responseLevels => {
+					levels = responseLevels.data.data;
+					currentLevel = 0;
+					$scope.currentStage = 1;
+					countStage = 0;
+					$scope.level = levels[currentLevel];
+					countTime = 100;
+					waitTimeBetweenStages = 250;
+					result = 'pendent';
+					$scope.timer = $scope.level.Duration;
+					percentageTime = (0.1*100)/$scope.level.Duration;
+					setDrawsFriends();
+					updateProgressBarStages();	
+					updateProgressBarTimer();
+					interval = $interval(timer,1000);
 				})
-				.catch(error => console.log(error));
+				.catch(error => console.log(error))
+		}
+
+		function startScopeElements(){
+			$scope.fase = 0;
+		    $scope.score = 0;
+			$scope.level = {};
+			$scope.level.LevelNumber = 0;
+			$scope.timer = 0;
+			$scope.currentStage = 0;
+			$scope.rightFriend = {};
+			$scope.rightFriend.name = '...';
 		}
 
 		function sumScore(){
@@ -138,7 +140,22 @@ angular
 
 		function finish(){
 			$interval.cancel(interval);
+			let gameResult = {'FacebookId':user.id,'Score':$scope.score};
+			GameService.saveGameResult(gameResult);
+			loadUser();
 			toastr.error("Game Over!");
+			$timeout(redirect,1500);
+		}
+
+		function redirect(){
+			$location.path('/home');
+		}
+
+		function loadUser() {
+			HomeService.getUser()
+				.then(response => { 
+					$localStorage.User = $scope.user;
+				});
 		}
 
 		function timer(){
@@ -148,26 +165,19 @@ angular
 				result = 'endOfTime';
 				toastr.error("Time over!");
 				$scope.timer--;
-				$interval.cancel(interval);
+				$timeout(finish, waitTimeBetweenStages);
 			}			
-		}
-
-		function loadFriends() {
-			const deffered = $q.defer();
-			let friends;
-			
-			GameService.getFriends()
-				.then(response => deffered.resolve(response));
-
-				return deffered.promise;
 		}
 
 		function setDrawsFriends(){
 			$scope.drawFriends = [];
 			let pictureAmount = $scope.level.PictureAmount;
 			for(let i=0; i<pictureAmount;i++){
-				let drawNumber = Math.floor(Math.random() * $scope.friends.length); 
-				$scope.drawFriends.push($scope.friends[drawNumber]);
+				let drawNumber = Math.floor(Math.random() * $scope.friends.length);
+				let regex = /\^|\~|\'|\"|\´|\`|\\|\/|\;|\{|\}|\@|\||\<|\>/g; 
+				let user = $scope.friends[drawNumber];
+				user.name = user.name.replace(regex,"");
+				$scope.drawFriends.push(user);
 			}
 			let drawNumber = Math.floor(Math.random() * $scope.drawFriends.length); 
 			$scope.rightFriend = $scope.drawFriends[drawNumber];
@@ -199,9 +209,7 @@ angular
 			$scope.timerPercentage = {'width': (countTime)+'%'};
 			if(countTime>0){
 				countTime = countTime - percentageTime;
-				progressBarTimeOut = $timeout(updateProgressBarTimer,98);
+				progressBarTimeOut = $timeout(updateProgressBarTimer,100);
 		  	}
-    	}
-
-		
+    	}		
 	});

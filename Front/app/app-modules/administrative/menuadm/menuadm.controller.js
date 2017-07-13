@@ -1,8 +1,12 @@
 angular
 	.module('app.core')
-	.controller('MenuadmController', function ($scope, AdministrativeService, toastr, $location) {
+	.controller('MenuadmController', function ($scope, AdministrativeService, toastr, $location, authService) {
+		if(!authService.isAuthenticated()){
+			$location.path('/loginadm');
+		}
+		
 		$scope.confirm = false;
-		$scope.replaceConfirm = () => { $scope.confirm = !$scope.confirm;}
+		$scope.replaceConfirm = () => { $scope.confirm = !$scope.confirm;}	
 		
 		$scope.resetRanking = () => {
 			AdministrativeService.resetRanking()
