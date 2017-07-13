@@ -1,5 +1,5 @@
 angular
-    .module('app')
+    .module('app.core')
     .config(function($routeProvider) {
         $routeProvider
             .when('/login', {
@@ -8,15 +8,23 @@ angular
             })
             .when('/home', {
                 controller: 'HomeController',
-                templateUrl: 'app/app-modules/home/home.html'
+                templateUrl: 'app/app-modules/home/home.html',
+                resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
             })
             .when('/game', {
                 controller: 'GameController',
-                templateUrl: 'app/app-modules/game/game.html'
+                templateUrl: 'app/app-modules/game/game.html',
+                resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
             })
             .when('/ranking', {
                 controller: 'RankingController',
-                templateUrl: 'app/app-modules/ranking/ranking.html'
+                templateUrl: 'app/app-modules/ranking/ranking.html',
+                resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
+            })
+            .when('/profile', {
+                controller: 'ProfileController',
+                templateUrl: 'app/app-modules/profile/profile.html',
+                resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
             })
             .when('/loginadm', {
                 controller: 'LoginadmController',
@@ -24,19 +32,19 @@ angular
             })
             .when('/menuadm', {
                 controller: 'MenuadmController',
-                templateUrl: 'app/app-modules/administrative/menuadm/menuadm.html'
+                templateUrl: 'app/app-modules/administrative/menuadm/menuadm.html',
+                resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
             })
             .when('/lifesadm', {
                 controller: 'LifesadmController',
-                templateUrl: 'app/app-modules/administrative/lifesadm/lifesadm.html'
+                templateUrl: 'app/app-modules/administrative/lifesadm/lifesadm.html',
+                resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
             })
             .when('/levelsadm', {
                 controller: 'LevelsadmController',
-                templateUrl: 'app/app-modules/administrative/levelsadm/levelsadm.html'
+                templateUrl: 'app/app-modules/administrative/levelsadm/levelsadm.html',
+                resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
             })
-            // .when('/authComplete', {
-            //     templateUrl: 'authComplete.html'
-            // })
             .otherwise({
                 redirectTo: '/login'
             });

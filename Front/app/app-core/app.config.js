@@ -1,5 +1,5 @@
 angular
-  .module('app')
+  .module('app.core')
   .run(function($rootScope, $window, $q) {
     const deffered = $q.defer();
     $window.fbAsyncInit = function() {
