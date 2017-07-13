@@ -21,8 +21,10 @@ namespace Ideky.Infrastructure.Repository
                         .Select(user => new
                             {
                                 FacebookId = user.FacebookId,
+                                Id = user.Id,
                                 Record = user.Record,
-                                Lifes = user.Lifes
+                                Lifes = user.Lifes,
+                                
                             })       
                         .FirstOrDefault(user => user.FacebookId == facebookId);
         }
