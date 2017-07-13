@@ -7,6 +7,10 @@ using System.Web.Http;
 
 namespace Ideky.Api.Controllers
 {
+<<<<<<< Updated upstream
+=======
+    [Authorize]
+>>>>>>> Stashed changes
     [RoutePrefix("level")]
     public class LevelController : BasicController
     {
