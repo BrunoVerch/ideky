@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace Ideky.Api.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [RoutePrefix("game")]
     public class GameResultController : BasicController
     {
