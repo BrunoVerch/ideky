@@ -1,6 +1,6 @@
 angular
     .module('app.core')
-    .factory('LoginService', function ($http, $q, AppConstants, $localStorage) {
+    .factory('LoginService', function ($http, $q, AppConstants, $localStorage, $rootScope) {
         const url = `${AppConstants.url}/auth`;
 
         return {
