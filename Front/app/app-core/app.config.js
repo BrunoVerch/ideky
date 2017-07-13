@@ -1,5 +1,8 @@
 angular
   .module('app')
+  .config(function ($httpProvider) {
+      $httpProvider.interceptors.push('httpInterceptor');
+  })
   .run(function($rootScope, $window, $q) {
     const deffered = $q.defer();
     $window.fbAsyncInit = function() {

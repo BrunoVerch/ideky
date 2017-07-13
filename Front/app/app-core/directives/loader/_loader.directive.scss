@@ -1,6 +1,41 @@
 .loader {
-    background-color: #e77235;
+    z-index: 999;
+    background-color: rgba(#000, 0.5);
     width: 100vw;
     height: 100vh;
     position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.hide {
+        display: none;
+    }
+    &:not(.hide) + ng-view {
+        filter: blur(2px);
+    }
+    &:after, &:before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: rgba(#e77235, 0.5);
+        transform: scale(0);
+        animation: loader 2s ease-out infinite;
+    }
+
+    &:before {
+        animation: loader 2s 1s ease-out infinite;
+    }
+}
+
+@keyframes loader {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1);
+        opacity: 0;
+    }
 }
