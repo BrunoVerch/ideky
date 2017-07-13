@@ -33,17 +33,17 @@ angular
             .when('/menuadm', {
                 controller: 'MenuadmController',
                 templateUrl: 'app/app-modules/administrative/menuadm/menuadm.html',
-                resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
+                resolve: { auth: authService => authService.isAuthenticatedAdmPromise() }
             })
             .when('/lifesadm', {
                 controller: 'LifesadmController',
                 templateUrl: 'app/app-modules/administrative/lifesadm/lifesadm.html',
-                resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
+                resolve: { auth: authService => authService.isAuthenticatedAdmPromise() }
             })
             .when('/levelsadm', {
                 controller: 'LevelsadmController',
                 templateUrl: 'app/app-modules/administrative/levelsadm/levelsadm.html',
-                resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
+                resolve: { auth: authService => authService.isAuthenticatedAdmPromise() }
             })
             .otherwise({
                 redirectTo: '/login'
