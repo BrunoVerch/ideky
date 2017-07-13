@@ -126,6 +126,12 @@ namespace Ideky.Infrastructure.Repository
         {
             User user = context.Users.FirstOrDefault(x => x.FacebookId == facebookId);
             GameResult gameResult = new GameResult(user, score);
+            if (user.Record < score)
+            {
+                user.SetNewRecord(score);
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+            }
             if (gameResult.Validate())
             {
                 context.GameResults.Add(gameResult);
