@@ -3,6 +3,18 @@
   <div ng-class="loadingClass"><h1 ng-class="loadingText"></h1></div>
   <div class="center-box">
     <div class="box-game">
+        <div ng-show="showLifesOption" class="lifesOption">
+            <h1 class="titleLifesOption">Game Over</h1>
+            <div class="lifesDiplay">
+                <img src="images/heart.png" alt="Lifes">
+                <h2>x{{lifes}}</h2>
+            </div>  
+            <div class="lifesOptions">  
+                <h1>Você deseja utilizar uma vida para continuar?</h1>
+                <button ng-click="onClickButtonLifes(true)" class="button buttonUseLife">Sim</button>
+                <button ng-click="onClickButtonLifes(false)" class="button buttonDontUseLife">Não</button>    
+            </div>  
+        </div>
         <div class="box-game-info">
             <div class="level-info">
                 <div class="stage">
@@ -10,7 +22,7 @@
                     <div class="progress-bar"><div class="progress" ng-style="stagePercentage"></div></div>    
                 </div>
                 <div class="points">
-                    <h3 class="uppercase">Nível {{level.LevelNumber}}<br/>Pontos: {{score}}<h3>    
+                    <h3 class="uppercase">Nível {{currentLevel.LevelNumber}}<br/>Pontos: {{score}}<h3>    
                 </div>
                 <div class="timer">
                     <h1><smaller>Tempo:</smaller> {{timer}}<smaller>s</smaller></h1>    
@@ -21,7 +33,7 @@
         <div class="box-question-title">
             <h1 class="font-primary uppercase"><smaller>Quem é</smaller> {{rightFriend.name}}?</h1>
         </div>     
-        <div class="box-img-game" ng-class="showPictures">
+        <div class="box-img-game" ng-class="showPictures" ng-hide="showLifesOption">
             <button ng-repeat="user in drawFriends" ng-click="answer(user.name)" class="game-button font-primary" ng-class="changeClass('{{user.name}}')" style="background-image: url({{user.picture.data.url}});"></button>
         </div>       
     </div>
