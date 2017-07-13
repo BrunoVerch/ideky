@@ -3,11 +3,6 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
 
 [assembly: OwinStartup(typeof(Ideky.Api.Startup))]
 namespace Ideky.Api
@@ -40,6 +35,6 @@ namespace Ideky.Api
             // config.Filters.Add(new AuthorizeAttribute());
             // app.UseWebApi(config);
         }
-    
+
     }
 }

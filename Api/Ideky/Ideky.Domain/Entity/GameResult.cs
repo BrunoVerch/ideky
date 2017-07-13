@@ -13,7 +13,7 @@ namespace Ideky.Domain.Entity
 
         public List<string> Messages { get; private set; }
 
-        protected GameResult() { Messages = new List<string>();  }
+        protected GameResult() { Messages = new List<string>(); }
 
         public GameResult(User user, int score)
         {
@@ -39,7 +39,7 @@ namespace Ideky.Domain.Entity
 
         public bool Validate()
         {
-            if(User == null)
+            if (User == null)
             {
                 Messages.Add("Usuário inválido");
             }

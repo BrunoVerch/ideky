@@ -1,6 +1,5 @@
 ﻿using Ideky.Domain.Entity;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -19,13 +18,13 @@ namespace Ideky.Infrastructure.Repository
         {
             return context.Users
                         .Select(user => new
-                            {
-                                FacebookId = user.FacebookId,
-                                Id = user.Id,
-                                Record = user.Record,
-                                Lifes = user.Lifes,
-                                
-                            })       
+                        {
+                            FacebookId = user.FacebookId,
+                            Id = user.Id,
+                            Record = user.Record,
+                            Lifes = user.Lifes,
+
+                        })
                         .FirstOrDefault(user => user.FacebookId == facebookId);
         }
 
@@ -34,10 +33,19 @@ namespace Ideky.Infrastructure.Repository
             return context.Users.FirstOrDefault(user => user.FacebookId == facebookId);
         }
 
+        public User ReduceLife(long facebookId)
+        {
+            var user = GetByFacebookId(facebookId);
+            user.ReduceLife();
+            context.Entry(user).State = EntityState.Modified;
+            context.SaveChanges();
+            return user;
+        }
+
         public object GetList()
         {
             return context.Users
-                            .Select(users => new 
+                            .Select(users => new
                             {
                                 FacebookId = users.FacebookId,
                                 Record = users.Record,
@@ -49,12 +57,12 @@ namespace Ideky.Infrastructure.Repository
         public object GetListOrderByRecord()
         {
             return context.Users.Select(users => new
-                                 {
-                                     FacebookId = users.FacebookId,
-                                     Record = users.Record,
-                                     Lifes = users.Lifes,
-                                     LastLogin = users.LastLogin
-                                 })
+            {
+                FacebookId = users.FacebookId,
+                Record = users.Record,
+                Lifes = users.Lifes,
+                LastLogin = users.LastLogin
+            })
                                  .OrderBy(users => users.Record).ToList();
         }
 
@@ -100,14 +108,14 @@ namespace Ideky.Infrastructure.Repository
         {
             context.Entry(user).State = EntityState.Modified;
             context.SaveChanges();
-                
+
             return user;
         }
 
         public User SetNewLogin(long facebookId)
         {
             User user = GetByFacebookId(facebookId);
-            if(user == null)
+            if (user == null)
             {
                 return null;
             }

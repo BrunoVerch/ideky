@@ -13,7 +13,7 @@ namespace Ideky.Domain.Entity
 
         public List<string> Messages { get; private set; }
 
-        protected Level() { Messages = new List<string>();  }
+        protected Level() { Messages = new List<string>(); }
 
         public Level(int levelNumber, int pictureAmount, int duration, int multiplier)
         {
@@ -42,7 +42,7 @@ namespace Ideky.Domain.Entity
             {
                 Messages.Add("Quantidade de imagens inválida.");
             }
-            if(Duration <= 0)
+            if (Duration <= 0)
             {
                 Messages.Add("Tempo de duração inválido!");
             }

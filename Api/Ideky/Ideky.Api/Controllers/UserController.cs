@@ -28,7 +28,7 @@ namespace Ideky.Api.Controllers
             {
                 var user = new User(userModel.FacebookId, userModel.Name, userModel.Picture);
 
-                if(user.Validate())
+                if (user.Validate())
                 {
                     user = userRepository.Save(user);
                     return ResponderOK(user);
@@ -88,6 +88,17 @@ namespace Ideky.Api.Controllers
         {
             User user = new User(userModel.FacebookId, userModel.Name, userModel.Picture);
 
+            if (user.Validate())
+                return ResponderOK(userRepository.Update(user));
+            else
+                return ResponderErro(user.Messages);
+        }
+
+        [HttpPut, Authorize]
+        [Route("reduceLife")]
+        public HttpResponseMessage ReduceLife(UserModel userModel)
+        {
+            User user = userRepository.ReduceLife(userModel.FacebookId);
             if (user.Validate())
                 return ResponderOK(userRepository.Update(user));
             else

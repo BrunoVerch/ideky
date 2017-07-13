@@ -29,11 +29,8 @@ namespace Ideky.Infrastructure.Repository
         }
         public Administrative Register(Administrative adm)
         {
-            if (adm.Validate())
-            {
-                context.Administratives.Add(adm);
-                context.SaveChanges();
-            }
+            context.Administratives.Add(adm);
+            context.SaveChanges();
             return adm;
         }
         public void Dispose()

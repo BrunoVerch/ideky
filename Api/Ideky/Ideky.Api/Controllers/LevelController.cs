@@ -30,7 +30,7 @@ namespace Ideky.Api.Controllers
 
             level.UpdateLevelDifficult(levelModel.PictureAmount, levelModel.Duration, levelModel.Multiplier);
 
-            if(level.Validate())
+            if (level.Validate())
             {
                 return ResponderOK(levelRepository.EditLevel(level));
             }
