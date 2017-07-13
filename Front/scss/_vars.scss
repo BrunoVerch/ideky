@@ -1,0 +1,52 @@
+// Colors
+$background-color-default: #363D4D;
+$background-color-game-info: #E9E9E9;
+$button-color-login: #264285;
+$button-color-home: #e77235;
+$button-color-menuadm: #D5D5D5;
+$text-color-login: #28b266;
+$text-subtitle-color-login: #585858;
+$text-color-home: #343434;
+$text-color-menuadm: #767676;
+$text-color-loginadm: #4584c1;
+$text-color-game-title: #EAEAEA;
+$border-color-input-loginadm: #c6c6c6;
+$button-color-menuadm-confirmar: #bbd568;
+$progress-color: #41B86D;
+$progress-bar-color: #969799;
+$text-shadow-border-light: 1px 0px 0px black, 
+                 -1px 0px 0px black, 
+                 0px 1px 0px black, 
+                 0px -1px 0px black;
+$text-shadow-border-heavy: 3px 0px 0px black, 
+                 -3px 0px 0px black, 
+                 0px 3px 0px black, 
+                 0px -3px 0px black;
+
+// Images
+$background-image-default: url('../images/bg.png');
+
+// Fonts
+$font-type-primary: 'HDV Comic Serif Pro';
+$font-type-secundary: 'Annie Use Your Telescope';
+
+@font-face {
+  font-family: 'Annie Use Your Telescope';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Annie_Use_Your_Telescope/AnnieUseYourTelescope.ttf');  
+}
+
+@font-face {
+  font-family: 'HDV Comic Serif Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/hvd_comic_serif/HVD_Comic_Serif_Pro.otf');  
+}
+
+// #343434
+// #fd7700
+// #28b266
+// #585858
+// #264285
+// #e77235
