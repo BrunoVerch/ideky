@@ -22,7 +22,6 @@ angular
 
 		function init() {	
 			startScopeElements();
-			hidePictures();
 			$scope.friends = shuffle($localStorage.FriendsData);
 			user = $localStorage.User;
 			if(typeof $scope.friends === 'undefined' || $scope.friends === null || typeof user === 'undefined'|| user === null){
@@ -42,8 +41,6 @@ angular
 					$scope.timer = $scope.level.Duration;
 					percentageTime = (0.1*100)/$scope.level.Duration;
 					setDrawsFriends();
-					turnOffLoadingScreen();
-					showPictures();
 					updateProgressBarStages();	
 					updateProgressBarTimer();
 					interval = $interval(timer,1000);
