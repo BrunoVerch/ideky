@@ -33,6 +33,12 @@ namespace Ideky.Infrastructure.Repository
             return context.Users.FirstOrDefault(user => user.FacebookId == facebookId);
         }
 
+        public User GetByFacebookIdAttach(long facebookId)
+        {
+            User userReturn = context.Users.FirstOrDefault(user => user.FacebookId == facebookId);
+            return context.Users.Attach(userReturn);
+        }
+
         public User ReduceLife(long facebookId)
         {
             var user = GetByFacebookId(facebookId);

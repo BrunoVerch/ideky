@@ -125,6 +125,7 @@ namespace Ideky.Infrastructure.Repository
         public GameResult RegisterNewGame(GameResult gameResult)
         {
             context.GameResults.Add(gameResult);
+            context.Entry(gameResult.User).State = System.Data.Entity.EntityState.Unchanged;
             context.SaveChanges();
             return gameResult;
         }
