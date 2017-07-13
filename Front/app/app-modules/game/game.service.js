@@ -26,9 +26,6 @@ angular
             return $http({
             url: `${urlLevel}/get`,
             method: 'GET',
-            headers:{
-                Authorization: `Bearer ${$localStorage.authorizationData.token}`
-            }
           });
         }
     });
