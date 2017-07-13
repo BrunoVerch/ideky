@@ -21,6 +21,11 @@ angular
                 templateUrl: 'app/app-modules/ranking/ranking.html',
                 resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
             })
+            .when('/profile', {
+                controller: 'ProfileController',
+                templateUrl: 'app/app-modules/profile/profile.html',
+                resolve: { auth: authService => authService.isAuthenticatedFacebookPromise() }
+            })
             .when('/loginadm', {
                 controller: 'LoginadmController',
                 templateUrl: 'app/app-modules/administrative/loginadm/loginadm.html'

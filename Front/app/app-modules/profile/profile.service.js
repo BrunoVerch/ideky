@@ -1,6 +1,6 @@
 angular
     .module('app.core')
-    .factory('HomeService', function($rootScope,$http, $q, $localStorage, AppConstants) {
+    .factory('ProfileService', function($rootScope,$http, $q, $localStorage, AppConstants) {
         const url = `${AppConstants.url}/user`;
 
         return {

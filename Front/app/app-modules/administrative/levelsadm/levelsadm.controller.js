@@ -1,10 +1,6 @@
 angular
 	.module('app.core')
-	.controller('LevelsadmController', function ($scope, AdministrativeService, GameService, toastr, authService,$location) {
-		if(!authService.isAuthenticated()){
-			$location.path('/loginadm');
-		}
-
+	.controller('LevelsadmController', function ($scope, AdministrativeService, GameService, toastr) {
 		$scope.loadLevel = level => $scope.level = $scope.levels[level-1];
 
 		(getLevels = () => {
