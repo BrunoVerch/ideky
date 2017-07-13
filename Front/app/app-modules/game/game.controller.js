@@ -9,7 +9,7 @@ angular
 		let wrongName;
 		let result;
 		let waitTimeBetweenStages;
-	    let percentageTime;
+		let percentageTime;
 		let interval;
 		let textAnimationClasses;
 		let textAnimationInterval;
@@ -63,7 +63,7 @@ angular
 			$scope.score = $scope.score+(100*$scope.level.Multiplier);
 		}	
 
-		function nextLevel(){
+		function nextLevel() {
 			$interval.cancel(interval);
 			sumScore();			
 			result = 'pendent';
@@ -84,6 +84,7 @@ angular
 		}
 
 		function nextStage(){
+			console.log('nextStage');
 			$interval.cancel(interval);
 			sumScore();
 			result = 'pendent';
