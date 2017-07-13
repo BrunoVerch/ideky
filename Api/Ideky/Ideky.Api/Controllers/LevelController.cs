@@ -8,6 +8,10 @@ using System.Web.Http;
 namespace Ideky.Api.Controllers
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+    [Authorize]
+>>>>>>> Stashed changes
 =======
     [Authorize]
 >>>>>>> Stashed changes
