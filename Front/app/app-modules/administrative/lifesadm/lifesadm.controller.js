@@ -1,9 +1,7 @@
 angular
 	.module('app.core')
-	.controller('LifesadmController', function ($scope, AdministrativeService, toastr, authService, $location) {
-		if(!authService.isAuthenticated()){
-			$location.path('/loginadm');
-		}
+	.controller('LifesadmController', function ($scope, AdministrativeService, toastr) {
+		
 		// FacebookId e número de vidas
 		$scope.addLifes = userLifes => {
 			AdministrativeService.addLifes(userLifes)

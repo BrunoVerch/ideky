@@ -1,10 +1,6 @@
 angular
 	.module('app.core')
-	.controller('MenuadmController', function ($scope, AdministrativeService, toastr, $location, authService) {
-		if(!authService.isAuthenticated()){
-			$location.path('/loginadm');
-		}
-		
+	.controller('MenuadmController', function ($scope, AdministrativeService, toastr, $location) {
 		$scope.confirm = false;
 		$scope.replaceConfirm = () => { $scope.confirm = !$scope.confirm;}	
 		

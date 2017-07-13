@@ -1,6 +1,6 @@
 angular
 	.module('app.core')
-	.controller('HomeController', function ($scope, $location, HomeService, toastr, GameService, $localStorage,$timeout,$interval) {
+	.controller('ProfileController', function ($scope, $location, HomeService, toastr, GameService, $localStorage,$timeout,$interval) {
 	  
 	  	GameService.getFriends().then( response=>{
 			$localStorage.FriendsData = response.data;
