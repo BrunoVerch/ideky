@@ -2,7 +2,10 @@ angular
 	.module('app.core')
 	.controller('HomeController', function ($scope, $location, HomeService, toastr, GameService, $localStorage,$timeout,$interval) {
 	  
-		loadUser();
+	  	GameService.getFriends().then( response=>{
+			$localStorage.FriendsData = response.data;
+		});
+		
 		let textAnimationClasses;
 		let textAnimationCounter;
 		let	textAnimationInterval;
@@ -30,10 +33,6 @@ angular
 				$location.path('/game');
 			}
 		}
-
-		GameService.getFriends().then( response=>{
-				$localStorage.FriendsData = response.data;
-		});
 
 		function logout(){
 			$location.path('/login');
