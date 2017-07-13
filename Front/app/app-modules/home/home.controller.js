@@ -13,6 +13,9 @@ angular
 		init();
 		
 		function init() {
+			if(typeof $localStorage.User != 'undefined' && $localStorage.User != null ){
+				$scope.user = $localStorage.User;
+			}
 			loadUser();
 		}
 		
@@ -41,7 +44,7 @@ angular
 			HomeService.getUser()
 				.then(response => { 
 					$scope.user = response.data;
-					console.log($scope.user)
+					$localStorage.User = $scope.user;
 					updatePicture($scope.user);
 				});
 		}

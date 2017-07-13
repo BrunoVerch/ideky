@@ -23,7 +23,7 @@ angular
                     };
 								
 								oauthWindow.close();
-
+		
 								$location.path('/home');
             }).error(error => console.log(error));
 		}

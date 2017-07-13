@@ -36,11 +36,14 @@ angular
 
         }
 
-        function saveGameResult(game){
+        function saveGameResult(gameResult){
              return $http({
                 url: `${urlGame}/register`,
                 method: 'POST',
-                authorization: `Bearer ${$localStorage.authorizationData.token}`
+                data: gameResult,  
+                headers:{ 
+                    authorization: `Bearer ${$localStorage.authorizationData.token}`
+                }
             });
         }
     });

@@ -1,6 +1,6 @@
 angular
 	.module('app.core')
-	.controller('GameController', function ($scope, $window, $location, $q, GameService, toastr, $interval,$timeout,$localStorage, ) {
+	.controller('GameController', function ($scope, $window, $location, $q, GameService, toastr, $interval,$timeout,$localStorage,HomeService ) {
 		
 		let currentLevel;
 		let countStage;
@@ -134,14 +134,28 @@ angular
 					$timeout(finish, waitTimeBetweenStages);
 					wrongName = name;
 					result = 'wrong';
-					GameService.saveGameResult(user.id,$scope.score).then(toastr.success("Jogo salvo com sucesso!"));
 				}
 			}
 		}
 
 		function finish(){
 			$interval.cancel(interval);
+			let gameResult = {'FacebookId':user.id,'Score':$scope.score};
+			GameService.saveGameResult(gameResult);
+			loadUser();
 			toastr.error("Game Over!");
+			$timeout(redirect,1500);
+		}
+
+		function redirect(){
+			$location.path('/home');
+		}
+
+		function loadUser() {
+			HomeService.getUser()
+				.then(response => { 
+					$localStorage.User = $scope.user;
+				});
 		}
 
 		function timer(){
@@ -151,7 +165,7 @@ angular
 				result = 'endOfTime';
 				toastr.error("Time over!");
 				$scope.timer--;
-				$interval.cancel(interval);
+				$timeout(finish, waitTimeBetweenStages);
 			}			
 		}
 
@@ -159,8 +173,11 @@ angular
 			$scope.drawFriends = [];
 			let pictureAmount = $scope.level.PictureAmount;
 			for(let i=0; i<pictureAmount;i++){
-				let drawNumber = Math.floor(Math.random() * $scope.friends.length); 
-				$scope.drawFriends.push($scope.friends[drawNumber]);
+				let drawNumber = Math.floor(Math.random() * $scope.friends.length);
+				let regex = /\^|\~|\'|\"|\´|\`|\\|\/|\;|\{|\}|\@|\||\<|\>/g; 
+				let user = $scope.friends[drawNumber];
+				user.name = user.name.replace(regex,"");
+				$scope.drawFriends.push(user);
 			}
 			let drawNumber = Math.floor(Math.random() * $scope.drawFriends.length); 
 			$scope.rightFriend = $scope.drawFriends[drawNumber];
