@@ -1,6 +1,6 @@
 angular
     .module('app.core')
-    .factory('GameService', function ($rootScope, $http, $q, AppConstants,$localStorage) {
+    .factory('GameService', function ($rootScope, $http, $q, $localStorage, AppConstants) {
         const urlGame = `${AppConstants.url}/game`;
         const urlLevel = `${AppConstants.url}/level`;
         const urlPlayer = `${AppConstants.url}/user`;

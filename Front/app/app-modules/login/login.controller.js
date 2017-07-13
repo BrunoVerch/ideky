@@ -17,7 +17,6 @@ angular
 						//Obtain access token and redirect to orders
 						var externalData = { provider: fragment.provider, externalAccessToken: fragment.external_access_token };
 						LoginService.obtainAccessToken(externalData).then(response => {
-							console.log(response);
                 $localStorage.authorizationData = { 
                     token: response.data.access_token,
                     userName: response.data.userName

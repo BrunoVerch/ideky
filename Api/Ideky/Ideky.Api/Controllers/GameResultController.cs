@@ -7,7 +7,6 @@ using System.Web.Http;
 
 namespace Ideky.Api.Controllers
 {
-    [AllowAnonymous]
     [RoutePrefix("game")]
     public class GameResultController : BasicController
     {
@@ -20,7 +19,7 @@ namespace Ideky.Api.Controllers
             userRepository = new UserRepository();
         }
 
-        [HttpPost]
+        [HttpPost, BasicAuthorization]
         [Route("register")]
         public HttpResponseMessage Register([FromBody]GameResultModel gameResultModel)
         {
@@ -37,35 +36,35 @@ namespace Ideky.Api.Controllers
             return ResponderOK(answerObject);
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         [Route("monthlyRanking")]
         public HttpResponseMessage GetMonthlyRanking()
         {
             var result = gameResultRepository.GetListOrderByScoreGroupedByUserWhereDateIsInCurrentMonth();
             return ResponderOK(result);
         }
-        [HttpGet]
+        [HttpGet, Authorize]
         [Route("dailyRanking")]
         public HttpResponseMessage GetDailyRanking()
         {
             var result = gameResultRepository.GetListOrderByScoreGroupedByUserWhereDateIsToday();
             return ResponderOK(result);
         }
-        [HttpGet]
+        [HttpGet, Authorize]
         [Route("overallRanking")]
         public HttpResponseMessage GetOverallRanking()
         {
             var result = gameResultRepository.GetListOrderByScoreGroupedByUser();
             return ResponderOK(result);
         }
-        [HttpGet]
+        [HttpGet, Authorize]
         [Route("getById/{id:long}")]
         public HttpResponseMessage GetById(int id)
         {
             var result = gameResultRepository.GetById(id);
             return ResponderOK(result);
         }
-        [HttpGet]
+        [HttpGet, Authorize]
         [Route("getList")]
         public HttpResponseMessage GetList()
         {

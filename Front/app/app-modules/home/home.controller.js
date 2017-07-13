@@ -7,6 +7,12 @@ angular
 		let textAnimationCounter;
 		let	textAnimationInterval;
 
+		init();
+		
+		function init() {
+			loadUser();
+		}
+		
 		$scope.start = () => {
 			$scope.friends = $localStorage.FriendsData;			 
 			if(typeof $scope.friends === 'undefined' || $scope.friends === null){
@@ -34,7 +40,20 @@ angular
 		}
 		function loadUser() {
 			HomeService.getUser()
-				.then(response => $scope.user = response.data);
+				.then(response => { 
+					$scope.user = response.data;
+					console.log($scope.user)
+					updatePicture($scope.user);
+				});
+		}
+
+		function updatePicture(user) {
+			user.Picture = user.picture.data.url;
+			user.FacebookId = user.id;
+
+			HomeService.updatePicture(user)
+						.then(response => console.log(response))
+						.catch(error => console.log(error));	
 		}
 
 		function turnOnLoadingScreen(){

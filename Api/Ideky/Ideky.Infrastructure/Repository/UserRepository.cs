@@ -67,6 +67,21 @@ namespace Ideky.Infrastructure.Repository
             return user;
         }
 
+        public User Update(User user)
+        {
+            var newUser = GetByFacebookId(user.FacebookId);
+
+            newUser.SetNewPicture(user.Picture);
+
+            if (newUser.Validate())
+            {
+                context.Entry(newUser).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+
+            return newUser;
+        }
+
         public User SetNewRecord(long record, long facebookId)
         {
             User user = GetByFacebookId(facebookId);
