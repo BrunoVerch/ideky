@@ -88,6 +88,11 @@ namespace Ideky.Domain.Entity
             Lifes = Lifes + lifes;
         }
 
+        public void ReduceLife()
+        {
+            Lifes--;
+        }
+
         public void UpdateToken(string token)
         {
             LocalToken = token;

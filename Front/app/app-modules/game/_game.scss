@@ -147,19 +147,6 @@
         background-color: $progress-color;
         box-shadow: 0px 0px 15px 1px $progress-color; 
     }
-    .loadingScreenOn{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        background-color: rgba(black,0.9);
-        @extend %flexbox-center-vertical;
-        @extend %flexbox-center-horizontal;
-    }
-    .lodingScreenOff{
-        display: none;
-    }
     .lifesOption{
         position: absolute;
         top: 0%;
@@ -214,6 +201,7 @@
         background-color: #CD0000;
         box-shadow: 0px 5px 0px #FF0000;
     }
+
 
     @media screen and (orientation: Portrait){
         .box-game{

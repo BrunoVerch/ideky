@@ -34,6 +34,15 @@ namespace Ideky.Infrastructure.Repository
             return context.Users.FirstOrDefault(user => user.FacebookId == facebookId);
         }
 
+        public User ReduceLife(long facebookId)
+        {
+            var user = GetByFacebookId(facebookId);
+            user.ReduceLife();
+            context.Entry(user).State = EntityState.Modified;
+            context.SaveChanges();
+            return user;
+        }
+
         public object GetList()
         {
             return context.Users

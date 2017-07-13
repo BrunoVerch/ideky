@@ -25,32 +25,4 @@
         @extend %flexbox-center-vertical;
         @extend %flexbox-center-horizontal;                
     }
-
-    .loadingScreenOn{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        background-color: rgba(black,0.9);
-        @extend %flexbox-center-vertical;
-        font-family: $font-type-primary;
-        padding-top: 20px;
-        font-size: 120px;
-    }
-    .loadingScreenOff{
-        display: none;
-    }
-    .loadingTextStep1:after{
-        content: "Carregando";
-    }
-    .loadingTextStep2:after{
-        content: "Carregando.";
-    }
-    .loadingTextStep3:after{
-        content: "Carregando..";
-    }
-    .loadingTextStep4:after{
-        content: "Carregando...";
-    }    
 }

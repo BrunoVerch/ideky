@@ -94,6 +94,17 @@ namespace Ideky.Api.Controllers
                 return ResponderErro(user.Messages);
         }
 
+        [HttpPut, Authorize]
+        [Route("reduceLife")]
+        public HttpResponseMessage ReduceLife(UserModel userModel)
+        {
+            User user = userRepository.ReduceLife(userModel.FacebookId);
+            if (user.Validate())
+                return ResponderOK(userRepository.Update(user));
+            else
+                return ResponderErro(user.Messages);
+        }
+
         [HttpPut, BasicAuthorization]
         [Route("lifes")]
         public HttpResponseMessage AddLifes([FromBody]UserLifesModel userModel)
