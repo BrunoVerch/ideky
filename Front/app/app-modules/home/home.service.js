@@ -27,6 +27,7 @@ angular
                             user.record = resp.data.data.Record;
                             user.lifes = resp.data.data.Lifes;
                             deffered.resolve({ data: user });
+                            $localStorage.user = user;
                         })
                         .catch(error => console.log(error));
                 });
