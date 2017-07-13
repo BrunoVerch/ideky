@@ -1,12 +1,24 @@
 angular
 	.module('app.core')
-	.controller('MenuadmController', function ($scope, AdministrativeService, toastr) {
+	.controller('MenuadmController', function ($scope, AdministrativeService, toastr, $location, authService) {
+		if(!authService.isAuthenticated()){
+			$location.path('/loginadm');
+		}
+		
 		$scope.confirm = false;
-		$scope.replaceConfirm = () => { $scope.confirm = !$scope.confirm;}
+		$scope.replaceConfirm = () => { $scope.confirm = !$scope.confirm;}	
 		
 		$scope.resetRanking = () => {
 			AdministrativeService.resetRanking()
-				.then(() => $scope.replaceConfirm())
-				.catch(error => console.log(error));
+				.then(() => { 
+					toastr.success("Resetado com sucesso!"); 
+					$scope.replaceConfirm(); 
+				})
+				.catch(error => {
+					toastr.error("Falha ao resetar, tente mais tarde!");
+					console.log(error);
+				});
 		}
+
+		$scope.redirect = givenPath => $location.path(givenPath);
 	});

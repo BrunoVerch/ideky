@@ -38,8 +38,6 @@
     }
 
     .box-wrapper {
-        // margin-top: 100px;
-        // margin-bottom: 50px;
         @extend %flexbox-center-horizontal;
         margin: 20x;
     }
