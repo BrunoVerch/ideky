@@ -1,6 +1,6 @@
 <section class="game"> 
   <logo></logo>
-  <div ng-class="loadingClass"><h1>Carregando...</h1></div>
+  <div ng-class="loadingClass"><h1 ng-class="loadingText"></h1></div>
   <div class="center-box">
     <div class="box-game">
         <div class="box-game-info">
@@ -21,7 +21,7 @@
         <div class="box-question-title">
             <h1 class="font-primary uppercase"><smaller>Quem é</smaller> {{rightFriend.name}}?</h1>
         </div>     
-        <div class="box-img-game">
+        <div class="box-img-game" ng-class="showPictures">
             <button ng-repeat="user in drawFriends" ng-click="answer(user.name)" class="game-button font-primary" ng-class="changeClass('{{user.name}}')" style="background-image: url({{user.picture.data.url}});"></button>
         </div>       
     </div>

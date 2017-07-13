@@ -78,7 +78,7 @@ body {
   border: none;
   color: #fff; }
 
-body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .center-box, .game .box-img-game, .game .loadingScreenOn, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home {
+body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .home .loadingScreenOn, .game .center-box, .game .box-img-game, .game .loadingScreenOn, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home {
   display: flex;
   justify-content: center; }
 
@@ -136,6 +136,26 @@ h1.font-primary {
       text-shadow: initial; }
 .home .button-home {
   background-color: #e77235; }
+.home .loadingScreenOn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  font-family: "HDV Comic Serif Pro";
+  padding-top: 20px;
+  font-size: 120px; }
+.home .loadingScreenOff {
+  display: none; }
+.home .loadingTextStep1:after {
+  content: "Carregando"; }
+.home .loadingTextStep2:after {
+  content: "Carregando."; }
+.home .loadingTextStep3:after {
+  content: "Carregando.."; }
+.home .loadingTextStep4:after {
+  content: "Carregando..."; }
 
 .game .box-game {
   height: 90vh;
