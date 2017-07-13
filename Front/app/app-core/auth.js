@@ -63,8 +63,8 @@ return {
     delete $localStorage.Authorization;
     $http.defaults.headers.common.Authorization = undefined;
 
-    if (urlLogout) {
-      $location.path(logoutAdmUrl);
+    if (logoutAdmUrl) {
+      $location.path(loginAdmUrl);
     }
   };
 
