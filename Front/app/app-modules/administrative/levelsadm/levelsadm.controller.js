@@ -14,10 +14,9 @@ angular
 		})()		
 		
 		$scope.editLevel = level => {
-			console.log("entrei")
 			AdministrativeService.editLevel(level)
 				.then(response => {
-					$scope.level = {};
+					$scope.level = null;
 					$scope.levelSelect = null;
 					toastr.success('Nível alterado com sucesso!');
 					console.log(response);

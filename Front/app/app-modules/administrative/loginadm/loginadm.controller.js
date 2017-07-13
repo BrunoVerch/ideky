@@ -46,6 +46,11 @@ angular
 			}
     	}
 
-		
-
+		// $scope.logout = () => {
+		// 	authService.logout()
+		// 	.then(
+		// 		function (response) {
+		// 			toastr.success('Deslogado com sucesso!');
+		// 		});
+		// }
 });

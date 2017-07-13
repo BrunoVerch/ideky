@@ -24,15 +24,30 @@ angular
             })
             .when('/menuadm', {
                 controller: 'MenuadmController',
-                templateUrl: 'app/app-modules/administrative/menuadm/menuadm.html'
+                templateUrl: 'app/app-modules/administrative/menuadm/menuadm.html',
+                resolve: {                
+                        autenticado: function (authService) {
+                        return authService.isAutenticadoPromise();
+                    }
+                }
             })
             .when('/lifesadm', {
                 controller: 'LifesadmController',
-                templateUrl: 'app/app-modules/administrative/lifesadm/lifesadm.html'
+                templateUrl: 'app/app-modules/administrative/lifesadm/lifesadm.html',
+                resolve: {                
+                        autenticado: function (authService) {
+                        return authService.isAutenticadoPromise();
+                    }
+                }
             })
             .when('/levelsadm', {
                 controller: 'LevelsadmController',
-                templateUrl: 'app/app-modules/administrative/levelsadm/levelsadm.html'
+                templateUrl: 'app/app-modules/administrative/levelsadm/levelsadm.html',
+                resolve: {                
+                        autenticado: function (authService) {
+                        return authService.isAutenticadoPromise();
+                    }
+                }
             })
             // .when('/authComplete', {
             //     templateUrl: 'authComplete.html'

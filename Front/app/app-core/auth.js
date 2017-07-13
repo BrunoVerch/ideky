@@ -47,7 +47,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
     delete $localStorage.Authorization;
     $http.defaults.headers.common.Authorization = undefined;
 
-    if (urlLogout) {
+    if (logoutUrl) {
       $location.path(logoutUrl);
     }
   };
