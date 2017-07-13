@@ -8,7 +8,7 @@ angular
 			GameService.getLevels()
 				.then(response => { 
 					$scope.levels = response.data.data; 
-					console.log(response.data)
+					console.log(response.data);
 				})
 				.catch(error => console.log(error))
 		})()		
@@ -17,8 +17,14 @@ angular
 			console.log("entrei")
 			AdministrativeService.editLevel(level)
 				.then(response => {
-					console.log(response)
+					$scope.level = {};
+					$scope.levelSelect = null;
+					toastr.success('Nível alterado com sucesso!');
+					console.log(response);
 				})
-				.catch(error => console.log(error));
+				.catch(error => {
+					toastr.error('Shhhh, algo errado não deu certo!');
+					console.log(error);
+				});
 		}
 });

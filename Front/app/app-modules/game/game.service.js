@@ -1,6 +1,6 @@
 angular
     .module('app.core')
-    .factory('GameService', function ($rootScope, $http, $q, AppConstants) {
+    .factory('GameService', function ($rootScope, $http, $q, $localStorage, AppConstants) {
         const urlGame = `${AppConstants.url}/game`;
         const urlLevel = `${AppConstants.url}/level`;
 
@@ -25,7 +25,7 @@ angular
         function getLevels(){
             return $http({
             url: `${urlLevel}/get`,
-            method: 'GET',
-          });
+            method: 'GET'
+            });
         }
     });
