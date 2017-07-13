@@ -28,6 +28,7 @@ angular
             method: 'GET',
             headers:{
                 Authorization: `Bearer ${$localStorage.authorizationData.token}`
+            }
           });
         }
     });
