@@ -14,6 +14,18 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
   let privateUrl = authConfig.privateUrl;
   let logoutUrl = authConfig.logoutUrl;
 
+  return {
+    login: login,
+    logout: logout,
+    getUser: getUser,
+    hasPermission: hasPermission,
+    isAuthenticated: isAuthenticated,
+    isAuthenticatedPromise: isAuthenticatedPromise,
+    hasNotPermission: hasNotPermission,
+    isNotAuthenticated: isNotAuthenticated,
+    hasPermissionPromise: hasPermissionPromise
+  }
+
   function login(user) {
     let deferred = $q.defer();
     let headerAuth = buildHeader(user);
@@ -47,7 +59,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
     delete $localStorage.Authorization;
     $http.defaults.headers.common.Authorization = undefined;
 
-    if (urlLogout) {
+    if (logoutUrl) {
       $location.path(logoutUrl);
     }
   };
@@ -82,7 +94,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
       deferred.resolve();
 
     } else {
-      $location.path(urlLogin);
+      $location.path(loginUrl);
       deferred.reject();
     }
 
@@ -108,17 +120,5 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
     return {
       'Authorization': `Basic ${hash}`
     };
-  };
-
-  return {
-    login: login,
-    logout: logout,
-    getUser: getUser,
-    hasPermission: hasPermission,
-    isAuthenticated: isAuthenticated,
-    isAuthenticatedPromise: isAuthenticatedPromise,
-    hasNotPermission: hasNotPermission,
-    isNotAuthenticated: isNotAuthenticated,
-    hasPermissionPromise: hasPermissionPromise
-  };
+  };  
 });

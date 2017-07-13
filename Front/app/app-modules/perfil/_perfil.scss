@@ -1,0 +1,56 @@
+.home {
+    .logo {
+        width: 33%;
+    }
+
+    .box-default{ 
+        flex-direction: column;
+        justify-content: space-between;        
+        @extend %flexbox-center-horizontal;
+    }  
+
+    h1 {
+        margin-top: 15px;
+        &.font-primary {
+            text-shadow: 0 5px 1px rgba(#000, 0.2);
+            &>small {
+                text-shadow: initial;
+            }
+        }
+    }
+
+    .button-home {
+        background-color: $button-color-home;
+        @extend %button-design-primary; 
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;                
+    }
+
+    .loadingScreenOn{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: rgba(black,0.9);
+        @extend %flexbox-center-vertical;
+        font-family: $font-type-primary;
+        padding-top: 20px;
+        font-size: 120px;
+    }
+    .loadingScreenOff{
+        display: none;
+    }
+    .loadingTextStep1:after{
+        content: "Carregando";
+    }
+    .loadingTextStep2:after{
+        content: "Carregando.";
+    }
+    .loadingTextStep3:after{
+        content: "Carregando..";
+    }
+    .loadingTextStep4:after{
+        content: "Carregando...";
+    }    
+}
