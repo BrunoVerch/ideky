@@ -2,11 +2,8 @@ angular.module('app.core')
 		.constant('AppConstants', {
             //url: 'http://ideky.azurewebsites.net/api'
             url: 'http://localhost:60550'
-		});
-
-angular.module("app.core")
-		.constant('authConfig', {
-
+      })
+      .constant('authConfig', {
             userAdmUrl: 'http://localhost:60550/administrative/get',
             loginAdmUrl: '/loginadm',
             privateAdmUrl: '/menuadm',

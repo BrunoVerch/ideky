@@ -15,6 +15,21 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
   let logoutAdmUrl = authConfig.logoutAdmUrl;
   let loginFacebookUrl = authConfig.loginFacebookUrl;
 
+return {
+    login: login,
+    logout: logout,
+    getUser: getUser,
+    hasPermission: hasPermission,
+    isAuthenticatedAdm: isAuthenticatedAdm,
+    isAuthenticatedAdmPromise: isAuthenticatedAdmPromise,
+    isAuthenticatedFacebook: isAuthenticatedFacebook,
+    isAuthenticatedFacebookPromise: isAuthenticatedFacebookPromise,
+    hasNotPermission: hasNotPermission,
+    isNotAuthenticated: isNotAuthenticated,
+    hasPermissionPromise: hasPermissionPromise,
+    facebookLogged: facebookLogged
+  };
+  
   function login(user) {
     let deferred = $q.defer();
     let headerAuth = buildHeader(user);
@@ -128,20 +143,5 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
     return {
       'Authorization': `Basic ${hash}`
     };
-  };
-
-  return {
-    login: login,
-    logout: logout,
-    getUser: getUser,
-    hasPermission: hasPermission,
-    isAuthenticatedAdm: isAuthenticatedAdm,
-    isAuthenticatedAdmPromise: isAuthenticatedAdmPromise,
-    isAuthenticatedFacebook: isAuthenticatedFacebook,
-    isAuthenticatedFacebookPromise: isAuthenticatedFacebookPromise,
-    hasNotPermission: hasNotPermission,
-    isNotAuthenticated: isNotAuthenticated,
-    hasPermissionPromise: hasPermissionPromise,
-    facebookLogged: facebookLogged
   };
 });

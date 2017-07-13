@@ -10,7 +10,9 @@ angular.module('app')
 	// debugEnabled faz com que não seja necessário retirar os $log.debug dos .js quando o projeto é publicado, apenas alterando para "false" ele já retira todos os logs.
 	.config([
 		'$logProvider',
-		function($logProvider) {
+		'$httpProvider',
+		function($logProvider, $httpProvider) {
 			$logProvider.debugEnabled(true);
+      $httpProvider.interceptors.push('httpInterceptor');
 		}		 
-	])	
+	])
