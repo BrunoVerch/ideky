@@ -95,6 +95,17 @@ namespace Ideky.Api.Controllers
         }
 
         [HttpPut, Authorize]
+        [Route("updateLifes")]
+        public HttpResponseMessage UpdateLifes(UserModel userModel)
+        {
+            User user = userRepository.GetByFacebookId(userModel.FacebookId);
+
+            user.AddDailyLifes();
+
+            return ResponderOK(user);
+        }
+
+        [HttpPut, Authorize]
         [Route("reduceLife")]
         public HttpResponseMessage ReduceLife(UserModel userModel)
         {
