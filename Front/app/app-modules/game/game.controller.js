@@ -10,7 +10,7 @@ angular
 		let progressBarTimeOut;
 		let wrongName;
 		let result;
-	    let percentageTime;
+	  let percentageTime;
 		let intervalTimer;
 		let textAnimationClasses;
 		let textAnimationInterval;

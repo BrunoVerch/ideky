@@ -3,6 +3,7 @@ using Ideky.Api.Models;
 using Ideky.Domain.Entity;
 using Ideky.Infrastructure.Repository;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -79,7 +80,13 @@ namespace Ideky.Api.Controllers
                 }
             }
 
-            users.Sort((x,y) => y.Record.CompareTo(x.Record));
+            users.Select(u => new
+            {
+                FacebookId = u.FacebookId,
+                Name = u.Name,
+                Picture = u.Picture,
+                Record = u.Record
+            }).ToList().Sort((x,y) => y.Record.CompareTo(x.Record));
 
             return ResponderOK(users);
         }
