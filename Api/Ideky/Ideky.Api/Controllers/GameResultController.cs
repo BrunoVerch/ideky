@@ -2,6 +2,7 @@
 using Ideky.Api.Models;
 using Ideky.Domain.Entity;
 using Ideky.Infrastructure.Repository;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -63,6 +64,26 @@ namespace Ideky.Api.Controllers
             var result = gameResultRepository.GetListOrderByScoreGroupedByUser();
             return ResponderOK(result);
         }
+        
+        [HttpPut, Authorize]
+        [Route("friendsranking")]
+        public HttpResponseMessage GetOverallRanking(FriendsModel[] friends)
+        {
+            List<User> users = new List<User>();
+            foreach(FriendsModel element in friends)
+            {
+                User user = userRepository.GetByFacebookId(element.id);
+                if(user != null)
+                {
+                    users.Add(user);
+                }
+            }
+
+            users.Sort((x,y) => y.Record.CompareTo(x.Record));
+
+            return ResponderOK(users);
+        }
+
         [HttpGet, Authorize]
         [Route("getById/{id:long}")]
         public HttpResponseMessage GetById(int id)

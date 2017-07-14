@@ -142,6 +142,7 @@
     <Compile Include="Models\AdministrativeModel.cs" />
     <Compile Include="Models\ExternalLoginData.cs" />
     <Compile Include="Models\ExternalLoginViewModel.cs" />
+    <Compile Include="Models\FriendsModel.cs" />
     <Compile Include="Models\GameResultModelReturn.cs" />
     <Compile Include="Models\LevelModel.cs" />
     <Compile Include="Models\GameResultModel.cs" />

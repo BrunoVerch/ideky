@@ -10,6 +10,7 @@ angular
             getLevels: getLevels,
             saveGameResult: saveGameResult,
             reduceLife: reduceLife,
+            getFriendsWhoPlayIdek: getFriendsWhoPlayIdek,
         }
 
         function getFriends() {
@@ -18,6 +19,19 @@ angular
             $rootScope.sdkLoad
 				.then(response => {
                 FB.api('/me/invitable_friends?fields=name,picture.width(200)&limit=999999,friends?fields=name,picture.width(200)&limit=999999', response => {
+                    deffered.resolve({ data: response.data })
+                });
+            });
+
+            return deffered.promise;
+        }
+
+        function getFriendsWhoPlayIdek() {
+            const deffered = $q.defer();
+            let friends;
+            $rootScope.sdkLoad
+				.then(response => {
+                FB.api('/me/friends?fields=name,picture.width(200)&limit=999999', response => {
                     deffered.resolve({ data: response.data })
                 });
             });
