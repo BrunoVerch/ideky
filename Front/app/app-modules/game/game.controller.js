@@ -10,7 +10,7 @@ angular
 		let progressBarTimeOut;
 		let wrongName;
 		let result;
-	    let percentageTime;
+	  let percentageTime;
 		let intervalTimer;
 		let textAnimationClasses;
 		let textAnimationInterval;
@@ -271,7 +271,7 @@ angular
 			FB.ui({
 				method: 'share',
 				mobile_iframe: true,
-				href: 'http://ideky.azurewebsites.net/',
-			}, function(response){});
+				href: 'https://apps.facebook.com/1392336224214575',
+			}, response => console.log(response));
 		}
 	});
