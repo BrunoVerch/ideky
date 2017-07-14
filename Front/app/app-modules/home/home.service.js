@@ -1,6 +1,6 @@
 angular
     .module('app.core')
-    .factory('HomeService', function($rootScope,$http, $q, $localStorage, AppConstants) {
+    .factory('HomeService', function($rootScope,$http, $q, $localStorage, $window, AppConstants) {
         const url = `${AppConstants.url}/user`;
 
         return {
@@ -15,6 +15,9 @@ angular
             $rootScope.sdkLoad
 				.then(() => {
                 FB.api('/me?fields=id,name,picture', response => {
+                    if(response.error) 
+                        $window.location.reload();
+                    
                     user = {};
                     user.FacebookId = response.id;
                     user.Name = response.name;
@@ -26,13 +29,13 @@ angular
                             Authorization: `Bearer ${$localStorage.authorizationData.token}`
                         }
                     })
-                        .then(resp => {
-                            user.Record = resp.data.data.Record;
-                            user.Lifes = resp.data.data.Lifes;
-                            deffered.resolve({ data: user });
-                            $localStorage.User = user;
-                        })
-                        .catch(error => console.log(error));
+                    .then(resp => {
+                        user.Record = resp.data.data.Record;
+                        user.Lifes = resp.data.data.Lifes;
+                        deffered.resolve({ data: user });
+                        $localStorage.User = user;
+                    })
+                    .catch(error => console.log(error));
                 });
             });
             return deffered.promise;
