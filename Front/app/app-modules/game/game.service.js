@@ -42,8 +42,7 @@ angular
         function getLevels(){
             return $http({
                 url: `${urlLevel}/get`,
-                method: 'GET',
-                authorization: `Bearer ${$localStorage.authorizationData.token}`
+                method: 'GET'
             });
         }
 
