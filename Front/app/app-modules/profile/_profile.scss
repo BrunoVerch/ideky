@@ -1,4 +1,4 @@
-.home {
+.profile {
     .logo {
         width: 33%;
     }
@@ -20,11 +20,14 @@
     }
 
     .button-home {
+        width: 388px;
+        height: 74px;
+        bottom: 0;
         background-color: $button-color-home;
         @extend %button-design-primary; 
         @extend %flexbox-center-vertical;
         @extend %flexbox-center-horizontal;                
-    }
+    } 
 
     .loadingScreenOn{
         position: absolute;

@@ -26,9 +26,4 @@ angular
 				toastr.error('Usuário ou senha inválidos.');
 			}
     	}
-
-		$scope.logout = () => {
-			authService.logout();
-			toastr.success('Deslogado com sucesso!');		
-		}
 });
