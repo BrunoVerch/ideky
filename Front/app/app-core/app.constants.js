@@ -6,9 +6,10 @@ angular.module('app.core')
       .constant('authConfig', {
             userAdmUrl: 'http://localhost:60550/administrative/get',
             loginAdmUrl: '/loginadm',
+            menuAdmUrl: '/menuadm',
             privateAdmUrl: '/menuadm',
             logoutAdmUrl: '/loginadm',
             loginFacebookUrl: 'login',
-            privateFacebookUrl: '/home',
-            loginFacebookUrl: '/login'
+            privateFacebookUrl: '/home',            
+            logoutFacebookUrl: '/login'
     	});

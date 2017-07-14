@@ -18,7 +18,11 @@ angular
                     $location.path('/menuadm');		
                 }
                 scope.logout = () => {
-                    authService.logout();
+                    if(scope.isAdmMenu){
+                        authService.logout();
+                    } else {
+                        authService.logoutFacebook();
+                    }                    
                     toastr.success('Deslogado com sucesso!');		
                 }
             }   

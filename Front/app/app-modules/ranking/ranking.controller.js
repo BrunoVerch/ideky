@@ -3,7 +3,7 @@ angular
 	.controller('RankingController', function ($scope, $location, RankingService) {
 	  init();
 
-		$scope.start = () => $location.path('/game');
+		$scope.play = () => $location.path('/game');
 		
 		function init() {
 			RankingService.getDailyRank()

@@ -28,7 +28,8 @@ angular
             })
             .when('/loginadm', {
                 controller: 'LoginadmController',
-                templateUrl: 'app/app-modules/administrative/loginadm/loginadm.html'
+                templateUrl: 'app/app-modules/administrative/loginadm/loginadm.html',
+                resolve: { auth: authService => authService.isNotAuthenticatedAdmPromise() }
             })
             .when('/menuadm', {
                 controller: 'MenuadmController',

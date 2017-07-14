@@ -1,30 +1,34 @@
-.menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 3px;
-    .fa.fa-user {
-        color: #3792b1;
-    }
+.box-menu {
+    position: relative;
+    .menu {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 3px;
+        .fa.fa-user {
+            color: #3792b1;
+        }
 
-    .fa.fa-trophy {        
-        margin-top: 20px;
-    }
-    .fa.fa-power-off{
-        color: $power-off-color;  
-        margin-top: 20px;      
-    }
+        .fa.fa-trophy {        
+            margin-top: 20px;
+        }
+        .fa.fa-power-off{
+            color: $power-off-color;  
+            margin-top: 20px;      
+        }
 
-    .fa.fa-bars, .fa.fa-power-off, .fa.fa-trophy, .fa.fa-user{
-        font-size: 35px        
-    }
+        .fa.fa-bars, .fa.fa-power-off, .fa.fa-trophy, .fa.fa-user{
+            font-size: 35px        
+        }
 
-    button {
-        padding: 0;
-        border: none;
-        background: none;
+        button {
+            padding: 0;
+            border: none;
+            background: none;
+        }
     }
 }
