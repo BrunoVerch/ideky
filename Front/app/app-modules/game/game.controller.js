@@ -2,35 +2,38 @@ angular
 	.module('app.core')
 	.controller('GameController', function ($scope, $window, $location, $q, GameService, toastr, $interval,$timeout,$localStorage,HomeService ) {
 		
-		let waitTimeBetweenStages = 250;
-		let waitTimeBeforeEndsGame = 1500;
-		let currentLevelIndex;
-		let countStage;
-		let countTime;
-		let progressBarTimeOut;
-		let wrongName;
-		let result;
-	    let percentageTime;
-		let intervalTimer;
-		let textAnimationClasses;
-		let textAnimationInterval;
-		let textAnimationCounter;
-		let startCountClasses;
-		let startCounter;
-		let user;
-		let userUsedLife;
+		 let 
+		 waitTimeBetweenStages = 250,
+		 waitTimeBeforeEndsGame = 1500,
+		 currentLevelIndex,
+		 countStage,
+		 countTime,
+		 progressBarTimeOut,
+		 wrongName,
+		 result,
+	   percentageTime,
+		 intervalTimer,
+		 textAnimationClasses,
+		 textAnimationInterval
+		 textAnimationCounter,
+		 startCountClasses,
+		 startCounter,
+		 user,
+		 userUsedLife;
 		
 		init();
 
 		function init() {	
 			userUsedLife = false;
+
 			startScopeElements();
 			shuffleAllFriends();
-			if(getLocalStorageUser()){
+
+			if(getLocalStorageUser())
 				loadLevelsAndStartGame();
-			}else{
-				$location.path('/login');
-			}
+			else
+				$location.path('/home');
+			
 		}
 
 		function loadLevelsAndStartGame(){
@@ -40,6 +43,7 @@ angular
 					currentLevelIndex = 0;
 					$scope.currentStage = 1;
 					$scope.currentLevel = levels[currentLevelIndex];
+
 					startGame();
 				})
 				.catch(error => console.log(error))
@@ -50,9 +54,8 @@ angular
 			$scope.answer =  answer;
 			$scope.onClickButtonLifes = onClickButtonLifes;
 			$scope.share = share;
-
 			$scope.fase = 0;
-		    $scope.score = 0;
+		  $scope.score = 0;
 			$scope.currentLevel = {};
 			$scope.currentLevel.LevelNumber = 0;
 			$scope.timer = 0;
@@ -67,7 +70,7 @@ angular
 		function getLocalStorageUser(){
 			user = $localStorage.User;
 			if(typeof $scope.friends === 'undefined' || $scope.friends === null || typeof user === 'undefined'|| user === null){
-				toastr.error("Ocorreu um erro ao carregar seu perfil. Redirecionando...");
+				toastr.error('Ocorreu um erro ao carregar seu perfil. Redirecionando...');
 				return false;	
 			}
 			return true;
@@ -84,24 +87,26 @@ angular
 		function nextStage(){
 			stopTimer();
 			sumScore();
-			if($scope.currentStage >= 5){
+
+			if($scope.currentStage >= 5)
 				nextLevel();
-			}else{
+			else
 				$scope.currentStage++;
-			}				
+							
 			startGame();
 		}
 
 		function nextLevel(){		
-			if(currentLevelIndex<9){
+			if(currentLevelIndex < 9)
 				currentLevelIndex++;			
-			}		
+			
 			$scope.currentLevel = levels[currentLevelIndex];	
 			$scope.currentStage = 1;		
 		}
 
 		function startGame(){
 			result = 'pendent';
+
 			setDrawsFriends();
 			startProgressBarStages();
 			startTimer();
@@ -110,15 +115,19 @@ angular
 
 		function setDrawsFriends(){
 			$scope.drawFriends = [];
-			$scope.drawFriends.splice(0,$scope.drawFriends.length);
+			$scope.drawFriends.splice(0, $scope.drawFriends.length);
+
 			let pictureAmount = $scope.currentLevel.PictureAmount;
-			for(let i=0; i<pictureAmount;i++){
+
+			for(let i = 0; i<pictureAmount;i++){
 				let drawNumber = Math.floor(Math.random() * $scope.friends.length);
-				let regex = /\^|\~|\'|\"|\´|\`|\\|\/|\;|\{|\}|\@|\||\<|\>/g;
+				let regex = /\^|\~|\'|\'|\´|\`|\\|\/|\;|\{|\}|\@|\||\<|\>/g;
+			
 				if(!$scope.friends[drawNumber].picture.data.is_silhouette){ 
 					let userTemp = {};
+			
 					userTemp.Picture = $scope.friends[drawNumber].picture.data.url;
-					userTemp.Name = $scope.friends[drawNumber].name.replace(regex,"");
+					userTemp.Name = $scope.friends[drawNumber].name.replace(regex,'');
 					$scope.drawFriends.push(userTemp);
 				}else{
 					i--;
@@ -131,6 +140,7 @@ angular
 		function shuffleAllFriends() {
 			let array = $localStorage.FriendsData;
 			let currentIndex = array.length, temporaryValue, randomIndex;
+			
 			while (0 !== currentIndex) {
 				randomIndex = Math.floor(Math.random() * currentIndex);
 				currentIndex -= 1;
@@ -145,29 +155,31 @@ angular
 			$scope.score = $scope.score+(100*$scope.currentLevel.Multiplier);
 		}
 
-		function changeClass(name){
-			if(result === 'pendent'){
+		function changeClass(name) {
+			if(result === 'pendent')
 				return 'moviment-to-button';
-			}
-			if(result === 'endOfTime'){
+			
+			if(result === 'endOfTime') 
 				return 'game-button-general-answer';
-			}
-			if(result === 'right'){
-				if(name === $scope.rightFriend.Name){
+			
+			if(result === 'right') {
+				if(name === $scope.rightFriend.Name) 
 					return 'game-button-right-answer';
-				}
+				
 				return 'game-button-general-answer';
 			}
-			if(result === 'wrong'){
-				if(name === wrongName){
+
+			if(result === 'wrong') {
+				if(name === wrongName)
 					return 'game-button-wrong-answer';
-				}
+				
 				return 'game-button-general-answer';
 			}
 		}
 
 		function answer(name){
 			stopTimer();
+
 			if(result === 'pendent'){
 				if(name === $scope.rightFriend.Name && $scope.timer > 0){
 					result = 'right';
@@ -175,7 +187,7 @@ angular
 				}else{
 					result = 'wrong';
 					wrongName = name;
-					$scope.endMessage = "Game Over!";
+					$scope.endMessage = 'Game Over!';
 					$timeout(finish, waitTimeBetweenStages);
 				}
 			}
@@ -183,7 +195,7 @@ angular
 
 		function startTimer(){
 			$scope.timer = $scope.currentLevel.Duration;
-			intervalTimer = $interval(timer,1000);
+			intervalTimer = $interval(timer, 1000);
 		}
 
 		function stopTimer(){
@@ -192,12 +204,12 @@ angular
 		}
 
 		function timer(){
-			if($scope.timer>1){
+			if($scope.timer > 1){
 				$scope.timer--;
 			}else if(result === 'pendent'){
 				stopTimer();
 				result = 'endOfTime';
-				$scope.endMessage = "Time Over!";
+				$scope.endMessage = 'Time Over!';
 				$scope.timer--;
 				$timeout(finish, waitTimeBetweenStages);
 			}			
@@ -207,6 +219,7 @@ angular
 			if(bool === true){
 				userUsedLife = true;
 				user.Lifes--;
+
 				GameService.reduceLife(user)
 					.then(response => {
 						$localStorage.User = response.data.data;
@@ -233,37 +246,38 @@ angular
 		function endGame(){
 			let gameResult = {'FacebookId':user.FacebookId,'Score':$scope.score};
 			GameService.saveGameResult(gameResult);
-			if(gameResult.score > user.Record){
+
+			if(gameResult.score > user.Record)
 				$localStorage.User.Record = gameResult.score;
-			}
+			
 			loadUser();
 			//$scope.shareButton = true;
 		}
 
 		function startProgressBarStages(){
-			countStage = $scope.currentStage-1;
+			countStage = $scope.currentStage - 1;
 			progressBarStages();
 		}
 
 		function startProgressBarTimer(){
 			countTime = 100;
-			percentageTime = (0.1*100)/$scope.currentLevel.Duration; //Define quanto em porcentagem equivale 100ms sobre o total de segundos da fase
+			percentageTime = (0.1 * 100) / $scope.currentLevel.Duration; //Define quanto em porcentagem equivale 100ms sobre o total de segundos da fase
 			progressBarTimer();
 		}
 
 		function progressBarStages(){
-			$scope.stagePercentage = {'width':(countStage*20)+'%'};
+			$scope.stagePercentage = {'width':(countStage * 20) + '%'};
 			if(countStage<$scope.currentStage){
-				countStage = countStage +0.1;
-				$timeout(progressBarStages,25);
+				countStage = countStage + 0.1;
+				$timeout(progressBarStages, 25);
 			}
 		}
 
 		function progressBarTimer(){
-			$scope.timerPercentage = {'width': (countTime)+'%'};
+			$scope.timerPercentage = {'width': (countTime) + '%'};
 			if(countTime>0){
 				countTime = countTime - percentageTime;
-				progressBarTimeOut = $timeout(progressBarTimer,98);
+				progressBarTimeOut = $timeout(progressBarTimer, 98);
 		  	}
     	}	
 
@@ -272,7 +286,7 @@ angular
 				method: 'share',
 				mobile_iframe: true,
 				redirect_uri: 'http://ideky.azurewebsites.net/api/',
-				message     : "Fiz "+score+" no IDEKY, te desafio para bater meu record",
+				message     : `Fiz ${score}  no IDEKY, te desafio para bater meu record`,
 			}, function(response){});
 		}
 	});
