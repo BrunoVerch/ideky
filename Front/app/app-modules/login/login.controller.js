@@ -6,7 +6,7 @@ angular
 
 		$scope.login = () => {
 			var redirectUri = location.protocol + '//' + location.host + '/authcomplete.html';
-			var externalProviderUrl = AppConstants.url + "/auth/ExternalLogin?provider=Facebook&response_type=token&client_id=1392336224214575&redirect_uri=http://localhost:8080/authComplete.html&scope=user_friends";
+			var externalProviderUrl = `${AppConstants.url}/auth/ExternalLogin?provider=Facebook&response_type=token&client_id=1392336224214575&redirect_uri=${redirectUri}&scope=user_friends`;
 
 			window.$windowScope = $scope;
 
