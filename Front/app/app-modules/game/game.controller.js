@@ -49,6 +49,7 @@ angular
 			$scope.changeClass = changeClass;
 			$scope.answer =  answer;
 			$scope.onClickButtonLifes = onClickButtonLifes;
+			$scope.share = share;
 
 			$scope.fase = 0;
 		    $scope.score = 0;
@@ -75,7 +76,7 @@ angular
 		function loadUser() {
 			HomeService.getUser()
 				.then(response => { 
-					$localStorage.User = response.data.data;
+					$localStorage.User = response.data;
 					user = response.data.data;
 				});
 		}
@@ -236,11 +237,7 @@ angular
 				$localStorage.User.Record = gameResult.score;
 			}
 			loadUser();
-			$timeout(returnHome,waitTimeBeforeEndsGame);
-		}
-
-		function returnHome(){
-			$location.path('/home');
+			//$scope.shareButton = true;
 		}
 
 		function startProgressBarStages(){
@@ -269,4 +266,12 @@ angular
 				progressBarTimeOut = $timeout(progressBarTimer,98);
 		  	}
     	}	
+
+		function share(){
+			FB.ui({
+				method: 'share',
+				mobile_iframe: true,
+				href: 'http://ideky.azurewebsites.net/',
+			}, function(response){});
+		}
 	});

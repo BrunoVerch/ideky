@@ -6,7 +6,8 @@ angular
         return {
             getDailyRank: getDailyRank,
             getMothlyRank: getMothlyRank,
-            getOverallRank: getOverallRank
+            getOverallRank: getOverallRank,
+            getFriendsRanking: getFriendsRanking,
         }
 
         function getDailyRank() {
@@ -30,6 +31,17 @@ angular
         function getOverallRank() {
             return $http({
                 url: `${url}/overallranking`,
+                headers:{
+                    Authorization: `Bearer ${$localStorage.authorizationData.token}`
+                }
+            });
+        }
+
+        function getFriendsRanking(friendsList){
+            return $http({
+                url: `${url}/friendsranking`,
+                method: 'PUT',
+                data: friendsList,
                 headers:{
                     Authorization: `Bearer ${$localStorage.authorizationData.token}`
                 }

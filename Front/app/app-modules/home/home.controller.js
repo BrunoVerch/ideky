@@ -1,11 +1,19 @@
 angular
 	.module('app.core')
-	.controller('HomeController', function ($scope, $location, HomeService, toastr, GameService, $localStorage,$timeout,$interval) {
+	.controller('HomeController', function ($scope, $location, HomeService, toastr, GameService, $localStorage,$timeout,$interval,RankingService) {
 	  
-	  	GameService.getFriends().then( response=>{
-			$localStorage.FriendsData = response.data;
+	  	GameService.getFriends().then( responseInvitable=>{
+			invitableFriends = responseInvitable.data;
+			GameService.getFriendsWhoPlayIdek().then(response=>{
+				friends =  response.data;
+				allFriends = invitableFriends.concat(friends);
+                $localStorage.FriendsData = allFriends;
+				RankingService.getFriendsRanking(friends).then(response=>{
+					$localStorage.RankingFriends = response.data;
+				});
+			})
 		});
-		
+
 		let textAnimationClasses;
 		let textAnimationCounter;
 		let	textAnimationInterval;
@@ -46,7 +54,6 @@ angular
 
 		function updatePicture(user) {
 			HomeService.updatePicture(user)
-						.then(response => console.log(response))
 						.catch(error => console.log(error));	
 		}
 	});
