@@ -1,6 +1,8 @@
-<div class="menu">    
-    <button data-ng-if="!isAdmMenu" ng-click="redirectProfile()"><i class="fa fa-user" aria-hidden="true"></i></button>
-    <button data-ng-if="!isAdmMenu" ng-click="redirectRanking()"><i class="fa fa-trophy" aria-hidden="true"></i></button>
-    <button data-ng-if="isAdmMenu" ng-click="redirectMenu()"><i class="fa fa-bars" aria-hidden="true"></i></button>
-    <button ng-click="logout()"><i class="fa fa-power-off" aria-hidden="true"></i></button>    
+<div class="box-menu">
+    <div class="menu">    
+        <button data-ng-if="!isAdmMenu" ng-click="redirectProfile()"><i class="fa fa-user" aria-hidden="true"></i></button>
+        <button data-ng-if="!isAdmMenu" ng-click="redirectRanking()"><i class="fa fa-trophy" aria-hidden="true"></i></button>
+        <button data-ng-if="isAdmMenu" ng-click="redirectMenu()"><i class="fa fa-bars" aria-hidden="true"></i></button>
+        <button ng-click="logout()"><i class="fa fa-power-off" aria-hidden="true"></i></button>    
+    </div>
 </div>
