@@ -14,7 +14,7 @@ angular
 	   percentageTime,
 		 intervalTimer,
 		 textAnimationClasses,
-		 textAnimationInterval
+		 textAnimationInterval,
 		 textAnimationCounter,
 		 startCountClasses,
 		 startCounter,
