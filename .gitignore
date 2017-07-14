@@ -290,5 +290,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
-Front/scss/*.css
 Front/scss/*.css.map
