@@ -1,18 +1,6 @@
 angular
 	.module('app.core')
 	.controller('HomeController', function ($scope, $location, HomeService, toastr, GameService, $localStorage,$timeout,$interval,RankingService) {
-	  
-	  	GameService.getFriends().then( responseInvitable=>{
-			invitableFriends = responseInvitable.data;
-			GameService.getFriendsWhoPlayIdek().then(response=>{
-				friends =  response.data;
-				allFriends = invitableFriends.concat(friends);
-                $localStorage.FriendsData = allFriends;
-				RankingService.getFriendsRanking(friends).then(response=>{
-					$localStorage.RankingFriends = response.data;
-				});
-			})
-		});
 
 		let textAnimationClasses;
 		let textAnimationCounter;
@@ -25,6 +13,7 @@ angular
 				$scope.user = $localStorage.User;
 			}
 			loadUser();
+			loadFriend();
 		}
 		
 		$scope.start = () => {
@@ -43,17 +32,33 @@ angular
 		function logout(){
 			$location.path('/login');
 		}
+
+		function loadFriend() {
+	  	GameService.getFriends().then(responseInvitable => {
+				const invitableFriends = responseInvitable.data;
+				
+				GameService.getFriendsWhoPlayIdek().then(response => {
+					const friends = response.data;
+					const allFriends = invitableFriends.concat(response.data);
+					$localStorage.FriendsData = allFriends;
+					
+					RankingService.getFriendsRanking(friends).then(response => $localStorage.RankingFriends = response.data);
+				});
+			});
+		}
+
 		function loadUser() {
 			HomeService.getUser()
 				.then(response => { 
 					$scope.user = response.data;
 					$localStorage.User = $scope.user;
+
 					updatePicture($scope.user);
 				});
 		}
 
 		function updatePicture(user) {
 			HomeService.updatePicture(user)
-						.catch(error => console.log(error));	
+				.catch(error => console.log(error));	
 		}
 	});

@@ -36,9 +36,8 @@ angular
 		}
 
 		function loadOverallPosition(overallRank) {
-			console.log(overallRank);
 			$scope.user.PositionRaking = 1 + overallRank
 				.sort((a, b) => b.Record - a.Record)
-				.findIndex(item => item.Name === $scope.user.Name);; 
+				.findIndex(item => item.Name === $scope.user.Name); 
 		}
 	});

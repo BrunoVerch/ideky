@@ -237,7 +237,7 @@ angular
 				$localStorage.User.Record = gameResult.score;
 			}
 			loadUser();
-			//$scope.shareButton = true;
+			$scope.shareButton = true;
 		}
 
 		function startProgressBarStages(){
@@ -271,7 +271,7 @@ angular
 			FB.ui({
 				method: 'share',
 				mobile_iframe: true,
-				href: 'http://ideky.azurewebsites.net/',
+				
 			}, function(response){});
 		}
 	});
