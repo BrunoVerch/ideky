@@ -11,7 +11,7 @@ angular
 		 progressBarTimeOut,
 		 wrongName,
 		 result,
-	   percentageTime,
+	   	percentageTime,
 		 intervalTimer,
 		 textAnimationClasses,
 		 textAnimationInterval,
