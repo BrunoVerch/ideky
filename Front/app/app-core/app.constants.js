@@ -10,7 +10,6 @@ angular.module('app.core')
             privateAdmUrl: '/menuadm',
             logoutAdmUrl: '/loginadm',
             loginFacebookUrl: 'login',
-            privateFacebookUrl: '/home',            
+            privateFacebookUrl: '/home',        
             logoutFacebookUrl: '/login',
-            profileFacebookUrl: '/profile'
     	});
