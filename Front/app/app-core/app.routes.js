@@ -4,7 +4,8 @@ angular
         $routeProvider
             .when('/login', {
                 controller: 'LoginController',
-                templateUrl: 'app/app-modules/login/login.html'
+                templateUrl: 'app/app-modules/login/login.html',
+                resolve: { auth: authService => authService.isNotAuthenticatedFacebookPromise() }
             })
             .when('/home', {
                 controller: 'HomeController',

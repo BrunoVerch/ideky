@@ -16,6 +16,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
   let logoutAdmUrl = authConfig.logoutAdmUrl;
   let loginFacebookUrl = authConfig.loginFacebookUrl;
   let logoutFacebookUrl = authConfig.logoutFacebookUrl;
+  let profileFacebookUrl = authConfig.profileFacebookUrl;
 
 return {
     login: login,
@@ -27,6 +28,7 @@ return {
     isNotAuthenticatedAdmPromise: isNotAuthenticatedAdmPromise,
     isAuthenticatedFacebook: isAuthenticatedFacebook,
     isAuthenticatedFacebookPromise: isAuthenticatedFacebookPromise,
+    isNotAuthenticatedFacebookPromise: isNotAuthenticatedFacebookPromise,
     hasNotPermission: hasNotPermission,
     isNotAuthenticated: isNotAuthenticated,
     hasPermissionPromise: hasPermissionPromise,
@@ -150,6 +152,19 @@ return {
       deferred.resolve();
     } else {
       $location.path(loginFacebookUrl);
+      deferred.reject();
+    }
+
+    return deferred.promise;
+  };
+
+  function isNotAuthenticatedFacebookPromise() {
+    let deferred = $q.defer();
+    
+    if (!isAuthenticatedFacebook()) {
+      deferred.resolve();
+    } else {
+      $location.path(profileFacebookUrl);
       deferred.reject();
     }
 
