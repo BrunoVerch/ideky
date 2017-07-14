@@ -271,7 +271,10 @@ angular
 			FB.ui({
 				method: 'share',
 				mobile_iframe: true,
-				href: 'http://ideky.azurewebsites.net/',
+				action_type: 'og.likes',
+				action_properties: JSON.stringify({
+					object:'https://developers.facebook.com/docs/',
+				})
 			}, function(response){});
 		}
 	});
