@@ -9,22 +9,19 @@ angular
 		}		
 
 		function loadFriendsList() {
-			GameService
-			.getFriendsWhoPlayIdek()
-			.then(response => {
-				var friendsList = response.data;
-				console.log(response);
-				loadPositionFriends(friendsList);
-			})
+			GameService.getFriendsWhoPlayIdek()
+				.then(response => loadPositionFriends(response.data));
 		}
 
 		function loadPositionFriends(friendsList) {
-			RankingService
-			.getFriendsRanking(friendsList)
-			.then(response => {
-				var position = response.data;
-				$scope.positionRankingFriends 
-				console.log(response);
-			})
+			RankingService.getFriendsRanking(friendsList)
+				.then(response => {
+					let friendsRanking = response.data.data;
+					friendsRanking = friendsRanking.concat($scope.user);
+					
+					friendsRanking.sort((a, b) => b.Record - a.Record);
+					
+					$scope.user.PositionRankingFriends = 1 + friendsRanking.findIndex(item => item.FacebookId === $scope.user.FacebookId);
+				});
 		}
 	});
