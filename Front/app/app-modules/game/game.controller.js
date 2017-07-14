@@ -237,7 +237,7 @@ angular
 				$localStorage.User.Record = gameResult.score;
 			}
 			loadUser();
-			$scope.shareButton = true;
+			//$scope.shareButton = true;
 		}
 
 		function startProgressBarStages(){
@@ -267,11 +267,12 @@ angular
 		  	}
     	}	
 
-		function share(){
+		function share(score){
 			FB.ui({
 				method: 'share',
 				mobile_iframe: true,
-				
+				redirect_uri: 'http://ideky.azurewebsites.net/api/',
+				message     : "Fiz "+score+" no IDEKY, te desafio para bater meu record",
 			}, function(response){});
 		}
 	});

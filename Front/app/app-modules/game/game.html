@@ -40,7 +40,7 @@
                 <div class="box-img-game" ng-class="showPictures" ng-hide="showLifesOption">
                     <button ng-repeat="user in drawFriends" ng-click="answer(user.Name)" class="game-button font-primary" ng-class="changeClass('{{user.Name}}')" style="background-image: url({{user.Picture}});"></button>
                 </div>   
-                <button ng-show="shareButton" ng-click="share()" class="buttonShare">Compartilhar no Facebook</button>    
+                <button ng-show="shareButton" ng-click="share(score)" class="buttonShare">Compartilhar no Facebook</button>    
             </div>
         </div>
         <div class="menu-box">
