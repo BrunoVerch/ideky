@@ -2,6 +2,8 @@ angular
 	.module('app.core')
 	.controller('RankingController', function ($scope, $location, RankingService) {
 	  init();
+
+		$scope.start = () => $location.path('/game');
 		
 		function init() {
 			RankingService.getDailyRank()

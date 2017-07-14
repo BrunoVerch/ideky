@@ -122,40 +122,17 @@ namespace Ideky.Infrastructure.Repository
             .GroupBy(gameResult => gameResult.FacebookId).ToList();
         }
 
-        public GameResult RegisterNewGame(long facebookId, int score)
+        public GameResult RegisterNewGame(GameResult gameResult)
         {
-            User user = context.Users.FirstOrDefault(x => x.FacebookId == facebookId);
-            GameResult gameResult = new GameResult(user, score);
-            if (user.Record < score)
-            {
-                user.SetNewRecord(score);
-                context.Entry(user).State = EntityState.Modified;
-                context.SaveChanges();
-            }
-            if (gameResult.Validate())
-            {
-                context.GameResults.Add(gameResult);
-                context.SaveChanges();
-            }
+            context.GameResults.Add(gameResult);
+            context.Entry(gameResult.User).State = System.Data.Entity.EntityState.Unchanged;
+            context.SaveChanges();
             return gameResult;
         }
 
-        public object ResetRanking()
+        public int ResetRanking()
         {
-            List().ForEach(g =>
-            {
-                var gameResult = GetById(g.Id);
-                gameResult.Disable();
-                context.Entry(gameResult).State = EntityState.Modified;
-            });
-
-            context.SaveChanges();
-
-            return List().Select(gameResult => new
-                            {
-                                Id = gameResult.Id,
-                                Active = gameResult.Active
-                            });
+            return context.Database.ExecuteSqlCommand("UPDATE dbo.Game_Result SET Active = 0");
         }
 
         public void Dispose()

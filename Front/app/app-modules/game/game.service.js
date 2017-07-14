@@ -9,6 +9,7 @@ angular
             getFriends: getFriends,
             getLevels: getLevels,
             saveGameResult: saveGameResult,
+            reduceLife: reduceLife,
         }
 
         function getFriends() {
@@ -27,12 +28,20 @@ angular
         function getLevels(){
             return $http({
                 url: `${urlLevel}/get`,
-                method: 'GET'
+                method: 'GET',
+                authorization: `Bearer ${$localStorage.authorizationData.token}`
             });
         }
 
-        function getLifes(){
-
+        function reduceLife(user){
+            return $http({
+                url: `${urlPlayer}/reduceLife`,
+                method: 'PUT',
+                data: user,
+                headers:{ 
+                    authorization: `Bearer ${$localStorage.authorizationData.token}`
+                }
+            });
         }
 
         function saveGameResult(gameResult){

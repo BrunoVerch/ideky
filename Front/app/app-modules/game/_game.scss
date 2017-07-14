@@ -4,7 +4,7 @@
         @extend %flexbox-center-horizontal;
     }
     .box-game{    
-        height: 90vh;
+        height: 88vh;
         padding: 28px 20px;      
         border-radius: 4px;
         background-image: $background-image-default;   
@@ -147,19 +147,62 @@
         background-color: $progress-color;
         box-shadow: 0px 0px 15px 1px $progress-color; 
     }
-    .loadingScreenOn{
+    .lifesOption{
         position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        background-color: rgba(black,0.9);
+        top: 0%;
+        bottom: 0%;
+        right: 0%;
+        left: 0%;
+        background-color: rgba(#B22222,0.95);
+        color: white;
+        text-shadow: $text-shadow-border-heavy;
+        font-family: $font-type-primary;
+        padding-top: 10%;
+        padding-left: 30%;
+        padding-right: 30%;
+    }
+    .titleLifesOption{
+        text-align: center;
+        margin-bottom: 30px;
+        h1{
+            font-size: 50px;
+        }
+    }
+    .lifesDiplay{
         @extend %flexbox-center-vertical;
-        @extend %flexbox-center-horizontal;
+        img{
+            width: 50px;
+            height: 45px;
+        }
     }
-    .lodingScreenOff{
-        display: none;
+    .lifesOptions{
+        text-align: center;
     }
+    .lifesOptions .button{
+        position: relative;
+        border: 0px;
+        width: 90px;
+        height: 40px;
+        margin-top: 60px;
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 30px;
+        text-shadow: $text-shadow-border-light;
+        &:active{
+            box-shadow: 0px 0px 0px;
+            top: 5px;
+        }
+    }
+    .lifesOptions .button.buttonUseLife{     
+        background-color: green;
+        box-shadow: 0px 5px 0px #00FF00;
+    }
+    .lifesOptions .button.buttonDontUseLife{
+        background-color: #CD0000;
+        box-shadow: 0px 5px 0px #FF0000;
+    }
+
+
     @media screen and (orientation: Portrait){
         .box-game{
             width: 100vw;

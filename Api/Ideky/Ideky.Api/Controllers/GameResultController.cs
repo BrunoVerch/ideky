@@ -23,17 +23,23 @@ namespace Ideky.Api.Controllers
         [Route("register")]
         public HttpResponseMessage Register([FromBody]GameResultModel gameResultModel)
         {
-            if(gameResultModel == null) {
-                return ResponderErro("Dados inválidos");
-            }
-            GameResult gameResult = gameResultRepository.RegisterNewGame(gameResultModel.FacebookID, gameResultModel.Score);
-            if (gameResult.Messages.Count > 0)
+            User user = userRepository.GetByFacebookId(gameResultModel.FacebookID);
+            if (user != null)
             {
+                if (user.Record < gameResultModel.Score)
+                {
+                    user = userRepository.SetNewRecord(gameResultModel.Score, gameResultModel.FacebookID);
+                }
+                GameResult gameResult = new GameResult(user, gameResultModel.Score);
+                if (gameResult.Validate())
+                {
+                    gameResult = gameResultRepository.RegisterNewGame(gameResult);
+                    GameResultModelReturn answerObject = new GameResultModelReturn(gameResult.Id, gameResult.User.FacebookId, gameResult.Score, gameResult.GameDate);
+                    return ResponderOK(answerObject);
+                }
                 return ResponderErro(gameResult.Messages);
             }
-            GameResultModelReturn answerObject;
-            answerObject = new GameResultModelReturn(gameResult.Id, gameResult.User.FacebookId, gameResult.Score, gameResult.GameDate);
-            return ResponderOK(answerObject);
+            return ResponderErro("Usuário inválido");
         }
 
         [HttpGet, Authorize]

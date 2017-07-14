@@ -53,7 +53,7 @@ namespace Ideky.Api.Controllers
             {
                 return BadRequest("External user is not registered");
             }
-            
+
             var accessTokenResponse = GenerateLocalAccessTokenResponse(user.Name);
 
             user.UpdateToken(accessTokenResponse.First.Next.First.ToString());
@@ -109,7 +109,7 @@ namespace Ideky.Api.Controllers
 
             if (user == null)
             {
-                user = _repo.Save(new User((long)Convert.ToDouble(externalLogin.ProviderKey), externalLogin.UserName, "Trocar")); 
+                user = _repo.Save(new User((long)Convert.ToDouble(externalLogin.ProviderKey), externalLogin.UserName, "Trocar"));
             }
 
             bool hasRegistered = user != null;
@@ -214,24 +214,24 @@ namespace Ideky.Api.Controllers
 
         private JObject GenerateLocalAccessTokenResponse(string userName)
         {
- 
+
             var tokenExpiration = TimeSpan.FromDays(1);
- 
+
             ClaimsIdentity identity = new ClaimsIdentity(OAuthDefaults.AuthenticationType);
- 
+
             identity.AddClaim(new Claim(ClaimTypes.Name, userName));
             identity.AddClaim(new Claim("role", "user"));
- 
+
             var props = new AuthenticationProperties()
             {
                 IssuedUtc = DateTime.UtcNow,
                 ExpiresUtc = DateTime.UtcNow.Add(tokenExpiration),
             };
- 
+
             var ticket = new AuthenticationTicket(identity, props);
- 
+
             var accessToken = Startup.OAuthBearerOptions.AccessTokenFormat.Protect(ticket);
- 
+
             JObject tokenResponse = new JObject(
                                         new JProperty("userName", userName),
                                         new JProperty("access_token", accessToken),
@@ -240,7 +240,7 @@ namespace Ideky.Api.Controllers
                                         new JProperty(".issued", ticket.Properties.IssuedUtc.ToString()),
                                         new JProperty(".expires", ticket.Properties.ExpiresUtc.ToString())
             );
- 
+
             return tokenResponse;
         }
     }
