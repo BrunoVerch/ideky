@@ -5,7 +5,8 @@ angular
 		
 		function init() {
 			$scope.user = $localStorage.User;	
-			loadFriendsList();					
+			loadFriendsList();	
+			loadOverallRanking();				
 		}		
 
 		function loadFriendsList() {
@@ -23,5 +24,19 @@ angular
 					
 					$scope.user.PositionRankingFriends = 1 + friendsRanking.findIndex(item => item.FacebookId === $scope.user.FacebookId);
 				});
+		}
+
+		function loadOverallRanking() {
+			let overallRank;
+			RankingService.getOverallRank()
+				.then(response => loadOverallPosition(response.data.data))
+				.catch(error => console.log(error));
+		}
+
+		function loadOverallPosition(overallRank) {
+			console.log(overallRank);
+			$scope.user.PositionRaking = 1 + overallRank
+				.sort((a, b) => b.Record - a.Record)
+				.findIndex(item => item.Name === $scope.user.Name);; 
 		}
 	});
