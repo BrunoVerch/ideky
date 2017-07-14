@@ -35,4 +35,14 @@ angular
                 }
             });
         }
+
+        function getFriendsRanking(friendsList){
+            return $http({
+                url: `${url}/friendsranking`,
+                data: friendsList,
+                headers:{
+                    Authorization: `Bearer ${$localStorage.authorizationData.token}`
+                }
+            });
+        }
     });

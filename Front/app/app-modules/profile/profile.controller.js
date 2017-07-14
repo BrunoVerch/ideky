@@ -50,7 +50,7 @@ angular
 		}
 
 		function updatePicture(user) {
-			user.Picture = user.picture.data.url;
+			user.Picture = user.picture;
 			user.FacebookId = user.id;
 
 			HomeService.updatePicture(user)
