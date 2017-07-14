@@ -2,6 +2,8 @@ angular
 	.module('app.core')
 	.controller('ProfileController', function ($scope, $location, RankingService, GameService, toastr, $localStorage) {
 	  	init();	
+
+		$scope.play = () => $location.path('/game');
 		
 		function init() {
 			$scope.user = $localStorage.User;	

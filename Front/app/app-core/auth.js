@@ -11,9 +11,11 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
 
   let userAdmUrl = authConfig.userAdmUrl;
   let loginAdmUrl = authConfig.loginAdmUrl;
+  let menuAdmUrl = authConfig.menuAdmUrl;
   let privateAdmUrl = authConfig.privateAdmUrl;
   let logoutAdmUrl = authConfig.logoutAdmUrl;
   let loginFacebookUrl = authConfig.loginFacebookUrl;
+  let logoutFacebookUrl = authConfig.logoutFacebookUrl;
 
 return {
     login: login,
@@ -22,12 +24,14 @@ return {
     hasPermission: hasPermission,
     isAuthenticatedAdm: isAuthenticatedAdm,
     isAuthenticatedAdmPromise: isAuthenticatedAdmPromise,
+    isNotAuthenticatedAdmPromise: isNotAuthenticatedAdmPromise,
     isAuthenticatedFacebook: isAuthenticatedFacebook,
     isAuthenticatedFacebookPromise: isAuthenticatedFacebookPromise,
     hasNotPermission: hasNotPermission,
     isNotAuthenticated: isNotAuthenticated,
     hasPermissionPromise: hasPermissionPromise,
-    facebookLogged: facebookLogged
+    facebookLogged: facebookLogged,
+    logoutFacebook: logoutFacebook
   };
   
   function login(user) {
@@ -68,6 +72,21 @@ return {
     }
   };
 
+  function logoutFacebook() {
+    delete $localStorage.FriendsData;
+    delete $localStorage.RankingFriends;
+    delete $localStorage.User;
+    delete $localStorage.authorizationData;
+    delete $localStorage.headerAuth;
+    delete $localStorage.user;
+    delete $localStorage.Authorization;
+    $http.defaults.headers.common.Authorization = undefined;
+
+    if (logoutFacebookUrl) {
+      $location.path(loginFacebookUrl);
+    }
+  };
+
   function getUser() {
     return $localStorage.loggedUser;
   };
@@ -105,6 +124,19 @@ return {
       deferred.resolve();
     } else {
       $location.path(loginAdmUrl);
+      deferred.reject();
+    }
+
+    return deferred.promise;
+  };
+
+  function isNotAuthenticatedAdmPromise() {
+    let deferred = $q.defer();
+
+    if (!isAuthenticatedAdm()) {
+      deferred.resolve();
+    } else {
+      $location.path(menuAdmUrl);
       deferred.reject();
     }
 
