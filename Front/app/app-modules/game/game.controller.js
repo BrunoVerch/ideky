@@ -237,7 +237,7 @@ angular
 				$localStorage.User.Record = gameResult.score;
 			}
 			loadUser();
-			//$scope.shareButton = true;
+			$scope.shareButton = true;
 		}
 
 		function startProgressBarStages(){

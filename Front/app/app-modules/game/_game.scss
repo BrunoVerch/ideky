@@ -2,6 +2,7 @@
     .center-box{
         @extend %flexbox-center-vertical;
         @extend %flexbox-center-horizontal;
+        flex-direction: row;
     }
     .box-game{    
         height: 88vh;
@@ -201,7 +202,10 @@
         background-color: #CD0000;
         box-shadow: 0px 5px 0px #FF0000;
     }
-
+    .global-box{
+        display: flex; 
+        flex-direction: row;
+    }
     .buttonShare{
         @extend %button-design-primary;
         position: absolute;
@@ -211,7 +215,9 @@
         width: 400px;
         height: 50px;
     }
-
+    .menu-box{
+        padding-top: 10px;
+    }
 
     @media screen and (orientation: Portrait){
         .box-game{
