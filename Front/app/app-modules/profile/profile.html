@@ -5,13 +5,15 @@
       <div class="box-content">
         <div class="box-content-wrapper">          
           <img class="mask-profile" alt="Picture of {{user.name}}" ng-src="{{user.picture.data.url}}">
-          <h1 class="font-primary uppercase">welcome<br><small>{{user.name}}</small></h1>
-          <h1 class="font-secundary subtitle">Maior Pontuação: {{user.record}}</h1>  
+          <h1 class="font-primary uppercase">{{user.Name}}</h1>
+          <h1 class="font-secundary subtitle">Maior Pontuação: {{user.Record}}</h1>  
+          <h1 class="font-secundary subtitle">Posição no Ranking: {{user.PositionRaking}}</h1>  
+          <h1 class="font-secundary subtitle">Posição Entre Amigos: {{user.PositionRankingFriends}}</h1>  
         </div>    
       </div>     
       <!--BUTTON TO PLAY-->
       <button type="button" class="button-home">        
-        <span class="text uppercase">jogar</span>          
+        <span class="text uppercase">Jogar</span>          
       </button>  
   </div>
 </section>
