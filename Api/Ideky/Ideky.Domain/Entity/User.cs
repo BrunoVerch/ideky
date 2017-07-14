@@ -119,5 +119,13 @@ namespace Ideky.Domain.Entity
             }
             return Messages.Count == 0;
         }
+
+        public void AddDailyLifes()
+        {
+            if(LastLogin.Day < DateTime.Now.Day)
+            {
+                AddLifes(3);
+            }
+        }
     }
 }
