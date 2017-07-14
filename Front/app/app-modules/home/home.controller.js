@@ -35,10 +35,11 @@ angular
 
 		function loadFriend() {
 	  	GameService.getFriends().then(responseInvitable => {
-				invitableFriends = responseInvitable.data;
+				const invitableFriends = responseInvitable.data;
 				
 				GameService.getFriendsWhoPlayIdek().then(response => {
-					allFriends = invitableFriends.concat(response.data);
+					const friends = response.data;
+					const allFriends = invitableFriends.concat(response.data);
 					$localStorage.FriendsData = allFriends;
 					
 					RankingService.getFriendsRanking(friends).then(response => $localStorage.RankingFriends = response.data);
