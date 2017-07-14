@@ -10,7 +10,7 @@ angular
 		let progressBarTimeOut;
 		let wrongName;
 		let result;
-	  let percentageTime;
+	    let percentageTime;
 		let intervalTimer;
 		let textAnimationClasses;
 		let textAnimationInterval;
@@ -271,10 +271,7 @@ angular
 			FB.ui({
 				method: 'share',
 				mobile_iframe: true,
-				action_type: 'og.likes',
-				action_properties: JSON.stringify({
-					object:'https://developers.facebook.com/docs/',
-				})
+				
 			}, function(response){});
 		}
 	});
