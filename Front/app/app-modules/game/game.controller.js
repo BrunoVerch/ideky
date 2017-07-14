@@ -75,7 +75,7 @@ angular
 		function loadUser() {
 			HomeService.getUser()
 				.then(response => { 
-					$localStorage.User = response.data.data;
+					$localStorage.User = response.data;
 					user = response.data.data;
 				});
 		}
@@ -236,11 +236,6 @@ angular
 				$localStorage.User.Record = gameResult.score;
 			}
 			loadUser();
-			$timeout(returnHome,waitTimeBeforeEndsGame);
-		}
-
-		function returnHome(){
-			$location.path('/home');
 		}
 
 		function startProgressBarStages(){

@@ -46,7 +46,6 @@ angular
 
 		function updatePicture(user) {
 			HomeService.updatePicture(user)
-						.then(response => console.log(response))
 						.catch(error => console.log(error));	
 		}
 	});
