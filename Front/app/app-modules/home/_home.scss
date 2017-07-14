@@ -3,26 +3,28 @@
         width: 33%;
     }
 
-    .box-default{ 
+    .box-default { 
+        @extend %flexbox-center-horizontal;
         flex-direction: column;
         justify-content: space-between;        
-        @extend %flexbox-center-horizontal;
     }  
 
     h1 {
         margin-top: 15px;
+
         &.font-primary {
             text-shadow: 0 5px 1px rgba(#000, 0.2);
-            &>small {
+
+            & > small {
                 text-shadow: initial;
             }
         }
     }
 
     .button-home {
-        background-color: $button-color-home;
         @extend %button-design-primary; 
         @extend %flexbox-center-vertical;
         @extend %flexbox-center-horizontal;                
+        background-color: $button-color-home;
     }
 }

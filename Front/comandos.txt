@@ -34,3 +34,38 @@ Ex.:
         font-size: 10px;
     }
 }
+
+Rever:
+- Mudar o atributo [name] para [id] nas inputs para funcionar o <label>
+- Mudar o [ng-click] para [ng-submit] nos formulários para funcionar o submit com ENTER
+- Declarar o que tem no escopo nas primeiras linhas das controllers 
+- Arrumar espaços e quebra de linhas nos arquivos SCSS:
+    Exemplo:
+        .class + input {
+            margin: 0;
+
+            .outra-classe {
+                margin: 10px;
+                padding: 10px;
+            }
+
+            .mais-uma-classe {
+                background-color: red;
+            }
+        } 
+
+- Botar os @extend para cima nos seletores:
+    Exemplo:
+        .classe {
+            @extend %button-design-primary; 
+            @extend %flexbox-center-vertical;
+            @extend %flexbox-center-horizontal;                
+            font-size: 18px;
+            width: 100%;
+            background-color: $button-color-menuadm-confirmar;
+            border-radius: 3px;
+            padding: 15px;
+            margin-top: 15px;
+        } 
+
+- Alterar variáveis em português
