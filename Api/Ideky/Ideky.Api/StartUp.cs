@@ -28,6 +28,8 @@ namespace Ideky.Api
                 AppSecret = "8bc0388b3b1985a8921166cfd5151ede",
                 Provider = new FacebookAuthProvider()
             };
+            facebookAuthOptions.Scope.Add("user_friends");
+
 
             app.UseFacebookAuthentication(facebookAuthOptions);
 
