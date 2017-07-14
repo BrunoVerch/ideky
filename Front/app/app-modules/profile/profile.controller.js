@@ -1,21 +1,30 @@
 angular
 	.module('app.core')
-	.controller('ProfileController', function ($scope, $location, HomeService, toastr, $localStorage) {
-	  	init();
+	.controller('ProfileController', function ($scope, $location, RankingService, GameService, toastr, $localStorage) {
+	  	init();	
 		
 		function init() {
-			if(typeof $localStorage.User != 'undefined' && $localStorage.User != null ){
-				$scope.user = $localStorage.User;
-			}
-			loadUser();
+			$scope.user = $localStorage.User;	
+			loadFriendsList();					
 		}		
-	
-		function loadUser() {
-			HomeService.getUser()
-				.then(response => { 
-					$scope.user = response.data;
-					$localStorage.User = $scope.user;
-					updatePicture($scope.user);
-				});
+
+		function loadFriendsList() {
+			GameService
+			.getFriendsWhoPlayIdek()
+			.then(response => {
+				var friendsList = response.data;
+				console.log(response);
+				loadPositionFriends(friendsList);
+			})
+		}
+
+		function loadPositionFriends(friendsList) {
+			RankingService
+			.getFriendsRanking(friendsList)
+			.then(response => {
+				var position = response.data;
+				$scope.positionRankingFriends 
+				console.log(response);
+			})
 		}
 	});
