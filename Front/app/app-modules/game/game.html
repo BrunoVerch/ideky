@@ -1,5 +1,4 @@
-<section class="game"> 
-    <logo></logo>
+<section class="game">   
     <div class="global-box">
         <div class="center-box">
             <div class="box-game">
@@ -8,7 +7,7 @@
                         <div class="box-content-wrapper">    
                             <h1 class="titleLifesOption">{{endMessage}}</h1>
                             <div class="lifesDiplay">
-                                <img src="images/heart.png" alt="Lifes">
+                                <i class="fa fa-heart" aria-hidden="true"></i>
                                 <h2>x{{lifes}}</h2>
                             </div>  
                             <div class="lifesOptions">  
@@ -18,6 +17,9 @@
                             </div>  
                         </div>
                     </div>   
+                </div>
+                <div class="game-over" ng-show="showGameOver">
+                    <span>Game Over</span>
                 </div>
                 <div class="box-game-info">
                     <div class="level-info">

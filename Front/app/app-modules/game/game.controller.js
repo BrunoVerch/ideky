@@ -65,6 +65,7 @@ angular
 			$scope.drawFriends = [];
 			$scope.user = {};
 			$scope.endMessage;
+			$scope.showGameOver = false;
 		}
 
 		function getLocalStorageUser(){
@@ -251,7 +252,10 @@ angular
 				$localStorage.User.Record = gameResult.score;
 			
 			loadUser();
-			//$scope.shareButton = true;
+      
+			// $scope.shareButton = true;
+			$scope.showGameOver = true;
+
 		}
 
 		function startProgressBarStages(){
