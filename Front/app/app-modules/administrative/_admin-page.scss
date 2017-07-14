@@ -1,0 +1,22 @@
+.admin-page {
+    .logo {
+        width: 33%;
+    }
+
+    .box-default{ 
+        @extend %flexbox-center-horizontal;
+        flex-direction: column;
+        position: relative;
+    }
+    
+    .box-content {
+        padding: 40px;
+        margin: 30px 10px 10px;
+    }
+
+    .box-content-wrapper {
+        h1{            
+            font-size: 26px;
+        }
+    }
+}

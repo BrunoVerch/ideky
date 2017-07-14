@@ -10,7 +10,6 @@ using Ideky.Api.App_Start;
 
 namespace Ideky.Api.Controllers
 {
-    [AllowAnonymous]
     [RoutePrefix("user")]
     public class UserController : BasicController
     {
@@ -21,18 +20,23 @@ namespace Ideky.Api.Controllers
             userRepository = new UserRepository();
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         [Route("register")]
         public HttpResponseMessage Post([FromBody]UserModel userModel)
         {
             try
             {
-                var user = userRepository.CreateNewUser(userModel.FacebookId, userModel.Name, userModel.Picture);
-                //if (answer == null)
-                //    return ResponderOK(null);
-                //else
-                //    return ResponderErro(answer);
-                return ResponderOK(user);
+                var user = new User(userModel.FacebookId, userModel.Name, userModel.Picture);
+
+                if (user.Validate())
+                {
+                    user = userRepository.Save(user);
+                    return ResponderOK(user);
+                }
+                else
+                {
+                    return ResponderErro(user.Messages);
+                }
             }
             catch (RuntimeBinderException)
             {
@@ -44,7 +48,7 @@ namespace Ideky.Api.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         [Route("getByFacebookId/{facebookId:long}")]
         public HttpResponseMessage GetByFacebookId(long facebookId)
         {
@@ -56,29 +60,61 @@ namespace Ideky.Api.Controllers
             return ResponderOK(user);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         [Route("setNewRecord")]
         public HttpResponseMessage SetNewRecord([FromBody]UserModel userModel)
         {
             User user = userRepository.SetNewRecord(userModel.Record, userModel.FacebookId);
-            if (user.Messages.Count > 0) {
-                return ResponderErro(user.Messages);
-            }
-            return ResponderOK(user);
+            if (user.Messages.Count == 0) return ResponderOK(user);
+            else return ResponderErro(user.Messages);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         [Route("setNewLogin")]
         public HttpResponseMessage SetNewLogin(UserModel userModel)
         {
             User user = userRepository.SetNewLogin(userModel.FacebookId);
-            if (user.Messages.Count > 0)
-            {
+            if (user == null)
+                return ResponderErro("Usuário inexistente.");
+            else if (user.Messages.Count == 0)
+                return ResponderOK(user);
+            else
                 return ResponderErro(user.Messages);
-            }
-            return ResponderOK(user);       
         }
 
+        [HttpPut, Authorize]
+        [Route("updatePicture")]
+        public HttpResponseMessage UpdatePicture(UserModel userModel)
+        {
+            User user = new User(userModel.FacebookId, userModel.Name, userModel.Picture);
+
+            if (user.Validate())
+                return ResponderOK(userRepository.Update(user));
+            else
+                return ResponderErro(user.Messages);
+        }
+
+        [HttpPut, Authorize]
+        [Route("updateLifes")]
+        public HttpResponseMessage UpdateLifes(UserModel userModel)
+        {
+            User user = userRepository.GetByFacebookId(userModel.FacebookId);
+
+            user.AddDailyLifes();
+
+            return ResponderOK(user);
+        }
+
+        [HttpPut, Authorize]
+        [Route("reduceLife")]
+        public HttpResponseMessage ReduceLife(UserModel userModel)
+        {
+            User user = userRepository.ReduceLife(userModel.FacebookId);
+            if (user.Validate())
+                return ResponderOK(userRepository.Update(user));
+            else
+                return ResponderErro(user.Messages);
+        }
 
         [HttpPut, BasicAuthorization]
         [Route("lifes")]

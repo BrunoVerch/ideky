@@ -21,7 +21,7 @@ namespace Ideky.Infrastructure.Repository
                 .Where(gameResult => gameResult.Active == true)
                 .Select(gameResult => new
                 {
-                    UserId = gameResult.User.FacebookId,
+                    FacebookId = gameResult.User.FacebookId,
                     Score = gameResult.Score,
                     GameDate = gameResult.GameDate,
                 }).ToList();
@@ -39,10 +39,13 @@ namespace Ideky.Infrastructure.Repository
                 .GroupBy(gameResult => gameResult.User)
                 .Select(gameResultGrouped => new
                 {
-                    UserId = gameResultGrouped.Key.FacebookId,
+                    FacebookId = gameResultGrouped.Key.FacebookId,
                     Score = gameResultGrouped.Max(gameResult => gameResult.Score),
+                    Name = gameResultGrouped.Key.Name,
+                    Picture = gameResultGrouped.Key.Picture
                 })
                 .OrderByDescending(gameResult => gameResult.Score)
+                .Take(20)
                 .ToList();
         }
 
@@ -56,10 +59,13 @@ namespace Ideky.Infrastructure.Repository
                 .GroupBy(gameResult => gameResult.User)
                 .Select(gameResultGrouped => new
                 {
-                    UserId = gameResultGrouped.Key.FacebookId,
+                    FacebookId = gameResultGrouped.Key.FacebookId,
                     Score = gameResultGrouped.Max(gameResult => gameResult.Score),
+                    Name = gameResultGrouped.Key.Name,
+                    Picture = gameResultGrouped.Key.Picture
                 })
                 .OrderByDescending(gameResult => gameResult.Score)
+                .Take(20)
                 .ToList();
         }
 
@@ -72,10 +78,13 @@ namespace Ideky.Infrastructure.Repository
                 .GroupBy(gameResult => gameResult.User)
                 .Select(gameResultGrouped => new
                 {
-                    UserId = gameResultGrouped.Key.FacebookId,
+                    FacebookId = gameResultGrouped.Key.FacebookId,
                     Score = gameResultGrouped.Max(gameResult => gameResult.Score),
+                    Name = gameResultGrouped.Key.Name,
+                    Picture = gameResultGrouped.Key.Picture
                 })
                 .OrderByDescending(gameResult => gameResult.Score)
+                .Take(20)
                 .ToList();
         }
 
@@ -88,7 +97,7 @@ namespace Ideky.Infrastructure.Repository
                     Id = gameResult.Id,
                     GameDate = gameResult.GameDate,
                     Score = gameResult.Score,
-                    UserId = gameResult.User.FacebookId
+                    FacebookId = gameResult.User.FacebookId
                 })
                 .FirstOrDefault(gameResult => gameResult.Id == id);
         }
@@ -107,40 +116,23 @@ namespace Ideky.Infrastructure.Repository
                 Id = gameResult.Id,
                 GameDate = gameResult.GameDate,
                 Score = gameResult.Score,
-                UserId = gameResult.User.FacebookId
+                FacebookId = gameResult.User.FacebookId
             })
-            .Where(gameResult => gameResult.UserId == userFacebookId)
-            .GroupBy(gameResult => gameResult.UserId).ToList();
+            .Where(gameResult => gameResult.FacebookId == userFacebookId)
+            .GroupBy(gameResult => gameResult.FacebookId).ToList();
         }
 
-        public GameResult RegisterNewGame(long facebookId, int score)
+        public GameResult RegisterNewGame(GameResult gameResult)
         {
-            User user = context.Users.FirstOrDefault(x => x.FacebookId == facebookId);
-            GameResult gameResult = new GameResult(user, score);
-            if (gameResult.Validate())
-            {
-                context.GameResults.Add(gameResult);
-                context.SaveChanges();
-            }
+            context.GameResults.Add(gameResult);
+            context.Entry(gameResult.User).State = System.Data.Entity.EntityState.Unchanged;
+            context.SaveChanges();
             return gameResult;
         }
 
-        public object ResetRanking()
+        public int ResetRanking()
         {
-            List().ForEach(g =>
-            {
-                var gameResult = GetById(g.Id);
-                gameResult.Disable();
-                context.Entry(gameResult).State = EntityState.Modified;
-            });
-
-            context.SaveChanges();
-
-            return List().Select(gameResult => new
-                            {
-                                Id = gameResult.Id,
-                                Active = gameResult.Active
-                            });
+            return context.Database.ExecuteSqlCommand("UPDATE dbo.Game_Result SET Active = 0");
         }
 
         public void Dispose()

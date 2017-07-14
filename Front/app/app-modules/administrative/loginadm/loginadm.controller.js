@@ -2,25 +2,6 @@ angular
 	.module('app.core')
 	.controller('LoginadmController', function ($scope, AdministrativeService, toastr, authService) {
 		
-		// FacebookId e número de vidas
-		$scope.addLifes = userLifes => {
-			AdministrativeService.addLifes(userLifes)
-				.then(response)
-				.catch(error => console.log(error))
-		}
-
-		$scope.editLevel = level => {
-			AdministrativeService.editLevel(level)
-				.then(response)
-				.catch(error => console.log(error));
-		}
-
-		$scope.resetRanking = () => {
-			AdministrativeService.resetRanking()
-				.then(response)
-				.catch(error => console.log(error));
-		}
-
 		let loginValidate = (user) => {
 			if(typeof user === 'undefined' || user === null){
 				return false;
@@ -45,7 +26,4 @@ angular
 				toastr.error('Usuário ou senha inválidos.');
 			}
     	}
-
-		
-
 });

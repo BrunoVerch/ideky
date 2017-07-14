@@ -1,9 +1,9 @@
 angular
     .module('app.core')
     .factory('AdministrativeService', function ($http, AppConstants) {
-        const urlUser = `${AppConstants.url}/api/user`;
-        const urlGame = `${AppConstants.url}/api/game`;
-        const urlLevel = `${AppConstants.url}/api/level`;
+        const urlUser = `${AppConstants.url}/user`;
+        const urlGame = `${AppConstants.url}/game`;
+        const urlLevel = `${AppConstants.url}/level`;
 
         return {
             addLifes: addLifes,

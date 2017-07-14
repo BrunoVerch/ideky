@@ -1,12 +1,16 @@
 angular
     .module('app.core')
-    .factory('GameService', function ($rootScope, $http, $q, AppConstants) {
-        const urlGame = `${AppConstants.url}/api/game`;
-        const urlLevel = `${AppConstants.url}/api/level`;
+    .factory('GameService', function ($rootScope, $http, $q, $localStorage, AppConstants) {
+        const urlGame = `${AppConstants.url}/game`;
+        const urlLevel = `${AppConstants.url}/level`;
+        const urlPlayer = `${AppConstants.url}/user`;
 
         return {
             getFriends: getFriends,
             getLevels: getLevels,
+            saveGameResult: saveGameResult,
+            reduceLife: reduceLife,
+            getFriendsWhoPlayIdek: getFriendsWhoPlayIdek,
         }
 
         function getFriends() {
@@ -22,10 +26,45 @@ angular
             return deffered.promise;
         }
 
+        function getFriendsWhoPlayIdek() {
+            const deffered = $q.defer();
+            let friends;
+            $rootScope.sdkLoad
+				.then(response => {
+                FB.api('/me/friends?fields=name,picture.width(200)&limit=999999', response => {
+                    deffered.resolve({ data: response.data })
+                });
+            });
+
+            return deffered.promise;
+        }
+
         function getLevels(){
             return $http({
-            url: `${urlLevel}/get`,
-            method: 'GET',
-          });
+                url: `${urlLevel}/get`,
+                method: 'GET'
+            });
+        }
+
+        function reduceLife(user){
+            return $http({
+                url: `${urlPlayer}/reduceLife`,
+                method: 'PUT',
+                data: user,
+                headers:{ 
+                    authorization: `Bearer ${$localStorage.authorizationData.token}`
+                }
+            });
+        }
+
+        function saveGameResult(gameResult){
+             return $http({
+                url: `${urlGame}/register`,
+                method: 'POST',
+                data: gameResult,  
+                headers:{ 
+                    authorization: `Bearer ${$localStorage.authorizationData.token}`
+                }
+            });
         }
     });

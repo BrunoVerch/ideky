@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ideky.Domain.Entity
 {
-    interface   IBasicEntity
+    interface IBasicEntity
     {
         List<string> Messages { get; }
 

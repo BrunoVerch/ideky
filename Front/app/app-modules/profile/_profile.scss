@@ -1,0 +1,37 @@
+.profile {
+    .logo {
+        width: 33%;
+    }
+
+    .box-default{ 
+        flex-direction: column;
+        justify-content: space-around;        
+        @extend %flexbox-center-horizontal;
+    }  
+
+    h1 {
+
+        &.font-secundary.subtitle {
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        margin-top: 15px;
+        &.font-primary {
+            text-shadow: 0 5px 1px rgba(#000, 0.2);
+            &>small {
+                text-shadow: initial;
+            }
+        }
+    }
+
+    .button-home {
+        width: 388px;
+        height: 74px;
+        bottom: 0;
+        background-color: $button-color-home;
+        @extend %button-design-primary; 
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;                
+    } 
+}

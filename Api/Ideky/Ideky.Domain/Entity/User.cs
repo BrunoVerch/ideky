@@ -16,13 +16,15 @@ namespace Ideky.Domain.Entity
         public string Picture { get; private set; }
         public long Record { get; private set; }
         public int Lifes { get; private set; }
+        public string LocalToken { get; private set; }
         public DateTime LastLogin { get; private set; }
 
         public List<string> Messages { get; private set; }
 
-        protected User() { Messages = new List<string>();  }
+        protected User() { Messages = new List<string>(); }
 
-        public User(long facebookId, string name, string picture, long record, int lifes, DateTime lastLogin) {
+        public User(long facebookId, string name, string picture, long record, int lifes, DateTime lastLogin)
+        {
             Id = 0;
             FacebookId = facebookId;
             Name = name;
@@ -67,11 +69,16 @@ namespace Ideky.Domain.Entity
             Picture = picture;
         }
 
+        public void ReduceLife()
+        {
+            Lifes--;
+        }
+
         public void SetNewLogin()
         {
             LastLogin = DateTime.Now;
         }
-     
+
         public void SetNewRecord(long record)
         {
             Record = record;
@@ -87,9 +94,14 @@ namespace Ideky.Domain.Entity
             Lifes = Lifes + lifes;
         }
 
+        public void UpdateToken(string token)
+        {
+            LocalToken = token;
+        }
+
         public bool Validate()
-        {   
-            if(Name.Length == 0)
+        {
+            if (Name.Length == 0)
             {
                 Messages.Add("Nome inválido.");
             }
@@ -97,7 +109,7 @@ namespace Ideky.Domain.Entity
             {
                 Messages.Add("Número de vidas inválido.");
             }
-            if(LastLogin == null)
+            if (LastLogin == null)
             {
                 Messages.Add("Data de último login inválida.");
             }
@@ -106,6 +118,14 @@ namespace Ideky.Domain.Entity
                 Messages.Add("Record inválido.");
             }
             return Messages.Count == 0;
+        }
+
+        public void AddDailyLifes()
+        {
+            if(LastLogin.Day < DateTime.Now.Day)
+            {
+                AddLifes(3);
+            }
         }
     }
 }

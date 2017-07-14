@@ -7,7 +7,6 @@ using System.Web.Http;
 
 namespace Ideky.Api.Controllers
 {
-    [AllowAnonymous]
     [RoutePrefix("level")]
     public class LevelController : BasicController
     {
@@ -31,7 +30,7 @@ namespace Ideky.Api.Controllers
 
             level.UpdateLevelDifficult(levelModel.PictureAmount, levelModel.Duration, levelModel.Multiplier);
 
-            if(level.Validate())
+            if (level.Validate())
             {
                 return ResponderOK(levelRepository.EditLevel(level));
             }

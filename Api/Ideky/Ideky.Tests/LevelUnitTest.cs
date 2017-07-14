@@ -9,7 +9,7 @@ namespace Ideky.Tests
         [TestMethod]
         public void Create_Valid_Level_Entity()
         {
-            var level = new Level(100,10,30,2);
+            var level = new Level(100, 10, 30, 2);
             Assert.IsTrue(level.Validate());
             Assert.IsFalse(level.Messages.Count > 0);
         }

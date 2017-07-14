@@ -9,17 +9,39 @@ angular.module('auth').config(function ($httpProvider) {
 
 angular.module('auth').factory('authService', function (authConfig, $http, $q, $location, $localStorage) {
 
-  let userUrl = authConfig.userUrl;
-  let loginUrl = authConfig.loginUrl;
-  let privateUrl = authConfig.privateUrl;
-  let logoutUrl = authConfig.logoutUrl;
+  let userAdmUrl = authConfig.userAdmUrl;
+  let loginAdmUrl = authConfig.loginAdmUrl;
+  let menuAdmUrl = authConfig.menuAdmUrl;
+  let privateAdmUrl = authConfig.privateAdmUrl;
+  let logoutAdmUrl = authConfig.logoutAdmUrl;
+  let loginFacebookUrl = authConfig.loginFacebookUrl;
+  let logoutFacebookUrl = authConfig.logoutFacebookUrl;
+  let profileFacebookUrl = authConfig.profileFacebookUrl;
 
+  return {
+    login: login,
+    logout: logout,
+    getUser: getUser,
+    hasPermission: hasPermission,
+    isAuthenticatedAdm: isAuthenticatedAdm,
+    isAuthenticatedAdmPromise: isAuthenticatedAdmPromise,
+    isNotAuthenticatedAdmPromise: isNotAuthenticatedAdmPromise,
+    isAuthenticatedFacebook: isAuthenticatedFacebook,
+    isAuthenticatedFacebookPromise: isAuthenticatedFacebookPromise,
+    isNotAuthenticatedFacebookPromise: isNotAuthenticatedFacebookPromise,
+    hasNotPermission: hasNotPermission,
+    isNotAuthenticated: isNotAuthenticated,
+    hasPermissionPromise: hasPermissionPromise,
+    facebookLogged: facebookLogged,
+    logoutFacebook: logoutFacebook
+  };
+  
   function login(user) {
     let deferred = $q.defer();
     let headerAuth = buildHeader(user);
 
     $http({
-      url: userUrl,
+      url: userAdmUrl,
       method: 'GET',
       headers: headerAuth
     }).then(
@@ -28,8 +50,8 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
         $localStorage.headerAuth = buildHeader(user)['Authorization'];
         $http.defaults.headers.common.Authorization = $localStorage.headerAuth;
 
-        if (privateUrl) {
-          $location.path(privateUrl);
+        if (privateAdmUrl) {
+          $location.path(privateAdmUrl);
         }
 
         deferred.resolve(response);
@@ -47,17 +69,40 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
     delete $localStorage.Authorization;
     $http.defaults.headers.common.Authorization = undefined;
 
-    if (urlLogout) {
-      $location.path(logoutUrl);
+    if (logoutAdmUrl) {
+      $location.path(loginAdmUrl);
+    }
+  };
+
+  function logoutFacebook() {
+    delete $localStorage.FriendsData;
+    delete $localStorage.RankingFriends;
+    delete $localStorage.User;
+    delete $localStorage.authorizationData;
+    delete $localStorage.headerAuth;
+    delete $localStorage.user;
+    delete $localStorage.Authorization;
+    $http.defaults.headers.common.Authorization = undefined;
+
+    if (logoutFacebookUrl) {
+      $location.path(loginFacebookUrl);
     }
   };
 
   function getUser() {
     return $localStorage.loggedUser;
   };
+  
+  function facebookLogged() {
+    return $localStorage.authorizationData;
+  }
 
-  function isAuthenticated() {
+  function isAuthenticatedAdm() {
     return !!getUser();
+  };
+
+  function isAuthenticatedFacebook() {
+    return !!facebookLogged();
   };
 
   function isNotAuthenticated() {
@@ -74,15 +119,52 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
 
   // PROMISE
 
-  function isAuthenticatedPromise() {
-
+  function isAuthenticatedAdmPromise() {
     let deferred = $q.defer();
 
-    if (isAuthenticated()) {
+    if (isAuthenticatedAdm()) {
       deferred.resolve();
-
     } else {
-      $location.path(urlLogin);
+      $location.path(loginAdmUrl);
+      deferred.reject();
+    }
+
+    return deferred.promise;
+  };
+
+  function isNotAuthenticatedAdmPromise() {
+    let deferred = $q.defer();
+
+    if (!isAuthenticatedAdm()) {
+      deferred.resolve();
+    } else {
+      $location.path(menuAdmUrl);
+      deferred.reject();
+    }
+
+    return deferred.promise;
+  };
+
+  function isAuthenticatedFacebookPromise() {
+    let deferred = $q.defer();
+    
+    if (isAuthenticatedFacebook()) {
+      deferred.resolve();
+    } else {
+      $location.path(loginFacebookUrl);
+      deferred.reject();
+    }
+
+    return deferred.promise;
+  };
+
+  function isNotAuthenticatedFacebookPromise() {
+    let deferred = $q.defer();
+    
+    if (!isAuthenticatedFacebook()) {
+      deferred.resolve();
+    } else {
+      $location.path(profileFacebookUrl);
       deferred.reject();
     }
 
@@ -108,17 +190,5 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
     return {
       'Authorization': `Basic ${hash}`
     };
-  };
-
-  return {
-    login: login,
-    logout: logout,
-    getUser: getUser,
-    hasPermission: hasPermission,
-    isAuthenticated: isAuthenticated,
-    isAuthenticatedPromise: isAuthenticatedPromise,
-    hasNotPermission: hasNotPermission,
-    isNotAuthenticated: isNotAuthenticated,
-    hasPermissionPromise: hasPermissionPromise
   };
 });

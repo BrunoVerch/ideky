@@ -11,7 +11,7 @@ namespace Ideky.Tests
         public void Create_Valid_Active_GameResult_Entity()
         {
             var user = new User(70, "João", "picture");
-            var gameResult = new GameResult(user,100);
+            var gameResult = new GameResult(user, 100);
             Assert.IsTrue(gameResult.Validate());
             Assert.IsTrue(gameResult.User.FacebookId == user.FacebookId);
             Assert.IsTrue(gameResult.Score == 100);
@@ -42,7 +42,7 @@ namespace Ideky.Tests
             Assert.IsTrue(gameResult.Validate());
             Assert.IsTrue(gameResult.Active == false);
             Assert.IsTrue(gameResult.Messages.Count > 0);
-            Assert.IsTrue(gameResult.Score == 100); 
+            Assert.IsTrue(gameResult.Score == 100);
             Assert.IsTrue(gameResult.GameDate.Hour == DateTime.Now.Hour);
             Assert.IsTrue(gameResult.GameDate.Day == DateTime.Now.Day);
             Assert.IsTrue(gameResult.GameDate.Month == DateTime.Now.Month);

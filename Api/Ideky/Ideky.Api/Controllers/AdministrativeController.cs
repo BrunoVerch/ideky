@@ -23,13 +23,13 @@ namespace Ideky.Api.Controllers
         [Route("register")]
         public HttpResponseMessage Post([FromBody]AdministrativeModel admModel)
         {
-           Administrative admin = new Administrative(admModel.Email, admModel.Password);
-           admin = admRepository.Register(admin);
-           if (admin.Messages.Count > 0)
-           {
-                return ResponderErro(admin.Messages);
-           }
-            return ResponderOK(admin.Email);              
+            Administrative admin = new Administrative(admModel.Email, admModel.Password);
+            if (admin.Validate())
+            {
+                 admin = admRepository.Register(admin);
+                return ResponderOK(admin.Email);
+            }
+            return ResponderErro(admin.Messages);
         }
 
         [HttpGet]
