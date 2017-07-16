@@ -71,7 +71,7 @@ section {
   height: 90px;
   width: 90px; }
 
-.login .button-login, .home .button-home, .game .buttonShare, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home, .profile .button-home {
+.login .button-login, .home .button-home, .game .end-game-buttons, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home, .profile .button-home {
   font-family: "HDV Comic Serif Pro";
   width: 70%;
   height: 16%;
@@ -216,7 +216,7 @@ h1.font-primary {
   width: 98%;
   border-radius: 8px;
   padding: 10px; }
-.game .box-question-title h1 {
+.game h1.box-question-title {
   margin-left: 5%;
   text-align: center;
   font-size: 35px;
@@ -378,13 +378,19 @@ h1.font-primary {
 .game .lifesOptions .button.buttonDontUseLife {
   background-color: #CD0000;
   box-shadow: 0px 5px 0px #FF0000; }
-.game .buttonShare {
+.game .end-game-buttons {
   position: absolute;
-  bottom: 5%;
+  bottom: 10%;
   font-family: "HDV Comic Serif Pro";
-  border: 0px;
-  width: 400px;
-  height: 50px; }
+  font-size: 20px;
+  height: 7%; }
+.game .end-game-buttons.button-share {
+  width: 25%;
+  right: 26%; }
+.game .end-game-buttons.button-play-again {
+  background-color: #e77235;
+  width: 20%;
+  left: 26%; }
 .game .global-box {
   display: flex;
   flex-direction: row; }
@@ -415,6 +421,8 @@ h1.font-primary {
     width: 200px;
     height: 195px; } }
 @media screen and (min-height: 1000px) and (orientation: landscape) {
+  .game .end-game-buttons {
+    font-size: 28px; }
   .game h1.font-game-logo {
     font-size: 60px;
     letter-spacing: 0px; }
