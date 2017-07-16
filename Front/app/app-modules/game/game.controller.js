@@ -49,6 +49,15 @@ angular
 				.catch(error => console.log(error))
 		}
 
+		function startGame(){
+			result = 'pendent';
+
+			setDrawsFriends();
+			startProgressBarStages();
+			startTimer();
+			startProgressBarTimer();
+		}
+
 		function startScopeElements(){
 			$scope.changeClass = changeClass;
 			$scope.answer =  answer;
@@ -106,15 +115,6 @@ angular
 			$scope.currentStage = 1;		
 		}
 
-		function startGame(){
-			result = 'pendent';
-
-			setDrawsFriends();
-			startProgressBarStages();
-			startTimer();
-			startProgressBarTimer();
-		}
-
 		function setDrawsFriends(){
 			$scope.drawFriends = [];
 			$scope.drawFriends.splice(0, $scope.drawFriends.length);
@@ -165,9 +165,9 @@ angular
 				return 'game-button-general-answer';
 			
 			if(result === 'right') {
-				if(name === $scope.rightFriend.Name) 
+				if(name === $scope.rightFriend.Name){
 					return 'game-button-right-answer';
-				
+				} 
 				return 'game-button-general-answer';
 			}
 
@@ -292,7 +292,7 @@ angular
 				method: 'share',
 				mobile_iframe: true,
 				redirect_uri: 'http://ideky.azurewebsites.net/',
-				message     : `Fiz ${score} no IDEKY, te desafio a bater meu record`,
+				message: `Fiz ${score} no IDEKY, te desafio a bater meu record`,
 			}, function(response){});
 		}
 	});

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ideky.Domain.Entity
 {
-    public class User : IBasicEntity
+    public class User : BasicEntity
     {
         private string user_id;
         private string providerKey;
@@ -19,9 +19,7 @@ namespace Ideky.Domain.Entity
         public string LocalToken { get; private set; }
         public DateTime LastLogin { get; private set; }
 
-        public List<string> Messages { get; private set; }
-
-        protected User() { Messages = new List<string>(); }
+        protected User() { }
 
         public User(long facebookId, string name, string picture, long record, int lifes, DateTime lastLogin)
         {
@@ -32,7 +30,6 @@ namespace Ideky.Domain.Entity
             Record = record;
             Lifes = lifes;
             LastLogin = lastLogin;
-            Messages = new List<string>();
         }
 
         public User(long facebookId, string name, string picture)
@@ -44,13 +41,11 @@ namespace Ideky.Domain.Entity
             Record = 0;
             Lifes = 1;
             LastLogin = DateTime.Now;
-            Messages = new List<string>();
         }
 
         public User(string user_id)
         {
             this.user_id = user_id;
-
         }
 
         public User(string providerKey, string userName)
