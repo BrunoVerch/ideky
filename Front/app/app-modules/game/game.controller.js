@@ -330,7 +330,7 @@ angular
 				mobile_iframe: true,
 				href: 'http://ideky.azurewebsites.net/', 
 				display: 'popup', 
-				quote: `Fiz ${score} no IDEKY, te desafio a bater meu record`,
+				quote: `Fiz ${score} pontos no IDEKY, te desafio a bater meu record!`,
 				hashtag: '#Ideky',
 			}, function(response){});
 		}
