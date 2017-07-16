@@ -16,7 +16,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
   let logoutAdmUrl = authConfig.logoutAdmUrl;
   let loginFacebookUrl = authConfig.loginFacebookUrl;
   let logoutFacebookUrl = authConfig.logoutFacebookUrl;
-  let profileFacebookUrl = authConfig.profileFacebookUrl;
+  let privateFacebookUrl = authConfig.privateFacebookUrl;
 
   return {
     login: login,
@@ -164,7 +164,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
     if (!isAuthenticatedFacebook()) {
       deferred.resolve();
     } else {
-      $location.path(profileFacebookUrl);
+      $location.path(privateFacebookUrl);
       deferred.reject();
     }
 
