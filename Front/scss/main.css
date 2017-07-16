@@ -1,6 +1,9 @@
 .uppercase {
   text-transform: uppercase; }
 
+.text-center {
+  text-align: center; }
+
 @font-face {
   font-family: 'Annie Use Your Telescope';
   font-style: normal;
@@ -101,7 +104,7 @@ body, .box-content .box-content-wrapper, .login .box-default, .login .button-log
   font-size: 50px;
   margin: 0 30px 0 0; }
 
-.font-primary {
+.font-primary, .ranking .box-ranking:before {
   font-family: "HDV Comic Serif Pro"; }
 
 .font-secundary {
@@ -115,10 +118,10 @@ h1.font-secundary {
     font-size: 33px;
     color: #585858; }
 
-h1.font-primary {
+h1.font-primary, .ranking h1.box-ranking:before {
   text-align: center;
   color: #343434; }
-  h1.font-primary small {
+  h1.font-primary small, .ranking h1.box-ranking:before small {
     color: #343434; }
 
 .loader {
@@ -193,9 +196,9 @@ h1.font-primary {
   justify-content: space-between; }
 .home h1 {
   margin-top: 15px; }
-  .home h1.font-primary {
+  .home h1.font-primary, .home .ranking h1.box-ranking:before, .ranking .home h1.box-ranking:before {
     text-shadow: 0 5px 1px rgba(0, 0, 0, 0.2); }
-    .home h1.font-primary > small {
+    .home h1.font-primary > small, .home .ranking h1.box-ranking:before > small, .ranking .home h1.box-ranking:before > small {
       text-shadow: initial; }
 .home .button-home {
   background-color: #e77235; }
@@ -590,27 +593,30 @@ h1.font-primary {
   .ranking .box-content:after {
     transform: rotate(-2deg);
     padding-bottom: 0; }
-.ranking span {
-  font-size: 25px; }
 .ranking .box-wrapper {
   margin: 20x; }
 .ranking .box-ranking {
-  margin: 10px; }
-  .ranking .box-ranking:nth-of-type(1) span {
+  margin: 10px;
+  counter-increment: item; }
+  .ranking .box-ranking:nth-of-type(1):before {
     color: gold; }
-  .ranking .box-ranking:nth-of-type(2) span {
+  .ranking .box-ranking:nth-of-type(2):before {
     color: silver; }
-  .ranking .box-ranking:nth-of-type(3) span {
+  .ranking .box-ranking:nth-of-type(3):before {
     color: brown; }
-  .ranking .box-ranking h2.font-primary.uppercase {
+  .ranking .box-ranking h2.font-primary.uppercase, .ranking .box-ranking h2.uppercase.box-ranking:before {
     max-width: 85px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; }
+.ranking .box-ranking:before {
+  content: "#" counter(item);
+  font-size: 25px; }
 .ranking .box-scroll {
   margin-top: 20px;
   overflow: auto;
-  height: calc(40vh - 90px); }
+  height: calc(40vh - 90px);
+  padding: 0; }
 .ranking .box-gradiente {
   z-index: 4;
   height: 40px;
@@ -626,6 +632,8 @@ h1.font-primary {
   margin: 0 5px;
   height: 45px;
   width: 45px; }
+.ranking span {
+  font-size: 25px; }
 .ranking h1 {
   color: #4584c1; }
 .ranking h2 {
@@ -655,9 +663,9 @@ h1.font-primary {
   .profile h1.font-secundary.subtitle {
     margin-top: 0;
     font-size: 24px; }
-  .profile h1.font-primary {
+  .profile h1.font-primary, .profile .ranking h1.box-ranking:before, .ranking .profile h1.box-ranking:before {
     text-shadow: 0 5px 1px rgba(0, 0, 0, 0.2); }
-    .profile h1.font-primary > small {
+    .profile h1.font-primary > small, .profile .ranking h1.box-ranking:before > small, .ranking .profile h1.box-ranking:before > small {
       text-shadow: initial; }
 .profile .button-home {
   width: 388px;
