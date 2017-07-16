@@ -4,21 +4,17 @@ using System.Text;
 
 namespace Ideky.Domain.Entity
 {
-    public class Administrative : IBasicEntity
+    public class Administrative : BasicEntity
     {
         public int Id { get; private set; }
         public string Email { get; private set; }
         public string Password { get; private set; }
-        public List<string> Messages { get; private set; }
-
-        protected Administrative() { Messages = new List<string>(); }
 
         public Administrative(string email, string password)
         {
             Email = email;
             if (!string.IsNullOrWhiteSpace(password))
                 Password = EncryptPassword(password);
-            Messages = new List<string>();
         }
 
         private string EncryptPassword(string password)

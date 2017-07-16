@@ -1,6 +1,7 @@
 ﻿using Ideky.Domain.Entity;
 using System.Data.Entity;
 using Ideky.Infrastructure.Mapping;
+using System.Collections.Generic;
 
 namespace Ideky.Infrastructure
 {
