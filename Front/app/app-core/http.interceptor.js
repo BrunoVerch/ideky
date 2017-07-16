@@ -1,19 +1,16 @@
 angular 
 .module('app.core')
 .factory('httpInterceptor', function ($q, $rootScope, $log) {
-
-    var numLoadings = 0;
+    let numLoadings = 0;
 
     function verificaLoader() {
-        if (!(--numLoadings)) {
+        if (!(--numLoadings)) 
             $rootScope.$broadcast("loader_hide");
-        }
     }
 
     return {
         // Intercepta a requisição
         request: function (config) {
-
             numLoadings++;
 
             // Show loader

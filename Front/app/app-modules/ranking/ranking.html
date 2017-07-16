@@ -6,16 +6,15 @@
       <div class="box-content">
         <div class="box-content-wrapper">          
           <h1 class="font-primary uppercase">diário</h1>
-          <div scroll-glue-top="glued" class="box-scroll">
-            <div class="box-ranking" ng-repeat="user in daily">
-              <span class="font-primary">#{{$index + 1}}</span>
+          <ol scroll-glue-top="glued" class="box-scroll">
+            <li class="box-ranking" ng-repeat="user in daily">
               <img class="mask-profile" alt="fotografia do perfil do usuario" src="{{user.Picture}}">
               <div class="inline-block">
                 <h2 class="font-primary uppercase">{{user.Name}}</h2> 
                 <h3 class="font-primary uppercase">{{user.Score}} pontos</h3> 
               </div>
-            </div>
-          </div>                     
+            </li>
+          </ol>                     
         </div>    
         <div class="box-gradiente"></div>
       </div>     
@@ -23,16 +22,15 @@
       <div class="box-content">
       <div class="box-content-wrapper">          
           <h1 class="font-primary uppercase">mensal</h1>
-          <div scroll-glue-top="glued" class="box-scroll">
-            <div class="box-ranking" ng-repeat="user in month">
-              <span class="font-primary">#{{$index + 1}}</span>
+          <ol scroll-glue-top="glued" class="box-scroll">
+            <li class="box-ranking" ng-repeat="user in month">
               <img class="mask-profile" alt="fotografia do perfil do usuario" src="{{user.Picture}}">
               <div class="inline-block">
                 <h2 class="font-primary uppercase">{{user.Name}}</h2> 
                 <h3 class="font-primary uppercase">{{user.Score}} pontos</h3> 
               </div>
-            </div>
-          </div>                     
+            </li>
+          </ol>                     
         </div>    
         <div class="box-gradiente"></div>
       </div>           
@@ -40,16 +38,15 @@
       <div class="box-content">
       <div class="box-content-wrapper">          
           <h1 class="font-primary uppercase">total</h1>
-          <div scroll-glue-top="glued" class="box-scroll">
-            <div class="box-ranking" ng-repeat="user in total">
-              <span class="font-primary">#{{$index + 1}}</span>
+          <ol scroll-glue-top="glued" class="box-scroll">
+            <li class="box-ranking" ng-repeat="user in total">
               <img class="mask-profile" alt="fotografia do perfil do usuario" src="{{user.Picture}}">
               <div class="inline-block">
                 <h2 class="font-primary uppercase">{{user.Name}}</h2> 
                 <h3 class="font-primary uppercase">{{user.Score}} pontos</h3> 
               </div>
-            </div>
-          </div>                     
+            </li>
+          </ol>                       
         </div>    
         <div class="box-gradiente"></div>
       </div> 
