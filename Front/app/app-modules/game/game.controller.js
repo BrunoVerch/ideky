@@ -63,6 +63,7 @@ angular
 			$scope.answer =  answer;
 			$scope.onClickButtonLifes = onClickButtonLifes;
 			$scope.share = share;
+			$scope.init =  init;
 			$scope.fase = 0;
 		    $scope.score = 0;
 			$scope.currentLevel = {};
@@ -291,7 +292,7 @@ angular
 				method: 'share',
 				mobile_iframe: true,
 				redirect_uri: 'http://ideky.azurewebsites.net/',
-				message     : `Fiz ${score}  no IDEKY, te desafio para bater meu record`,
+				message: `Fiz ${score} no IDEKY, te desafio a bater meu record`,
 			}, function(response){});
 		}
 	});
