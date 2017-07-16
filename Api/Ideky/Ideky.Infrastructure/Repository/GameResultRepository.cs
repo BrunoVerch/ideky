@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 
 namespace Ideky.Infrastructure.Repository
@@ -104,35 +105,36 @@ namespace Ideky.Infrastructure.Repository
 
         public GameResult GetById(int id)
         {
-            return context.GameResults.FirstOrDefault(g => g.Id == id);
+            return context.GameResults.Where(gameResult => gameResult.Active == true)
+                .FirstOrDefault(g => g.Id == id);
         }
 
         public object GetByUserId(int userFacebookId)
         {
             return context.GameResults
-            .Where(gameResult => gameResult.Active == true)
-            .Select(gameResult => new
-            {
-                Id = gameResult.Id,
-                GameDate = gameResult.GameDate,
-                Score = gameResult.Score,
-                FacebookId = gameResult.User.FacebookId
-            })
-            .Where(gameResult => gameResult.FacebookId == userFacebookId)
-            .GroupBy(gameResult => gameResult.FacebookId).ToList();
+                .Where(gameResult => gameResult.Active == true)
+                .Select(gameResult => new
+                {
+                    Id = gameResult.Id,
+                    GameDate = gameResult.GameDate,
+                    Score = gameResult.Score,
+                    FacebookId = gameResult.User.FacebookId
+                })
+                .Where(gameResult => gameResult.FacebookId == userFacebookId)
+                .GroupBy(gameResult => gameResult.FacebookId).ToList();
         }
 
         public GameResult RegisterNewGame(GameResult gameResult)
         {
             context.GameResults.Add(gameResult);
-            context.Entry(gameResult.User).State = System.Data.Entity.EntityState.Unchanged;
+            context.Entry(gameResult.User).State = EntityState.Unchanged;
             context.SaveChanges();
             return gameResult;
         }
 
         public int ResetRanking()
         {
-            return context.Database.ExecuteSqlCommand("UPDATE dbo.Game_Result SET Active = 0");
+            return context.Database.ExecuteSqlCommand("UPDATE dbo.Game_Result SET Active = 0 WHERE Active = 1");
         }
 
         public void Dispose()

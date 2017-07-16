@@ -69,7 +69,7 @@ namespace Ideky.Infrastructure.Repository
                 Lifes = users.Lifes,
                 LastLogin = users.LastLogin
             })
-                                 .OrderBy(users => users.Record).ToList();
+            .OrderBy(users => users.Record).ToList();
         }
 
         public User Save(User user)

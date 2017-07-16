@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ideky.Domain.Entity
 {
-    public class Level : IBasicEntity
+    public class Level : BasicEntity
     {
         public int Id { get; private set; }
         public int LevelNumber { get; private set; }
@@ -11,9 +11,7 @@ namespace Ideky.Domain.Entity
         public int Duration { get; private set; }
         public int Multiplier { get; private set; }
 
-        public List<string> Messages { get; private set; }
-
-        protected Level() { Messages = new List<string>(); }
+        protected Level() { }
 
         public Level(int levelNumber, int pictureAmount, int duration, int multiplier)
         {
@@ -22,7 +20,6 @@ namespace Ideky.Domain.Entity
             PictureAmount = pictureAmount;
             Duration = duration;
             Multiplier = multiplier;
-            Messages = new List<string>();
         }
 
         public void UpdateLevelDifficult(int pictureAmount, int duration, int multiplier)

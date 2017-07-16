@@ -11,7 +11,7 @@ angular
 		 progressBarTimeOut,
 		 wrongName,
 		 result,
-	   	percentageTime,
+	   	 percentageTime,
 		 intervalTimer,
 		 textAnimationClasses,
 		 textAnimationInterval,
@@ -49,13 +49,22 @@ angular
 				.catch(error => console.log(error))
 		}
 
+		function startGame(){
+			result = 'pendent';
+
+			setDrawsFriends();
+			startProgressBarStages();
+			startTimer();
+			startProgressBarTimer();
+		}
+
 		function startScopeElements(){
 			$scope.changeClass = changeClass;
 			$scope.answer =  answer;
 			$scope.onClickButtonLifes = onClickButtonLifes;
 			$scope.share = share;
 			$scope.fase = 0;
-		  $scope.score = 0;
+		    $scope.score = 0;
 			$scope.currentLevel = {};
 			$scope.currentLevel.LevelNumber = 0;
 			$scope.timer = 0;
@@ -103,15 +112,6 @@ angular
 			
 			$scope.currentLevel = levels[currentLevelIndex];	
 			$scope.currentStage = 1;		
-		}
-
-		function startGame(){
-			result = 'pendent';
-
-			setDrawsFriends();
-			startProgressBarStages();
-			startTimer();
-			startProgressBarTimer();
 		}
 
 		function setDrawsFriends(){
@@ -164,9 +164,9 @@ angular
 				return 'game-button-general-answer';
 			
 			if(result === 'right') {
-				if(name === $scope.rightFriend.Name) 
+				if(name === $scope.rightFriend.Name){
 					return 'game-button-right-answer';
-				
+				} 
 				return 'game-button-general-answer';
 			}
 
@@ -290,7 +290,7 @@ angular
 			FB.ui({
 				method: 'share',
 				mobile_iframe: true,
-				redirect_uri: 'http://ideky.azurewebsites.net/api/',
+				redirect_uri: 'http://ideky.azurewebsites.net/',
 				message     : `Fiz ${score}  no IDEKY, te desafio para bater meu record`,
 			}, function(response){});
 		}
