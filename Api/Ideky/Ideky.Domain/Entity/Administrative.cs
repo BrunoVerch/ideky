@@ -10,6 +10,7 @@ namespace Ideky.Domain.Entity
         public string Email { get; private set; }
         public string Password { get; private set; }
 
+        protected Administrative(){ }
         public Administrative(string email, string password)
         {
             Email = email;
