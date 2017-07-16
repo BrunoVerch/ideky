@@ -16,6 +16,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
   let logoutAdmUrl = authConfig.logoutAdmUrl;
   let loginFacebookUrl = authConfig.loginFacebookUrl;
   let logoutFacebookUrl = authConfig.logoutFacebookUrl;
+  let privateFacebookUrl = authConfig.privateFacebookUrl;
 
   return {
     login: login,
