@@ -263,12 +263,6 @@ angular
 			progressBarStages();
 		}
 
-		function startProgressBarTimer(){
-			countTime = 100;
-			percentageTime = (0.1 * 100) / $scope.currentLevel.Duration; //Define quanto em porcentagem equivale 100ms sobre o total de segundos da fase
-			progressBarTimer();
-		}
-
 		function progressBarStages(){
 			$scope.stagePercentage = {'width':(countStage * 20) + '%'};
 			if(countStage<$scope.currentStage){
@@ -277,11 +271,18 @@ angular
 			}
 		}
 
+		function startProgressBarTimer(){
+			countTime = 100;
+			percentageTime = (0.1 * 100) / $scope.currentLevel.Duration;
+			//Define quanto em porcentagem equivale 100ms sobre o total de segundos da fase
+			progressBarTimer();
+		}
+
 		function progressBarTimer(){
 			$scope.timerPercentage = {'width': (countTime) + '%'};
 			if(countTime>0){
 				countTime = countTime - percentageTime;
-				progressBarTimeOut = $timeout(progressBarTimer, 98);
+				progressBarTimeOut = $timeout(progressBarTimer, 98.5);
 		  	}
     	}	
 
