@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace Ideky.Domain.Entity
 {
-    interface IBasicEntity
+    public abstract class BasicEntity
     {
-        List<string> Messages { get; }
+        public List<string> Messages { get; private set; }
 
-        bool Validate();
+        public BasicEntity()
+        {
+            Messages = new List<string>();
+        }
+        //List<string> Messages { get; }
+
+        //bool Validate();
     }
 }

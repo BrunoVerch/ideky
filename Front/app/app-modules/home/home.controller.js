@@ -6,6 +6,7 @@ angular
 		let textAnimationCounter;
 		let	textAnimationInterval;
 
+		$scope.hasPicture = hasPicture;
 		init();
 		
 		function init() {
@@ -57,6 +58,12 @@ angular
 				});
 		}
 
+		function hasPicture(url){
+			if(typeof url !== 'undefined' && url != null && url !== "" ){
+				return true;
+			}
+			return false;
+		}
 		function updatePicture(user) {
 			HomeService.updatePicture(user)
 				.catch(error => console.log(error));	

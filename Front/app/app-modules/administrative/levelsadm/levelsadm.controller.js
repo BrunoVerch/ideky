@@ -1,6 +1,9 @@
 angular
 	.module('app.core')
 	.controller('LevelsadmController', function ($scope, AdministrativeService, GameService, toastr) {
+		$scope.levels;
+		$scope.levelSelect;
+
 		$scope.loadLevel = level => $scope.level = $scope.levels[level-1];
 
 		(getLevels = () => {

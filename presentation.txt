@@ -1,0 +1,34 @@
+Boa tarde a todos!
+Apresentação da equipe, PO e LT.
+Apresentação inicial do produto (nome, siginificado, pitch  e introdução sobre a superficialidade das redes sociais).
+Avisar da divisão em 4 tópicos principais da apresentação (produto, tecnologias, checklist e grupo):
+    1 - Apresentação do escopo completo (importância do projeto) e mostrar usabilidade do produto (caminho feliz).
+        - Funcionalidades além do jogo:
+            Ranking (Diário, Mensal e Total)
+            Perfil (Maior pontuação, Posição no ranking geral e Posição entre os amigos)
+            Area administrativa (Resetar ranking, Dar vidas para um jogador e Editar dificuldade de um nível)
+    2 - Tecnologias utilizadas (C#, API Facebook, AngularJs, SASS).
+    3 - Dificuldades enfrentadas, aprendizados, integração do grupo e valorização do nosso trabalho (listar abaixo para evitar repetições).
+    4 - Situação do projeto em relação ao checklist e features que gostariamos de ter implementado.
+
+# TCC do Crescer 2017-1
+
+### APRESENTAÇÃO INTERNA - 14/07/2017
+| Atividade | Duração |
+| ------ | ------ |
+| Tempo máximo de apresentação | 15 minutos |
+| Tempo máximo para perguntas | 5 minutos |
+
+* Apresentação dos membros do grupo;
+* Escopo e tecnologias utilizadas;
+* Mostrar a importância do projeto (vender o peixe);
+* Caminho feliz / foco no 'principal' do sistema;
+  >> Foque nas principais funcionalidades do sistema;
+  >> Lembre-se que o público alvo é técnico;
+  >> Prepare os dados antes da apresentação, **não** utilize expressões como "teste", "fulano", "bla, bla, bla";
+* **NÃO** exibir cadastro de usuário (desnecessário);
+* Principais dificuldades enfrentadas;
+* Principais aprendizados do TCC;
+* Situação do projeto em relação ao checklist.
+
+**Faça três ensaios (no mínimo) antes!!!**

@@ -2,7 +2,7 @@ angular
     .module('app.core')
     .directive('loader', function($rootScope){
         return {
-            templateUrl: '/app/app-core/directives/loader/loader.directive.html',
+            template: '<div class="loader"></div>',
             restrict: "E",
             replace: true, 
             link: (scope, element, attrs, controllers) => {

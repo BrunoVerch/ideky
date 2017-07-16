@@ -12,4 +12,5 @@ angular.module('app.core')
             loginFacebookUrl: 'login',
             privateFacebookUrl: '/home',        
             logoutFacebookUrl: '/login',
+            profileFacebookUrl: '/profile',
     	});

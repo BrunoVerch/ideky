@@ -66,7 +66,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
 
   function logout() {
     delete $localStorage.loggedUser;
-    delete $localStorage.Authorization;
+    delete $localStorage.headerAuth;
     $http.defaults.headers.common.Authorization = undefined;
 
     if (logoutAdmUrl) {
