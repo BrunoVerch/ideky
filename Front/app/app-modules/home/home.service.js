@@ -17,7 +17,7 @@ angular
                 FB.api('/me?fields=id,name,picture', response => {
                     if(response.error) 
                         $window.location.reload();
-                    
+                        
                     user = {};
                     user.FacebookId = response.id;
                     user.Name = response.name;
@@ -25,9 +25,7 @@ angular
                     $http({
                         url: `${url}/getByFacebookId/${user.FacebookId}`,
                         method: 'GET',
-                        headers:{
-                            Authorization: `Bearer ${$localStorage.authorizationData.token}`
-                        }
+                        headers:{ Authorization: `Bearer ${$localStorage.authorizationData.token}` }
                     })
                     .then(resp => {
                         user.Record = resp.data.data.Record;
@@ -46,9 +44,7 @@ angular
             url: `${url}/updatePicture`,
             method: 'PUT',
             data: user,
-            headers:{
-                Authorization: `Bearer ${$localStorage.authorizationData.token}`
-            }
+            headers:{ Authorization: `Bearer ${$localStorage.authorizationData.token}` }
           });
         }
     });
