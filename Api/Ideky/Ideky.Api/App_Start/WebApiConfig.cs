@@ -7,11 +7,9 @@ namespace Ideky.Api
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
-            //config.Filters.Add(new ErrosGlobaisFilterAttribute());
 
-            // Web API routes
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
