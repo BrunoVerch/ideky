@@ -1,40 +1,33 @@
 .ranking {
-    .logo {
-        width: 33%;
-    }
+    .logo { width: 33%; }
 
     .box-default{ 
-        flex-direction: column;
-        justify-content: space-between;
         @extend %flexbox-center-horizontal;
         @extend %flexbox-center-vertical;
+        flex-direction: column;
+        justify-content: space-between;
     }  
 
     .button-home {
+        @extend %button-design-primary; 
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;                
         width: 388px;
         height: 74px;
         bottom: 0;
         background-color: $button-color-home;
-        @extend %button-design-primary; 
-        @extend %flexbox-center-vertical;
-        @extend %flexbox-center-horizontal;                
     }  
 
     .box-content {
         height: 40vh;
         margin: 20px 20px 0 20px;
         padding-bottom: 0;
-        &:before{
-            padding-bottom: 0;
-        }
+
+        &:before{ padding-bottom: 0; }
         &:after {
             transform: rotate(-2deg);
             padding-bottom: 0;
         }
-    }
-
-    span {
-        font-size: 25px;
     }
 
     .box-wrapper {
@@ -45,15 +38,12 @@
     .box-ranking {
         @extend %flexbox-center-horizontal;
         margin: 10px;
-        &:nth-of-type(1) span{
-            color: gold;      
-        }
-        &:nth-of-type(2) span{
-            color: silver;      
-        }
-        &:nth-of-type(3) span{
-            color: brown;      
-        }
+        counter-increment: item; //contador do ranking
+
+        &:nth-of-type(1):before { color: gold; }
+        &:nth-of-type(2):before { color: silver; }
+        &:nth-of-type(3):before { color: brown; }
+
         h2.font-primary.uppercase{
             max-width: 85px;
             white-space: nowrap;
@@ -62,10 +52,17 @@
         }
     }
 
+    .box-ranking:before { //contador do ranking
+        @extend .font-primary;
+        content: '#'counter(item);
+        font-size: 25px;
+    }
+
     .box-scroll {
         margin-top: 20px;
         overflow: auto;	
-	    height: calc(40vh - 90px);
+        height: calc(40vh - 90px);
+        padding: 0;
     }
 
     .box-gradiente {
@@ -87,35 +84,27 @@
         width: 45px;
     }  
 
-    h1 {
-        color: $text-color-loginadm;
-    }
+    span { font-size: 25px; }
 
-    h2 {
-        font-size: 10px;
-    }
+    h1 { color: $text-color-loginadm; }
 
-    h3 {
-        font-size: 15px;  
-    }
+    h2 { font-size: 10px; }
+
+    h3 { font-size: 15px; }
 
     h1, h2, h3 {
         margin-top: 5px;
         margin-bottom: 5px;
     }    
 
-    .inline-block {
-        display: inline-block;
-    }    
+    .inline-block { display: inline-block; }    
 
-    ::-webkit-scrollbar-track {
-    background-color: #F4F4F4;
-    }
+    ::-webkit-scrollbar-track { background-color: #F4F4F4; }
+
     ::-webkit-scrollbar {
         width: 6px;
         background: #F4F4F4;
     }
-    ::-webkit-scrollbar-thumb {
-        background: #dad7d7;
-    }
+    
+    ::-webkit-scrollbar-thumb { background: #dad7d7; }
 }

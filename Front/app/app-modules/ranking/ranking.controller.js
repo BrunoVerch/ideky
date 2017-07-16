@@ -1,7 +1,10 @@
 angular
 	.module('app.core')
 	.controller('RankingController', function ($scope, $location, RankingService) {
-	  init();
+		$scope.daily;
+		$scope.month;  
+		$scope.total;
+		init();
 
 		$scope.play = () => $location.path('/game');
 		
