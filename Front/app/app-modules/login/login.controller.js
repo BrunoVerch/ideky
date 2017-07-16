@@ -5,6 +5,7 @@ angular
 		let oauthWindow;
 
 		$scope.login = () => {
+      
 			let redirectUri = `${location.protocol}//${location.host}/authcomplete.html`;
 			let externalProviderUrl = `${AppConstants.url}/auth/ExternalLogin?provider=Facebook&response_type=token&client_id=1392336224214575&redirect_uri=${redirectUri}&scope=user_friends`;
 
