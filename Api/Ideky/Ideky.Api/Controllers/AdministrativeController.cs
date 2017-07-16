@@ -23,13 +23,18 @@ namespace Ideky.Api.Controllers
         [Route("register")]
         public HttpResponseMessage Post([FromBody]AdministrativeModel admModel)
         {
-            Administrative admin = new Administrative(admModel.Email, admModel.Password);
-            if (admin.Validate())
+            Administrative admin = admRepository.GetByEmail(admModel.Email);
+            if (admin == null)
             {
-                 admin = admRepository.Register(admin);
-                return ResponderOK(admin.Email);
+                admin = new Administrative(admModel.Email, admModel.Password);
+                if (admin.Validate())
+                {
+                    admin = admRepository.Register(admin);
+                    return ResponderOK(admin.Email);
+                }
+                return ResponderErro(admin.Messages);
             }
-            return ResponderErro(admin.Messages);
+            return ResponderErro("Conta já cadastrada");
         }
 
         [HttpGet]
