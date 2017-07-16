@@ -328,8 +328,10 @@ angular
 			FB.ui({
 				method: 'share',
 				mobile_iframe: true,
-				redirect_uri: 'http://ideky.azurewebsites.net/',
-				message: `Fiz ${score} no IDEKY, te desafio a bater meu record`,
+				href: 'http://ideky.azurewebsites.net/', 
+				display: 'popup', 
+				quote: `Fiz ${score} no IDEKY, te desafio a bater meu record`,
+				hashtag: '#Ideky',
 			}, function(response){});
 		}
 	});
