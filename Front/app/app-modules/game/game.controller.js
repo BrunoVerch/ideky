@@ -90,7 +90,9 @@ angular
 			$scope.user = {};
 			$scope.endMessage;
 			$scope.showGameOver = false;
-			$scope.backGroundAudio = new Audio('../../../assets/audios/IDEKY.mp3');
+			$scope.backGroundAudio = new Audio('../../../assets/audios/background_game.mp3');
+			$scope.rightAnswerAudio = new Audio('../../../assets/audios/right_answer.wav');
+			$scope.wrongAnswerAudio = new Audio('../../../assets/audios/wrong_answer.wav');
 		}
 
 		function getLocalStorageUser() {
@@ -209,11 +211,15 @@ angular
 			if(result === 'pendent') {
 				if(name === $scope.rightFriend.Name && $scope.timer > 0) {
 					result = 'right';
+
+					playSound($scope.rightAnswerAudio);
 					$timeout(nextStage,waitTimeBetweenStages);	
 				}else {
 					result = 'wrong';
 					wrongName = name;
 					$scope.endMessage = 'Game Over!';
+
+					playSound($scope.wrongAnswerAudio);
 					$timeout(finish, waitTimeBetweenStages);
 				}
 			}
