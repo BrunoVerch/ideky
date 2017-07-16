@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ideky.Domain.Entity
 {
-    public class GameResult : IBasicEntity
+    public class GameResult : BasicEntity
     {
         public int Id { get; private set; }
         public User User { get; private set; }
@@ -11,9 +11,7 @@ namespace Ideky.Domain.Entity
         public int Score { get; private set; }
         public bool Active { get; private set; }
 
-        public List<string> Messages { get; private set; }
-
-        protected GameResult() { Messages = new List<string>(); }
+        protected GameResult() { }
 
         public GameResult(User user, int score)
         {
@@ -22,14 +20,12 @@ namespace Ideky.Domain.Entity
             GameDate = DateTime.Now;
             Score = score;
             Active = true;
-            Messages = new List<string>();
         }
 
         public GameResult(int id, bool active)
         {
             Id = id;
             Active = active;
-
         }
 
         public void Disable()

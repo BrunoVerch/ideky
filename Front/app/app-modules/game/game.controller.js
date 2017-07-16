@@ -11,7 +11,7 @@ angular
 		 progressBarTimeOut,
 		 wrongName,
 		 result,
-	   	percentageTime,
+	   percentageTime,
 		 intervalTimer,
 		 textAnimationClasses,
 		 textAnimationInterval,
@@ -23,20 +23,34 @@ angular
 		
 		init();
 
+		$scope.$on("$destroy", () => stopSound($scope.backGroundAudio));
+
+
 		function init() {	
 			userUsedLife = false;
 
 			startScopeElements();
 			shuffleAllFriends();
 
-			if(getLocalStorageUser())
+			if(getLocalStorageUser()) {
 				loadLevelsAndStartGame();
-			else
+				playSound($scope.backGroundAudio, true);
+			}else {
 				$location.path('/home');
-			
+			}
 		}
 
-		function loadLevelsAndStartGame(){
+		function playSound(audio, loop) {
+			if(loop) audio.loop = true;
+
+			audio.play();
+		}
+
+		function stopSound(audio) {
+			audio.pause();
+		}
+
+		function loadLevelsAndStartGame() {
 			GameService.getLevels()
 				.then(responseLevels => {
 					levels = responseLevels.data.data;
@@ -49,13 +63,23 @@ angular
 				.catch(error => console.log(error))
 		}
 
-		function startScopeElements(){
+		function startGame(){
+			result = 'pendent';
+
+			setDrawsFriends();
+			startProgressBarStages();
+			startTimer();
+			startProgressBarTimer();
+		}
+
+		function startScopeElements() {
 			$scope.changeClass = changeClass;
 			$scope.answer =  answer;
 			$scope.onClickButtonLifes = onClickButtonLifes;
 			$scope.share = share;
+			$scope.init =  init;
 			$scope.fase = 0;
-		  $scope.score = 0;
+			$scope.score = 0;
 			$scope.currentLevel = {};
 			$scope.currentLevel.LevelNumber = 0;
 			$scope.timer = 0;
@@ -66,11 +90,14 @@ angular
 			$scope.user = {};
 			$scope.endMessage;
 			$scope.showGameOver = false;
+			$scope.backGroundAudio = new Audio('../../../assets/audios/background_game.mp3');
+			$scope.rightAnswerAudio = new Audio('../../../assets/audios/right_answer.wav');
+			$scope.wrongAnswerAudio = new Audio('../../../assets/audios/wrong_answer.wav');
 		}
 
-		function getLocalStorageUser(){
+		function getLocalStorageUser() {
 			user = $localStorage.User;
-			if(typeof $scope.friends === 'undefined' || $scope.friends === null || typeof user === 'undefined'|| user === null){
+			if(typeof $scope.friends === 'undefined' || $scope.friends === null || typeof user === 'undefined'|| user === null) {
 				toastr.error('Ocorreu um erro ao carregar seu perfil. Redirecionando...');
 				return false;	
 			}
@@ -85,7 +112,7 @@ angular
 				});
 		}
 
-		function nextStage(){
+		function nextStage() {
 			stopTimer();
 			sumScore();
 
@@ -97,7 +124,7 @@ angular
 			startGame();
 		}
 
-		function nextLevel(){		
+		function nextLevel() {		
 			if(currentLevelIndex < 9)
 				currentLevelIndex++;			
 			
@@ -105,7 +132,7 @@ angular
 			$scope.currentStage = 1;		
 		}
 
-		function startGame(){
+		function startGame() {
 			result = 'pendent';
 
 			setDrawsFriends();
@@ -114,17 +141,17 @@ angular
 			startProgressBarTimer();
 		}
 
-		function setDrawsFriends(){
+		function setDrawsFriends() {
 			$scope.drawFriends = [];
 			$scope.drawFriends.splice(0, $scope.drawFriends.length);
 
 			let pictureAmount = $scope.currentLevel.PictureAmount;
 
-			for(let i = 0; i<pictureAmount;i++){
+			for(let i = 0; i<pictureAmount;i++) {
 				let drawNumber = Math.floor(Math.random() * $scope.friends.length);
 				let regex = /\^|\~|\'|\'|\´|\`|\\|\/|\;|\{|\}|\@|\||\<|\>/g;
 			
-				if(!$scope.friends[drawNumber].picture.data.is_silhouette){ 
+				if(!$scope.friends[drawNumber].picture.data.is_silhouette) { 
 					let userTemp = {};
 			
 					userTemp.Picture = $scope.friends[drawNumber].picture.data.url;
@@ -152,7 +179,7 @@ angular
 			$scope.friends = array;
 		}
 
-		function sumScore(){
+		function sumScore() {
 			$scope.score = $scope.score+(100*$scope.currentLevel.Multiplier);
 		}
 
@@ -164,9 +191,9 @@ angular
 				return 'game-button-general-answer';
 			
 			if(result === 'right') {
-				if(name === $scope.rightFriend.Name) 
+				if(name === $scope.rightFriend.Name){
 					return 'game-button-right-answer';
-				
+				} 
 				return 'game-button-general-answer';
 			}
 
@@ -178,36 +205,40 @@ angular
 			}
 		}
 
-		function answer(name){
+		function answer(name) {
 			stopTimer();
 
-			if(result === 'pendent'){
-				if(name === $scope.rightFriend.Name && $scope.timer > 0){
+			if(result === 'pendent') {
+				if(name === $scope.rightFriend.Name && $scope.timer > 0) {
 					result = 'right';
+
+					playSound($scope.rightAnswerAudio);
 					$timeout(nextStage,waitTimeBetweenStages);	
-				}else{
+				}else {
 					result = 'wrong';
 					wrongName = name;
 					$scope.endMessage = 'Game Over!';
+
+					playSound($scope.wrongAnswerAudio);
 					$timeout(finish, waitTimeBetweenStages);
 				}
 			}
 		}
 
-		function startTimer(){
+		function startTimer() {
 			$scope.timer = $scope.currentLevel.Duration;
 			intervalTimer = $interval(timer, 1000);
 		}
 
-		function stopTimer(){
+		function stopTimer() {
 			$timeout.cancel(progressBarTimeOut);
 			$interval.cancel(intervalTimer);
 		}
 
-		function timer(){
-			if($scope.timer > 1){
+		function timer() {
+			if($scope.timer > 1) {
 				$scope.timer--;
-			}else if(result === 'pendent'){
+			}else if(result === 'pendent') {
 				stopTimer();
 				result = 'endOfTime';
 				$scope.endMessage = 'Time Over!';
@@ -216,8 +247,8 @@ angular
 			}			
 		}
 
-		function onClickButtonLifes(bool){
-			if(bool === true){
+		function onClickButtonLifes(bool) {
+			if(bool === true) {
 				userUsedLife = true;
 				user.Lifes--;
 
@@ -235,8 +266,8 @@ angular
 			}
 		}
 
-		function finish(){
-			if(user.Lifes>0 && userUsedLife === false){
+		function finish() {
+			if(user.Lifes>0 && userUsedLife === false) {
 				$scope.lifes = user.Lifes;
 				$scope.showLifesOption = true;
 			}else{
@@ -244,7 +275,7 @@ angular
 			}
 		}
 
-		function endGame(){
+		function endGame() {
 			let gameResult = {'FacebookId':user.FacebookId,'Score':$scope.score};
 			GameService.saveGameResult(gameResult);
 
@@ -256,41 +287,49 @@ angular
 			// $scope.shareButton = true;
 			$scope.showGameOver = true;
 
+			stopSound($scope.backGroundAudio);
 		}
 
-		function startProgressBarStages(){
+		function startProgressBarStages() {
 			countStage = $scope.currentStage - 1;
 			progressBarStages();
 		}
 
-		function startProgressBarTimer(){
+		function startProgressBarTimer() {
 			countTime = 100;
 			percentageTime = (0.1 * 100) / $scope.currentLevel.Duration; //Define quanto em porcentagem equivale 100ms sobre o total de segundos da fase
 			progressBarTimer();
 		}
 
-		function progressBarStages(){
+		function progressBarStages() {
 			$scope.stagePercentage = {'width':(countStage * 20) + '%'};
-			if(countStage<$scope.currentStage){
+			if(countStage<$scope.currentStage) {
 				countStage = countStage + 0.1;
 				$timeout(progressBarStages, 25);
 			}
 		}
 
+		function startProgressBarTimer(){
+			countTime = 100;
+			percentageTime = (0.1 * 100) / $scope.currentLevel.Duration;
+			//Define quanto em porcentagem equivale 100ms sobre o total de segundos da fase
+			progressBarTimer();
+		}
+
 		function progressBarTimer(){
 			$scope.timerPercentage = {'width': (countTime) + '%'};
-			if(countTime>0){
+			if(countTime>0) {
 				countTime = countTime - percentageTime;
-				progressBarTimeOut = $timeout(progressBarTimer, 98);
+				progressBarTimeOut = $timeout(progressBarTimer, 98.5);
 		  	}
     	}	
 
-		function share(score){
+		function share(score) {
 			FB.ui({
 				method: 'share',
 				mobile_iframe: true,
-				redirect_uri: 'http://ideky.azurewebsites.net/api/',
-				message     : `Fiz ${score}  no IDEKY, te desafio para bater meu record`,
+				redirect_uri: 'http://ideky.azurewebsites.net/',
+				message: `Fiz ${score} no IDEKY, te desafio a bater meu record`,
 			}, function(response){});
 		}
 	});

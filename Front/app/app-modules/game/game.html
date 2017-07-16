@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="game-over" ng-show="showGameOver">
-                    <span>Game Over</span>
+                    <span>{{endMessage}}</span>
                 </div>
 
                 <div class="box-game-info">
@@ -43,8 +43,13 @@
                 </div>     
                 <div class="box-img-game" ng-class="showPictures" ng-hide="showLifesOption">
                     <button ng-repeat="user in drawFriends" ng-click="answer(user.Name)" class="game-button font-primary" ng-class="changeClass('{{user.Name}}')" style="background-image: url({{user.Picture}});"></button>
-                </div>   
-                <button ng-show="shareButton" ng-click="share(score)" class="buttonShare">Compartilhar no Facebook</button>    
+                </div>   <!--shareButton-->
+                <button type="button" class="end-game-buttons button-play-again" ng-click="init()" ng-show="showGameOver">        
+                    <span class="text uppercase">Jogar novamente</span>          
+                </button>
+                <button type="button" class="end-game-buttons button-share" ng-click="share(score)" ng-show="showGameOver">
+                    <span class="text uppercase">Compartilhar no Facebook</span>  
+                </button>    
             </div>
         </div>
         <div class="menu-box">
