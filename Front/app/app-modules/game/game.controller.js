@@ -11,7 +11,7 @@ angular
 		 progressBarTimeOut,
 		 wrongName,
 		 result,
-	   	percentageTime,
+	   	 percentageTime,
 		 intervalTimer,
 		 textAnimationClasses,
 		 textAnimationInterval,
@@ -54,8 +54,9 @@ angular
 			$scope.answer =  answer;
 			$scope.onClickButtonLifes = onClickButtonLifes;
 			$scope.share = share;
+			$scope.init =  init;
 			$scope.fase = 0;
-		  $scope.score = 0;
+		    $scope.score = 0;
 			$scope.currentLevel = {};
 			$scope.currentLevel.LevelNumber = 0;
 			$scope.timer = 0;
@@ -290,8 +291,8 @@ angular
 			FB.ui({
 				method: 'share',
 				mobile_iframe: true,
-				redirect_uri: 'http://ideky.azurewebsites.net/api/',
-				message     : `Fiz ${score}  no IDEKY, te desafio para bater meu record`,
+				redirect_uri: 'http://ideky.azurewebsites.net/',
+				message     : `Fiz ${score} no IDEKY, te desafio a bater meu record`,
 			}, function(response){});
 		}
 	});
