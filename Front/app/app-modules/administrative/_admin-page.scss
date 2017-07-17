@@ -1,6 +1,7 @@
 .admin-page {    
     .box-default{ 
         @extend %flexbox-center-horizontal;
+        justify-content: center;
         position: relative;
     }
     
@@ -12,6 +13,7 @@
     .box-content-wrapper {
         h1{ font-size: 26px; }
     }
+}
 
     .button-adm-default {
         font-size: 18px;
@@ -34,4 +36,3 @@
         margin-top: 10px;
         margin-bottom: 10px;
     }
-}

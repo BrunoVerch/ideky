@@ -44,12 +44,15 @@
                 <div class="box-img-game" data-ng-class="showPictures" data-ng-hide="showLifesOption">
                     <button data-ng-repeat="user in drawFriends" data-ng-click="answer(user.Name)" class="game-button font-primary" data-ng-class="changeClass('{{user.Name}}')" style="background-image: url({{user.Picture}});"></button>
                 </div>   <!--shareButton-->
-                <button type="button" class="end-game-buttons button-play-again" data-ng-click="init()" data-ng-show="showGameOver">        
-                    <span class="text uppercase">Jogar novamente</span>          
-                </button>
-                <button type="button" class="end-game-buttons button-share" data-ng-click="share(score)" data-ng-show="showGameOver">
-                    <span class="text uppercase">Compartilhar no Facebook</span>  
-                </button>    
+                <div class="box-buttons-options">
+                    <button type="button" class="end-game-buttons button-play-again" data-ng-click="init()" data-ng-show="showGameOver">        
+                        <span class="text uppercase">Jogar novamente</span>          
+                    </button>
+                    <button type="button" class="end-game-buttons button-share" data-ng-click="share(score)" data-ng-show="showGameOver">
+                        <span class="text uppercase">Compartilhar no Facebook</span>  
+                    </button>    
+                <div>
+                    
             </div>
         </div>
         <div class="menu-box">

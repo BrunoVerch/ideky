@@ -36,10 +36,11 @@
         margin-top: 0;
     }
     .box-img-game{
-        height: 60vh;
-        max-width: 100%;
         @extend %flexbox-center-vertical;
         @extend %flexbox-center-horizontal;
+        height: 60vh;
+        max-width: 100%;
+        align-content: center;
         flex-wrap: wrap;
         flex-direction: row;
         padding: 2vh;
@@ -50,7 +51,7 @@
         border: 0;
         background-color: transparent;
         background-size: 100% 100%;
-        width: 95px;
+        width: 90px;
         height: 90px;
         margin: 10px;
         box-shadow: 0px 5px 0px #BEBEBE;
@@ -220,22 +221,27 @@
         background-color: #CD0000;
         box-shadow: 0px 5px 0px #FF0000;
     }
-    .end-game-buttons{
-        position: absolute;
-        bottom: 10%;
-        font-family: $font-type-primary;
-        font-size: 20px;
-        @extend %button-design-primary;
-        height: 7%;
+    .box-buttons-options {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        top: -110px;
     }
-    .end-game-buttons.button-share{   
-        width: 25%;
-        right: 26%;
+    .end-game-buttons{
+        font-family: $font-type-primary;    
+        background-color: $button-color-login;
+        text-align: center; 
+        border-radius: 10px; 
+        border: none;
+        color: #fff;
+
+        bottom: 10%;
+        font-size: 20px;
+        height: 7%;
     }
     .end-game-buttons.button-play-again{  
         background-color: $button-color-home;
-        width: 20%;
-        left: 26%;
     }
     .global-box{
         display: flex; 

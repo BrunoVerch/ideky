@@ -79,7 +79,7 @@ section {
   height: 90px;
   width: 90px; }
 
-.login .button-login, .home .button-home, .game .end-game-buttons, .admin-page .button-adm-default, .admin-page .levelsadm .button-levelsadm-confirmar, .levelsadm .admin-page .button-levelsadm-confirmar, .admin-page .lifesadm .button-lifesadm-confirmar, .lifesadm .admin-page .button-lifesadm-confirmar, .admin-page .loginadm .button-home, .loginadm .admin-page .button-home, .menuadm .button-menuadm, .ranking .button-home, .profile .button-home {
+.login .button-login, .home .button-home, .button-adm-default, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home, .profile .button-home {
   font-family: "HDV Comic Serif Pro";
   width: 70%;
   height: 16%;
@@ -90,11 +90,11 @@ section {
   border: none;
   color: #fff; }
 
-body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .center-box, .game .box-img-game, .game .lifesDiplay, .admin-page .button-adm-default, .admin-page .levelsadm .button-levelsadm-confirmar, .levelsadm .admin-page .button-levelsadm-confirmar, .admin-page .lifesadm .button-lifesadm-confirmar, .lifesadm .admin-page .button-lifesadm-confirmar, .admin-page .loginadm .button-home, .loginadm .admin-page .button-home, .menuadm .button-menuadm, .ranking .button-home, .profile .button-home {
+body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .center-box, .game .box-img-game, .game .lifesDiplay, .button-adm-default, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home, .profile .button-home {
   display: flex;
   justify-content: center; }
 
-body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .center-box, .game .box-img-game, .admin-page .box-default, .admin-page .button-adm-default, .admin-page .levelsadm .button-levelsadm-confirmar, .levelsadm .admin-page .button-levelsadm-confirmar, .admin-page .lifesadm .button-lifesadm-confirmar, .lifesadm .admin-page .button-lifesadm-confirmar, .admin-page .loginadm .button-home, .loginadm .admin-page .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking, .profile .box-default, .profile .button-home {
+body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .center-box, .game .box-img-game, .admin-page .box-default, .button-adm-default, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking, .profile .box-default, .profile .button-home {
   display: flex;
   align-items: center; }
 
@@ -229,6 +229,7 @@ h1.font-primary, .ranking h1.box-ranking:before {
 .game .box-img-game {
   height: 60vh;
   max-width: 100%;
+  align-content: center;
   flex-wrap: wrap;
   flex-direction: row;
   padding: 2vh;
@@ -238,7 +239,7 @@ h1.font-primary, .ranking h1.box-ranking:before {
   border: 0;
   background-color: transparent;
   background-size: 100% 100%;
-  width: 95px;
+  width: 90px;
   height: 90px;
   margin: 10px;
   box-shadow: 0px 5px 0px #BEBEBE;
@@ -375,19 +376,24 @@ h1.font-primary, .ranking h1.box-ranking:before {
 .game .lifesOptions .button.buttonDontUseLife {
   background-color: #CD0000;
   box-shadow: 0px 5px 0px #FF0000; }
+.game .box-buttons-options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  top: -110px; }
 .game .end-game-buttons {
-  position: absolute;
-  bottom: 10%;
   font-family: "HDV Comic Serif Pro";
+  background-color: #264285;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  bottom: 10%;
   font-size: 20px;
   height: 7%; }
-.game .end-game-buttons.button-share {
-  width: 25%;
-  right: 26%; }
 .game .end-game-buttons.button-play-again {
-  background-color: #e77235;
-  width: 20%;
-  left: 26%; }
+  background-color: #e77235; }
 .game .global-box {
   display: flex;
   flex-direction: row; }
@@ -463,20 +469,23 @@ h1.font-primary, .ranking h1.box-ranking:before {
     width: 100vw; } }
 
 .admin-page .box-default {
+  justify-content: center;
   position: relative; }
 .admin-page .box-content {
   padding: 40px;
   margin: 30px 10px 10px; }
 .admin-page .box-content-wrapper h1 {
   font-size: 26px; }
-.admin-page .button-adm-default, .admin-page .levelsadm .button-levelsadm-confirmar, .levelsadm .admin-page .button-levelsadm-confirmar, .admin-page .lifesadm .button-lifesadm-confirmar, .lifesadm .admin-page .button-lifesadm-confirmar, .admin-page .loginadm .button-home, .loginadm .admin-page .button-home {
+
+.button-adm-default, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home {
   font-size: 18px;
   width: 100%;
   background-color: #bbd568;
   border-radius: 3px;
   padding: 15px;
   margin-top: 15px; }
-.admin-page .input-adm-default, .admin-page .levelsadm .levelsadm-input, .levelsadm .admin-page .levelsadm-input, .admin-page .lifesadm .lifesadm-input, .lifesadm .admin-page .lifesadm-input, .admin-page .loginadm .loginadm-input, .loginadm .admin-page .loginadm-input {
+
+.input-adm-default, .levelsadm .levelsadm-input, .lifesadm .lifesadm-input, .loginadm .loginadm-input {
   background-color: #f0f0f0;
   border: 1px solid #c6c6c6;
   border-radius: 3px;
