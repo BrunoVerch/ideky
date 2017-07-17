@@ -1,11 +1,6 @@
 .ranking {
-    .logo { width: 33%; }
-
     .box-default{ 
         @extend %flexbox-center-horizontal;
-        @extend %flexbox-center-vertical;
-        flex-direction: column;
-        justify-content: space-between;
     }  
 
     .button-home {

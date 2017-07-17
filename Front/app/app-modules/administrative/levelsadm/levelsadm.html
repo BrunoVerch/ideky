@@ -3,7 +3,7 @@
     <img class="logo" src="../images/logo.png" alt="">    
     <div class="box-content">
       <div class="box-content-wrapper">
-        <form ng-submit="editLevel(level)">
+        <form data-ng-submit="editLevel(level)">
           <div class="levelsadm-titulo font-primary uppercase">
               <h1>Editar níveis</h1>
           </div> 
@@ -12,7 +12,7 @@
               <label class="font-secundary levelsadm-label uppercase" for="LevelNumber">
                 Níveis
               </label>
-              <select class="font-secundary levelsadm-input uppercase" type="text" id="LevelNumber" ng-options="level.Id as level.LevelNumber for level in levels" ng-model="levelSelect" ng-change="loadLevel(levelSelect)">
+              <select class="font-secundary levelsadm-input uppercase" type="text" id="LevelNumber" data-ng-options="level.Id as level.LevelNumber for level in levels" data-ng-model="levelSelect" data-ng-change="loadLevel(levelSelect)">
                 <option value="" disabled selected>Selecione</option>
               </select>
             </div>
@@ -20,7 +20,7 @@
               <label class="font-secundary levelsadm-label uppercase" for="PictureAmount">
                 Fotos 
               </label>
-              <input class="font-secundary levelsadm-input uppercase" type="number" id="PictureAmount" ng-model="level.PictureAmount">
+              <input class="font-secundary levelsadm-input uppercase" type="number" id="PictureAmount" data-ng-model="level.PictureAmount">
             </div>  
           </div>
           <div class="box-inputs">
@@ -28,17 +28,17 @@
               <label class="font-secundary levelsadm-label uppercase" for="Duration">
                 Tempo 
               </label>
-              <input class="font-secundary levelsadm-input uppercase" type="number" id="Duration" ng-model="level.Duration">
+              <input class="font-secundary levelsadm-input uppercase" type="number" id="Duration" data-ng-model="level.Duration">
             </div>  
             <div class="inputs">
               <label class="font-secundary levelsadm-label uppercase" for="Multiplier">
                 Multiplicador 
               </label>
-              <input class="font-secundary levelsadm-input uppercase" type="number" name="Multiplier" ng-model="level.Multiplier">
+              <input class="font-secundary levelsadm-input uppercase" type="number" id="Multiplier" data-ng-model="level.Multiplier">
             </div>  
           </div>  
           <button type="submit" class="button-levelsadm-confirmar font-primary">        
-            <span class="text uppercase">confirmar</span>          
+            <span class="text uppercase">Confirmar</span>          
           </button> 
         </form>
       </div>  

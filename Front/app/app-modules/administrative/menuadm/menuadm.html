@@ -3,17 +3,17 @@
       <img class="logo" src="../images/logo.png" alt="">    
       <div class="box-content">
         <div class="box-content-wrapper">          
-          <button type="button" class="button-menuadm" ng-if="!confirm" ng-click="replaceConfirm()">        
+          <button type="button" class="button-menuadm" data-ng-if="!confirm" data-ng-click="replaceConfirm()">        
             <span class="text uppercase">resetar ranking</span>          
           </button> 
-          <button type="button" class="button-menuadm confirm" ng-if="!!confirm" ng-click="resetRanking()">        
+          <button type="button" class="button-menuadm confirm" data-ng-if="!!confirm" data-ng-click="resetRanking()">        
             <span class="text uppercase">Confirmar</span>          
           </button>
-          <button type="button" class="button-menuadm">        
-            <span class="text uppercase" ng-click="redirect('/lifesadm')">Doar vidas</span>          
+          <button type="button" class="button-menuadm" data-ng-click="redirect('/lifesadm')">        
+            <span class="text uppercase">Doar vidas</span>          
           </button> 
-          <button type="button" class="button-menuadm">        
-            <span class="text uppercase" ng-click="redirect('/levelsadm')">Editar níveis</span>          
+          <button type="button" class="button-menuadm" data-ng-click="redirect('/levelsadm')">        
+            <span class="text uppercase">Editar níveis</span>          
           </button> 
         </div>    
       </div>           

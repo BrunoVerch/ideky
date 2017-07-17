@@ -10,7 +10,7 @@
         @extend %flexbox-center-vertical;
         @extend %flexbox-center-horizontal;   
         &.confirm {
-            background-color: $button-color-menuadm-confirmar;
+            background-color: $button-color-menuadm-confirm;
             color: #fff;
         }      
     }    

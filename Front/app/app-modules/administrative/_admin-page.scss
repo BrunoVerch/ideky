@@ -1,11 +1,6 @@
-.admin-page {
-    .logo {
-        width: 33%;
-    }
-
+.admin-page {    
     .box-default{ 
         @extend %flexbox-center-horizontal;
-        flex-direction: column;
         position: relative;
     }
     
@@ -15,8 +10,28 @@
     }
 
     .box-content-wrapper {
-        h1{            
-            font-size: 26px;
-        }
+        h1{ font-size: 26px; }
+    }
+
+    .button-adm-default {
+        font-size: 18px;
+        width: 100%;
+        background-color: $button-color-menuadm-confirm;
+        @extend %button-design-primary; 
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;                
+        border-radius: 3px;
+        padding: 15px;
+        margin-top: 15px;
+    } 
+
+    .input-adm-default {
+        background-color: #f0f0f0;
+        border: 1px solid $border-color-input-loginadm;
+        border-radius: 3px;
+        padding:  15px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 }
