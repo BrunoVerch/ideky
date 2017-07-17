@@ -389,6 +389,9 @@ h1.font-primary, .ranking h1.box-ranking:before {
   border-radius: 10px;
   border: none;
   color: #fff;
+  flex: 1;
+  margin: 10px;
+  padding: 10px;
   bottom: 10%;
   font-size: 20px;
   height: 7%; }
