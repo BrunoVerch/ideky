@@ -144,6 +144,7 @@ angular
 		function setDrawsFriends() {
 			$scope.drawFriends = [];
 			$scope.drawFriends.splice(0, $scope.drawFriends.length);
+			$scope.drawFriends.length = 0;
 
 			let pictureAmount = $scope.currentLevel.PictureAmount;
 
