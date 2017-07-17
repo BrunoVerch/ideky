@@ -2,9 +2,11 @@
 using Ideky.Api.Models;
 using Ideky.Domain.Entity;
 using Ideky.Infrastructure.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace Ideky.Api.Controllers
@@ -25,8 +27,9 @@ namespace Ideky.Api.Controllers
         [Route("register")]
         public HttpResponseMessage Register([FromBody]GameResultModel gameResultModel)
         {
+            String name = HttpContext.Current.User.Identity.Name;
             User user = userRepository.GetByFacebookId(gameResultModel.FacebookID);
-            if (user != null)
+            if (user != null && user.Name.Equals(name))
             {
                 if (user.Record < gameResultModel.Score)
                 {
