@@ -7,8 +7,9 @@
         <div class="box-content-wrapper">          
           <h1 class="font-primary uppercase">diário</h1>
           <ol scroll-glue-top="glued" class="box-scroll">
-            <li class="box-ranking" ng-repeat="user in daily">
-              <img class="mask-profile" alt="fotografia do perfil do usuario" src="{{user.Picture}}">
+            <span data-ng-if="daily.length == 0">Não há jogadores no ranking no momento!</span>
+            <li class="box-ranking" data-ng-repeat="user in daily">
+              <img class="mask-profile" alt="fotografia do perfil do usuario" data-ng-src="{{user.Picture}}">
               <div class="inline-block">
                 <h2 class="font-primary uppercase">{{user.Name}}</h2> 
                 <h3 class="font-primary uppercase">{{user.Score}} pontos</h3> 
@@ -20,11 +21,12 @@
       </div>     
       <!--MONTH-->
       <div class="box-content">
-      <div class="box-content-wrapper">          
+        <div class="box-content-wrapper">          
           <h1 class="font-primary uppercase">mensal</h1>
           <ol scroll-glue-top="glued" class="box-scroll">
-            <li class="box-ranking" ng-repeat="user in month">
-              <img class="mask-profile" alt="fotografia do perfil do usuario" src="{{user.Picture}}">
+            <span data-ng-if="daily.length == 0">Não há jogadores no ranking no momento!</span>
+            <li class="box-ranking" data-ng-repeat="user in month">
+              <img class="mask-profile" alt="fotografia do perfil do usuario" data-ng-src="{{user.Picture}}">
               <div class="inline-block">
                 <h2 class="font-primary uppercase">{{user.Name}}</h2> 
                 <h3 class="font-primary uppercase">{{user.Score}} pontos</h3> 
@@ -36,11 +38,12 @@
       </div>           
       <!--TOTAL-->
       <div class="box-content">
-      <div class="box-content-wrapper">          
+        <div class="box-content-wrapper">          
           <h1 class="font-primary uppercase">total</h1>
           <ol scroll-glue-top="glued" class="box-scroll">
-            <li class="box-ranking" ng-repeat="user in total">
-              <img class="mask-profile" alt="fotografia do perfil do usuario" src="{{user.Picture}}">
+            <span data-ng-if="daily.length == 0">Não há jogadores no ranking no momento!</span>
+            <li class="box-ranking" data-ng-repeat="user in total">
+              <img class="mask-profile" alt="fotografia do perfil do usuario" data-ng-src="{{user.Picture}}">
               <div class="inline-block">
                 <h2 class="font-primary uppercase">{{user.Name}}</h2> 
                 <h3 class="font-primary uppercase">{{user.Score}} pontos</h3> 

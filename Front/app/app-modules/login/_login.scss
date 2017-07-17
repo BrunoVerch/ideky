@@ -1,13 +1,5 @@
 .login {
-    .logo {
-        width: 33%;
-    }
-
-    .box-default{ 
-        flex-direction: column;
-        justify-content: space-between;        
-        @extend %flexbox-center-horizontal;
-    }        
+    .box-default{ @extend %flexbox-center-horizontal; }        
 
     .button-login {
         @extend %button-design-primary;

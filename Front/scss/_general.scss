@@ -1,10 +1,10 @@
 body {
+    @extend %flexbox-center-vertical;
+    @extend %flexbox-center-horizontal;
     box-sizing: border-box;
     margin: 0;
     background-color: $background-color-default;
     height: 100vh;
-    @extend %flexbox-center-vertical;
-    @extend %flexbox-center-horizontal;
 }
 
 section {
@@ -12,11 +12,15 @@ section {
     flex-direction: row;
 }
 
+.logo { width: 33%; }
+
 .box-default{            
+        @extend %background-image-box; 
         height: 91vh;
         width: 692px; 
         padding: 3% 20px; 
-        @extend %background-image-box; 
+        flex-direction: column;
+        justify-content: space-around;
 } 
 
 @media screen and (min-width: 920px) {
@@ -31,14 +35,16 @@ section {
     margin: 10px;
     padding: 20px;
     position: relative;
+
     .box-content-wrapper {
+        @extend %flexbox-center-vertical;
+        @extend %flexbox-center-horizontal;
         z-index: 3;       
         position: relative; 
         flex-direction: column;
         justify-content: space-between;
-        @extend %flexbox-center-vertical;
-        @extend %flexbox-center-horizontal;
     }
+
     &:before {
         content: "";
         z-index: 2;
@@ -51,6 +57,7 @@ section {
         box-shadow: 0 0 8px rgba(#000, 0.2);
         border-radius: 5px;
     }
+
     &:after {
         content: "";
         z-index: 1;
@@ -110,18 +117,15 @@ section {
     margin: 0 30px 0 0; 
 }
 
-.font-primary {
-    font-family: $font-type-primary; 
-}
+.font-primary { font-family: $font-type-primary; }
 
-.font-secundary {
-    font-family: $font-type-secundary; 
-}
+.font-secundary { font-family: $font-type-secundary; }
 
 h1.font-secundary {       
     font-size: 46px;
     text-align: center;
     color: $text-color-login;
+
     &.subtitle {
         font-size: 33px;
         color: $text-subtitle-color-login;  
@@ -131,7 +135,5 @@ h1.font-secundary {
 h1.font-primary {
     text-align: center;
     color: $text-color-home;
-    small {
-        color: $text-color-home;
-    }
+    small { color: $text-color-home; }
 }

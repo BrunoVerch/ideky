@@ -4,7 +4,7 @@
 
       <div class="box-content">
         <div class="box-content-wrapper">          
-          <img class="mask-profile" alt="Picture of {{user.Name}}" ng-src="{{user.Picture}}">
+          <img class="mask-profile" alt="Picture of {{user.Name}}" data-ng-src="{{user.Picture}}">
           
           <!--TODO: rever os h1's-->
           <h1 class="font-primary uppercase">{{user.Name}}</h1>
@@ -14,7 +14,7 @@
         </div>    
       </div>
 
-      <button type="button" class="button-home" ng-click="play()">        
+      <button type="button" class="button-home" data-ng-click="play()">        
         <span class="text uppercase">Jogar</span>          
       </button>  
   </div>

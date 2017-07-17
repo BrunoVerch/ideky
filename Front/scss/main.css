@@ -24,10 +24,15 @@ section {
   display: flex;
   flex-direction: row; }
 
+.logo {
+  width: 33%; }
+
 .box-default {
   height: 91vh;
   width: 692px;
-  padding: 3% 20px; }
+  padding: 3% 20px;
+  flex-direction: column;
+  justify-content: space-around; }
 
 @media screen and (min-width: 920px) {
   .box-default {
@@ -74,7 +79,7 @@ section {
   height: 90px;
   width: 90px; }
 
-.login .button-login, .home .button-home, .game .end-game-buttons, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home, .profile .button-home {
+.login .button-login, .home .button-home, .button-adm-default, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home, .profile .button-home {
   font-family: "HDV Comic Serif Pro";
   width: 70%;
   height: 16%;
@@ -85,11 +90,11 @@ section {
   border: none;
   color: #fff; }
 
-body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .center-box, .game .box-img-game, .game .lifesDiplay, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .profile .button-home {
+body, .box-content .box-content-wrapper, .login .button-login, .home .button-home, .game .center-box, .game .box-img-game, .game .lifesDiplay, .button-adm-default, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .button-home, .profile .button-home {
   display: flex;
   justify-content: center; }
 
-body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .center-box, .game .box-img-game, .admin-page .box-default, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking, .profile .box-default, .profile .button-home {
+body, .box-content .box-content-wrapper, .login .box-default, .login .button-login, .home .box-default, .home .button-home, .game .center-box, .game .box-img-game, .admin-page .box-default, .button-adm-default, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home, .menuadm .button-menuadm, .ranking .box-default, .ranking .button-home, .ranking .box-wrapper, .ranking .box-ranking, .profile .box-default, .profile .button-home {
   display: flex;
   align-items: center; }
 
@@ -183,17 +188,6 @@ h1.font-primary, .ranking h1.box-ranking:before {
       border: none;
       background: none; }
 
-.login .logo {
-  width: 33%; }
-.login .box-default {
-  flex-direction: column;
-  justify-content: space-between; }
-
-.home .logo {
-  width: 33%; }
-.home .box-default {
-  flex-direction: column;
-  justify-content: space-between; }
 .home h1 {
   margin-top: 15px; }
   .home h1.font-primary, .home .ranking h1.box-ranking:before, .ranking .home h1.box-ranking:before {
@@ -235,6 +229,7 @@ h1.font-primary, .ranking h1.box-ranking:before {
 .game .box-img-game {
   height: 60vh;
   max-width: 100%;
+  align-content: center;
   flex-wrap: wrap;
   flex-direction: row;
   padding: 2vh;
@@ -244,7 +239,7 @@ h1.font-primary, .ranking h1.box-ranking:before {
   border: 0;
   background-color: transparent;
   background-size: 100% 100%;
-  width: 95px;
+  width: 90px;
   height: 90px;
   margin: 10px;
   box-shadow: 0px 5px 0px #BEBEBE;
@@ -381,19 +376,27 @@ h1.font-primary, .ranking h1.box-ranking:before {
 .game .lifesOptions .button.buttonDontUseLife {
   background-color: #CD0000;
   box-shadow: 0px 5px 0px #FF0000; }
+.game .box-buttons-options {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  top: -200px; }
 .game .end-game-buttons {
-  position: absolute;
-  bottom: 10%;
   font-family: "HDV Comic Serif Pro";
+  background-color: #264285;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  flex: 1;
+  margin: 10px;
+  padding: 10px;
+  bottom: 10%;
   font-size: 20px;
   height: 7%; }
-.game .end-game-buttons.button-share {
-  width: 25%;
-  right: 26%; }
 .game .end-game-buttons.button-play-again {
-  background-color: #e77235;
-  width: 20%;
-  left: 26%; }
+  background-color: #e77235; }
 .game .global-box {
   display: flex;
   flex-direction: row; }
@@ -468,10 +471,8 @@ h1.font-primary, .ranking h1.box-ranking:before {
   .game .box-game {
     width: 100vw; } }
 
-.admin-page .logo {
-  width: 33%; }
 .admin-page .box-default {
-  flex-direction: column;
+  justify-content: center;
   position: relative; }
 .admin-page .box-content {
   padding: 40px;
@@ -479,13 +480,23 @@ h1.font-primary, .ranking h1.box-ranking:before {
 .admin-page .box-content-wrapper h1 {
   font-size: 26px; }
 
-.levelsadm .button-levelsadm-confirmar {
+.button-adm-default, .levelsadm .button-levelsadm-confirmar, .lifesadm .button-lifesadm-confirmar, .loginadm .button-home {
   font-size: 18px;
   width: 100%;
   background-color: #bbd568;
   border-radius: 3px;
   padding: 15px;
   margin-top: 15px; }
+
+.input-adm-default, .levelsadm .levelsadm-input, .lifesadm .lifesadm-input, .loginadm .loginadm-input {
+  background-color: #f0f0f0;
+  border: 1px solid #c6c6c6;
+  border-radius: 3px;
+  padding: 15px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
 .levelsadm .box-inputs {
   display: flex;
   flex-wrap: wrap;
@@ -493,14 +504,6 @@ h1.font-primary, .ranking h1.box-ranking:before {
   width: 300px; }
   .levelsadm .box-inputs .inputs {
     width: 47%; }
-.levelsadm .levelsadm-input {
-  background-color: #f0f0f0;
-  border: 1px solid #c6c6c6;
-  border-radius: 3px;
-  padding: 15px;
-  width: 100%;
-  margin-top: 0;
-  margin-bottom: 10px; }
 .levelsadm .levelsadm-label {
   color: #c6c6c6;
   font-size: 18px; }
@@ -513,21 +516,6 @@ h1.font-primary, .ranking h1.box-ranking:before {
   font-size: 22px;
   padding: 8px; }
 
-.lifesadm .button-lifesadm-confirmar {
-  font-size: 18px;
-  width: 100%;
-  background-color: #bbd568;
-  border-radius: 3px;
-  padding: 15px;
-  margin-top: 15px; }
-.lifesadm .lifesadm-input {
-  background-color: #f0f0f0;
-  border: 1px solid #c6c6c6;
-  border-radius: 3px;
-  padding: 15px;
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px; }
 .lifesadm .lifesadm-input::placeholder {
   color: #c6c6c6;
   font-size: 22px; }
@@ -539,20 +527,7 @@ h1.font-primary, .ranking h1.box-ranking:before {
   line-height: 36px; }
 
 .loginadm .button-home {
-  font-size: 18px;
-  width: 100%;
-  background-color: #e77235;
-  border-radius: 3px;
-  padding: 15px;
-  margin-top: 15px; }
-.loginadm .loginadm-input {
-  background-color: #f0f0f0;
-  border: 1px solid #c6c6c6;
-  border-radius: 3px;
-  padding: 15px;
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px; }
+  background-color: #e77235; }
 .loginadm .loginadm-input::placeholder {
   color: #c6c6c6;
   font-size: 22px; }
@@ -574,11 +549,6 @@ h1.font-primary, .ranking h1.box-ranking:before {
     background-color: #bbd568;
     color: #fff; }
 
-.ranking .logo {
-  width: 33%; }
-.ranking .box-default {
-  flex-direction: column;
-  justify-content: space-between; }
 .ranking .button-home {
   width: 388px;
   height: 74px;
@@ -653,11 +623,6 @@ h1.font-primary, .ranking h1.box-ranking:before {
 .ranking ::-webkit-scrollbar-thumb {
   background: #dad7d7; }
 
-.profile .logo {
-  width: 33%; }
-.profile .box-default {
-  flex-direction: column;
-  justify-content: space-around; }
 .profile h1 {
   margin-top: 15px; }
   .profile h1.font-secundary.subtitle {

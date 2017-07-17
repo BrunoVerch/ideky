@@ -3,7 +3,7 @@
     <img class="logo" src="../images/logo.png" alt="">    
     <div class="box-content">
       <div class="box-content-wrapper">
-        <form>
+        <form data-ng-submit="login(user)">
           <div class="loginadm-title font-primary uppercase">
               <h1>Painel <br> administrativo</h1>
           </div>  
@@ -11,15 +11,15 @@
             <label for="user" hidden>
               Usuário
             </label>
-            <input class="loginadm-input font-secundary uppercase" type="text" ng-model="user.email" name="user" placeholder="Usuário">
+            <input class="loginadm-input font-secundary uppercase" type="text" data-ng-model="user.email" id="user" placeholder="Usuário">
           </div>
           <div>
             <label for="password" hidden>
               Senha 
             </label>
-            <input class="font-secundary loginadm-input uppercase" type="password" ng-model="user.password" name="password" placeholder="senha">
+            <input class="font-secundary loginadm-input uppercase" type="password" data-ng-model="user.password" id="password" placeholder="senha">
           </div>  
-          <button type="button" class="button-home font-primary" ng-submit="login(user)">        
+          <button type="submit" class="button-home font-primary">        
             <span class="text uppercase">entrar</span>          
           </button> 
         </form>

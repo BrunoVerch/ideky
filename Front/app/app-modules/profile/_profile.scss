@@ -1,12 +1,6 @@
 .profile {
-    .logo {
-        width: 33%;
-    }
-
     .box-default { 
-        @extend %flexbox-center-horizontal;
-        flex-direction: column;
-        justify-content: space-around;        
+        @extend %flexbox-center-horizontal;     
     }  
 
     h1 {
@@ -20,9 +14,7 @@
         &.font-primary {
             text-shadow: 0 5px 1px rgba(#000, 0.2);
 
-            & > small {
-                text-shadow: initial;
-            }
+            & > small { text-shadow: initial; }
         }
     }
 

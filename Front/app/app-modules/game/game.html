@@ -2,7 +2,7 @@
     <div class="global-box">
         <div class="center-box">
             <div class="box-game">
-                <div ng-show="showLifesOption" class="lifesOption">
+                <div data-ng-show="showLifesOption" class="lifesOption">
                     <div class="box-content">
                         <div class="box-content-wrapper">    
                             <h1 class="titleLifesOption">{{endMessage}}</h1>
@@ -12,14 +12,14 @@
                             </div>  
                             <div class="lifesOptions">  
                                 <h1>Você deseja utilizar uma vida para continuar?</h1>
-                                <button ng-click="onClickButtonLifes(true)" class="button buttonUseLife">Sim</button>
-                                <button ng-click="onClickButtonLifes(false)" class="button buttonDontUseLife">Não</button>    
+                                <button data-ng-click="onClickButtonLifes(true)" class="button buttonUseLife">Sim</button>
+                                <button data-ng-click="onClickButtonLifes(false)" class="button buttonDontUseLife">Não</button>    
                             </div>  
                         </div>
                     </div>   
                 </div>
 
-                <div class="game-over" ng-show="showGameOver">
+                <div class="game-over" data-ng-show="showGameOver">
                     <span>{{endMessage}}</span>
                 </div>
 
@@ -27,29 +27,32 @@
                     <div class="level-info">
                         <div class="stage">
                             <h1>{{currentStage}}/5</h1>    
-                            <div class="progress-bar"><div class="progress" ng-style="stagePercentage"></div></div>    
+                            <div class="progress-bar"><div class="progress" data-ng-style="stagePercentage"></div></div>    
                         </div>
                         <div class="points">
                             <h3 class="uppercase">Nível {{currentLevel.LevelNumber}}<br/>Pontos: {{score}}<h3>    
                         </div>
                         <div class="timer">
                             <h1><smaller>Tempo:</smaller> {{timer}}<smaller>s</smaller></h1>    
-                            <div class="progress-bar"><div class="progress" ng-style="timerPercentage"></div></div>    
+                            <div class="progress-bar"><div class="progress" data-ng-style="timerPercentage"></div></div>    
                         </div>
                     </div> 
                 </div>  
                 <div class="box-question-title">
                     <h1 class="font-primary uppercase"><smaller>Quem é</smaller> {{rightFriend.Name}}?</h1>
                 </div>     
-                <div class="box-img-game" ng-class="showPictures" ng-hide="showLifesOption">
-                    <button ng-repeat="user in drawFriends" ng-click="answer(user.Name)" class="game-button font-primary" ng-class="changeClass('{{user.Name}}')" style="background-image: url({{user.Picture}});"></button>
+                <div class="box-img-game" data-ng-class="showPictures" data-ng-hide="showLifesOption">
+                    <button data-ng-repeat="user in drawFriends" data-ng-click="answer(user.Name)" class="game-button font-primary" data-ng-class="changeClass('{{user.Name}}')" style="background-image: url({{user.Picture}});"></button>
                 </div>   <!--shareButton-->
-                <button type="button" class="end-game-buttons button-play-again" ng-click="init()" ng-show="showGameOver">        
-                    <span class="text uppercase">Jogar novamente</span>          
-                </button>
-                <button type="button" class="end-game-buttons button-share" ng-click="share(score)" ng-show="showGameOver">
-                    <span class="text uppercase">Compartilhar no Facebook</span>  
-                </button>    
+                <div class="box-buttons-options">
+                    <button type="button" class="end-game-buttons button-play-again" data-ng-click="init()" data-ng-show="showGameOver">        
+                        <span class="text uppercase">Jogar novamente</span>          
+                    </button>
+                    <button type="button" class="end-game-buttons button-share" data-ng-click="share(score)" data-ng-show="showGameOver">
+                        <span class="text uppercase">Compartilhar no Facebook</span>  
+                    </button>    
+                </div>
+                    
             </div>
         </div>
         <div class="menu-box">
