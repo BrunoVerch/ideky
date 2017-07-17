@@ -161,7 +161,7 @@ angular
 					i--;
 				}
 			}
-			let drawNumber = Math.floor(Math.random() * $scope.drawFriends.length); 
+			drawNumber = Math.floor(Math.random() * $scope.drawFriends.length); 
 			$scope.rightFriend = $scope.drawFriends[drawNumber];
 		}
 
