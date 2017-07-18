@@ -153,10 +153,14 @@ angular
 				drawNumber = Math.floor(Math.random() * $scope.friends.length);
 				if(!$scope.friends[drawNumber].picture.data.is_silhouette) { 
 					userTemp = {};
-			
+				
 					userTemp.Picture = $scope.friends[drawNumber].picture.data.url;
 					userTemp.Name = $scope.friends[drawNumber].name.replace(regex,'');
-					$scope.drawFriends.push(userTemp);
+					if($scope.friends.indexOf(userTemp)){
+						$scope.drawFriends.push(userTemp);
+					}else{
+						i--;
+					}
 				}else{
 					i--;
 				}
