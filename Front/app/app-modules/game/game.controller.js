@@ -11,7 +11,7 @@ angular
 		 progressBarTimeOut,
 		 wrongName,
 		 result,
-	   percentageTime,
+	     percentageTime,
 		 intervalTimer,
 		 textAnimationClasses,
 		 textAnimationInterval,
@@ -142,17 +142,17 @@ angular
 		}
 
 		function setDrawsFriends() {
+			delete $scope.drawFriends;
 			$scope.drawFriends = [];
-			$scope.drawFriends.splice(0, $scope.drawFriends.length);
 
-			let pictureAmount = $scope.currentLevel.PictureAmount;
-
-			for(let i = 0; i<pictureAmount;i++) {
-				let drawNumber = Math.floor(Math.random() * $scope.friends.length);
-				let regex = /\^|\~|\'|\'|\´|\`|\\|\/|\;|\{|\}|\@|\||\<|\>/g;
-			
+			const pictureAmount = $scope.currentLevel.PictureAmount;
+			const regex = /\^|\~|\'|\'|\´|\`|\\|\/|\;|\{|\}|\@|\||\<|\>/g;
+			let userTemp;
+			let drawNumber;
+			for(let i = 0; i < pictureAmount; i++) {
+				drawNumber = Math.floor(Math.random() * $scope.friends.length);
 				if(!$scope.friends[drawNumber].picture.data.is_silhouette) { 
-					let userTemp = {};
+					userTemp = {};
 			
 					userTemp.Picture = $scope.friends[drawNumber].picture.data.url;
 					userTemp.Name = $scope.friends[drawNumber].name.replace(regex,'');
@@ -161,7 +161,7 @@ angular
 					i--;
 				}
 			}
-			let drawNumber = Math.floor(Math.random() * $scope.drawFriends.length); 
+			drawNumber = Math.floor(Math.random() * $scope.drawFriends.length); 
 			$scope.rightFriend = $scope.drawFriends[drawNumber];
 		}
 
