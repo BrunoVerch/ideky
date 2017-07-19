@@ -20,7 +20,8 @@ angular
 		 startCounter,
 		 user,
 		 userUsedLife,
-		 intervalProgressBarTimer;
+		 intervalProgressBarTimer,
+		 intervalProgressBarStages;
 		
 		init();
 
@@ -151,14 +152,11 @@ angular
 			let userTemp;
 			let drawNumber;
 			let drawNumberList = [];
-			console.log('3');
 			for(let i = 0; i < pictureAmount; i++) {
 				drawNumber = Math.floor(Math.random() * $scope.friends.length);
-				console.log('1');
 				if(!$scope.friends[drawNumber].picture.data.is_silhouette && drawNumberList.indexOf(drawNumber)==-1) { 
 					drawNumberList.push(drawNumber);
 					userTemp = {};
-				console.log('2');
 					userTemp.Picture = $scope.friends[drawNumber].picture.data.url;
 					userTemp.Name = $scope.friends[drawNumber].name.replace(regex,'');
 					$scope.drawFriends.push(userTemp);
@@ -236,7 +234,7 @@ angular
 		}
 
 		function stopTimer() {
-			$timeout.cancel(progressBarTimeOut);
+			$interval.cancel(intervalProgressBarTimer);
 			$interval.cancel(intervalTimer);
 		}
 
@@ -297,7 +295,6 @@ angular
 		function startProgressBarStages() {
 			countStage = $scope.currentStage - 1;
 			intervalProgressBarStages = $interval(progressBarStages,25);
-			progressBarStages();
 		}
 
 		function progressBarStages() {
@@ -312,11 +309,11 @@ angular
 			countTime = 100;
 			percentageTime = (0.1 * 100) / $scope.currentLevel.Duration; 
 			//Define quanto em porcentagem equivale 100ms sobre o total de segundos da fase
-			intervalProgressBarTimer = $interval(progressBarTimer,100);		
+			intervalProgressBarTimer = $interval(progressBarTimer,100);
 		}
 
 		function progressBarTimer(){
-			$scope.timerPercentage = {'width': (countTime) + '%'};7
+			$scope.timerPercentage = {'width': (countTime) + '%'};
 			countTime = countTime - percentageTime;
 			if(countTime<=0) {
 				$interval.cancel(intervalProgressBarTimer);
