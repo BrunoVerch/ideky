@@ -24,7 +24,7 @@
         <div class="box-content-wrapper">          
           <h1 class="font-primary uppercase">mensal</h1>
           <ol scroll-glue-top="glued" class="box-scroll">
-            <span data-ng-if="daily.length == 0">Não há jogadores no ranking no momento!</span>
+            <span data-ng-if="month.length == 0">Não há jogadores no ranking no momento!</span>
             <li class="box-ranking" data-ng-repeat="user in month">
               <img class="mask-profile" alt="fotografia do perfil do usuario" data-ng-src="{{user.Picture}}">
               <div class="inline-block">
@@ -41,7 +41,7 @@
         <div class="box-content-wrapper">          
           <h1 class="font-primary uppercase">total</h1>
           <ol scroll-glue-top="glued" class="box-scroll">
-            <span data-ng-if="daily.length == 0">Não há jogadores no ranking no momento!</span>
+            <span data-ng-if="total.length == 0">Não há jogadores no ranking no momento!</span>
             <li class="box-ranking" data-ng-repeat="user in total">
               <img class="mask-profile" alt="fotografia do perfil do usuario" data-ng-src="{{user.Picture}}">
               <div class="inline-block">
