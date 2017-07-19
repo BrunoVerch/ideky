@@ -294,7 +294,7 @@ angular
 		}
 
 		function progressBarStages() {
-			$scope.stagePercentage = {'width':(countStage * 20) + '%'};
+			$scope.stagePercentage = { width: (countStage * 20) + '%' };
 			countStage = countStage + 0.1;
 			if(countStage>=$scope.currentStage) {
 				$interval.cancel(intervalProgressBarStages);
@@ -309,7 +309,7 @@ angular
 		}
 
 		function progressBarTimer(){
-			$scope.timerPercentage = {'width': (countTime) + '%'};
+			$scope.timerPercentage = { width: (countTime) + '%' };
 			countTime = countTime - percentageTime;
 			if(countTime<=0) {
 				$interval.cancel(intervalProgressBarTimer);
