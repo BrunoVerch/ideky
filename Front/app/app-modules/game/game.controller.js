@@ -144,15 +144,13 @@ angular
 		}
 
 		function setDrawsFriends() {
-			delete $scope.drawFriends;
 			$scope.drawFriends = [];
-
 			const pictureAmount = $scope.currentLevel.PictureAmount;
 			const regex = /\'|\´|\`|\\|\/|\;|\{|\}|\@|\||\<|\>/g;
 			let userTemp;
 			let drawNumber;
 			let drawNumberList = [];
-			for(let i = 0; i < pictureAmount; i++) {
+			while($scope.drawFriends.length<pictureAmount){
 				drawNumber = Math.floor(Math.random() * $scope.friends.length);
 				if(!$scope.friends[drawNumber].picture.data.is_silhouette && drawNumberList.indexOf(drawNumber)==-1) { 
 					drawNumberList.push(drawNumber);
@@ -160,12 +158,10 @@ angular
 					userTemp.Picture = $scope.friends[drawNumber].picture.data.url;
 					userTemp.Name = $scope.friends[drawNumber].name.replace(regex,'');
 					$scope.drawFriends.push(userTemp);
-				}else{
-					i--;
 				}
 			}
 			drawNumber = Math.floor(Math.random() * $scope.drawFriends.length); 
-			$scope.rightFriend = $scope.drawFriends[drawNumber];
+			$scope.rightFriend = $scope.drawFriends[drawNumber];			
 		}
 
 		function shuffleAllFriends() {
