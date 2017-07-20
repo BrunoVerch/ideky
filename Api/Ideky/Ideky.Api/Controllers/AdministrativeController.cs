@@ -16,7 +16,7 @@ namespace Ideky.Api.Controllers
 
         public AdministrativeController()
         {
-            admRepository = new AdministrativeRepository();
+            admRepository = new AdministrativeRepository(Context);
         }
 
         [HttpPost]

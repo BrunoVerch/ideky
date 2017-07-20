@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Ideky.Infrastructure;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -7,6 +8,13 @@ namespace Ideky.Api.Controllers
 {
     public class BasicController : ApiController
     {
+        protected readonly Context Context;
+
+        protected BasicController()
+        {
+            Context = new Context();
+        }
+
         public HttpResponseMessage ResponderOK(object data = null)
         {
             return Request.CreateResponse(HttpStatusCode.OK, new { data });

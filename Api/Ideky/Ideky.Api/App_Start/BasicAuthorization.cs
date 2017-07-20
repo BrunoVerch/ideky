@@ -1,4 +1,5 @@
 ﻿using Ideky.Domain.Entity;
+using Ideky.Infrastructure;
 using Ideky.Infrastructure.Repository;
 using System;
 using System.Net;
@@ -15,10 +16,12 @@ namespace Ideky.Api.App_Start
     public class BasicAuthorization : AuthorizeAttribute
     {
         readonly AdministrativeRepository administrativeRepository;
+        readonly Context Context;
 
         public BasicAuthorization()
         {
-            administrativeRepository = new AdministrativeRepository();
+
+            administrativeRepository = new AdministrativeRepository(Context);
         }
 
         public override void OnAuthorization(HttpActionContext actionContext)

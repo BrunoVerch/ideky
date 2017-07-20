@@ -8,39 +8,39 @@ namespace Ideky.Infrastructure.Repository
 {
     public class LevelRepository : IDisposable
     {
-        private Context context;
+        private Context Context;
 
-        public LevelRepository()
+        public LevelRepository(Context context)
         {
-            context = new Context();
+            Context = context;
         }
 
         public Level GetById(int id)
         {
-            return context.Levels.FirstOrDefault(level => level.Id == id);
+            return Context.Levels.FirstOrDefault(level => level.Id == id);
         }
 
         public Level GetByLevelNumber(int levelNumber)
         {
-            return context.Levels.FirstOrDefault(level => level.LevelNumber == levelNumber);
+            return Context.Levels.FirstOrDefault(level => level.LevelNumber == levelNumber);
         }
 
         public List<Level> GetList()
         {
-            return context.Levels.ToList();
+            return Context.Levels.ToList();
         }
 
         public Level EditLevel(Level level)
         {
-            context.Entry(level).State = EntityState.Modified;
-            context.SaveChanges();
+            Context.Entry(level).State = EntityState.Modified;
+            Context.SaveChanges();
 
             return level;
         }
 
         public void Dispose()
         {
-            context.Dispose();
+            Context.Dispose();
         }
     }
 }

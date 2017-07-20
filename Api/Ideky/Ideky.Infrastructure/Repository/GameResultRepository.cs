@@ -2,24 +2,23 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 
 namespace Ideky.Infrastructure.Repository
 {
     public class GameResultRepository : IDisposable
     {
-        private Context context;
+        readonly Context Context;
 
-        public GameResultRepository()
+        public GameResultRepository(Context context)
         {
-            context = new Context();
+            Context = context;
         }
 
         public object GetList()
         {
-            return context.GameResults
-                .Where(gameResult => gameResult.Active == true)
+            return Context.GameResults
+                .Where(gameResult => gameResult.Active)
                 .Select(gameResult => new
                 {
                     FacebookId = gameResult.User.FacebookId,
@@ -30,13 +29,13 @@ namespace Ideky.Infrastructure.Repository
 
         public List<GameResult> List()
         {
-            return context.GameResults.ToList();
+            return Context.GameResults.ToList();
         }
 
         public object GetListOrderByScoreGroupedByUser()
         {
-            return context.GameResults
-                .Where(gameResult => gameResult.Active == true)
+            return Context.GameResults
+                .Where(gameResult => gameResult.Active)
                 .GroupBy(gameResult => gameResult.User)
                 .Select(gameResultGrouped => new
                 {
@@ -52,11 +51,11 @@ namespace Ideky.Infrastructure.Repository
 
         public object GetListOrderByScoreGroupedByUserWhereDateIsToday()
         {
-            return context.GameResults
+            return Context.GameResults
                 .Where(gameResult => gameResult.GameDate.Day == DateTime.Now.Day
                     && gameResult.GameDate.Month == DateTime.Now.Month
                     && gameResult.GameDate.Year == DateTime.Now.Year
-                    && gameResult.Active == true)
+                    && gameResult.Active)
                 .GroupBy(gameResult => gameResult.User)
                 .Select(gameResultGrouped => new
                 {
@@ -72,10 +71,10 @@ namespace Ideky.Infrastructure.Repository
 
         public object GetListOrderByScoreGroupedByUserWhereDateIsInCurrentMonth()
         {
-            return context.GameResults
+            return Context.GameResults
                 .Where(gameResult => gameResult.GameDate.Month == DateTime.Now.Month
                     && gameResult.GameDate.Year == DateTime.Now.Year
-                    && gameResult.Active == true)
+                    && gameResult.Active)
                 .GroupBy(gameResult => gameResult.User)
                 .Select(gameResultGrouped => new
                 {
@@ -91,8 +90,8 @@ namespace Ideky.Infrastructure.Repository
 
         public object GetResumeById(int id)
         {
-            return context.GameResults
-                .Where(gameResult => gameResult.Active == true)
+            return Context.GameResults
+                .Where(gameResult => gameResult.Active)
                 .Select(gameResult => new
                 {
                     Id = gameResult.Id,
@@ -105,14 +104,14 @@ namespace Ideky.Infrastructure.Repository
 
         public GameResult GetById(int id)
         {
-            return context.GameResults.Where(gameResult => gameResult.Active == true)
+            return Context.GameResults.Where(gameResult => gameResult.Active)
                 .FirstOrDefault(g => g.Id == id);
         }
 
         public object GetByUserId(int userFacebookId)
         {
-            return context.GameResults
-                .Where(gameResult => gameResult.Active == true)
+            return Context.GameResults
+                .Where(gameResult => gameResult.Active)
                 .Select(gameResult => new
                 {
                     Id = gameResult.Id,
@@ -126,20 +125,20 @@ namespace Ideky.Infrastructure.Repository
 
         public GameResult RegisterNewGame(GameResult gameResult)
         {
-            context.GameResults.Add(gameResult);
-            context.Entry(gameResult.User).State = EntityState.Unchanged;
-            context.SaveChanges();
+            Context.GameResults.Add(gameResult);
+            Context.Entry(gameResult.User).State = EntityState.Unchanged;
+            Context.SaveChanges();
             return gameResult;
         }
 
         public int ResetRanking()
         {
-            return context.Database.ExecuteSqlCommand("UPDATE dbo.Game_Result SET Active = 0 WHERE Active = 1");
+            return Context.Database.ExecuteSqlCommand("UPDATE dbo.Game_Result SET Active = 0 WHERE Active = 1");
         }
 
         public void Dispose()
         {
-            context.Dispose();
+            Context.Dispose();
         }
     }
 }

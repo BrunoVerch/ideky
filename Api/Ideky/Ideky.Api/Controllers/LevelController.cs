@@ -14,8 +14,9 @@ namespace Ideky.Api.Controllers
 
         public LevelController()
         {
-            levelRepository = new LevelRepository();
+            levelRepository = new LevelRepository(Context);
         }
+
 
         [HttpGet, Route("get")]
         public HttpResponseMessage Get()
@@ -35,6 +36,11 @@ namespace Ideky.Api.Controllers
                 return ResponderOK(levelRepository.EditLevel(level));
             }
             return ResponderErro(level.Messages);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            levelRepository.Dispose();
         }
     }
 }

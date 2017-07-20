@@ -7,16 +7,16 @@ namespace Ideky.Infrastructure.Repository
 {
     public class UserRepository : IDisposable
     {
-        private Context context;
+        readonly Context Context;
 
-        public UserRepository()
+        public UserRepository(Context context)
         {
-            context = new Context();
+            Context = context;
         }
 
         public object GetByFacebookIdFiltered(long facebookId)
         {
-            return context.Users
+            return Context.Users
                         .Select(user => new
                         {
                             FacebookId = user.FacebookId,
@@ -30,27 +30,27 @@ namespace Ideky.Infrastructure.Repository
 
         public User GetByFacebookId(long facebookId)
         {
-            return context.Users.FirstOrDefault(user => user.FacebookId == facebookId);
+            return Context.Users.FirstOrDefault(user => user.FacebookId == facebookId);
         }
 
         public User GetByFacebookIdAttach(long facebookId)
         {
-            User userReturn = context.Users.FirstOrDefault(user => user.FacebookId == facebookId);
-            return context.Users.Attach(userReturn);
+            User userReturn = Context.Users.FirstOrDefault(user => user.FacebookId == facebookId);
+            return Context.Users.Attach(userReturn);
         }
 
         public User ReduceLife(long facebookId)
         {
             var user = GetByFacebookId(facebookId);
             user.ReduceLife();
-            context.Entry(user).State = EntityState.Modified;
-            context.SaveChanges();
+            Context.Entry(user).State = EntityState.Modified;
+            Context.SaveChanges();
             return user;
         }
 
         public object GetList()
         {
-            return context.Users
+            return Context.Users
                             .Select(users => new
                             {
                                 FacebookId = users.FacebookId,
@@ -62,7 +62,7 @@ namespace Ideky.Infrastructure.Repository
 
         public object GetListOrderByRecord()
         {
-            return context.Users.Select(users => new
+            return Context.Users.Select(users => new
             {
                 FacebookId = users.FacebookId,
                 Record = users.Record,
@@ -76,8 +76,8 @@ namespace Ideky.Infrastructure.Repository
         {
             if (user.Validate())
             {
-                user = context.Users.Add(user);
-                context.SaveChanges();
+                user = Context.Users.Add(user);
+                Context.SaveChanges();
             }
 
             return user;
@@ -91,8 +91,8 @@ namespace Ideky.Infrastructure.Repository
 
             if (newUser.Validate())
             {
-                context.Entry(newUser).State = EntityState.Modified;
-                context.SaveChanges();
+                Context.Entry(newUser).State = EntityState.Modified;
+                Context.SaveChanges();
             }
 
             return newUser;
@@ -104,16 +104,16 @@ namespace Ideky.Infrastructure.Repository
             user.SetNewRecord(record);
             if (user.Validate())
             {
-                context.Entry(user).State = EntityState.Modified;
-                context.SaveChanges();
+                Context.Entry(user).State = EntityState.Modified;
+                Context.SaveChanges();
             }
             return user;
         }
 
         public User AddLifes(User user)
         {
-            context.Entry(user).State = EntityState.Modified;
-            context.SaveChanges();
+            Context.Entry(user).State = EntityState.Modified;
+            Context.SaveChanges();
 
             return user;
         }
@@ -128,15 +128,15 @@ namespace Ideky.Infrastructure.Repository
             user.SetNewLogin();
             if (user.Validate())
             {
-                context.Entry(user).State = EntityState.Modified;
-                context.SaveChanges();
+                Context.Entry(user).State = EntityState.Modified;
+                Context.SaveChanges();
             }
             return user;
         }
 
         public void Dispose()
         {
-            context.Dispose();
+            Context.Dispose();
         }
     }
 }

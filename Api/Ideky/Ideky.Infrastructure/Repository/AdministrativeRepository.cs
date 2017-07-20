@@ -7,35 +7,35 @@ namespace Ideky.Infrastructure.Repository
 {
     public class AdministrativeRepository : IDisposable
     {
-        private Context context;
+        private Context Context;
 
-        public AdministrativeRepository()
+        public AdministrativeRepository(Context context)
         {
-            context = new Context();
+            Context = context;
         }
 
         public List<Administrative> GetList()
         {
-            return context.Administratives.ToList();
+            return Context.Administratives.ToList();
         }
 
         public Administrative GetById(int id)
         {
-            return context.Administratives.FirstOrDefault(administrative => administrative.Id == id);
+            return Context.Administratives.FirstOrDefault(administrative => administrative.Id == id);
         }
         public Administrative GetByEmail(string email)
         {
-            return context.Administratives.FirstOrDefault(administrative => administrative.Email == email);
+            return Context.Administratives.FirstOrDefault(administrative => administrative.Email == email);
         }
         public Administrative Register(Administrative adm)
         {
-            context.Administratives.Add(adm);
-            context.SaveChanges();
+            Context.Administratives.Add(adm);
+            Context.SaveChanges();
             return adm;
         }
         public void Dispose()
         {
-            context.Dispose();
+            Context.Dispose();
         }
     }
 }
