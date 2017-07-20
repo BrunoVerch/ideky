@@ -8,7 +8,13 @@ namespace Ideky.Api
         public static void Register(HttpConfiguration config)
         {
 
-            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            var cors = new EnableCorsAttribute(
+                origins: "http://ideky.azurewebsites.net,http://localhost:8080",
+                headers: "*",
+                methods: "GET,PUT,POST,DELETE"
+            );
+
+            config.EnableCors(cors);
 
             config.MapHttpAttributeRoutes();
 
