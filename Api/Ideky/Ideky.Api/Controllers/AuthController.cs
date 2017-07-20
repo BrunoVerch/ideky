@@ -1,15 +1,14 @@
 ﻿using Ideky.Api.Folders;
 using Ideky.Api.Models;
 using Ideky.Domain.Entity;
+using Ideky.Infrastructure;
 using Ideky.Infrastructure.Repository;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -25,8 +24,8 @@ namespace Ideky.Api.Controllers
         {
             get { return Request.GetOwinContext().Authentication; }
         }
-
-        private UserRepository _repo = new UserRepository();
+        
+        readonly UserRepository _repo = new UserRepository(new Context());
 
         [AllowAnonymous]
         [HttpGet]
@@ -66,7 +65,6 @@ namespace Ideky.Api.Controllers
 
         }
 
-        // GET api/Account/ExternalLogin
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]

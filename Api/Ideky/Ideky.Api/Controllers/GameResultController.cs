@@ -19,8 +19,8 @@ namespace Ideky.Api.Controllers
 
         public GameResultController()
         {
-            gameResultRepository = new GameResultRepository();
-            userRepository = new UserRepository();
+            gameResultRepository = new GameResultRepository(Context);
+            userRepository = new UserRepository(Context);
         }
 
         [HttpPost, Authorize]
@@ -113,6 +113,12 @@ namespace Ideky.Api.Controllers
         public HttpResponseMessage ResetRankings()
         {
             return ResponderOK(gameResultRepository.ResetRanking());
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            userRepository.Dispose();
+            gameResultRepository.Dispose();
         }
     }
 }

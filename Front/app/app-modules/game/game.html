@@ -43,7 +43,7 @@
                 </div>     
                 <div class="box-img-game" data-ng-class="showPictures" data-ng-hide="showLifesOption">
                     <button data-ng-repeat="user in drawFriends" data-ng-click="answer(user.Name)" class="game-button font-primary" data-ng-class="changeClass('{{user.Name}}')" style="background-image: url({{user.Picture}});"></button>
-                </div>   <!--shareButton-->
+                </div> 
                 <div class="box-buttons-options">
                     <button type="button" class="end-game-buttons button-play-again" data-ng-click="init()" data-ng-show="showGameOver">        
                         <span class="text uppercase">Jogar novamente</span>          

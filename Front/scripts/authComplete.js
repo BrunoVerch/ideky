@@ -43,12 +43,10 @@ window.common = (function () {
     return common;
 })();
 
-debugger;
 var fragment = common.getFragment();
 
 window.location.hash = fragment.state || '';
 
-debugger;
 window.opener.$windowScope.authCompletedCB(fragment);
 
 window.close();

@@ -1,5 +1,4 @@
 using Ideky.Infrastructure.Repository;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.CSharp.RuntimeBinder;
@@ -17,7 +16,7 @@ namespace Ideky.Api.Controllers
 
         public UserController()
         {
-            userRepository = new UserRepository();
+            userRepository = new UserRepository(Context);
         }
 
         [HttpPost, Authorize]
@@ -144,6 +143,10 @@ namespace Ideky.Api.Controllers
             }
 
             return ResponderOK(user);
+        }
+        protected override void Dispose(bool disposing)
+        {
+            userRepository.Dispose();
         }
     }
 }
