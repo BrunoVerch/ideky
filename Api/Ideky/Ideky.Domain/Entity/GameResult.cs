@@ -39,6 +39,10 @@ namespace Ideky.Domain.Entity
             {
                 Messages.Add("Usuário inválido");
             }
+            if (Score < 0)
+            {
+                Messages.Add("Pontuação inválida");
+            }
             return Messages.Count == 0;
         }
     }
